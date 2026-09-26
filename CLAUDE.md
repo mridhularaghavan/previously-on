@@ -1,6 +1,6 @@
 # nyt-jev: *Previously On…*
 
-The site is branded **Previously On…** and deployed at `previously-on.vercel.app` (Vercel project name `previously-on`).
+The site is branded **Previously On…** and deployed at https://previously-on-tv.vercel.app (Vercel project `previously-on-tv`, auto-deploys from GitHub `mridhularaghavan/previously-on` on push to `main`).
 
 Visual artwork built from The New York Times' **100 Best TV Shows of the 21st Century** (Sept 2026), with TypeSafe's **Jev** model supplying data for the next pieces.
 
@@ -38,7 +38,7 @@ When adding a fix, put it in these tables rather than patching `shows.json` by h
 
 ## Site (`site/`)
 
-Static, no build step: `index.html` (inline CSS/JS) + `shows.json` + `covers/*.webp`. Deployed to Vercel with `site/` as the project root (`site/vercel.json` sets cache headers).
+Static, no build step: `index.html` (inline CSS/JS) + `shows.json` + `covers/*.webp`. Deployed to Vercel from the repo root: the root `vercel.json` sets `outputDirectory: "site"` plus cache headers, so the dashboard's Root Directory must stay blank (repo root).
 
 - Views: poster grid and timeline (2000–2026 bars). Filters: genre chips, search, seen/want/unseen. Sorts: rank, year, cover colour (hue), lightness, A–Z. Includes a "Pick for me" random picker that prefers the want-list.
 - "I've seen it" / "I want to see it" mirror the NYT print checkboxes. They're stored in `localStorage` under `nyt100.marks`; theme and view use `nyt100.theme` and `nyt100.view`.
@@ -46,11 +46,7 @@ Static, no build step: `index.html` (inline CSS/JS) + `shows.json` + `covers/*.w
 - Colours are CSS tokens on `:root` with dark-mode overrides. Each card's `--c` is the cover's average colour from `build_site_data.py`.
 - Local preview: `.claude/launch.json` → `python3 -m http.server 5173 --directory site`.
 
-Deploy:
-```bash
-cd site && npx vercel deploy --name previously-on          # preview (protected by Vercel auth by default)
-cd site && npx vercel deploy --prod   # public production URL
-```
+Deploy: commit, then push `main` (the user pushes via GitHub Desktop). Vercel redeploys automatically.
 
 ## Rights
 
