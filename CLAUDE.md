@@ -40,7 +40,7 @@ When adding a fix, put it in these tables rather than patching `shows.json` by h
 
 Static, no build step: `index.html` (inline CSS/JS) + `shows.json` + `covers/*.webp`. Deployed to Vercel from the repo root: the root `vercel.json` sets `outputDirectory: "site"` plus cache headers, so the dashboard's Root Directory must stay blank (repo root).
 
-- Views: poster grid and timeline (2000–2026 bars). Filters: genre chips, search, seen/want/unseen. Sorts: rank, year, cover colour (hue), lightness, A–Z. Includes a "Pick for me" random picker that prefers the want-list.
+- Views: poster grid, timeline (2000–2026 bars), and **Jev colour** (the colour quilt: each tile is Jev's colour probabilities as horizontal bands; band edges soften as confidence drops; hover reveals the cover; swatches filter by Jev's top colour). Filters: genre chips, search, seen/want/unseen. Sorts: rank, year, cover colour (hue), lightness, A–Z. Includes a "Pick for me" random picker that prefers the want-list.
 - "I've seen it" / "I want to see it" mirror the NYT print checkboxes. They're stored in `localStorage` under `nyt100.marks`; theme and view use `nyt100.theme` and `nyt100.view`.
 - Keys: `/` search, `←/→` browse in the detail panel, `S` seen, `W` want, `R` random.
 - Colours are CSS tokens on `:root` with dark-mode overrides. Each card's `--c` is the cover's average colour from `build_site_data.py`.
@@ -59,6 +59,10 @@ Jev is TypeSafe AI's "System One" decision model. It takes text in and returns t
 - API: `POST https://api.typesafe.ai/v1/systemone`, Bearer auth. Python: `pip install typesafe-sdk`; `TypeSafeClient()` reads `TYPESAFE_API_KEY` and defaults to model `jev-latest`.
 - Primitives: `Choice` (pick from options), `Score` (2–10 ordered levels → weighted score, probabilities, confidence), `Noul` (yes/no probability).
 - Price: about $0.042 per million input tokens, with output free. The user has **$5 credit**.
+
+Jev data flow: `jev_*.py` scripts call the API and cache each raw response in `jev_cache/<piece>/NNN.json` (committed; no secrets in them). Each script then exports a compact `site/jev/<piece>.json` that the site loads. The site never calls TypeSafe, and it hides Jev features if the JSON is missing.
+
+- `jev_colour.py`: **done**. 100 calls, ~77.5K input tokens, about $0.003. Choice over 13 colours (`PALETTE` holds each colour's hex and the description Jev sees). Re-export without API calls: `python3 -c "import jev_colour; jev_colour.export()"`.
 
 Planned pieces (the user chose 3, 4 and 5):
 3. **Colour quilt**: a `Choice` over a fixed ~12-colour palette per show. Paint each tile by its probability mix. Estimated ~100 calls, under $0.01.
