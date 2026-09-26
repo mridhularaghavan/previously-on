@@ -220,6 +220,54 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 .jconf .m { width: 90px; height: 5px; border-radius: 99px; background: var(--rule); overflow: hidden; }
 .jconf .m b { display: block; height: 100%; background: var(--ink); }
 
+/* ---------- Jev fan constellation ---------- */
+.constel { display: none; }
+.view-constellation .constel { display: block; }
+.view-constellation .grid, .view-constellation .jevhead { display: none; }
+.constelhead p { margin: 0 0 14px; color: var(--muted); max-width: 780px; font-size: 14px; }
+.constelhead p b { color: var(--ink); font-weight: 600; }
+.sky {
+  position: relative; border-radius: 12px; overflow: hidden; height: min(80vh, 920px); min-height: 480px;
+  background: radial-gradient(ellipse at 30% 20%, #1b2233 0%, #0c0e14 55%, #07080b 100%);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .06);
+}
+.sky::before { /* faint stars */
+  content: ""; position: absolute; inset: 0; opacity: .5; pointer-events: none;
+  background-image: radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 72% 34%, #fff, transparent),
+    radial-gradient(1px 1px at 41% 77%, #fff, transparent), radial-gradient(1px 1px at 88% 81%, #fff, transparent),
+    radial-gradient(1px 1px at 23% 58%, #fff, transparent), radial-gradient(1px 1px at 57% 9%, #fff, transparent);
+  background-size: 340px 340px;
+}
+#csvg { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+#csvg:active { cursor: grabbing; }
+.lk { stroke: #cfd8ff; stroke-linecap: round; transition: stroke-opacity .2s; }
+.nd { cursor: pointer; transition: opacity .2s; }
+.nd .ring { fill: none; stroke-width: 2.5; }
+.nd text { fill: #eef1f8; font: 600 10px "Inter Tight", system-ui, sans-serif; text-anchor: middle; paint-order: stroke; stroke: #0b0d12; stroke-width: 3px; opacity: 0; pointer-events: none; transition: opacity .2s; }
+#csvg.focus .nd:not(.hi) { opacity: .12; }
+#csvg.focus .lk:not(.hi) { stroke-opacity: .02 !important; }
+#csvg.focus .nd.hi text { opacity: 1; }
+#csvg.zoomed .nd text { opacity: .85; }
+.nd.dim { opacity: .1; }
+.lk.dim { stroke-opacity: .025 !important; }
+.ctip { position: absolute; pointer-events: none; z-index: 5; max-width: 260px; background: rgb(12 14 20 / .92); color: #eef1f8; border: 1px solid rgb(255 255 255 / .12); border-radius: 8px; padding: 10px 12px; font-size: 12.5px; opacity: 0; transition: opacity .15s; }
+.ctip b { display: block; font-size: 14px; margin-bottom: 4px; }
+.ctip span { color: #a9b1c6; }
+.skyhint .m { display: none; }
+@media (max-width: 719px) { .sky { height: 64vh; min-height: 420px; } .skyhint .d { display: none; } .skyhint .m { display: inline; } }
+.skyhint { position: absolute; left: 14px; bottom: 12px; right: 140px; color: #8d95aa; font-size: 12px; pointer-events: none; }
+.skybtns { position: absolute; right: 12px; bottom: 12px; display: flex; gap: 6px; }
+.skybtns button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgb(255 255 255 / .18); background: rgb(12 14 20 / .7); color: #eef1f8; cursor: pointer; font-size: 16px; }
+.fans { margin: 0 0 18px; }
+.fans .jl { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 8px; }
+.fans ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.fans li button { width: 100%; display: grid; grid-template-columns: 26px 1fr 90px 36px; align-items: center; gap: 8px; border: 0; background: none; padding: 3px 0; cursor: pointer; text-align: left; font-size: 13px; }
+.fans li img { width: 26px; height: 39px; object-fit: cover; border-radius: 2px; }
+.fans li .m { height: 5px; border-radius: 99px; background: var(--rule); overflow: hidden; }
+.fans li .m b { display: block; height: 100%; background: var(--ink); }
+.fans li em { font-style: normal; color: var(--muted); font-size: 12px; text-align: right; }
+.fans li button:hover span:first-of-type { text-decoration: underline; }
+
 footer { border-top: 2px solid var(--ink); padding: 18px 0 40px; color: var(--muted); font-size: 12.5px; }
 footer a { color: inherit; }
 .empty { padding: 60px 0; text-align: center; color: var(--muted); display: none; }
@@ -250,6 +298,7 @@ footer a { color: inherit; }
       <button data-view="grid" aria-pressed="true">Poster</button>
       <button data-view="timeline" aria-pressed="false">Timeline</button>
       <button data-view="colour" aria-pressed="false" hidden>Jev colour</button>
+      <button data-view="constellation" aria-pressed="false" hidden>Jev fans</button>
     </div>
     <input class="search" id="q" type="search" placeholder="Search shows, networks…" aria-label="Search">
     <select class="sort" id="sort" aria-label="Sort">
@@ -276,6 +325,15 @@ footer a { color: inherit; }
 <main class="wrap" id="main">
   <div class="jevhead" id="jevhead"></div>
   <div class="grid" id="grid"></div>
+  <section class="constel" id="constel">
+    <div class="constelhead" id="constelhead"></div>
+    <div class="sky" id="sky">
+      <svg id="csvg" role="img" aria-label="Network of shows linked by overlapping fans"></svg>
+      <div class="ctip" id="ctip"></div>
+      <div class="skyhint"><span class="d">Drag to pan · scroll to zoom · hover a show to see its circle</span><span class="m">Pinch to zoom · tap a show</span></div>
+      <div class="skybtns"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="zfit" aria-label="Fit">⤢</button></div>
+    </div>
+  </section>
   <div class="timeline" id="timeline"></div>
   <div class="empty" id="empty">Nothing matches. Try another filter.</div>
 </main>
@@ -292,6 +350,11 @@ footer a { color: inherit; }
   const shows = await (await fetch("shows.json")).json();
   // Jev's answers are precomputed offline (jev_colour.py); the site never calls the API.
   const jev = await fetch("jev/colour.json").then(r => r.ok ? r.json() : null).catch(() => null);
+  const fans = await fetch("jev/fans.json").then(r => r.ok ? r.json() : null).catch(() => null);
+  // fan(a, b) = Jev's % that a devoted fan of a would love b (directed); link(a, b) = symmetric average
+  const fan = (a, b) => fans?.rows[a]?.[b - 1] ?? 0;
+  const link = (a, b) => (fan(a, b) + fan(b, a)) / 2;
+  const alsoLove = (n, k = 5) => fans ? fans.rows[n].map((p, i) => [i + 1, p]).filter(([b]) => b !== n).sort((x, y) => y[1] - x[1]).slice(0, k) : [];
   const $ = s => document.querySelector(s);
   const store = {
     get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
@@ -440,6 +503,10 @@ footer a { color: inherit; }
       });
     }
     $("#empty").style.display = visible ? "none" : "block";
+    if (cnodes) {
+      cnodes.forEach((el, k) => el.classList.toggle("dim", !matches(byRank(k))));
+      clinks.forEach(el => el.classList.toggle("dim", !(matches(byRank(+el.dataset.a)) && matches(byRank(+el.dataset.b)))));
+    }
   }
   function paintMarks() {
     let s = 0, w = 0;
@@ -468,6 +535,8 @@ footer a { color: inherit; }
     document.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x === b));
     $("#main").classList.toggle("view-timeline", state.view === "timeline");
     $("#main").classList.toggle("view-colour", state.view === "colour");
+    $("#main").classList.toggle("view-constellation", state.view === "constellation");
+    if (state.view === "constellation") buildConstellation();
     render();
     store.set("nyt100.view", state.view);
   });
@@ -517,6 +586,104 @@ footer a { color: inherit; }
     </div>`;
   }
 
+  function fansRead(n) {
+    if (!fans) return "";
+    return `<div class="fans"><div class="jl">Jev says fans of this also love</div><ol>${
+      alsoLove(n).map(([b, p]) => `<li><button data-go="${b}"><img src="${byRank(b).cover}" alt=""><span>${b}. ${byRank(b).title}</span><span class="m"><b style="width:${p}%"></b></span><em>${p}%</em></button></li>`).join("")
+    }</ol></div>`;
+  }
+
+  /* ---- constellation (d3 loaded on first open) ---- */
+  let cnodes = null, clinks = [], cbuilding = null;
+  function buildConstellation() {
+    if (!fans || cbuilding) return cbuilding;
+    return cbuilding = (async () => {
+      const d3 = await import("https://cdn.jsdelivr.net/npm/d3@7/+esm");
+      const nodes = shows.map(s => { const w = 24 + (101 - s.rank) / 100 * 22; return { id: s.rank, s, w, h: w * 1.5 }; });
+      // edges: each show's 3 strongest fan links, plus every link >= 78
+      const key = (a, b) => a < b ? `${a}-${b}` : `${b}-${a}`, E = new Map();
+      shows.forEach(a => {
+        shows.filter(b => b.rank !== a.rank).map(b => [b.rank, link(a.rank, b.rank)])
+          .sort((x, y) => y[1] - x[1]).forEach(([b, w], i) => { if (i < 3 || w >= 78) E.set(key(a.rank, b), { source: a.rank, target: b, w }); });
+      });
+      const links = [...E.values()];
+      const nbrs = new Map(shows.map(s => [s.rank, new Set([s.rank])]));
+      links.forEach(l => { nbrs.get(l.source).add(l.target); nbrs.get(l.target).add(l.source); });
+
+      const sim = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).id(d => d.id).distance(l => 34 + (100 - l.w) * 2.4).strength(l => 0.08 + ((l.w - 50) / 50) ** 2))
+        .force("charge", d3.forceManyBody().strength(-190))
+        .force("collide", d3.forceCollide(d => d.h * 0.62))
+        .force("x", d3.forceX(0).strength(0.045)).force("y", d3.forceY(0).strength(0.07))
+        .stop();
+      for (let i = 0; i < 450; i++) sim.tick();
+
+      const svg = d3.select("#csvg"), g = svg.append("g");
+      g.append("g").selectAll("line").data(links).join("line").attr("class", "lk")
+        .attr("x1", d => d.source.x).attr("y1", d => d.source.y).attr("x2", d => d.target.x).attr("y2", d => d.target.y)
+        .attr("stroke-width", d => 0.4 + ((d.w - 50) / 50) ** 2 * 3.2).attr("stroke-opacity", d => 0.08 + ((d.w - 50) / 50) ** 1.5 * 0.55)
+        .each(function (d) { this.dataset.a = d.source.id; this.dataset.b = d.target.id; });
+      const defs = svg.append("defs");
+      nodes.forEach(n => defs.append("clipPath").attr("id", `cp${n.id}`).append("rect")
+        .attr("x", -n.w / 2).attr("y", -n.h / 2).attr("width", n.w).attr("height", n.h).attr("rx", 3));
+      const nd = g.append("g").selectAll("g").data(nodes).join("g").attr("class", "nd")
+        .attr("transform", d => `translate(${d.x},${d.y})`).attr("tabindex", 0)
+        .attr("aria-label", d => `${d.s.rank}. ${d.s.title}`);
+      nd.append("image").attr("href", d => d.s.cover).attr("x", d => -d.w / 2).attr("y", d => -d.h / 2)
+        .attr("width", d => d.w).attr("height", d => d.h).attr("clip-path", d => `url(#cp${d.id})`).attr("preserveAspectRatio", "xMidYMid slice");
+      nd.append("rect").attr("class", "ring").attr("x", d => -d.w / 2 - 2).attr("y", d => -d.h / 2 - 2)
+        .attr("width", d => d.w + 4).attr("height", d => d.h + 4).attr("rx", 4)
+        .attr("stroke", d => jev ? P[jevOf(d.id).choice].hex : "#fff");
+      nd.append("text").attr("y", d => d.h / 2 + 13).text(d => d.s.title.length > 26 ? d.s.title.slice(0, 24) + "…" : d.s.title);
+      cnodes = new Map(nd.nodes().map(el => [d3.select(el).datum().id, el]));
+      clinks = g.selectAll(".lk").nodes();
+
+      // fit + zoom
+      const xs = nodes.map(n => n.x), ys = nodes.map(n => n.y), pad = 60;
+      const bx = [Math.min(...xs) - pad, Math.max(...xs) + pad], by = [Math.min(...ys) - pad, Math.max(...ys) + pad];
+      const zoom = d3.zoom().scaleExtent([0.3, 5]).on("zoom", e => {
+        g.attr("transform", e.transform); svg.classed("zoomed", e.transform.k > 1.9 * fitK);
+      });
+      let fitK = 1;
+      const fit = (t = 600) => {
+        const { width: W, height: H } = svg.node().getBoundingClientRect();
+        fitK = Math.min(W / (bx[1] - bx[0]), H / (by[1] - by[0]));
+        const tr = d3.zoomIdentity.translate(W / 2, H / 2).scale(fitK).translate(-(bx[0] + bx[1]) / 2, -(by[0] + by[1]) / 2);
+        svg.transition().duration(t).call(zoom.transform, tr);
+      };
+      svg.call(zoom).on("dblclick.zoom", null);
+      fit(0);
+      addEventListener("resize", () => state.view === "constellation" && fit(0));
+      $("#zin").onclick = () => svg.transition().call(zoom.scaleBy, 1.5);
+      $("#zout").onclick = () => svg.transition().call(zoom.scaleBy, 1 / 1.5);
+      $("#zfit").onclick = () => fit();
+
+      // hover focus
+      const tip = $("#ctip"), sky = $("#sky");
+      const focus = n => {
+        const hi = nbrs.get(n);
+        svg.classed("focus", true);
+        nd.classed("hi", d => hi.has(d.id));
+        g.selectAll(".lk").classed("hi", d => d.source.id === n || d.target.id === n);
+        const top = alsoLove(n, 3).map(([b, p]) => `${byRank(b).title} <span>${p}%</span>`).join("<br>");
+        tip.innerHTML = `<b>${n}. ${byRank(n).title}</b><span>Fans also love</span><br>${top}`;
+        tip.style.opacity = 1;
+      };
+      const blur = () => { svg.classed("focus", false); nd.classed("hi", false); g.selectAll(".lk").classed("hi", false); tip.style.opacity = 0; };
+      nd.on("pointerenter", (e, d) => e.pointerType === "mouse" && focus(d.id))
+        .on("pointermove", e => {
+          const r = sky.getBoundingClientRect();
+          tip.style.left = Math.min(e.clientX - r.left + 16, r.width - 270) + "px";
+          tip.style.top = Math.min(e.clientY - r.top + 12, r.height - 120) + "px";
+        })
+        .on("pointerleave", blur)
+        .on("focus", (e, d) => e.target.matches(":focus-visible") && focus(d.id)).on("blur", blur)
+        .on("click", (e, d) => open(d.id))
+        .on("keydown", (e, d) => e.key === "Enter" && open(d.id));
+      render();
+    })();
+  }
+
   /* ---- dialog ---- */
   const dlg = $("#dlg");
   function visibleOrder() { return [...grid.children].map(c => +c.dataset.rank).filter(r => matches(byRank(r))); }
@@ -539,6 +706,7 @@ footer a { color: inherit; }
           <div class="tags">${s.genres.map(g => `<span>${g}</span>`).join("")}</div>
           <p class="sum">${s.summary}</p>
           ${jevRead(rank)}
+          ${fansRead(rank)}
           <div class="acts">
             <button class="toggle s" aria-pressed="${!!m.s}" data-k="s">${m.s ? "✓ Seen it" : "I've seen it"}</button>
             <button class="toggle w" aria-pressed="${!!m.w}" data-k="w">${m.w ? "★ On my list" : "I want to see it"}</button>
@@ -554,9 +722,12 @@ footer a { color: inherit; }
   }
   dlg.addEventListener("click", e => {
     if (e.target === dlg || e.target.closest(".x")) return dlg.close();
+    if (e.target.closest("[data-go]") && state.view === "constellation") document.activeElement?.blur?.();
     const t = e.target.closest(".toggle"); if (t) return setMark(+dlg.dataset.rank, t.dataset.k, t.getAttribute("aria-pressed") !== "true");
     const g = e.target.closest("[data-go]"); if (g) open(+g.dataset.go);
   });
+
+  dlg.addEventListener("close", () => { if (state.view === "constellation") { document.activeElement?.blur?.(); $("#csvg").classList.remove("focus"); $("#ctip").style.opacity = 0; } });
 
   /* ---- keyboard ---- */
   addEventListener("keydown", e => {
@@ -593,10 +764,22 @@ footer a { color: inherit; }
     $("#jevcredit").innerHTML = ` Colours chosen by <a href="https://typesafe.ai">Jev</a> (TypeSafe AI): ${jev.calls} calls, ${Math.round(jev.input_tokens / 1000)}K tokens, about $${jev.cost_usd.toFixed(3)}.`;
   }
 
+  if (fans) {
+    document.querySelector('[data-view="constellation"]').hidden = false;
+    const lonely = shows.map(s => [s, Math.max(...shows.filter(b => b.rank !== s.rank).map(b => link(s.rank, b.rank)))])
+      .sort((a, b) => a[1] - b[1]).slice(0, 3).map(([s]) => `<i>${s.title}</i>`);
+    const strongest = shows.flatMap(a => shows.filter(b => b.rank > a.rank).map(b => [a, b, link(a.rank, b.rank)]))
+      .sort((x, y) => y[2] - x[2])[0];
+    $("#constelhead").innerHTML = `<p>We asked <b>Jev</b> ${(fans.calls * (fans.calls - 1)).toLocaleString()} yes-or-no questions: <i>would a devoted fan of this show also love that one?</i>
+      Shows pull together when their fans overlap, and brighter lines mean stronger overlap. Each cover's outline is its Jev colour.
+      Tightest pair: <i>${strongest[0].title}</i> &amp; <i>${strongest[1].title}</i> (${Math.round(strongest[2])}%). Loneliest shows: ${lonely.join(", ")}.</p>`;
+    $("#jevcredit").innerHTML += ` Fan links: ${fans.calls} calls, ${Math.round(fans.input_tokens / 1000)}K tokens, about $${fans.cost_usd.toFixed(3)}.`;
+  }
+
   /* ---- init ---- */
   const t = store.get("nyt100.theme", null); if (t) document.documentElement.dataset.theme = t;
   const v = store.get("nyt100.view", "grid");
-  if (v === "timeline" || (v === "colour" && jev)) document.querySelector(`[data-view="${v}"]`).click();
+  if (v === "timeline" || (v === "colour" && jev) || (v === "constellation" && fans)) document.querySelector(`[data-view="${v}"]`).click();
   paintMarks(); render();
 })();
 </script>
