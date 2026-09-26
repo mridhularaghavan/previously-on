@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Previously On…</title>
+<meta name="description" content="Previously On… — an interactive recap of the 100 best TV shows of the 21st century, as ranked by The New York Times.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='7' width='26' height='18' rx='3' fill='%23111'/><rect x='6' y='10' width='20' height='12' rx='1' fill='%23f2c14e'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #faf8f3; --ink: #141414; --muted: #6e6c68; --rule: #d9d5cc;
+  --chip: #efece4; --panel: #ffffff; --accent: #c8102e; --seen: #1f7a4d; --want: #b7791f;
+  --shadow: 0 1px 2px rgb(0 0 0 / .08), 0 8px 24px rgb(0 0 0 / .08);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f0f10; --ink: #f1efe9; --muted: #9a978f; --rule: #2b2a28;
+    --chip: #1c1b1a; --panel: #171716; --accent: #ff5a6e; --seen: #4cc38a; --want: #f0b44c;
+    --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 12px 32px rgb(0 0 0 / .5);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f0f10; --ink: #f1efe9; --muted: #9a978f; --rule: #2b2a28;
+  --chip: #1c1b1a; --panel: #171716; --accent: #ff5a6e; --seen: #4cc38a; --want: #f0b44c;
+  --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 12px 32px rgb(0 0 0 / .5);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 15px/1.45 "Inter Tight", system-ui, sans-serif;
+  transition: background .3s, color .3s;
+}
+button, input, select { font: inherit; color: inherit; }
+.wrap { max-width: 1480px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 720px) { .wrap { padding: 0 40px; } }
+
+/* ---------- header ---------- */
+header { padding: 40px 0 20px; border-bottom: 2px solid var(--ink); }
+.brand { font-family: "Instrument Serif", Georgia, serif; font-size: 26px; margin: 0 0 18px; display: inline-flex; align-items: center; gap: 10px; }
+.brand::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); }
+.kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+h1 {
+  font-family: "Instrument Serif", Georgia, serif; font-weight: 400;
+  font-size: clamp(40px, 7.4vw, 108px); line-height: .95; letter-spacing: -.01em; margin: 0;
+}
+h1 sup { font-size: .38em; vertical-align: .95em; }
+.lede { max-width: 640px; color: var(--muted); margin: 14px 0 0; }
+.tally { display: flex; gap: 22px; flex-wrap: wrap; align-items: end; margin-top: 22px; }
+.tally .n { font-family: "Instrument Serif", serif; font-size: 44px; line-height: 1; }
+.tally .l { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.meter { flex: 1 1 220px; min-width: 200px; height: 8px; border-radius: 99px; background: var(--chip); overflow: hidden; display: flex; align-self: center; }
+.meter i { display: block; height: 100%; transition: width .5s cubic-bezier(.2,.8,.2,1); }
+.meter .s { background: var(--seen); } .meter .w { background: var(--want); }
+
+/* ---------- toolbar ---------- */
+.bar {
+  position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule);
+}
+.bar .wrap:first-child { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 12px; padding-bottom: 12px; }
+.seg { display: inline-flex; background: var(--chip); border-radius: 99px; padding: 3px; }
+.seg button { border: 0; background: none; padding: 6px 14px; border-radius: 99px; cursor: pointer; font-size: 13px; font-weight: 500; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.search { flex: 1 1 180px; min-width: 150px; max-width: 280px; border: 1px solid var(--rule); background: var(--panel); border-radius: 99px; padding: 7px 14px; font-size: 14px; }
+.search:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+select.sort { border: 1px solid var(--rule); background: var(--panel); border-radius: 99px; padding: 7px 12px; font-size: 13px; cursor: pointer; }
+.btn { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 99px; padding: 7px 14px; cursor: pointer; font-size: 13px; font-weight: 600; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+.spacer { flex: 1; }
+.chips { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; border: 1px solid var(--rule); background: transparent; border-radius: 99px; padding: 4px 11px; font-size: 12.5px; cursor: pointer; white-space: nowrap; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.chip .c { color: var(--muted); margin-left: 4px; font-size: 11px; }
+.chip[aria-pressed="true"] .c { color: inherit; opacity: .7; }
+
+/* ---------- grid ---------- */
+main { padding: 28px 0 60px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 22px 14px; }
+@media (min-width: 1360px) { .grid { grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 26px 16px; } }
+.card { min-width: 0; }
+.card { position: relative; perspective: 800px; transition: opacity .35s, filter .35s, transform .35s; }
+.card.dim { opacity: .13; filter: grayscale(1); }
+.card.dim:hover { opacity: .5; }
+.poster {
+  display: block; width: 100%; aspect-ratio: 2 / 3; border: 0; padding: 0; cursor: pointer; border-radius: 4px;
+  position: relative; overflow: hidden; background: var(--c, #333); transform-style: preserve-3d;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s;
+  box-shadow: var(--shadow);
+}
+.poster img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .5s; }
+.poster img.ok { opacity: 1; }
+.poster::after { /* glare */
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .25s;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / .35), transparent 55%);
+}
+.card:hover .poster { box-shadow: 0 18px 40px -8px var(--c), var(--shadow); }
+.card:hover .poster::after { opacity: 1; }
+.poster:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.rank {
+  position: absolute; top: 0; left: 0; background: var(--ink); color: var(--paper); z-index: 2;
+  font-weight: 700; font-size: 12px; padding: 3px 7px; border-bottom-right-radius: 4px; pointer-events: none;
+}
+.flags { position: absolute; right: 6px; bottom: 6px; display: flex; gap: 4px; z-index: 2; pointer-events: none; }
+.flags span { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .3); display: none; }
+.card.seen .flags .s { display: block; background: var(--seen); }
+.card.want .flags .w { display: block; background: var(--want); }
+.meta { margin-top: 8px; }
+.meta b { display: block; font-size: 13px; font-weight: 600; line-height: 1.2; }
+.meta small { color: var(--muted); font-size: 11.5px; }
+.boxes { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 5px; }
+.box { display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); cursor: pointer; user-select: none; }
+.box input { appearance: none; -webkit-appearance: none; width: 13px; height: 13px; border: 1.5px solid var(--muted); border-radius: 2px; margin: 0; cursor: pointer; display: grid; place-content: center; transition: background .15s, border-color .15s; }
+.box input::before { content: ""; width: 7px; height: 4px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px) scale(0); transition: transform .15s; }
+.box input:checked::before { transform: rotate(-45deg) translate(1px, -1px) scale(1); }
+.box input.s:checked { background: var(--seen); border-color: var(--seen); }
+.box input.w:checked { background: var(--want); border-color: var(--want); }
+.box input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.pop { animation: pop .35s cubic-bezier(.2,1.6,.4,1); }
+@keyframes pop { 50% { transform: scale(1.08); } }
+.spotlight .poster { animation: spot 1.6s ease-in-out 2; }
+@keyframes spot { 50% { transform: scale(1.12) translateY(-6px); box-shadow: 0 0 0 4px var(--accent), 0 24px 50px -10px var(--c); } }
+
+/* ---------- timeline ---------- */
+.timeline { display: none; }
+.view-timeline .grid { display: none; }
+.view-timeline .timeline { display: block; }
+.axis, .trow { display: grid; grid-template-columns: minmax(120px, 230px) 1fr; gap: 12px; align-items: center; }
+.axis { position: sticky; top: 108px; z-index: 5; background: var(--paper); padding: 6px 0; border-bottom: 1px solid var(--rule); font-size: 11px; color: var(--muted); }
+.ticks { position: relative; height: 16px; }
+.ticks span { position: absolute; transform: translateX(-50%); }
+.trow { padding: 3px 0; cursor: pointer; transition: opacity .3s; }
+.trow.dim { opacity: .12; }
+.trow .lbl { font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.trow .lbl em { font-style: normal; color: var(--muted); display: inline-block; width: 28px; }
+.track { position: relative; height: 20px; background: repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px calc(100% / 26.5)); background-size: 100% 100%; }
+.span {
+  position: absolute; top: 3px; height: 14px; border-radius: 3px; background: var(--c); min-width: 6px;
+  transition: transform .2s; transform-origin: left center;
+}
+.span.open { background: linear-gradient(90deg, var(--c) 80%, transparent); }
+.trow:hover .span { transform: scaleY(1.35); }
+.trow:hover .lbl { font-weight: 600; }
+.peek { position: fixed; width: 120px; aspect-ratio: 2/3; pointer-events: none; z-index: 40; border-radius: 4px; box-shadow: var(--shadow); opacity: 0; transition: opacity .15s; background-size: cover; background-position: center; }
+@media (max-width: 719px) {
+  .bar { position: static; }
+  .axis { top: 0; }
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 10px; }
+  .meta b { font-size: 12px; }
+  .search { max-width: none; }
+}
+@media (max-width: 600px) { .axis, .trow { grid-template-columns: 110px 1fr; } }
+
+/* ---------- detail dialog ---------- */
+dialog {
+  border: 0; padding: 0; width: min(880px, calc(100vw - 32px)); max-height: calc(100dvh - 32px);
+  background: var(--panel); color: var(--ink); border-radius: 10px; box-shadow: 0 30px 80px rgb(0 0 0 / .45); overflow: auto;
+}
+dialog::backdrop { background: rgb(10 10 10 / .6); backdrop-filter: blur(4px); }
+dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
+@keyframes rise { from { transform: translateY(20px) scale(.97); opacity: 0; } }
+.dlg { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 680px) { .dlg { grid-template-columns: 340px 1fr; } }
+.dlg .art { background: var(--c); position: relative; }
+.dlg .art img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 2/3; }
+.dlg .body { padding: 26px 28px 24px; display: flex; flex-direction: column; }
+.dlg .num { font-family: "Instrument Serif", serif; font-size: 72px; line-height: .8; color: var(--c2, var(--accent)); }
+.dlg h2 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 40px; line-height: 1.02; margin: 8px 0 6px; }
+.dlg .sub { color: var(--muted); font-size: 14px; }
+.dlg .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+.dlg .tags span { background: var(--chip); border-radius: 99px; padding: 3px 10px; font-size: 12px; }
+.dlg p.sum { margin: 0 0 18px; font-size: 15px; }
+.dlg .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.toggle { border: 1.5px solid var(--rule); background: transparent; border-radius: 99px; padding: 8px 14px; cursor: pointer; font-size: 13px; font-weight: 600; }
+.toggle.s[aria-pressed="true"] { background: var(--seen); border-color: var(--seen); color: #fff; }
+.toggle.w[aria-pressed="true"] { background: var(--want); border-color: var(--want); color: #fff; }
+.dlg a { color: var(--muted); font-size: 13px; }
+.nav { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 13px; }
+.nav button { border: 0; background: none; cursor: pointer; color: var(--muted); padding: 4px 0; }
+.nav button:hover { color: var(--ink); }
+.x { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: rgb(0 0 0 / .55); color: #fff; font-size: 18px; cursor: pointer; z-index: 3; }
+
+footer { border-top: 2px solid var(--ink); padding: 18px 0 40px; color: var(--muted); font-size: 12.5px; }
+footer a { color: inherit; }
+.empty { padding: 60px 0; text-align: center; color: var(--muted); display: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media print {
+  .bar, footer, .boxes, dialog { display: none !important; }
+  body { background: #fff; color: #000; }
+  .card.dim { opacity: 1; filter: none; }
+}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <p class="brand"><i>Previously On…</i></p>
+  <p class="kicker">An interactive recap · The New York Times list, 2026</p>
+  <h1>The 100 Best TV Shows<br>of the 21<sup>st</sup> Century</h1>
+  <p class="lede">From <i>Breaking Bad</i> to <i>Scandal</i>. Tick the ones you've seen, flag the ones you want to see, and let the wall of covers tell you what to watch next.</p>
+  <div class="tally">
+    <div><div class="n" id="nSeen">0</div><div class="l">Seen</div></div>
+    <div><div class="n" id="nWant">0</div><div class="l">Want to see</div></div>
+    <div class="meter" aria-hidden="true"><i class="s" id="mSeen"></i><i class="w" id="mWant"></i></div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="seg" role="group" aria-label="View">
+      <button data-view="grid" aria-pressed="true">Poster</button>
+      <button data-view="timeline" aria-pressed="false">Timeline</button>
+    </div>
+    <input class="search" id="q" type="search" placeholder="Search shows, networks…" aria-label="Search">
+    <select class="sort" id="sort" aria-label="Sort">
+      <option value="rank">Sort: NYT rank</option>
+      <option value="year">Sort: premiere year</option>
+      <option value="hue">Sort: cover colour</option>
+      <option value="light">Sort: light → dark</option>
+      <option value="alpha">Sort: A–Z</option>
+    </select>
+    <div class="seg" role="group" aria-label="Show">
+      <button data-show="all" aria-pressed="true">All</button>
+      <button data-show="seen" aria-pressed="false">Seen</button>
+      <button data-show="want" aria-pressed="false">Want</button>
+      <button data-show="unseen" aria-pressed="false">Unseen</button>
+    </div>
+    <span class="spacer"></span>
+    <button class="btn" id="pick">🎲 Pick for me</button>
+    <button class="btn ghost" id="theme" aria-label="Toggle dark mode">◐</button>
+  </div>
+  <div class="wrap chips" id="chips" role="group" aria-label="Genre"></div>
+</div>
+
+<main class="wrap" id="main">
+  <div class="grid" id="grid"></div>
+  <div class="timeline" id="timeline"></div>
+  <div class="empty" id="empty">Nothing matches. Try another filter.</div>
+</main>
+
+<footer class="wrap">
+  <b><i>Previously On…</i></b> is a fan project. Ranking: <a href="https://www.nytimes.com/interactive/2026/arts/television/best-tv-shows-21st-century.html">The New York Times</a> (500+ voters, 2026). Cover art &amp; summaries via <a href="https://www.tvmaze.com">TVmaze</a>. Your checkmarks are saved only in this browser. Keys: <kbd>/</kbd> search · <kbd>←</kbd><kbd>→</kbd> browse · <kbd>S</kbd> seen · <kbd>W</kbd> want · <kbd>R</kbd> random.
+</footer>
+
+<dialog id="dlg" aria-labelledby="dTitle"></dialog>
+<div class="peek" id="peek"></div>
+
+<script>
+(async () => {
+  const shows = await (await fetch("shows.json")).json();
+  const $ = s => document.querySelector(s);
+  const store = {
+    get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+  };
+  const marks = store.get("nyt100.marks", {});           // { rank: {s:bool, w:bool} }
+  const state = { view: "grid", show: "all", genre: null, q: "", sort: "rank" };
+
+  // colour helpers for the hue sort
+  const hsl = hex => {
+    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, d = mx - mn;
+    let h = 0; const s = d ? d / (1 - Math.abs(2 * l - 1)) : 0;
+    if (d) h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
+    return { h: (h * 60 + 360) % 360, s, l };
+  };
+  shows.forEach(s => { s.hsl = hsl(s.color); s.years = s.start + (s.end === s.start ? "" : "–" + (s.end ?? "present")); });
+
+  /* ---- genre chips ---- */
+  const counts = {};
+  shows.forEach(s => s.genres.forEach(g => counts[g] = (counts[g] || 0) + 1));
+  const genres = Object.entries(counts).filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]);
+  $("#chips").innerHTML = `<button class="chip" data-genre="" aria-pressed="true">All genres</button>` +
+    genres.map(([g, n]) => `<button class="chip" data-genre="${g}" aria-pressed="false">${g}<span class="c">${n}</span></button>`).join("");
+
+  /* ---- grid ---- */
+  const grid = $("#grid");
+  grid.innerHTML = shows.map(s => `
+    <div class="card" data-rank="${s.rank}" style="--c:${s.color}">
+      <button class="poster" aria-label="${s.rank}. ${s.title}, ${s.years}">
+        <span class="rank">${s.rank}</span>
+        <img src="${s.cover}" alt="" loading="${s.rank <= 30 ? "eager" : "lazy"}" onload="this.classList.add('ok')">
+        <span class="flags"><span class="s"></span><span class="w"></span></span>
+      </button>
+      <div class="meta"><b>${s.title}</b><small>${s.years}</small>
+        <div class="boxes">
+          <label class="box"><input type="checkbox" class="s" data-k="s">Seen</label>
+          <label class="box"><input type="checkbox" class="w" data-k="w">Want</label>
+        </div>
+      </div>
+    </div>`).join("");
+  const cards = new Map([...grid.children].map(el => [+el.dataset.rank, el]));
+
+  // tilt + glare
+  grid.addEventListener("pointermove", e => {
+    const p = e.target.closest(".poster"); if (!p || e.pointerType !== "mouse") return;
+    const r = p.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    p.style.transform = `rotateY(${(x - .5) * 16}deg) rotateX(${(.5 - y) * 16}deg) translateZ(10px)`;
+    p.style.setProperty("--gx", x * 100 + "%"); p.style.setProperty("--gy", y * 100 + "%");
+  });
+  grid.addEventListener("pointerout", e => { const p = e.target.closest(".poster"); if (p && !p.contains(e.relatedTarget)) p.style.transform = ""; });
+  grid.addEventListener("click", e => { const p = e.target.closest(".poster"); if (p) open(+p.closest(".card").dataset.rank); });
+  grid.addEventListener("change", e => {
+    const i = e.target; if (!i.dataset.k) return;
+    setMark(+i.closest(".card").dataset.rank, i.dataset.k, i.checked);
+  });
+
+  /* ---- timeline ---- */
+  const Y0 = 2000, Y1 = 2026.5, pct = y => ((y - Y0) / (Y1 - Y0)) * 100;
+  const tl = $("#timeline");
+  const ticks = [2000, 2005, 2010, 2015, 2020, 2025].map(y => `<span style="left:${pct(y)}%">${y}</span>`).join("");
+  tl.innerHTML = `<div class="axis"><span>Show</span><div class="ticks">${ticks}</div></div>` +
+    shows.map(s => {
+      const a = pct(s.start), b = pct((s.end ?? 2026.4) + 1);
+      return `<div class="trow" data-rank="${s.rank}" style="--c:${s.color}">
+        <div class="lbl"><em>${s.rank}</em>${s.title}</div>
+        <div class="track"><span class="span${s.end ? "" : " open"}" style="left:${a}%;width:${Math.min(b, 100) - a}%"></span></div>
+      </div>`;
+    }).join("");
+  const rows = new Map([...tl.querySelectorAll(".trow")].map(el => [+el.dataset.rank, el]));
+  const peek = $("#peek");
+  tl.addEventListener("pointermove", e => {
+    const r = e.target.closest(".trow");
+    if (!r || e.pointerType !== "mouse") { peek.style.opacity = 0; return; }
+    const s = byRank(+r.dataset.rank);
+    peek.style.backgroundImage = `url(${s.cover})`; peek.style.opacity = 1;
+    const x = Math.min(e.clientX + 18, innerWidth - 140), y = Math.min(e.clientY - 90, innerHeight - 200);
+    peek.style.transform = `translate(${x}px, ${Math.max(8, y)}px)`;
+  });
+  tl.addEventListener("pointerleave", () => peek.style.opacity = 0);
+  tl.addEventListener("click", e => { const r = e.target.closest(".trow"); if (r) open(+r.dataset.rank); });
+
+  /* ---- filtering & sorting ---- */
+  const byRank = n => shows[n - 1];
+  const matches = s => {
+    const m = marks[s.rank] || {};
+    if (state.show === "seen" && !m.s) return false;
+    if (state.show === "want" && !m.w) return false;
+    if (state.show === "unseen" && m.s) return false;
+    if (state.genre && !s.genres.includes(state.genre)) return false;
+    if (state.q) {
+      const hay = `${s.title} ${s.network} ${s.genres.join(" ")} ${s.start}`.toLowerCase();
+      if (!hay.includes(state.q)) return false;
+    }
+    return true;
+  };
+  const sorters = {
+    rank: (a, b) => a.rank - b.rank,
+    year: (a, b) => a.start - b.start || a.rank - b.rank,
+    alpha: (a, b) => a.title.replace(/^The /, "").localeCompare(b.title.replace(/^The /, "")),
+    light: (a, b) => b.hsl.l - a.hsl.l,
+    // greys go last, then by hue
+    hue: (a, b) => ((a.hsl.s < .15) - (b.hsl.s < .15)) || (a.hsl.h - b.hsl.h) || (b.hsl.l - a.hsl.l),
+  };
+  function render() {
+    const order = [...shows].sort(sorters[state.sort]);
+    const firstRects = new Map([...cards].map(([k, el]) => [k, el.getBoundingClientRect()]));
+    let visible = 0;
+    order.forEach(s => {
+      const ok = matches(s); visible += ok;
+      const c = cards.get(s.rank); c.classList.toggle("dim", !ok); grid.appendChild(c);
+      const r = rows.get(s.rank); r.classList.toggle("dim", !ok); tl.appendChild(r);
+    });
+    // FLIP animation for re-sorting
+    if (state.view === "grid" && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      cards.forEach((el, k) => {
+        const a = firstRects.get(k), b = el.getBoundingClientRect();
+        const dx = a.left - b.left, dy = a.top - b.top;
+        if (dx || dy) el.animate([{ transform: `translate(${dx}px,${dy}px)` }, { transform: "none" }], { duration: 550, easing: "cubic-bezier(.2,.8,.2,1)" });
+      });
+    }
+    $("#empty").style.display = visible ? "none" : "block";
+  }
+  function paintMarks() {
+    let s = 0, w = 0;
+    shows.forEach(x => {
+      const m = marks[x.rank] || {}, c = cards.get(x.rank);
+      c.classList.toggle("seen", !!m.s); c.classList.toggle("want", !!m.w);
+      c.querySelector("input.s").checked = !!m.s; c.querySelector("input.w").checked = !!m.w;
+      s += !!m.s; w += !!m.w;
+    });
+    $("#nSeen").textContent = s; $("#nWant").textContent = w;
+    $("#mSeen").style.width = s + "%"; $("#mWant").style.width = w + "%";
+  }
+  function setMark(rank, k, v) {
+    marks[rank] = { ...(marks[rank] || {}), [k]: v };
+    if (k === "s" && v) marks[rank].w = false;           // seen supersedes want
+    store.set("nyt100.marks", marks);
+    paintMarks(); cards.get(rank).querySelector(".poster").classList.remove("pop");
+    void cards.get(rank).offsetWidth; cards.get(rank).querySelector(".poster").classList.add("pop");
+    if (state.show !== "all") render();
+    if (dlg.open && +dlg.dataset.rank === rank) open(rank);
+  }
+
+  /* ---- controls ---- */
+  document.querySelectorAll("[data-view]").forEach(b => b.onclick = () => {
+    state.view = b.dataset.view;
+    document.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x === b));
+    $("#main").classList.toggle("view-timeline", state.view === "timeline");
+    store.set("nyt100.view", state.view);
+  });
+  document.querySelectorAll("[data-show]").forEach(b => b.onclick = () => {
+    state.show = b.dataset.show;
+    document.querySelectorAll("[data-show]").forEach(x => x.setAttribute("aria-pressed", x === b));
+    render();
+  });
+  $("#chips").onclick = e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    state.genre = b.dataset.genre || null;
+    $("#chips").querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === b));
+    render();
+  };
+  $("#q").oninput = e => { state.q = e.target.value.trim().toLowerCase(); render(); };
+  $("#sort").onchange = e => { state.sort = e.target.value; render(); };
+  $("#theme").onclick = () => {
+    const dark = document.documentElement.dataset.theme
+      ? document.documentElement.dataset.theme === "dark"
+      : matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme = dark ? "light" : "dark";
+    store.set("nyt100.theme", document.documentElement.dataset.theme);
+  };
+  $("#pick").onclick = pick;
+  function pick() {
+    let pool = shows.filter(s => matches(s) && !(marks[s.rank] || {}).s);
+    const wants = pool.filter(s => (marks[s.rank] || {}).w);
+    if (wants.length) pool = wants;                      // favour the want-list
+    if (!pool.length) pool = shows.filter(matches);
+    if (!pool.length) return;
+    const s = pool[Math.floor(Math.random() * pool.length)];
+    if (state.view === "timeline") return open(s.rank);
+    const c = cards.get(s.rank);
+    c.scrollIntoView({ behavior: "smooth", block: "center" });
+    c.classList.remove("spotlight"); void c.offsetWidth; c.classList.add("spotlight");
+    setTimeout(() => open(s.rank), 1100);
+  }
+
+  /* ---- dialog ---- */
+  const dlg = $("#dlg");
+  function visibleOrder() { return [...grid.children].map(c => +c.dataset.rank).filter(r => matches(byRank(r))); }
+  function open(rank) {
+    const s = byRank(rank), m = marks[rank] || {};
+    const light = s.hsl.l > .6 ? "#111" : s.color;
+    dlg.dataset.rank = rank;
+    dlg.style.setProperty("--c", s.color);
+    dlg.style.setProperty("--c2", s.hsl.s > .25 && s.hsl.l > .25 && s.hsl.l < .75 ? s.color : "var(--accent)");
+    const ord = visibleOrder(), i = ord.indexOf(rank);
+    const prev = byRank(ord[(i - 1 + ord.length) % ord.length] ?? rank), next = byRank(ord[(i + 1) % ord.length] ?? rank);
+    dlg.innerHTML = `
+      <button class="x" aria-label="Close">×</button>
+      <div class="dlg">
+        <div class="art"><img src="${s.cover}" alt="${s.title} cover art"></div>
+        <div class="body">
+          <div class="num">No. ${s.rank}</div>
+          <h2 id="dTitle">${s.title}</h2>
+          <div class="sub">${s.years}${s.network ? " · " + s.network : ""}</div>
+          <div class="tags">${s.genres.map(g => `<span>${g}</span>`).join("")}</div>
+          <p class="sum">${s.summary}</p>
+          <div class="acts">
+            <button class="toggle s" aria-pressed="${!!m.s}" data-k="s">${m.s ? "✓ Seen it" : "I've seen it"}</button>
+            <button class="toggle w" aria-pressed="${!!m.w}" data-k="w">${m.w ? "★ On my list" : "I want to see it"}</button>
+          </div>
+          <div class="nav">
+            <button data-go="${prev.rank}">← ${prev.rank}. ${prev.title}</button>
+            <a href="https://www.tvmaze.com/shows/${s.tvmaze}" target="_blank" rel="noopener">TVmaze ↗</a>
+            <button data-go="${next.rank}">${next.rank}. ${next.title} →</button>
+          </div>
+        </div>
+      </div>`;
+    if (!dlg.open) dlg.showModal();
+  }
+  dlg.addEventListener("click", e => {
+    if (e.target === dlg || e.target.closest(".x")) return dlg.close();
+    const t = e.target.closest(".toggle"); if (t) return setMark(+dlg.dataset.rank, t.dataset.k, t.getAttribute("aria-pressed") !== "true");
+    const g = e.target.closest("[data-go]"); if (g) open(+g.dataset.go);
+  });
+
+  /* ---- keyboard ---- */
+  addEventListener("keydown", e => {
+    if (e.target.matches("input[type=search]")) { if (e.key === "Escape") e.target.blur(); return; }
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "/") { e.preventDefault(); $("#q").focus(); return; }
+    if (e.key.toLowerCase() === "r") return pick();
+    if (!dlg.open) return;
+    const r = +dlg.dataset.rank;
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      const ord = visibleOrder(), i = ord.indexOf(r), d = e.key === "ArrowRight" ? 1 : -1;
+      if (ord.length) open(ord[(i + d + ord.length) % ord.length]);
+    }
+    if (e.key.toLowerCase() === "s") setMark(r, "s", !(marks[r] || {}).s);
+    if (e.key.toLowerCase() === "w") setMark(r, "w", !(marks[r] || {}).w);
+  });
+
+  /* ---- init ---- */
+  const t = store.get("nyt100.theme", null); if (t) document.documentElement.dataset.theme = t;
+  const v = store.get("nyt100.view", "grid"); if (v === "timeline") document.querySelector('[data-view="timeline"]').click();
+  paintMarks(); render();
+})();
+</script>
+</body>
+</html>

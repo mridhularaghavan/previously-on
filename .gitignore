@@ -1,0 +1,7 @@
+.DS_Store
+.vercel
+.env
+__pycache__/
+# full-size source art (regenerate with fetch_covers.py / make_poster.py)
+/covers/
+/poster_covers.png

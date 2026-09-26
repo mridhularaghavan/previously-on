@@ -1,0 +1,1711 @@
+[
+ {
+  "rank": "1",
+  "title": "Breaking Bad",
+  "start": "2008",
+  "end": "2013",
+  "tvmaze_id": 169,
+  "tvmaze_name": "Breaking Bad",
+  "premiered": "2008-01-20",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/501/1253519.jpg",
+  "file": "covers/001.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Thriller"
+  ],
+  "summary": "Breaking Bad follows protagonist Walter White, a chemistry teacher who lives in New Mexico with his wife and teenage son who has cerebral palsy. White is diagnosed with Stage III cancer and given a prognosis of two years left to live. With a new sense of fearlessness based on his medical prognosis, and a desire to secure his family's financial security, White chooses to enter a dangerous world of drugs and crime and ascends to power in this world. The series explores how a fatal diagnosis such as White's releases a typical man from the daily concerns and constraints of normal society and follows his transformation from mild family man to a kingpin of the drug trade.",
+  "network": "AMC"
+ },
+ {
+  "rank": "2",
+  "title": "The Wire",
+  "start": "2002",
+  "end": "2008",
+  "tvmaze_id": 179,
+  "tvmaze_name": "The Wire",
+  "premiered": "2002-06-02",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/504/1260189.jpg",
+  "file": "covers/002.jpg",
+  "genres": [
+   "Drama",
+   "Crime"
+  ],
+  "summary": "The first season of The Wire (2002) concentrated on the often-futile efforts of police to infiltrate a West Baltimore drug ring headed by Avon Barksdale and his lieutenant, Stringer Bell. In Seasons Two and Three, as the Barksdale investigation escalated, new storylines involving pressures on the working class and the city's political leadership were introduced. Season Four focused on the stories of several young boys in the public school system, struggling with problems at home and the lure of the corner - set against the rise of a new drug empire in West Baltimore and a new Mayor in City Hall. The fifth and final season of The Wire centers on the media's role in addressing - or failing to address - the fundamental political, economic and social realities depicted over the course of the series, while also resolving storylines of the numerous characters woven throughout the narrative arc of the show.",
+  "network": "HBO"
+ },
+ {
+  "rank": "3",
+  "title": "Mad Men",
+  "start": "2007",
+  "end": "2015",
+  "tvmaze_id": 385,
+  "tvmaze_name": "Mad Men",
+  "premiered": "2007-07-19",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/2/5589.jpg",
+  "file": "covers/003.jpg",
+  "genres": [
+   "Drama"
+  ],
+  "summary": "The series revolves around the conflicted world of Don Draper, the biggest ad man in the business, and his colleagues at the Sterling Cooper Draper Pryce Advertising Agency. As Don makes the plays in the boardroom and the bedroom, he struggles to stay a step ahead of the rapidly changing times and the young executives nipping at his heels. The series also depicts authentically the roles of men and women in this era while exploring the true human nature beneath the guise of 1960s traditional family values.",
+  "network": "AMC"
+ },
+ {
+  "rank": "4",
+  "title": "Succession",
+  "start": "2018",
+  "end": "2023",
+  "tvmaze_id": 23470,
+  "tvmaze_name": "Succession",
+  "premiered": "2018-06-03",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/453/1134275.jpg",
+  "file": "covers/004.jpg",
+  "genres": [
+   "Drama",
+   "Family"
+  ],
+  "summary": "Succession follows the saga of the Roys, a fictional, American global-media family that is not only rich and powerful but also powerfully dysfunctional. The drama will explore family loyalty, international business and the perils of power in the 21st century.Power, politics, money...it's all in the family in this provocative, funny series about a highly dysfunctional dynasty. When Logan Roy, CEO of one of the world's largest media and entertainment conglomerates, considers retirement, each of his four grown children follows a personal agenda that doesn't always sync with those of their siblings--or of their father.",
+  "network": "HBO"
+ },
+ {
+  "rank": "5",
+  "title": "Fleabag",
+  "start": "2016",
+  "end": "2019",
+  "tvmaze_id": 16149,
+  "tvmaze_name": "Fleabag",
+  "premiered": "2016-07-21",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/192/482341.jpg",
+  "file": "covers/005.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "Meet Fleabag. She's not talking to all of us - she's talking to you. So why don't you pop your top off and come right in?",
+  "network": "BBC Three"
+ },
+ {
+  "rank": "6",
+  "title": "Game of Thrones",
+  "start": "2011",
+  "end": "2019",
+  "tvmaze_id": 82,
+  "tvmaze_name": "Game of Thrones",
+  "premiered": "2011-04-17",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/498/1245274.jpg",
+  "file": "covers/006.jpg",
+  "genres": [
+   "Drama",
+   "Adventure",
+   "Fantasy"
+  ],
+  "summary": "Based on the bestselling book series A Song of Ice and Fire by George R.R. Martin, this sprawling new HBO drama is set in a world where summers span decades and winters can last a lifetime. From the scheming south and the savage eastern lands, to the frozen north and ancient Wall that protects the realm from the mysterious darkness beyond, the powerful families of the Seven Kingdoms are locked in a battle for the Iron Throne. This is a story of duplicity and treachery, nobility and honor, conquest and triumph. In the Game of Thrones, you either win or you die.",
+  "network": "HBO"
+ },
+ {
+  "rank": "7",
+  "title": "Veep",
+  "start": "2012",
+  "end": "2019",
+  "tvmaze_id": 142,
+  "tvmaze_name": "Veep",
+  "premiered": "2012-04-22",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/189/472887.jpg",
+  "file": "covers/007.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Former Senator Selina Meyer has accepted the call to serve as Vice President of the United States. The job is nothing like she imagined and everything she was warned about. Veep follows Meyer and her staff as they attempt to make their mark and leave a lasting legacy, without getting tripped up in the day-to-day political games that define Washington.",
+  "network": "HBO"
+ },
+ {
+  "rank": "8",
+  "title": "30 Rock",
+  "start": "2006",
+  "end": "2013",
+  "tvmaze_id": 537,
+  "tvmaze_name": "30 Rock",
+  "premiered": "2006-10-11",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/467/1167896.jpg",
+  "file": "covers/008.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Multiple award-winning comedy 30 Rock is told through the comedic voice of Emmy and two-time Golden Globe winner Tina Fey as variety show producer Liz Lemon. The series also features two-time Emmy and three-time Golden Globe winner Alec Baldwin as top network executive Jack Donaghy and Emmy nominee Tracy Morgan as Tracy Jordan, the unpredictable star of Lemon's hit variety show, TGS with Tracy Jordan, Lemon constantly has her hands full, juggling corporate interference from Donaghy and off-the-handle star antics from Jordan, all while attempting to salvage her own personal life.",
+  "network": "NBC"
+ },
+ {
+  "rank": "9",
+  "title": "Curb Your Enthusiasm",
+  "start": "2000",
+  "end": "2024",
+  "tvmaze_id": 551,
+  "tvmaze_name": "Curb Your Enthusiasm",
+  "premiered": "2000-10-15",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/500/1250735.jpg",
+  "file": "covers/009.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Curb Your Enthusiasm stars Seinfeld co-creator Larry David as himself in an unsparing but tongue-in-cheek depiction of his life. Shot in a verite style and featuring celebrities playing themselves, the episodes are improvised by the actors from an outline created by David.",
+  "network": "HBO"
+ },
+ {
+  "rank": "10",
+  "title": "Atlanta",
+  "start": "2016",
+  "end": "2022",
+  "tvmaze_id": 6508,
+  "tvmaze_name": "Atlanta",
+  "premiered": "2016-09-06",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/437/1093345.jpg",
+  "file": "covers/010.jpg",
+  "genres": [
+   "Drama",
+   "Comedy",
+   "Music"
+  ],
+  "summary": "Two cousins work through the Atlanta music scene in order to better their lives and the lives of their families.",
+  "network": "FX"
+ },
+ {
+  "rank": "11",
+  "title": "The Office (U.S.)",
+  "start": "2005",
+  "end": "2013",
+  "tvmaze_id": 526,
+  "tvmaze_name": "The Office",
+  "premiered": "2005-03-24",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/481/1204342.jpg",
+  "file": "covers/011.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Steve Carell stars in The Office, a fresh and funny mockumentary-style glimpse into the daily interactions of the eccentric workers at the Dunder Mifflin paper supply company. Based on the smash-hit British series of the same name and adapted for American Television by Greg Daniels, this fast-paced comedy parodies contemporary American water-cooler culture. Earnest but clueless regional manager Michael Scott believes himself to be an exceptional boss and mentor, but actually receives more eye-rolls than respect from his oddball staff.",
+  "network": "NBC"
+ },
+ {
+  "rank": "12",
+  "title": "Arrested Development",
+  "start": "2003",
+  "end": "2019",
+  "tvmaze_id": 321,
+  "tvmaze_name": "Arrested Development",
+  "premiered": "2003-11-02",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/338/846049.jpg",
+  "file": "covers/012.jpg",
+  "genres": [
+   "Comedy",
+   "Family"
+  ],
+  "summary": "After being passed over as partner at The Bluth Co., widower Michael resolves to quit the family business and move away to spend more quality time with his 13-year-old son, George Michael. But when his father George Bluth Sr. is arrested for shifty accounting practices and the family assets are frozen, Michael is forced to stay in Orange County to help his wildly eccentric family pick up the pieces.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "13",
+  "title": "Girls",
+  "start": "2012",
+  "end": "2017",
+  "tvmaze_id": 139,
+  "tvmaze_name": "Girls",
+  "premiered": "2012-04-15",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg",
+  "file": "covers/013.jpg",
+  "genres": [
+   "Drama",
+   "Romance"
+  ],
+  "summary": "This Emmy winning series is a comic look at the assorted humiliations and rare triumphs of a group of girls in their 20s.",
+  "network": "HBO"
+ },
+ {
+  "rank": "14",
+  "title": "Friday Night Lights",
+  "start": "2006",
+  "end": "2011",
+  "tvmaze_id": 781,
+  "tvmaze_name": "Friday Night Lights",
+  "premiered": "2006-10-03",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/6/15436.jpg",
+  "file": "covers/014.jpg",
+  "genres": [
+   "Drama",
+   "Sports"
+  ],
+  "summary": "In the town of Dillon, Texas, football is life, and no one knows that better than new head Coach Eric Taylor. Pressure mounts as the Dillon Panthers led by star quarterback Jason Street, enter pre-season surrounded by a swirl of press, recruiters and State Championship sized expectations. Backup quarterback Matt Saracen prepares to ride the bench in the shadow of Jason Street, as running back Tim Riggins struggles with a serious vice. As the season opener grows near, the town of Dillon is focused on what they believe to be most important, winning.",
+  "network": "NBC"
+ },
+ {
+  "rank": "15",
+  "title": "Six Feet Under",
+  "start": "2001",
+  "end": "2005",
+  "tvmaze_id": 367,
+  "tvmaze_name": "Six Feet Under",
+  "premiered": "2001-06-03",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/2/5480.jpg",
+  "file": "covers/015.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "When death is your business, what is your life? For the Fisher family, the world outside of their family-owned funeral home continues to be at least as challenging as--and far less predictable than--the one inside on Six Feet Under.",
+  "network": "HBO"
+ },
+ {
+  "rank": "16",
+  "title": "The Office (U.K.)",
+  "start": "2001",
+  "end": "2003",
+  "tvmaze_id": 1292,
+  "tvmaze_name": "The Office",
+  "premiered": "2001-07-09",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/93/234802.jpg",
+  "file": "covers/016.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "A mockumentary about life in a mid-sized suboffice paper merchants in a bleak British industrial town, where manager David Brent thinks he's the coolest, funniest, and most popular boss ever. He isn't. That doesn't stop him from embarrassing himself in front of the cameras on a regular basis, whether from his political sermonizing, his stand-up 'comedy', or his incredibly unique dancing. Meanwhile, long-suffering Tim longs after Dawn the engaged receptionist and keeps himself sane by playing childish practical jokes on his insufferable, army-obsessed deskmate Gareth. Will the Slough office be closed? Will the BBC give David a game show? Will Tim and Dawn end up with each other? And more importantly, will Gareth realize what a hopeless prat he is?",
+  "network": "BBC Two"
+ },
+ {
+  "rank": "17",
+  "title": "The Americans",
+  "start": "2013",
+  "end": "2018",
+  "tvmaze_id": 157,
+  "tvmaze_name": "The Americans",
+  "premiered": "2013-01-30",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/146/366911.jpg",
+  "file": "covers/017.jpg",
+  "genres": [
+   "Drama",
+   "Espionage"
+  ],
+  "summary": "The Americans is a period drama about the complex marriage of two KGB spies posing as Americans in suburban Washington D.C. shortly after Ronald Reagan is elected President.",
+  "network": "FX"
+ },
+ {
+  "rank": "18",
+  "title": "I May Destroy You",
+  "start": "2020",
+  "end": "2020",
+  "tvmaze_id": 38317,
+  "tvmaze_name": "I May Destroy You",
+  "premiered": "2020-06-08",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/255/639876.jpg",
+  "file": "covers/018.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "Set in London, where gratification is only an app away, I May Destroy You centres on Arabella whose raw and personal experience of consent sits at the heart of the story. Through Arabella we meet a group of fictional friends and colleagues whose sexual adventures frequently collide with a world in which new codes of sexual practice are emerging...",
+  "network": "BBC iPlayer"
+ },
+ {
+  "rank": "19",
+  "title": "Chernobyl",
+  "start": "2019",
+  "end": "2019",
+  "tvmaze_id": 30770,
+  "tvmaze_name": "Chernobyl",
+  "premiered": "2019-05-06",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/193/482599.jpg",
+  "file": "covers/019.jpg",
+  "genres": [
+   "Drama",
+   "History"
+  ],
+  "summary": "Chernobyl dramatizes the true story of one of the worst man-made catastrophes in history and tells of the brave men and women who sacrificed to save Europe from unimaginable disaster. The miniseries focuses on the heartbreaking scope of the nuclear plant disaster that occurred in Ukraine in April 1986, revealing how and why it happened and telling the shocking, remarkable stories of the heroes who fought and fell.",
+  "network": "HBO"
+ },
+ {
+  "rank": "20",
+  "title": "The Crown",
+  "start": "2016",
+  "end": "2023",
+  "tvmaze_id": 3594,
+  "tvmaze_name": "The Crown",
+  "premiered": "2016-11-04",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/632/1580063.jpg",
+  "file": "covers/020.jpg",
+  "genres": [
+   "Drama",
+   "History"
+  ],
+  "summary": "The Crown tells the inside story of two of the most famous addresses in the world -- Buckingham Palace and 10 Downing Street - and the intrigues, love lives and machinations behind the great events that shaped the second half of the 20th century. Two houses, two courts, one Crown.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "21",
+  "title": "The White Lotus",
+  "start": "2021",
+  "end": "present",
+  "tvmaze_id": 51394,
+  "tvmaze_name": "The White Lotus",
+  "premiered": "2021-07-11",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/557/1393876.jpg",
+  "file": "covers/021.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "A social satire set at an exclusive tropical resort, The White Lotus follows the exploits of various guests and employees over the span of a week.",
+  "network": "HBO"
+ },
+ {
+  "rank": "22",
+  "title": "Lost",
+  "start": "2004",
+  "end": "2010",
+  "tvmaze_id": 123,
+  "tvmaze_name": "Lost",
+  "premiered": "2004-09-22",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/0/1389.jpg",
+  "file": "covers/022.jpg",
+  "genres": [
+   "Drama",
+   "Adventure",
+   "Supernatural"
+  ],
+  "summary": "Out of the blackness, the first thing Jack senses is pain. Then burning sun. A Bamboo forest. Smoke. Screams. With a rush comes the horrible awareness that the plane he was on tore apart in mid-air and crashed on a Pacific island. From there it's a blur, as his doctor's instinct kicks in: people need his help.Stripped of everything, the 48 survivors scavenge what they can from the plane for their survival. Some panic. Some pin their hopes on rescue. A few find inner strength they never knew they had -- like Kate, who, with no medical training, suddenly finds herself suturing the doctor's wounds. Hurley - a man with a warm sense of humor despite the desperate situation - does his best to keep his cool as he helps those around him to survive. Charlie is a faded rock star who harbors a painful secret. Sayid is a Middle Eastern man who must wrestle with the racial profiling directed at him by some of his fellow survivors. Jin and Sun are a Korean couple whose traditions, values and language are foreign, and thus causes much to get lost in the translation. Sawyer has an air of danger surrounding him, and his intense sense of mistrust for everyone around him could prove to be fatal to his fellow castaways. Michael has just gained custody of his nine-year-old son, Walt, after the death of his ex-wife - they are a father and son who don't even know each other. Locke is a mysterious man who keeps to himself, and who harbors a deeper connection to the island than any of the others. Self-centered Shannon - who actually gives herself a pedicure amid the chaos - and her estranged controlling brother, Boone , constantly bicker and must learn to get along if they are to survive. And young Claire is eight months pregnant and ill-prepared for the hardships of motherhood - especially on a deserted island.",
+  "network": "ABC"
+ },
+ {
+  "rank": "23",
+  "title": "The Comeback",
+  "start": "2005",
+  "end": "2026",
+  "tvmaze_id": 144,
+  "tvmaze_name": "The Comeback",
+  "premiered": "2005-06-05",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/618/1547120.jpg",
+  "file": "covers/023.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "The limited comedy series stars Lisa Kudrow as the embattled Valerie Cherish, a fading TV \"It Girl\" who was once so desperate to stay in the spotlight that she allowed cameras to follow her every move as she appeared on a new sitcom - with disastrous results. Now, it's ten years later, and Valerie thinks she has it all figured out this time. She doesn't.",
+  "network": "HBO"
+ },
+ {
+  "rank": "24",
+  "title": "Deadwood",
+  "start": "2004",
+  "end": "2006",
+  "tvmaze_id": 565,
+  "tvmaze_name": "Deadwood",
+  "premiered": "2004-03-21",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/4/11724.jpg",
+  "file": "covers/024.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Western"
+  ],
+  "summary": "The outlaw camp of Deadwood marches slowly towards civilization, facing its first elections. But the power struggles continue over everything in Deadwood—influence, money, and whores—as the founding camp members form strategic alliances to face down the threat of a powerful newcomer, seeking to remake Deadwood in his image.",
+  "network": "HBO"
+ },
+ {
+  "rank": "25",
+  "title": "The Leftovers",
+  "start": "2014",
+  "end": "2017",
+  "tvmaze_id": 138,
+  "tvmaze_name": "The Leftovers",
+  "premiered": "2014-06-29",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/503/1259794.jpg",
+  "file": "covers/025.jpg",
+  "genres": [
+   "Drama",
+   "Science-Fiction",
+   "Thriller"
+  ],
+  "summary": "Three years after millions of people—some 2% of the world's population—vanished into thin air, residents of Mapleton, NY weigh the pros and cons of a \"Heroes Day\" tribute to the local \"Departed\". Attempting to maintain a sense of normalcy in his strained community, police chief Kevin Garvey faces additional challenges at home with his daughter, Jill, who's lost in a cloud of apathy with her friend Aimee, and son, Tom, who has gravitated to a cult led by the charismatic Holy Wayne. Also of concern is a silent, white-clad group of chain-smoking men and women called the Guilty Remnant, who team up in pairs to stake out people and places around town. As tension in Mapleton escalates, the lives of Laurie, an unexpected member of the Guilty Remnant, and Meg, a recently engaged young woman, converge.",
+  "network": "HBO"
+ },
+ {
+  "rank": "26",
+  "title": "Black Mirror",
+  "start": "2011",
+  "end": "present",
+  "tvmaze_id": 305,
+  "tvmaze_name": "Black Mirror",
+  "premiered": "2011-12-04",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/564/1411764.jpg",
+  "file": "covers/026.jpg",
+  "genres": [
+   "Drama",
+   "Science-Fiction",
+   "Thriller"
+  ],
+  "summary": "Over the last ten years, technology has transformed almost every aspect of our lives before we've had time to stop and question it. In every home; on every desk; in every palm - a plasma screen; a monitor; a smartphone--a black mirror of our 21st Century existence. Black Mirror is a contemporary British re-working of The Twilight Zone with stories that tap into the collective unease about our modern world.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "27",
+  "title": "Better Call Saul",
+  "start": "2015",
+  "end": "2022",
+  "tvmaze_id": 618,
+  "tvmaze_name": "Better Call Saul",
+  "premiered": "2015-02-08",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/501/1253515.jpg",
+  "file": "covers/027.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Legal"
+  ],
+  "summary": "Better Call Saul is the prequel to the award-winning series Breaking Bad, set six years before Saul Goodman became Walter White's lawyer. When we meet him, the man who will become Saul Goodman is known as Jimmy McGill, a small-time lawyer searching for his destiny, and, more immediately, hustling to make ends meet. Working alongside, and often against, Jimmy is \"fixer\" Mike Ehrmantraut, a beloved character introduced in Breaking Bad. The series will track Jimmy's transformation into Saul Goodman, the man who puts \"criminal\" in \"criminal lawyer.",
+  "network": "AMC"
+ },
+ {
+  "rank": "28",
+  "title": "Band of Brothers",
+  "start": "2001",
+  "end": "2001",
+  "tvmaze_id": 465,
+  "tvmaze_name": "Band of Brothers",
+  "premiered": "2001-09-09",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/80/201679.jpg",
+  "file": "covers/028.jpg",
+  "genres": [
+   "Drama",
+   "Action",
+   "War"
+  ],
+  "summary": "Drawn from interviews with survivors of Easy Company, as well as their journals and letters, Band of Brothers chronicles the experiences of these men from paratrooper training in Georgia through the end of the war. As an elite rifle company parachuting into Normandy early on D-Day morning, participants in the Battle of the Bulge, and witness to the horrors of war, the men of Easy knew extraordinary bravery and extraordinary fear - and became the stuff of legend. Based on Stephen E. Ambrose's acclaimed book of the same name.",
+  "network": "HBO"
+ },
+ {
+  "rank": "29",
+  "title": "Key & Peele",
+  "start": "2012",
+  "end": "2015",
+  "tvmaze_id": 257,
+  "tvmaze_name": "Key & Peele",
+  "premiered": "2012-01-31",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/1/4662.jpg",
+  "file": "covers/029.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Keegan-Michael Key and Jordan Peele are the stars of Key &amp; Peele, a show that examines life in a distinctively provocative and irreverent way. Whether it's anger-translating the president, spoofing Nazis or ordering up some soul food, Key &amp; Peele showcases the guys' camaraderie and unique point of view, born from their experiences growing up biracial in a not-quite-post-racial world.",
+  "network": "Comedy Central"
+ },
+ {
+  "rank": "30",
+  "title": "Severance",
+  "start": "2022",
+  "end": "present",
+  "tvmaze_id": 44933,
+  "tvmaze_name": "Severance",
+  "premiered": "2022-02-18",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/548/1371406.jpg",
+  "file": "covers/030.jpg",
+  "genres": [
+   "Drama",
+   "Science-Fiction",
+   "Mystery"
+  ],
+  "summary": "Mark Scout leads a team at Lumon Industries, whose employees have undergone a severance procedure, which surgically divides their memories between their work and personal lives. This daring experiment in \"work-life balance\" is called into question as Mark finds himself at the center of an unraveling mystery that will force him to confront the true nature of his work… and of himself.",
+  "network": "Apple TV"
+ },
+ {
+  "rank": "31",
+  "title": "Survivor",
+  "start": "2000",
+  "end": "present",
+  "tvmaze_id": 114,
+  "tvmaze_name": "Survivor",
+  "premiered": "2000-05-31",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/641/1603530.jpg",
+  "file": "covers/031.jpg",
+  "genres": [
+   "Adventure"
+  ],
+  "summary": "Eighteen to twenty castaways will compete against each other on Survivor. All castaways will compete to outwit, outplay, outlast and ultimately be crowned Sole Survivor.",
+  "network": "CBS"
+ },
+ {
+  "rank": "32",
+  "title": "Andor",
+  "start": "2022",
+  "end": "2025",
+  "tvmaze_id": 52341,
+  "tvmaze_name": "Andor",
+  "premiered": "2022-09-21",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/564/1411766.jpg",
+  "file": "covers/032.jpg",
+  "genres": [
+   "Science-Fiction",
+   "Thriller",
+   "Espionage"
+  ],
+  "summary": "Andor explores a new perspective from the Star Wars galaxy, focusing on Cassian Andor's journey to discover the difference he can make. The series brings forward the tale of the burgeoning rebellion against the Empire and how people and planets became involved. It's an era filled with danger, deception and intrigue where Cassian will embark on the path that is destined to turn him into a rebel hero.",
+  "network": "Disney+"
+ },
+ {
+  "rank": "33",
+  "title": "Enlightened",
+  "start": "2011",
+  "end": "2013",
+  "tvmaze_id": 1269,
+  "tvmaze_name": "Enlightened",
+  "premiered": "2011-10-10",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/7/18314.jpg",
+  "file": "covers/033.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "Enlightened focuses on a self destructive woman who has a spiritual awakening after a meltdown. Determined to live a more enlightened existence, the former career executive's new lifestyle wreaks havoc both at home and at work.",
+  "network": "HBO"
+ },
+ {
+  "rank": "34",
+  "title": "Schitt's Creek",
+  "start": "2015",
+  "end": "2020",
+  "tvmaze_id": 1775,
+  "tvmaze_name": "Schitt's Creek",
+  "premiered": "2015-01-13",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/279/697623.jpg",
+  "file": "covers/034.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Schitt's Creek centers on a formerly filthy rich video store magnate Johnny Rose, his soap star wife Moira, and their two kids, über-hipster son David and socialite daughter Alexis, who suddenly find themselves broke. They are forced to live in Schitt's Creek, a small depressing town they once bought as a joke.",
+  "network": "CBC"
+ },
+ {
+  "rank": "35",
+  "title": "True Detective (Season 1)",
+  "start": "2014",
+  "end": "2014",
+  "tvmaze_id": 5,
+  "tvmaze_name": "True Detective",
+  "premiered": "2014-01-12",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/13/34831.jpg",
+  "file": "covers/035.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Thriller"
+  ],
+  "summary": "Touch darkness and darkness touches you back. True Detective centers on troubled cops and the investigations that drive them to the edge. Each season features a new cast and a new case.True Detective is an American anthology crime drama television series created and written by Nic Pizzolatto. ",
+  "network": "HBO"
+ },
+ {
+  "rank": "36",
+  "title": "The Pitt",
+  "start": "2025",
+  "end": "present",
+  "tvmaze_id": 75632,
+  "tvmaze_name": "The Pitt",
+  "premiered": "2025-01-09",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/606/1516776.jpg",
+  "file": "covers/036.jpg",
+  "genres": [
+   "Drama",
+   "Medical"
+  ],
+  "summary": "The Pitt is a realistic examination of the challenges facing healthcare workers in today's America as seen through the lens of the frontline heroes working in a modern-day hospital in Pittsburgh, Pennsylvania. Each episode follows an hour of Dr. Robby's 15-hour shift as the chief attendant in Pittsburgh Trauma Medical Hospital's emergency room.",
+  "network": "HBO Max"
+ },
+ {
+  "rank": "37",
+  "title": "Battlestar Galactica",
+  "start": "2005",
+  "end": "2009",
+  "tvmaze_id": 166,
+  "tvmaze_name": "Battlestar Galactica",
+  "premiered": "2003-12-08",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/0/2313.jpg",
+  "file": "covers/037.jpg",
+  "genres": [
+   "Drama",
+   "Science-Fiction",
+   "War"
+  ],
+  "summary": "The world ended with no warning, and all that was left… was hope.A truce between the humans of the Twelve Colonies and the Cylons—intelligent robots designed by humankind—lasts for 40 tense and silent years. Battlestar Galactica picks up just as the Cylons commit mass genocide against humanity. Only the Battlestar Galactica (an old warship about to be decommissioned and turned into a museum) and those souls fortunate enough to be aboard other starships were able to survive the attack. In the aftermath, the Galactica's commanding officer, William Adama, finds himself responsible for safeguarding the last remnants of the human race—fewer than 50,000 desperate survivors. Meanwhile, the annihilation of the Colonial government results in the succession of the Secretary of Education, Laura Roslin, to the presidency. Driven by prophetic visions and political necessity, the Galactica travels through uncharted space in hopes of finding the mythical, lost 13th colony—Earth.",
+  "network": "Syfy"
+ },
+ {
+  "rank": "38",
+  "title": "Homeland",
+  "start": "2011",
+  "end": "2020",
+  "tvmaze_id": 7,
+  "tvmaze_name": "Homeland",
+  "premiered": "2011-10-02",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/498/1245275.jpg",
+  "file": "covers/038.jpg",
+  "genres": [
+   "Drama",
+   "Thriller",
+   "Espionage"
+  ],
+  "summary": "The winner of 6 Emmy Awards including Outstanding Drama Series, Homeland is an edge-of-your-seat sensation. Marine Sergeant Nicholas Brody is both a decorated hero and a serious threat. CIA officer Carrie Mathison is tops in her field despite being bipolar. The delicate dance these two complex characters perform, built on lies, suspicion, and desire, is at the heart of this gripping, emotional thriller in which nothing short of the fate of our nation is at stake.",
+  "network": "Paramount+ with Showtime"
+ },
+ {
+  "rank": "39",
+  "title": "Watchmen",
+  "start": "2019",
+  "end": "2019",
+  "tvmaze_id": 29575,
+  "tvmaze_name": "Watchmen",
+  "premiered": "2019-10-20",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/212/530211.jpg",
+  "file": "covers/039.jpg",
+  "genres": [
+   "Drama",
+   "Action",
+   "Science-Fiction"
+  ],
+  "summary": "Based on the DC Comic graphic novel, Watchmen is an alternative history series following a group of costumed crimefighters investigating the murder of one of their own.",
+  "network": "HBO"
+ },
+ {
+  "rank": "40",
+  "title": "Adolescence",
+  "start": "2025",
+  "end": "2025",
+  "tvmaze_id": 78570,
+  "tvmaze_name": "Adolescence",
+  "premiered": "2025-03-13",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/558/1395109.jpg",
+  "file": "covers/040.jpg",
+  "genres": [
+   "Drama",
+   "Crime"
+  ],
+  "summary": "Adolescence tells the story of how a family's world is turned upside down when 13-year-old Jamie Miller is arrested and charged with the murder of a teenage girl who goes to his school. ",
+  "network": "Netflix"
+ },
+ {
+  "rank": "41",
+  "title": "Louie",
+  "start": "2010",
+  "end": "2015",
+  "tvmaze_id": 342,
+  "tvmaze_name": "Louie",
+  "premiered": "2010-06-29",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/2/5334.jpg",
+  "file": "covers/041.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "Louie is a comedy filtered through the observational humor of Louis C.K. Each episode puts a spotlight on Louis' hectic life as a successful stand-up comedian and newly single father raising his two daughters. The single-camera comedy is a mix of Louis C.K.'s stand-up comedy and scripted short films.",
+  "network": "FX"
+ },
+ {
+  "rank": "42",
+  "title": "Hacks",
+  "start": "2021",
+  "end": "2026",
+  "tvmaze_id": 54914,
+  "tvmaze_name": "Hacks",
+  "premiered": "2021-05-13",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/621/1552621.jpg",
+  "file": "covers/042.jpg",
+  "genres": [
+   "Drama",
+   "Comedy",
+   "Romance"
+  ],
+  "summary": "Hacks explores a dark mentorship that forms between Deborah Vance, a legendary Las Vegas comedian, and an entitled, outcast 25-year-old.",
+  "network": "HBO Max"
+ },
+ {
+  "rank": "43",
+  "title": "Peaky Blinders",
+  "start": "2013",
+  "end": "2022",
+  "tvmaze_id": 269,
+  "tvmaze_name": "Peaky Blinders",
+  "premiered": "2013-09-12",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/48/122213.jpg",
+  "file": "covers/043.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "History"
+  ],
+  "summary": "An epic gangster drama set in the lawless streets of 1920s Birmingham.",
+  "network": "BBC One"
+ },
+ {
+  "rank": "44",
+  "title": "BoJack Horseman",
+  "start": "2014",
+  "end": "2020",
+  "tvmaze_id": 184,
+  "tvmaze_name": "BoJack Horseman",
+  "premiered": "2014-08-22",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/405/1012627.jpg",
+  "file": "covers/044.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "Meet the most beloved sitcom horse of the '90s, 20 years later. He's a curmudgeon with a heart of... not quite gold... but something like gold. Copper?",
+  "network": "Netflix"
+ },
+ {
+  "rank": "45",
+  "title": "Happy Valley",
+  "start": "2014",
+  "end": "2023",
+  "tvmaze_id": 286,
+  "tvmaze_name": "Happy Valley",
+  "premiered": "2014-04-29",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/1/4886.jpg",
+  "file": "covers/045.jpg",
+  "genres": [
+   "Drama",
+   "Crime"
+  ],
+  "summary": "When a kidnap spirals out of control, Yorkshire police sergeant Catherine Cawood comes face to face with the man who destroyed her family.",
+  "network": "BBC One"
+ },
+ {
+  "rank": "46",
+  "title": "Broad City",
+  "start": "2014",
+  "end": "2019",
+  "tvmaze_id": 375,
+  "tvmaze_name": "Broad City",
+  "premiered": "2014-01-22",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/405/1012900.jpg",
+  "file": "covers/046.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Broad City is an odd-couple comedy about two best friends navigating their 20s in New York City. Abbi and Ilana are broke and flawed, and they don't shy away from the sticky situations NYC throws at them -- they dive right into the muck. No matter how bad it gets, these broads are always down with whatever hits them.",
+  "network": "Comedy Central"
+ },
+ {
+  "rank": "47",
+  "title": "Twin Peaks: The Return",
+  "start": "2017",
+  "end": "2017",
+  "tvmaze_id": 156,
+  "tvmaze_name": "Twin Peaks",
+  "premiered": "1990-04-08",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/397/992910.jpg",
+  "file": "covers/047.jpg",
+  "genres": [
+   "Crime",
+   "Mystery",
+   "Supernatural"
+  ],
+  "summary": "Set in the fictional town of Twin Peaks in northeast Washington state, this is the story of FBI Special Agent Dale Cooper and his investigation of the murder of a popular local teenage schoolgirl, Laura Palmer.",
+  "network": "Paramount+ with Showtime"
+ },
+ {
+  "rank": "48",
+  "title": "House of Cards",
+  "start": "2013",
+  "end": "2018",
+  "tvmaze_id": 175,
+  "tvmaze_name": "House of Cards",
+  "premiered": "2013-02-01",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/169/424482.jpg",
+  "file": "covers/048.jpg",
+  "genres": [
+   "Drama",
+   "Thriller"
+  ],
+  "summary": "Based on the BBC miniseries of the same name, House of Cards follows Francis Underwood, the politician's politician – masterful, beguiling, charismatic and ruthless. He and his equally ambitious wife Claire will stop at nothing to ensure their ascendancy. This wicked political drama slithers beneath the curtain and through the back halls of greed, sex, love and corruption in modern Washington D.C.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "49",
+  "title": "Normal People",
+  "start": "2020",
+  "end": "2020",
+  "tvmaze_id": 42361,
+  "tvmaze_name": "Normal People",
+  "premiered": "2020-04-26",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/249/623354.jpg",
+  "file": "covers/049.jpg",
+  "genres": [
+   "Drama",
+   "Romance"
+  ],
+  "summary": "Normal People tracks the tender but complicated relationship of Marianne and Connell from the end of their school days in small-town west of Ireland to their undergraduate years at Trinity College. At school, he's well-liked and popular, while she's lonely, proud and intimidating. But when Connell comes to pick up his mother from her cleaning job at Marianne's house, a strange and indelible connection grows between the two teenagers - one they are determined to conceal. A year later, they're both studying in Dublin and Marianne has found her feet in a new social world but Connell hangs at the side lines, shy and uncertain.",
+  "network": "BBC Three"
+ },
+ {
+  "rank": "50",
+  "title": "Parks and Recreation",
+  "start": "2009",
+  "end": "2015",
+  "tvmaze_id": 174,
+  "tvmaze_name": "Parks and Recreation",
+  "premiered": "2009-04-09",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/481/1204341.jpg",
+  "file": "covers/050.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Parks and Recreation is a comedy series based around the main character Leslie Knope (a bureaucrat) in the parks department of Pawnee.",
+  "network": "NBC"
+ },
+ {
+  "rank": "51",
+  "title": "The Good Place",
+  "start": "2016",
+  "end": "2020",
+  "tvmaze_id": 2790,
+  "tvmaze_name": "The Good Place",
+  "premiered": "2016-09-19",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/395/989291.jpg",
+  "file": "covers/051.jpg",
+  "genres": [
+   "Comedy",
+   "Fantasy",
+   "Supernatural"
+  ],
+  "summary": "The Good Place is a smart, unique comedy about what makes a good person. The show follows Eleanor Shellstrop, an ordinary woman who enters the afterlife and, thanks to some kind of error, is sent to the Good Place instead of the Bad Place, which is definitely where she belongs. While hiding in plain sight from Michael, the wise architect of the Good Place (who doesn't know he's made a mistake), she's determined to shed her old way of living and discover the awesome (or, at least, the pretty good) person within.",
+  "network": "NBC"
+ },
+ {
+  "rank": "52",
+  "title": "Downton Abbey",
+  "start": "2010",
+  "end": "2015",
+  "tvmaze_id": 251,
+  "tvmaze_name": "Downton Abbey",
+  "premiered": "2010-09-26",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/1/4601.jpg",
+  "file": "covers/052.jpg",
+  "genres": [
+   "Drama",
+   "Family",
+   "Romance"
+  ],
+  "summary": "The Downton Abbey estate stands a splendid example of confidence and mettle, its family enduring for generations and its staff a well-oiled machine of propriety. But change is afoot at Downton--change far surpassing the new electric lights and telephone. A crisis of inheritance threatens to displace the resident Crawley family, in spite of the best efforts of the noble and compassionate Earl, Robert Crawley; his American heiress wife, Cora his comically implacable, opinionated mother, Violet and his beautiful, eldest daughter, Mary, intent on charting her own course. Reluctantly, the family is forced to welcome its heir apparent, the self-made and proudly modern Matthew Crawley himself none too happy about the new arrangements. As Matthew's bristly relationship with Mary begins to crackle with electricity, hope for the future of Downton's dynasty takes shape. But when petty jealousies and ambitions grow among the family and the staff, scheming and secrets--both delicious and dangerous--threaten to derail the scramble to preserve Downton Abbey. Downton Abbey offers a spot-on portrait of a vanishing way of life.",
+  "network": "ITV1"
+ },
+ {
+  "rank": "53",
+  "title": "Stranger Things",
+  "start": "2016",
+  "end": "2025",
+  "tvmaze_id": 2993,
+  "tvmaze_name": "Stranger Things",
+  "premiered": "2016-07-15",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/595/1489169.jpg",
+  "file": "covers/053.jpg",
+  "genres": [
+   "Drama",
+   "Horror",
+   "Science-Fiction"
+  ],
+  "summary": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "54",
+  "title": "The Bureau",
+  "start": "2015",
+  "end": "2020",
+  "tvmaze_id": 6131,
+  "tvmaze_name": "Le Bureau des Légendes",
+  "premiered": "2015-04-27",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/247/619649.jpg",
+  "file": "covers/054.jpg",
+  "genres": [
+   "Drama",
+   "Espionage"
+  ],
+  "summary": "Within the French secret service, one department known as the DGSE manages the missions of all undercover operatives working under fake identities to identify intelligence sources.",
+  "network": "Canal+"
+ },
+ {
+  "rank": "55",
+  "title": "Insecure",
+  "start": "2016",
+  "end": "2021",
+  "tvmaze_id": 5967,
+  "tvmaze_name": "Insecure",
+  "premiered": "2016-10-09",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/485/1213250.jpg",
+  "file": "covers/055.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "Insecure focuses on the awkward experiences and racy tribulations of a modern day African-American woman through the eyes of Issa Dee, played by Issa Rae. Jay Ellis will play Lawrence, Issa's depressed and unemployed boyfriend, who has been getting his act together for four years. Yvonne Orji is Molly, Issa's best friend. While very successful in her corporate work life, she is very unsuccessful in her love life.",
+  "network": "HBO"
+ },
+ {
+  "rank": "56",
+  "title": "Nathan for You",
+  "start": "2013",
+  "end": "2017",
+  "tvmaze_id": 3136,
+  "tvmaze_name": "Nathan for You",
+  "premiered": "2013-02-28",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/326/816434.jpg",
+  "file": "covers/056.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Nathan Fielder is a business advisor who implements strategies that no traditional consultant would dare attempt. Whether it's creating a coffee shop called Dumb Starbucks, inventing a poo-flavored yogurt or staging an elaborate video where a pig saves a goat, no idea is too daring. And while Nathan's efforts may not always succeed, they always have big results. This is Nathan for You.",
+  "network": "Comedy Central"
+ },
+ {
+  "rank": "57",
+  "title": "I Think You Should Leave",
+  "start": "2019",
+  "end": "present",
+  "tvmaze_id": 41904,
+  "tvmaze_name": "I Think You Should Leave with Tim Robinson",
+  "premiered": "2019-04-23",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/193/482770.jpg",
+  "file": "covers/057.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "There is no such thing as an ordinary interaction in this offbeat sketch comedy series that features a deep roster of guest stars.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "58",
+  "title": "Chappelle's Show",
+  "start": "2003",
+  "end": "2006",
+  "tvmaze_id": 4128,
+  "tvmaze_name": "Chappelle's Show",
+  "premiered": "2003-01-22",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/326/815523.jpg",
+  "file": "covers/058.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "It's not just a show -- it's a social phenomenon. Dave Chappelle's singular point of view is unleashed through a combination of stand-up bits and street-smart sketches. Hailed by critics and beloved by fans, Chappelle's Show brings the funk and the noise -- and some of the funniest comedy on television.",
+  "network": "Comedy Central"
+ },
+ {
+  "rank": "59",
+  "title": "PEN15",
+  "start": "2019",
+  "end": "2021",
+  "tvmaze_id": 38541,
+  "tvmaze_name": "PEN15",
+  "premiered": "2019-02-08",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/272/681487.jpg",
+  "file": "covers/059.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "PEN15 is middle school as it really happened. Maya Erskine and Anna Konkle star in this adult comedy, playing versions of themselves as thirteen-year-old outcasts in the year 2000, surrounded by actual thirteen-year-olds, where the best day of your life can turn into your worst with the stroke of a gel pen.",
+  "network": "Hulu"
+ },
+ {
+  "rank": "60",
+  "title": "Peep Show",
+  "start": "2003",
+  "end": "2015",
+  "tvmaze_id": 383,
+  "tvmaze_name": "Peep Show",
+  "premiered": "2003-09-19",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/2/5567.jpg",
+  "file": "covers/060.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Award-winning sitcom. David Mitchell and Robert Webb play two dysfunctional flatmates who reveal all their inner thoughts - whether dark, stupid or embarrassing. Or, occasionally, all three...",
+  "network": "Channel 4"
+ },
+ {
+  "rank": "61",
+  "title": "RuPaul's Drag Race",
+  "start": "2009",
+  "end": "present",
+  "tvmaze_id": 1526,
+  "tvmaze_name": "RuPaul's Drag Race",
+  "premiered": "2009-02-02",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/607/1517980.jpg",
+  "file": "covers/061.jpg",
+  "genres": [],
+  "summary": "RuPaul's Drag Race is a Primetime Emmy Award winning American reality competition television series, hosted by five time Emmy Award Winning Host and international Drag superstar RuPaul. The show features drag queen contestants competing in weekly challenges such as photo shoots, comedy performances and stomping the runway in the hopes of avoiding the bottom two - where they will have to lip sync for their lives.",
+  "network": "MTV"
+ },
+ {
+  "rank": "62",
+  "title": "Slow Horses",
+  "start": "2022",
+  "end": "present",
+  "tvmaze_id": 45039,
+  "tvmaze_name": "Slow Horses",
+  "premiered": "2022-04-01",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604425.jpg",
+  "file": "covers/062.jpg",
+  "genres": [
+   "Drama",
+   "Thriller",
+   "Espionage"
+  ],
+  "summary": "Slow Horses follows the story of a group of British intelligence agents who serve in a dumping ground department of MI5 called Slough House after the big mistakes they've made that resulted in the end of their mainstream careers.This quick-witted spy drama follows a dysfunctional team of MI5 agents—and their obnoxious boss, the notorious Jackson Lamb—as they navigate the espionage world's smoke and mirrors to defend England from sinister forces.",
+  "network": "Apple TV"
+ },
+ {
+  "rank": "63",
+  "title": "The Thick of It",
+  "start": "2005",
+  "end": "2012",
+  "tvmaze_id": 1667,
+  "tvmaze_name": "The Thick of It",
+  "premiered": "2005-05-19",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/9/22970.jpg",
+  "file": "covers/063.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Join the farce that is the department of Social afairs and Citizenship as it farcically stumbles its way through the corridors of power.",
+  "network": "BBC Four"
+ },
+ {
+  "rank": "64",
+  "title": "Anthony Bourdain: Parts Unknown",
+  "start": "2013",
+  "end": "2018",
+  "tvmaze_id": 255,
+  "tvmaze_name": "Anthony Bourdain: Parts Unknown",
+  "premiered": "2013-04-14",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/1/4660.jpg",
+  "file": "covers/064.jpg",
+  "genres": [
+   "Food",
+   "Travel"
+  ],
+  "summary": "Anthony Bourdain: Parts Unknown follows chef and author Anthony Bourdain to extraordinary locations across the globe to celebrate diverse cultures exploring their food and dining rituals. Known for his curiosity, candor, and acerbic wit, Bourdain took viewers off the beaten path of tourist destinations – including some war-torn parts of the world – and met with a variety of local citizens to offer a window into their lifestyles, and occasionally communed with an internationally lauded chef on his journey. ",
+  "network": "CNN"
+ },
+ {
+  "rank": "65",
+  "title": "Mare of Easttown",
+  "start": "2021",
+  "end": "2021",
+  "tvmaze_id": 40546,
+  "tvmaze_name": "Mare of Easttown",
+  "premiered": "2021-04-18",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/301/753981.jpg",
+  "file": "covers/065.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Mystery"
+  ],
+  "summary": "Mare of Easttown follows a small-town Pennsylvania detective who investigates a local murder at a time when her own life is crumbling around her.",
+  "network": "HBO"
+ },
+ {
+  "rank": "66",
+  "title": "The Rehearsal",
+  "start": "2022",
+  "end": "present",
+  "tvmaze_id": 56116,
+  "tvmaze_name": "The Rehearsal",
+  "premiered": "2022-07-15",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/564/1410775.jpg",
+  "file": "covers/066.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Nathan Fielder returns to television for a new series that explores the lengths one man will go to reduce the uncertainties of everyday life. With a construction crew, a legion of actors, and seemingly unlimited resources, Fielder allows ordinary people to prepare for life's biggest moments by \"rehearsing\" them in carefully crafted simulations of his own design. When a single misstep could shatter your entire world, why leave life to chance?",
+  "network": "HBO"
+ },
+ {
+  "rank": "67",
+  "title": "The Handmaid's Tale",
+  "start": "2017",
+  "end": "2025",
+  "tvmaze_id": 16579,
+  "tvmaze_name": "The Handmaid's Tale",
+  "premiered": "2017-04-26",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/562/1406667.jpg",
+  "file": "covers/067.jpg",
+  "genres": [
+   "Drama",
+   "Science-Fiction"
+  ],
+  "summary": "The Handmaid's Tale is the story of life in the dystopia of Gilead, a totalitarian society in what was formerly the United States. Facing environmental disasters and a plunging birthrate, Gilead is ruled by a twisted fundamentalism in its militarized ‘return to traditional values'. As one of the few remaining fertile women, Offred is a Handmaid in the Commander's household, one of the caste of women forced into sexual servitude as a last desperate attempt to repopulate the world. In this terrifying society, Offred must navigate between Commanders, their cruel Wives, domestic Marthas, and her fellow Handmaids – where anyone could be a spy for Gilead – all with one goal: to survive and find the daughter that was taken from her.",
+  "network": "Hulu"
+ },
+ {
+  "rank": "68",
+  "title": "Ozark",
+  "start": "2017",
+  "end": "2022",
+  "tvmaze_id": 13417,
+  "tvmaze_name": "Ozark",
+  "premiered": "2017-07-21",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/398/996611.jpg",
+  "file": "covers/068.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Thriller"
+  ],
+  "summary": "In this dark, dangerous series, a family struggles after moving to an Ozarks resort community when they're thrust into a world of dirty money.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "69",
+  "title": "Anthony Bourdain: No Reservations",
+  "start": "2005",
+  "end": "2012",
+  "tvmaze_id": 535,
+  "tvmaze_name": "Anthony Bourdain: No Reservations",
+  "premiered": "2005-07-25",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/4/11386.jpg",
+  "file": "covers/069.jpg",
+  "genres": [
+   "Food",
+   "Travel"
+  ],
+  "summary": "In his Emmy Award winning series, Anthony Bourdain travels the globe to explore the cities, villages and countries that offer life's truest surprises.",
+  "network": "Travel Channel"
+ },
+ {
+  "rank": "70",
+  "title": "The Shield",
+  "start": "2002",
+  "end": "2008",
+  "tvmaze_id": 663,
+  "tvmaze_name": "The Shield",
+  "premiered": "2002-03-12",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/55/138892.jpg",
+  "file": "covers/070.jpg",
+  "genres": [
+   "Drama",
+   "Crime"
+  ],
+  "summary": "Detective Vic Mackey is the leader of an elite Strike Team unit, a group of cops effective at eliminating crime but also operating under Vic's own set of rules. But his rules sometimes cross the fine line between legal and illegal. Now the precinct has a new captain who doesn't like Vic's tactics and wants to bust him off the force - even as the captain finds himself going to Vic for help whenever the going gets rough.",
+  "network": "FX"
+ },
+ {
+  "rank": "71",
+  "title": "Beef (Season 1)",
+  "start": "2023",
+  "end": "2023",
+  "tvmaze_id": 54285,
+  "tvmaze_name": "BEEF",
+  "premiered": "2023-04-06",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/621/1554643.jpg",
+  "file": "covers/071.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "They're frustrated, furious — and finally feeling something. Two strangers act on their darkest impulses in the aftermath of a road-rage incident.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "72",
+  "title": "Squid Game",
+  "start": "2021",
+  "end": "2025",
+  "tvmaze_id": 43687,
+  "tvmaze_name": "Squid Game",
+  "premiered": "2021-09-17",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/576/1440521.jpg",
+  "file": "covers/072.jpg",
+  "genres": [
+   "Drama",
+   "Thriller",
+   "Mystery"
+  ],
+  "summary": "Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits — with deadly high stakes.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "73",
+  "title": "Barry",
+  "start": "2018",
+  "end": "2023",
+  "tvmaze_id": 11538,
+  "tvmaze_name": "Barry",
+  "premiered": "2018-03-25",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/455/1138151.jpg",
+  "file": "covers/073.jpg",
+  "genres": [
+   "Drama",
+   "Comedy",
+   "Crime"
+  ],
+  "summary": "Barry is a dark comedy about a depressed, low-rent hitman from the Midwest. Lonely and dissatisfied in his life, he reluctantly travels to Los Angeles to execute a hit on an aspiring actor. Barry follows his \"mark\" into an acting class and ends up finding an accepting community in a group of eager hopefuls within the LA theater scene. He wants to start a new life as an actor, but his criminal past won't let him walk away - can he find a way to balance both worlds?",
+  "network": "HBO"
+ },
+ {
+  "rank": "74",
+  "title": "The Bear",
+  "start": "2022",
+  "end": "2026",
+  "tvmaze_id": 54198,
+  "tvmaze_name": "The Bear",
+  "premiered": "2022-06-23",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/629/1574642.jpg",
+  "file": "covers/074.jpg",
+  "genres": [
+   "Drama",
+   "Comedy",
+   "Food"
+  ],
+  "summary": "Carmy, a young fine-dining chef, comes home to Chicago to run his family sandwich shop. As he fights to transform the shop and himself, he works alongside a rough-around-the-edges crew that ultimately reveal themselves as his chosen family.",
+  "network": "Hulu"
+ },
+ {
+  "rank": "75",
+  "title": "Ted Lasso",
+  "start": "2020",
+  "end": "present",
+  "tvmaze_id": 44458,
+  "tvmaze_name": "Ted Lasso",
+  "premiered": "2020-08-14",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/634/1585930.jpg",
+  "file": "covers/075.jpg",
+  "genres": [
+   "Drama",
+   "Comedy",
+   "Sports"
+  ],
+  "summary": "Ted Lasso centers on an idealistic — and clueless — all-American football coach hired to manage an English football club — despite having no soccer coaching experience at all.",
+  "network": "Apple TV"
+ },
+ {
+  "rank": "76",
+  "title": "Somebody Somewhere",
+  "start": "2022",
+  "end": "2024",
+  "tvmaze_id": 49313,
+  "tvmaze_name": "Somebody Somewhere",
+  "premiered": "2022-01-16",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/540/1351951.jpg",
+  "file": "covers/076.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Somebody Somewhere follows Sam, a true Kansan on the surface, but, beneath it all, struggling to fit the hometown mold. Grappling with loss and acceptance, singing is Sam's saving grace and leads her on a journey to discover herself and a community of outsiders who don't fit in but don't give up, showing that finding your people, and finding your voice, is possible. Anywhere. Somewhere.",
+  "network": "HBO"
+ },
+ {
+  "rank": "77",
+  "title": "Modern Family",
+  "start": "2009",
+  "end": "2020",
+  "tvmaze_id": 80,
+  "tvmaze_name": "Modern Family",
+  "premiered": "2009-09-23",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/359/898320.jpg",
+  "file": "covers/077.jpg",
+  "genres": [
+   "Comedy",
+   "Family"
+  ],
+  "summary": "Modern Family revolves around three different types of families (nuclear, step- and same-sex) living in the Los Angeles area, who are interrelated through Jay Pritchett and his children, Claire Dunphy (née Pritchett) and Mitchell Pritchett. Patriarch Jay is remarried to a much younger woman, Gloria Delgado Pritchett (née Ramirez), a passionate Colombian with whom he has an infant son, Fulgencio (Joe) Pritchett, and a son from Gloria's previous marriage, Manny Delgado.Jay's daughter Claire was a homemaker, but has returned to the business world. She is now the chief executive of her father's previous business, Pritchett's Closets and Blinds. She is married to Phil Dunphy, a realtor and self-professed \"cool dad\". They have three children: Haley Dunphy, a stereotypical ditzy teenage girl; Alex Dunphy, a nerdy, smart middle child; and Luke Dunphy, the off-beat only son.Jay's lawyer son Mitchell and his husband Cameron Tucker have one daughter, Lily Tucker-Pritchett. As the name suggests, this family represents a modern-day family, and episodes are comically based on situations which many families encounter in real life.",
+  "network": "ABC"
+ },
+ {
+  "rank": "78",
+  "title": "It's Always Sunny in Philadelphia",
+  "start": "2005",
+  "end": "present",
+  "tvmaze_id": 347,
+  "tvmaze_name": "It's Always Sunny in Philadelphia",
+  "premiered": "2005-08-04",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/636/1592247.jpg",
+  "file": "covers/078.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "It's Always Sunny in Philadelphia is an American comedy series about four friends in their late 20s with clear sociopathic tendencies who run an unsuccessful Irish bar, \"Paddy's Pub,\" in South Philadelphia. The series deals with a variety of controversial topics, including abortion, gun control, physical disabilities, racism, sexism, religion, the Israeli/Palestinian situation, terrorism, transsexuality, slavery, incest, sexual harassment in education, the homeless, statutory rape, drug addiction, pedophilia, child abuse, mental illness, gay rights and dumpster babies.",
+  "network": "FXX"
+ },
+ {
+  "rank": "79",
+  "title": "The Good Wife",
+  "start": "2009",
+  "end": "2016",
+  "tvmaze_id": 101,
+  "tvmaze_name": "The Good Wife",
+  "premiered": "2009-09-22",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/59/148162.jpg",
+  "file": "covers/079.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Legal"
+  ],
+  "summary": "The Good Wife follows Alicia Florrick, a wife and mother who boldly assumes full responsibility for her family and re-enters the workforce after her husband's very public sex and political corruption scandal lands him in jail. Pushing aside the betrayal and crushing public humiliation caused by her husband Peter, Alicia starts over by pursuing her original career as a defense attorney.",
+  "network": "CBS"
+ },
+ {
+  "rank": "80",
+  "title": "How To With John Wilson",
+  "start": "2020",
+  "end": "2023",
+  "tvmaze_id": 44080,
+  "tvmaze_name": "How To with John Wilson",
+  "premiered": "2020-10-23",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/473/1184173.jpg",
+  "file": "covers/080.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "How To with John Wilson is a first person documentary series hosted by an anxious New Yorker who attempts to give everyday advice while dealing with his own personal issues. He covertly documents the lives of fellow New Yorkers in a comic odyssey of self-discovery, inevitably making the audience comfortable with the awkward contradictions of modern life.",
+  "network": "HBO"
+ },
+ {
+  "rank": "81",
+  "title": "The Queen's Gambit",
+  "start": "2020",
+  "end": "2020",
+  "tvmaze_id": 41428,
+  "tvmaze_name": "The Queen's Gambit",
+  "premiered": "2020-10-23",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/510/1275203.jpg",
+  "file": "covers/081.jpg",
+  "genres": [
+   "Drama"
+  ],
+  "summary": "Chronicling the life of an orphan chess prodigy, the story - set during the Cold War era - follows Beth Harmon from the age of eight to twenty-two, as she struggles with addiction in a quest to become the greatest chess player in the world.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "82",
+  "title": "Better Things",
+  "start": "2016",
+  "end": "2022",
+  "tvmaze_id": 6514,
+  "tvmaze_name": "Better Things",
+  "premiered": "2016-09-08",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/405/1013236.jpg",
+  "file": "covers/082.jpg",
+  "genres": [
+   "Drama",
+   "Comedy",
+   "Family"
+  ],
+  "summary": "Better Things is a semi-autobiographical vehicle for Pamela Adlon similar to the way \"Louie\" is for CK. It centers on Sam, a working actor with no filter trying to earn a living, navigate her daughters' lives, have fun with a friend or two and also — just maybe — squeeze in some private time once in a while.",
+  "network": "FX"
+ },
+ {
+  "rank": "83",
+  "title": "Justified",
+  "start": "2010",
+  "end": "2015",
+  "tvmaze_id": 106,
+  "tvmaze_name": "Justified",
+  "premiered": "2010-03-16",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/0/808.jpg",
+  "file": "covers/083.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Western"
+  ],
+  "summary": "Deputy U.S. Marshal Raylan Givens is something of a 19th century-style officer in modern times, whose unconventional enforcement of justice makes him a target with criminals and a problem for his superiors in the U.S. Marshals Service. As a result of an eager but \"justified\" shooting of a Miami fugitive while on assignment in Florida, Givens is reassigned to Lexington, Kentucky, in a district that includes his hometown of Harlan, a rural mining town in the east of the state.",
+  "network": "FX"
+ },
+ {
+  "rank": "84",
+  "title": "Planet Earth",
+  "start": "2006",
+  "end": "2006",
+  "tvmaze_id": 768,
+  "tvmaze_name": "Planet Earth",
+  "premiered": "2006-03-05",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/6/15320.jpg",
+  "file": "covers/084.jpg",
+  "genres": [
+   "Nature"
+  ],
+  "summary": "David Attenborough celebrates the amazing variety of the natural world in this epic documentary series, filmed over four years across 64 different countries.",
+  "network": "BBC One"
+ },
+ {
+  "rank": "85",
+  "title": "The Great British Baking Show",
+  "start": "2010",
+  "end": "present",
+  "tvmaze_id": 2950,
+  "tvmaze_name": "The Great British Bake Off",
+  "premiered": "2010-08-17",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/642/1606557.jpg",
+  "file": "covers/085.jpg",
+  "genres": [
+   "Food"
+  ],
+  "summary": "Over 10 weeks, 12 of the best amateur bakers in Britain will whisk, knead, ice, beat and bake their way through classic British cakes, perfect patisserie, Italian delights, sticky caramel constructions and elaborate layered puddings. All 12 will be hoping to impress with their skill, creativity, knowledge and passion to clinch the Bake Off Crown. Each of the 30 new challenges have been carefully designed by judges Paul Hollywood and Prue Leith to reveal just who is a star baker.",
+  "network": "Channel 4"
+ },
+ {
+  "rank": "86",
+  "title": "Shogun",
+  "start": "2024",
+  "end": "present",
+  "tvmaze_id": 37336,
+  "tvmaze_name": "Shōgun",
+  "premiered": "2024-02-27",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/506/1265637.jpg",
+  "file": "covers/086.jpg",
+  "genres": [
+   "Drama",
+   "Adventure",
+   "History"
+  ],
+  "summary": "Shōgun is set in Japan in the year 1600 at the dawn of a century-defining civil war. Lord Yoshii Toranaga is fighting for his life as his enemies on the Council of Regents unite against him, when a mysterious European ship is found marooned in a nearby fishing village.",
+  "network": "Hulu"
+ },
+ {
+  "rank": "87",
+  "title": "Reservation Dogs",
+  "start": "2021",
+  "end": "2023",
+  "tvmaze_id": 44909,
+  "tvmaze_name": "Reservation Dogs",
+  "premiered": "2021-08-09",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/475/1189118.jpg",
+  "file": "covers/087.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "Reservation Dogs follows four Native teenagers in rural Oklahoma who spend their days committing crime... and fighting it.",
+  "network": "Hulu"
+ },
+ {
+  "rank": "88",
+  "title": "Dexter",
+  "start": "2006",
+  "end": "2013",
+  "tvmaze_id": 161,
+  "tvmaze_name": "Dexter",
+  "premiered": "2006-10-01",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/498/1246067.jpg",
+  "file": "covers/088.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Mystery"
+  ],
+  "summary": "He's smart, he's good looking, and he's got a great sense of humor. He's Dexter Morgan, everyone's favorite serial killer. As a Miami forensics expert, he spends his days solving crimes, and nights committing them. But Dexter lives by a strict code of honor that is both his saving grace and lifelong burden. Torn between his deadly compulsion and his desire for true happiness, Dexter is a man in profound conflict with the world and himself.",
+  "network": "Paramount+ with Showtime"
+ },
+ {
+  "rank": "89",
+  "title": "Baby Reindeer",
+  "start": "2024",
+  "end": "2024",
+  "tvmaze_id": 52426,
+  "tvmaze_name": "Baby Reindeer",
+  "premiered": "2024-04-11",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/578/1447075.jpg",
+  "file": "covers/089.jpg",
+  "genres": [
+   "Drama",
+   "Comedy"
+  ],
+  "summary": "Based on a compelling true story, the hit 2019 Edinburgh Fringe one-man stage-play Baby Reindeer follows the writer and performer Richard Gadd's warped relationship with his female stalker and the impact it has on him as he is ultimately forced to face a deep, dark buried trauma.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "90",
+  "title": "Eastbound & Down",
+  "start": "2009",
+  "end": "2013",
+  "tvmaze_id": 1141,
+  "tvmaze_name": "Eastbound & Down",
+  "premiered": "2009-02-15",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/6/17326.jpg",
+  "file": "covers/090.jpg",
+  "genres": [
+   "Drama",
+   "Comedy",
+   "Sports"
+  ],
+  "summary": "Burned out and broke, former big-league pitcher Kenny Powers returns home to North Carolina to teach PE at the local middle school he once attended--and sets his sights on winning back his high-school flame April.",
+  "network": "HBO"
+ },
+ {
+  "rank": "91",
+  "title": "Catastrophe",
+  "start": "2015",
+  "end": "2019",
+  "tvmaze_id": 3004,
+  "tvmaze_name": "Catastrophe",
+  "premiered": "2015-01-19",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/189/473908.jpg",
+  "file": "covers/091.jpg",
+  "genres": [
+   "Comedy",
+   "Romance"
+  ],
+  "summary": "Rob Delaney and Sharon Horgan write/star in a comedy that follows a man and a woman who make a bloody mess as they struggle to fall in love in London.",
+  "network": "Channel 4"
+ },
+ {
+  "rank": "92",
+  "title": "The Night Of",
+  "start": "2016",
+  "end": "2016",
+  "tvmaze_id": 14157,
+  "tvmaze_name": "The Night Of",
+  "premiered": "2016-07-10",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/62/156270.jpg",
+  "file": "covers/092.jpg",
+  "genres": [
+   "Drama",
+   "Crime",
+   "Legal"
+  ],
+  "summary": "The Night Of is an eight-part limited series that delves into the intricate story of a fictitious murder case in New York City. The series follows the police investigation and legal proceedings, all the while examining the criminal justice system and the purgatory of Rikers Island, where the accused awaits his trial.Filmed in and around Manhattan, the HBO series is based on the BBC's Criminal Justice, created by Peter Moffat.",
+  "network": "HBO"
+ },
+ {
+  "rank": "93",
+  "title": "Station Eleven",
+  "start": "2021",
+  "end": "2022",
+  "tvmaze_id": 42845,
+  "tvmaze_name": "Station Eleven",
+  "premiered": "2021-12-16",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/632/1580985.jpg",
+  "file": "covers/093.jpg",
+  "genres": [
+   "Drama",
+   "Adventure",
+   "Science-Fiction"
+  ],
+  "summary": "A post-apocalyptic saga spanning multiple timelines, Station Eleven tells the stories of survivors of a devastating flu as they attempt to rebuild and reimagine the world anew while holding on to the best of what's been lost.",
+  "network": "HBO Max"
+ },
+ {
+  "rank": "94",
+  "title": "The Diplomat",
+  "start": "2023",
+  "end": "present",
+  "tvmaze_id": 60213,
+  "tvmaze_name": "The Diplomat",
+  "premiered": "2023-04-20",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604939.jpg",
+  "file": "covers/094.jpg",
+  "genres": [
+   "Drama",
+   "Thriller"
+  ],
+  "summary": "In the midst of an international crisis, a career diplomat lands in a high-profile job she's unsuited for, with tectonic implications for her marriage and her political future.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "95",
+  "title": "House",
+  "start": "2004",
+  "end": "2012",
+  "tvmaze_id": 118,
+  "tvmaze_name": "House",
+  "premiered": "2004-11-16",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/357/894990.jpg",
+  "file": "covers/095.jpg",
+  "genres": [
+   "Drama",
+   "Mystery",
+   "Medical"
+  ],
+  "summary": "Sink your teeth into meaty drama and intrigue with House, FOX's take on mystery, where the villain is a medical malady and the hero is an irreverent, controversial doctor who trusts no one, least of all his patients.Dr. Gregory House is a maverick physician who is devoid of bedside manner. While his behavior can border on antisocial, Dr. House thrives on the challenge of solving the medical puzzles that other doctors give up on. Together with his hand-picked team of young medical experts, he'll do whatever it takes in the race against the clock to solve the case.",
+  "network": "FOX"
+ },
+ {
+  "rank": "96",
+  "title": "Halt and Catch Fire",
+  "start": "2014",
+  "end": "2017",
+  "tvmaze_id": 191,
+  "tvmaze_name": "Halt and Catch Fire",
+  "premiered": "2014-06-01",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/1/2798.jpg",
+  "file": "covers/096.jpg",
+  "genres": [
+   "Drama"
+  ],
+  "summary": "Halt and Catch Fire is set roughly one year after IBM all but corners the market with the release of its first major product – the IBM PC. In this fictional drama, a former IBM executive, Joe MacMillan plans to reverse engineer the flagship product of his former employer and forces his current company, Cardiff Electric, into the personal computer race. MacMillan enlists the help of Gordon Clark, a great engineer whose unrealized dreams of creating a revolutionary product have created tension in his marriage to Donna, and Cameron Howe, a volatile prodigy who puts her future in jeopardy to join MacMillan's rogue PC project. Halt and Catch Fire thrives on the spirit of innovation and explores what it's like to stand at the forefront of something world-changing and work towards it, no matter the risk.",
+  "network": "AMC"
+ },
+ {
+  "rank": "97",
+  "title": "Community",
+  "start": "2009",
+  "end": "2015",
+  "tvmaze_id": 318,
+  "tvmaze_name": "Community",
+  "premiered": "2009-09-17",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/2/5134.jpg",
+  "file": "covers/097.jpg",
+  "genres": [
+   "Comedy"
+  ],
+  "summary": "Community is a smart, exuberant comedy that is consistently ranked as one of the most inventive and original half-hours on television. This ensemble comedy centers around a tight-knit group of friends who all met at what is possibly the world's worst educational institution - Greendale Community College.",
+  "network": "Yahoo! View"
+ },
+ {
+  "rank": "98",
+  "title": "The OA",
+  "start": "2016",
+  "end": "2019",
+  "tvmaze_id": 6763,
+  "tvmaze_name": "The OA",
+  "premiered": "2016-12-16",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/185/464692.jpg",
+  "file": "covers/098.jpg",
+  "genres": [
+   "Drama",
+   "Science-Fiction",
+   "Mystery"
+  ],
+  "summary": "The OA delves into the inexplicable reappearance of Prairie Johnson. Having gone missing seven years ago, the previously blind Johnson returns home, now in her 20s and her sight restored. While many believe she is a miracle, others worry that she could be dangerous.",
+  "network": "Netflix"
+ },
+ {
+  "rank": "99",
+  "title": "Gilmore Girls",
+  "start": "2000",
+  "end": "2007",
+  "tvmaze_id": 525,
+  "tvmaze_name": "Gilmore Girls",
+  "premiered": "2000-10-05",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/4/11308.jpg",
+  "file": "covers/099.jpg",
+  "genres": [
+   "Drama",
+   "Comedy",
+   "Romance"
+  ],
+  "summary": "Gilmore Girls is a drama centering around the relationship between a thirtysomething single mother and her teen daughter living in Stars Hollow, Connecticut.",
+  "network": "The CW"
+ },
+ {
+  "rank": "100",
+  "title": "Scandal",
+  "start": "2012",
+  "end": "2018",
+  "tvmaze_id": 98,
+  "tvmaze_name": "Scandal",
+  "premiered": "2012-04-05",
+  "image": "https://static.tvmaze.com/uploads/images/original_untouched/303/758518.jpg",
+  "file": "covers/100.jpg",
+  "genres": [
+   "Drama",
+   "Thriller"
+  ],
+  "summary": "Everyone has secrets… and Olivia Pope has dedicated her life to protecting and defending the public images of the nation's elite by keeping those secrets under wraps. Pope's team are at the top of their game when it comes to getting the job done for their clients, but it becomes apparent that these \"gladiators in suits\", who specialize in fixing the lives of other people, have trouble fixing those closest at hand -- their own.",
+  "network": "ABC"
+ }
+]
