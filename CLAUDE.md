@@ -71,7 +71,13 @@ Running total spent on Jev: about $0.052 of the $5 credit.
 Planned pieces (the user chose 3, 4 and 5):
 3. **Colour quilt**: a `Choice` over a fixed ~12-colour palette per show. Paint each tile by its probability mix. Estimated ~100 calls, under $0.01.
 4. **Fan constellation**: a `Noul` "would a fan of A love B?" for all 4,950 pairs, drawn as a network with covers as nodes. Estimated ~2M tokens, about $0.08.
-5. **Watch-next map**: rank unseen shows against the user's seen and loved list. Next up. Plan: compute it in the browser from `fans.json` (average fan(seen → unseen)), with **no new Jev calls**.
+5. **For you**: **done**. It needs no Jev calls, since it's computed in the browser from `fans.json` once the visitor has ticked ≥3 seen shows (`MIN_SEEN`). For each unseen show B: score = 0.6 × mean of the top-3 fan(seen → B) + 0.4 × mean over all seen shows. "Because you've seen…" names the top 2 contributors. It appears in four places:
+   - the "Up next, according to Jev" row in the header (below 3 seen shows it shows a CTA instead)
+   - "NN% for you" card badges, with the top 10 in accent colour
+   - the "Jev · for you" sort
+   - a "why" note in the dialog
+
+   Other effects: "Pick for me" picks at random from the top 6 (want-list +6), and constellation nodes get `.pick` (top 5 glow) and `.seen` (dimmed).
 
 Rules for Jev work:
 - Jev judges only the text it's given. Pass a short description per show (the TVmaze `summary` in `shows.json` is a start) rather than bare titles.

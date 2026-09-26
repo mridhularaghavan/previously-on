@@ -268,6 +268,36 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 .fans li em { font-style: normal; color: var(--muted); font-size: 12px; text-align: right; }
 .fans li button:hover span:first-of-type { text-decoration: underline; }
 
+/* ---------- For you (computed in-browser from Jev's fan matrix) ---------- */
+.upnext { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--rule); display: none; }
+.upnext.on { display: block; }
+.upnext h3 { margin: 0 0 4px; font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.1; }
+.upnext .sub { margin: 0 0 14px; color: var(--muted); font-size: 13.5px; }
+.upnext .cta { color: var(--muted); font-size: 14px; margin: 0; }
+.upnext .cta b { color: var(--ink); }
+.picks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 719px) { .picks { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 42%; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px 4px; } .picks::-webkit-scrollbar { display: none; } }
+.pk { border: 0; padding: 0; background: none; text-align: left; cursor: pointer; display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: start; }
+@media (max-width: 719px) { .pk { grid-template-columns: 1fr; } }
+.pk img { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; box-shadow: var(--shadow); transition: transform .2s; }
+.pk:hover img { transform: translateY(-3px); }
+.pk .n { font-family: "Instrument Serif", serif; font-size: 30px; line-height: 1; color: var(--accent); }
+.pk b { display: block; font-size: 13.5px; line-height: 1.2; margin: 2px 0 4px; }
+.pk small { display: block; color: var(--muted); font-size: 11.5px; line-height: 1.35; }
+.fy {
+  position: absolute; left: 6px; bottom: 6px; z-index: 2; pointer-events: none; display: none;
+  background: rgb(10 10 12 / .78); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 99px;
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+.fy.on { display: block; }
+.fy.hot { background: var(--accent); }
+.view-colour .fy { display: none; }
+.why { margin: 0 0 18px; padding: 12px 14px; border-left: 3px solid var(--accent); background: var(--chip); border-radius: 0 8px 8px 0; font-size: 13.5px; }
+.why b { font-size: 15px; }
+.nd.pick .ring { stroke: #fff !important; stroke-width: 3.5; }
+.nd.pick { filter: drop-shadow(0 0 8px rgb(255 90 110 / .9)); }
+.nd.seen image { opacity: .55; }
+
 footer { border-top: 2px solid var(--ink); padding: 18px 0 40px; color: var(--muted); font-size: 12.5px; }
 footer a { color: inherit; }
 .empty { padding: 60px 0; text-align: center; color: var(--muted); display: none; }
@@ -290,6 +320,7 @@ footer a { color: inherit; }
     <div><div class="n" id="nWant">0</div><div class="l">Want to see</div></div>
     <div class="meter" aria-hidden="true"><i class="s" id="mSeen"></i><i class="w" id="mWant"></i></div>
   </div>
+  <section class="upnext" id="upnext" aria-live="polite"></section>
 </header>
 
 <div class="bar">
@@ -308,6 +339,7 @@ footer a { color: inherit; }
       <option value="light">Sort: light → dark</option>
       <option value="alpha">Sort: A–Z</option>
       <option value="jev" hidden>Sort: Jev colour</option>
+      <option value="foryou" hidden>Sort: Jev · for you</option>
     </select>
     <div class="seg" role="group" aria-label="Show">
       <button data-show="all" aria-pressed="true">All</button>
@@ -393,6 +425,24 @@ footer a { color: inherit; }
   }
   const confWord = c => c >= .85 ? "certain" : c >= .6 ? "fairly sure" : c >= .4 ? "undecided" : "torn";
 
+  /* ---- For you: rank unseen shows from Jev's fan answers (no API calls) ---- */
+  const MIN_SEEN = 3;
+  let fy = null;                                        // Map rank -> { score, because: [[seenRank, pct], ...] }
+  function computeForYou() {
+    const seen = shows.filter(s => marks[s.rank]?.s).map(s => s.rank);
+    if (!fans || seen.length < MIN_SEEN) return fy = null;
+    fy = new Map();
+    shows.forEach(b => {
+      if (marks[b.rank]?.s) return;
+      const from = seen.map(a => [a, fan(a, b.rank)]).sort((x, y) => y[1] - x[1]);
+      const mean = from.reduce((t, [, p]) => t + p, 0) / from.length;
+      const top = from.slice(0, 3), topMean = top.reduce((t, [, p]) => t + p, 0) / top.length;
+      fy.set(b.rank, { score: Math.round(0.6 * topMean + 0.4 * mean), because: top.slice(0, 2) });
+    });
+    return fy;
+  }
+  const fyTop = (k = 5, filter = () => true) => fy ? [...fy].filter(([n]) => filter(byRank(n))).sort((a, b) => b[1].score - a[1].score).slice(0, k) : [];
+
   /* ---- genre chips ---- */
   const counts = {};
   shows.forEach(s => s.genres.forEach(g => counts[g] = (counts[g] || 0) + 1));
@@ -408,6 +458,7 @@ footer a { color: inherit; }
         <span class="rank">${s.rank}</span>
         <img src="${s.cover}" alt="" loading="${s.rank <= 30 ? "eager" : "lazy"}" onload="this.classList.add('ok')">
         <span class="flags"><span class="s"></span><span class="w"></span></span>
+        <span class="fy"></span>
         ${jev ? `<span class="jev" style="--jev:${quilt(s.rank)};--d:${((s.rank - 1) % 10) * 0.035 + Math.floor((s.rank - 1) / 10) * 0.05}s"></span>` : ""}
       </button>
       <div class="meta"><b>${s.title}</b><small>${s.years}</small>
@@ -479,6 +530,7 @@ footer a { color: inherit; }
     alpha: (a, b) => a.title.replace(/^The /, "").localeCompare(b.title.replace(/^The /, "")),
     light: (a, b) => b.hsl.l - a.hsl.l,
     // greys go last, then by hue
+    foryou: (a, b) => (fy?.get(b.rank)?.score ?? -1) - (fy?.get(a.rank)?.score ?? -1) || a.rank - b.rank,
     jev: (a, b) => {
       const A = jevOf(a.rank), B = jevOf(b.rank);
       return PORDER.indexOf(A.choice) - PORDER.indexOf(B.choice) || B.probs[B.choice] - A.probs[A.choice];
@@ -518,14 +570,44 @@ footer a { color: inherit; }
     });
     $("#nSeen").textContent = s; $("#nWant").textContent = w;
     $("#mSeen").style.width = s + "%"; $("#mWant").style.width = w + "%";
+    paintForYou(s);
   }
+  function paintForYou(nSeen) {
+    if (!fans) return;
+    computeForYou();
+    const hot = new Set(fyTop(10).map(([n]) => n));
+    shows.forEach(x => {
+      const b = cards.get(x.rank).querySelector(".fy"), f = fy?.get(x.rank);
+      b.classList.toggle("on", !!f); b.classList.toggle("hot", hot.has(x.rank));
+      b.textContent = f ? `${f.score}% for you` : "";
+    });
+    const up = $("#upnext");
+    up.classList.add("on");
+    if (!fy) {
+      const need = MIN_SEEN - nSeen;
+      up.innerHTML = `<p class="cta"><b>Up next, according to Jev.</b> Tick ${need} more show${need === 1 ? "" : "s"} you've seen and Jev will line up what to watch next, based on what fans of your shows love.</p>`;
+    } else {
+      const top = fyTop(5);
+      up.innerHTML = `<h3>Up next, according to Jev</h3>
+        <p class="sub">Ranked from Jev's answers about what fans of your ${nSeen} seen shows would love. Tick more to sharpen it.</p>
+        <div class="picks">${top.map(([n, f]) => `<button class="pk" data-go="${n}">
+          <img src="${byRank(n).cover}" alt="">
+          <span><span class="n">${f.score}%</span><b>${byRank(n).title}</b>
+          <small>because you've seen ${f.because.map(([a]) => `<i>${byRank(a).title}</i>`).join(" &amp; ")}</small></span></button>`).join("")}</div>`;
+    }
+    if (cnodes) {
+      const picks = new Set(fyTop(5).map(([n]) => n));
+      cnodes.forEach((el, k) => { el.classList.toggle("pick", picks.has(k)); el.classList.toggle("seen", !!marks[k]?.s); });
+    }
+  }
+  $("#upnext").addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (b) open(+b.dataset.go); });
   function setMark(rank, k, v) {
     marks[rank] = { ...(marks[rank] || {}), [k]: v };
     if (k === "s" && v) marks[rank].w = false;           // seen supersedes want
     store.set("nyt100.marks", marks);
     paintMarks(); cards.get(rank).querySelector(".poster").classList.remove("pop");
     void cards.get(rank).offsetWidth; cards.get(rank).querySelector(".poster").classList.add("pop");
-    if (state.show !== "all") render();
+    if (state.show !== "all" || state.sort === "foryou") render();
     if (dlg.open && +dlg.dataset.rank === rank) open(rank);
   }
 
@@ -562,13 +644,20 @@ footer a { color: inherit; }
   };
   $("#pick").onclick = pick;
   function pick() {
+    if (fy) {                                           // Jev mode: random among the best-scoring unseen shows (want-list gets a boost)
+      const ranked = [...fy].filter(([n]) => matches(byRank(n)))
+        .map(([n, f]) => [n, f.score + (marks[n]?.w ? 6 : 0)]).sort((a, b) => b[1] - a[1]).slice(0, 6);
+      if (ranked.length) return spotlight(byRank(ranked[Math.floor(Math.random() * ranked.length)][0]));
+    }
     let pool = shows.filter(s => matches(s) && !(marks[s.rank] || {}).s);
     const wants = pool.filter(s => (marks[s.rank] || {}).w);
     if (wants.length) pool = wants;                      // favour the want-list
     if (!pool.length) pool = shows.filter(matches);
     if (!pool.length) return;
-    const s = pool[Math.floor(Math.random() * pool.length)];
-    if (state.view === "timeline") return open(s.rank);
+    spotlight(pool[Math.floor(Math.random() * pool.length)]);
+  }
+  function spotlight(s) {
+    if (state.view === "timeline" || state.view === "constellation") return open(s.rank);
     const c = cards.get(s.rank);
     c.scrollIntoView({ behavior: "smooth", block: "center" });
     c.classList.remove("spotlight"); void c.offsetWidth; c.classList.add("spotlight");
@@ -586,6 +675,10 @@ footer a { color: inherit; }
     </div>`;
   }
 
+  function whyRead(n) {
+    const f = fy?.get(n); if (!f) return "";
+    return `<div class="why"><b>${f.score}% for you</b> · Jev thinks fans of ${f.because.map(([a, p]) => `<i>${byRank(a).title}</i> (${p}%)`).join(" and ")} would love this.</div>`;
+  }
   function fansRead(n) {
     if (!fans) return "";
     return `<div class="fans"><div class="jl">Jev says fans of this also love</div><ol>${
@@ -637,6 +730,7 @@ footer a { color: inherit; }
       nd.append("text").attr("y", d => d.h / 2 + 13).text(d => d.s.title.length > 26 ? d.s.title.slice(0, 24) + "…" : d.s.title);
       cnodes = new Map(nd.nodes().map(el => [d3.select(el).datum().id, el]));
       clinks = g.selectAll(".lk").nodes();
+      paintMarks();
 
       // fit + zoom
       const xs = nodes.map(n => n.x), ys = nodes.map(n => n.y), pad = 60;
@@ -705,6 +799,7 @@ footer a { color: inherit; }
           <div class="sub">${s.years}${s.network ? " · " + s.network : ""}</div>
           <div class="tags">${s.genres.map(g => `<span>${g}</span>`).join("")}</div>
           <p class="sum">${s.summary}</p>
+          ${whyRead(rank)}
           ${jevRead(rank)}
           ${fansRead(rank)}
           <div class="acts">
@@ -766,6 +861,7 @@ footer a { color: inherit; }
 
   if (fans) {
     document.querySelector('[data-view="constellation"]').hidden = false;
+    document.querySelector('#sort option[value="foryou"]').hidden = false;
     const lonely = shows.map(s => [s, Math.max(...shows.filter(b => b.rank !== s.rank).map(b => link(s.rank, b.rank)))])
       .sort((a, b) => a[1] - b[1]).slice(0, 3).map(([s]) => `<i>${s.title}</i>`);
     const strongest = shows.flatMap(a => shows.filter(b => b.rank > a.rank).map(b => [a, b, link(a.rank, b.rank)]))
