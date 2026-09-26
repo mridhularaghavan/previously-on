@@ -5,73 +5,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Previously On…</title>
 <meta name="description" content="Previously On… — an interactive recap of the 100 best TV shows of the 21st century, as ranked by The New York Times.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='7' width='26' height='18' rx='3' fill='%23111'/><rect x='6' y='10' width='20' height='12' rx='1' fill='%23f2c14e'/></svg>">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='7' width='26' height='18' rx='3' fill='%231E1A16'/><rect x='6' y='10' width='20' height='12' rx='1' fill='%238C3B2A'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Television Archive palette (light only) */
 :root {
-  --paper: #faf8f3; --ink: #141414; --muted: #6e6c68; --rule: #d9d5cc;
-  --chip: #efece4; --panel: #ffffff; --accent: #c8102e; --seen: #1f7a4d; --want: #b7791f;
-  --shadow: 0 1px 2px rgb(0 0 0 / .08), 0 8px 24px rgb(0 0 0 / .08);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0f0f10; --ink: #f1efe9; --muted: #9a978f; --rule: #2b2a28;
-    --chip: #1c1b1a; --panel: #171716; --accent: #ff5a6e; --seen: #4cc38a; --want: #f0b44c;
-    --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 12px 32px rgb(0 0 0 / .5);
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0f0f10; --ink: #f1efe9; --muted: #9a978f; --rule: #2b2a28;
-  --chip: #1c1b1a; --panel: #171716; --accent: #ff5a6e; --seen: #4cc38a; --want: #f0b44c;
-  --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 12px 32px rgb(0 0 0 / .5);
+  --paper: #F4EFE3; --panel: #FFF9EE; --ink: #1E1A16; --muted: #6B6359; --rule: #D7C9B6;
+  --chip: #E9DECD; --accent: #8C3B2A; --seen: #287255; --want: #8A5B13; --skip: #6B6359;
+  --shadow: 0 1px 2px rgb(30 26 22 / .08), 0 8px 24px rgb(30 26 22 / .09);
+  --barh: 100px;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body {
-  margin: 0; background: var(--paper); color: var(--ink);
-  font: 15px/1.45 "Inter Tight", system-ui, sans-serif;
-  transition: background .3s, color .3s;
-}
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.45 "Inter Tight", system-ui, sans-serif; }
 button, input, select { font: inherit; color: inherit; }
 .wrap { max-width: 1480px; margin: 0 auto; padding: 0 16px; }
 @media (min-width: 720px) { .wrap { padding: 0 40px; } }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Fraunces only for major display moments; no wonky glyphs in ordinary headings */
+.disp { font-family: "Fraunces", Georgia, serif; font-optical-sizing: auto; font-variation-settings: "SOFT" 0, "WONK" 0; font-weight: 500; }
+.soft { font-variation-settings: "SOFT" 60, "WONK" 0; }
 
-/* ---------- header ---------- */
-header { padding: 40px 0 20px; border-bottom: 2px solid var(--ink); }
-.brand { font-family: "Instrument Serif", Georgia, serif; font-size: 26px; margin: 0 0 18px; display: inline-flex; align-items: center; gap: 10px; }
-.brand::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); }
+/* ---------- masthead ---------- */
+.hero { padding-top: 36px; padding-bottom: 22px; border-bottom: 2px solid var(--ink); }
+.brand { font-size: 24px; margin: 0 0 18px; display: inline-flex; align-items: center; gap: 10px; font-style: italic; font-weight: 500; }
+.brand::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
 .kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
-h1 {
-  font-family: "Instrument Serif", Georgia, serif; font-weight: 400;
-  font-size: clamp(40px, 7.4vw, 108px); line-height: .95; letter-spacing: -.01em; margin: 0;
-}
+h1 { font-size: clamp(40px, 7vw, 100px); line-height: .98; letter-spacing: -.015em; margin: 0; }
 h1 sup { font-size: .38em; vertical-align: .95em; }
-.lede { max-width: 640px; color: var(--muted); margin: 14px 0 0; }
-.tally { display: flex; gap: 22px; flex-wrap: wrap; align-items: end; margin-top: 22px; }
-.tally .n { font-family: "Instrument Serif", serif; font-size: 44px; line-height: 1; }
-.tally .l { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
-.meter { flex: 1 1 220px; min-width: 200px; height: 8px; border-radius: 99px; background: var(--chip); overflow: hidden; display: flex; align-self: center; }
+.lede { max-width: 640px; color: var(--muted); margin: 16px 0 0; font-size: 16px; }
+.intro-actions { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; margin-top: 22px; }
+.start { font-size: 14px; padding: 10px 18px; }
+.local { display: flex; gap: 10px; align-items: flex-start; max-width: 560px; margin: 0; font-size: 13px; color: var(--muted); }
+.local svg { flex: none; margin-top: 2px; }
+.local b { color: var(--ink); font-weight: 600; }
+.legend { display: inline-flex; gap: 12px; flex-wrap: wrap; }
+.legend span { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.legend i { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 4px; color: #fff; }
+.progress { margin-top: 26px; display: grid; grid-template-columns: auto 1fr; gap: 6px 22px; align-items: center; }
+.progress .big { font-size: 34px; line-height: 1.05; margin: 0; }
+.progress .big b { font-weight: 600; color: var(--seen); }
+.progress .small { grid-column: 1 / -1; margin: 0; font-size: 13px; color: var(--muted); }
+.meter { height: 8px; border-radius: 99px; background: var(--chip); overflow: hidden; display: flex; min-width: 160px; }
 .meter i { display: block; height: 100%; transition: width .5s cubic-bezier(.2,.8,.2,1); }
-.meter .s { background: var(--seen); } .meter .w { background: var(--want); }
+.meter .s { background: var(--seen); } .meter .w { background: var(--want); } .meter .k { background: color-mix(in srgb, var(--skip) 45%, transparent); }
+.aboutbtn { display: none; border: 0; background: none; padding: 0; color: var(--muted); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+/* compact masthead for return visits */
+.hero.compact { padding-top: 18px; padding-bottom: 16px; }
+.hero.compact .top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.hero.compact .brand { margin: 0; font-size: 20px; }
+.hero.compact h1 { font-size: 22px; letter-spacing: 0; line-height: 1.2; }
+.hero.compact h1 br { display: none; }
+.hero.compact h1 sup { vertical-align: .5em; }
+.hero.compact .kicker, .hero.compact .lede, .hero.compact .intro-actions { display: none; }
+.hero.compact .aboutbtn { display: inline; }
+.hero.compact .progress { margin-top: 12px; grid-template-columns: auto minmax(160px, 420px) auto; }
+.hero.compact .progress .big { font-size: 20px; }
+.hero.compact .progress .small { grid-column: auto; }
 
-/* ---------- toolbar ---------- */
-.bar {
-  position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule);
-}
-.bar .wrap:first-child { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 12px; padding-bottom: 12px; }
+/* ---------- toolbar (sticky) ---------- */
+.bar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.bar .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 12px; padding-bottom: 10px; }
 .seg { display: inline-flex; background: var(--chip); border-radius: 99px; padding: 3px; }
-.seg button { border: 0; background: none; padding: 6px 14px; border-radius: 99px; cursor: pointer; font-size: 13px; font-weight: 500; }
+.seg button { border: 0; background: none; padding: 6px 13px; border-radius: 99px; cursor: pointer; font-size: 13px; font-weight: 500; white-space: nowrap; }
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.search { flex: 1 1 180px; min-width: 150px; max-width: 280px; border: 1px solid var(--rule); background: var(--panel); border-radius: 99px; padding: 7px 14px; font-size: 14px; }
+.searchbox { position: relative; flex: 1 1 200px; min-width: 170px; max-width: 280px; }
+.search { width: 100%; border: 1px solid var(--rule); background: var(--panel); border-radius: 99px; padding: 7px 70px 7px 14px; font-size: 14px; }
 .search:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
-select.sort { border: 1px solid var(--rule); background: var(--panel); border-radius: 99px; padding: 7px 12px; font-size: 13px; cursor: pointer; }
+.count { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--muted); pointer-events: none; white-space: nowrap; }
+select.sel { border: 1px solid var(--rule); background: var(--panel); border-radius: 99px; padding: 7px 12px; font-size: 13px; cursor: pointer; }
 .btn { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 99px; padding: 7px 14px; cursor: pointer; font-size: 13px; font-weight: 600; }
 .btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
 .spacer { flex: 1; }
-.chips { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: none; }
+.mini { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.mini b { color: var(--ink); }
+.mini .meter { width: 90px; min-width: 0; height: 6px; }
+.row2 { display: flex; align-items: center; gap: 12px; padding-bottom: 10px; }
+.minibrand { flex: none; font-size: 16px; font-style: italic; display: none; align-items: center; gap: 7px; border: 0; background: none; padding: 0; cursor: pointer; }
+.minibrand::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.bar.stuck .minibrand { display: inline-flex; }
+.chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
 .chips::-webkit-scrollbar { display: none; }
 .chip { flex: none; border: 1px solid var(--rule); background: transparent; border-radius: 99px; padding: 4px 11px; font-size: 12.5px; cursor: pointer; white-space: nowrap; }
 .chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
@@ -79,138 +95,118 @@ select.sort { border: 1px solid var(--rule); background: var(--panel); border-ra
 .chip[aria-pressed="true"] .c { color: inherit; opacity: .7; }
 
 /* ---------- grid ---------- */
-main { padding: 28px 0 60px; }
+main { padding: 26px 0 50px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 22px 14px; }
 @media (min-width: 1360px) { .grid { grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 26px 16px; } }
-.card { min-width: 0; }
-.card { position: relative; perspective: 800px; transition: opacity .35s, filter .35s, transform .35s; }
-.card.dim { opacity: .13; filter: grayscale(1); }
-.card.dim:hover { opacity: .5; }
+.card { min-width: 0; position: relative; perspective: 800px; }
+.card.hide, .trow.hide { display: none; }
 .poster {
   display: block; width: 100%; aspect-ratio: 2 / 3; border: 0; padding: 0; cursor: pointer; border-radius: 4px;
   position: relative; overflow: hidden; background: var(--c, #333); transform-style: preserve-3d;
-  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s;
-  box-shadow: var(--shadow);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s; box-shadow: var(--shadow);
 }
-.poster img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .5s; }
+.poster img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .5s, filter .3s; }
 .poster img.ok { opacity: 1; }
-.poster::after { /* glare */
-  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .25s;
-  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / .35), transparent 55%);
-}
+.card.skip .poster img.ok { filter: grayscale(.85); opacity: .55; }
+.poster::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .25s; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / .35), transparent 55%); }
 .card:hover .poster { box-shadow: 0 18px 40px -8px var(--c), var(--shadow); }
 .card:hover .poster::after { opacity: 1; }
 .poster:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-.rank {
-  position: absolute; top: 0; left: 0; background: var(--ink); color: var(--paper); z-index: 2;
-  font-weight: 700; font-size: 12px; padding: 3px 7px; border-bottom-right-radius: 4px; pointer-events: none;
-}
-.flags { position: absolute; right: 6px; bottom: 6px; display: flex; gap: 4px; z-index: 2; pointer-events: none; }
-.flags span { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .3); display: none; }
-.card.seen .flags .s { display: block; background: var(--seen); }
-.card.want .flags .w { display: block; background: var(--want); }
+.rank { position: absolute; top: 0; left: 0; background: var(--ink); color: var(--paper); z-index: 2; font-weight: 700; font-size: 12px; padding: 3px 7px; border-bottom-right-radius: 4px; pointer-events: none; }
+.flag { position: absolute; right: 6px; top: 6px; z-index: 2; pointer-events: none; display: none; width: 20px; height: 20px; border-radius: 50%; color: #fff; place-items: center; box-shadow: 0 0 0 2px rgb(255 255 255 / .9); }
+.card.seen .flag { display: grid; background: var(--seen); }
+.card.watch .flag { display: grid; background: var(--want); }
+.card.skip .flag { display: grid; background: var(--skip); }
 .meta { margin-top: 8px; }
 .meta b { display: block; font-size: 13px; font-weight: 600; line-height: 1.2; }
 .meta small { color: var(--muted); font-size: 11.5px; }
-.boxes { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 5px; }
-.box { display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); cursor: pointer; user-select: none; }
-.box input { appearance: none; -webkit-appearance: none; width: 13px; height: 13px; border: 1.5px solid var(--muted); border-radius: 2px; margin: 0; cursor: pointer; display: grid; place-content: center; transition: background .15s, border-color .15s; }
-.box input::before { content: ""; width: 7px; height: 4px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px) scale(0); transition: transform .15s; }
-.box input:checked::before { transform: rotate(-45deg) translate(1px, -1px) scale(1); }
-.box input.s:checked { background: var(--seen); border-color: var(--seen); }
-.box input.w:checked { background: var(--want); border-color: var(--want); }
-.box input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.st { display: flex; gap: 4px; margin-top: 6px; }
+.st button { flex: 1; max-width: 34px; height: 26px; border: 1px solid var(--rule); background: var(--panel); border-radius: 6px; display: grid; place-items: center; cursor: pointer; color: var(--muted); padding: 0; transition: background .15s, color .15s, border-color .15s; }
+.st button:hover { border-color: var(--ink); color: var(--ink); }
+.st button:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+.st button[data-st="seen"][aria-pressed="true"] { background: var(--seen); border-color: var(--seen); color: #fff; }
+.st button[data-st="watch"][aria-pressed="true"] { background: var(--want); border-color: var(--want); color: #fff; }
+.st button[data-st="skip"][aria-pressed="true"] { background: var(--skip); border-color: var(--skip); color: #fff; }
 .pop { animation: pop .35s cubic-bezier(.2,1.6,.4,1); }
-@keyframes pop { 50% { transform: scale(1.08); } }
+@keyframes pop { 50% { transform: scale(1.06); } }
 .spotlight .poster { animation: spot 1.6s ease-in-out 2; }
-@keyframes spot { 50% { transform: scale(1.12) translateY(-6px); box-shadow: 0 0 0 4px var(--accent), 0 24px 50px -10px var(--c); } }
+@keyframes spot { 50% { transform: scale(1.1) translateY(-6px); box-shadow: 0 0 0 4px var(--accent), 0 24px 50px -10px var(--c); } }
+.empty { padding: 70px 16px; text-align: center; display: none; }
+.empty p { margin: 0 0 14px; font-size: 22px; }
+.empty .btn { font-size: 14px; }
 
 /* ---------- timeline ---------- */
 .timeline { display: none; }
 .view-timeline .grid, .view-timeline .jevhead { display: none; }
 .view-timeline .timeline { display: block; }
 .axis, .trow { display: grid; grid-template-columns: minmax(120px, 230px) 1fr; gap: 12px; align-items: center; }
-.axis { position: sticky; top: 108px; z-index: 5; background: var(--paper); padding: 6px 0; border-bottom: 1px solid var(--rule); font-size: 11px; color: var(--muted); }
+.axis { position: sticky; top: var(--barh); z-index: 5; background: var(--paper); padding: 6px 0; border-bottom: 1px solid var(--rule); font-size: 11px; color: var(--muted); }
 .ticks { position: relative; height: 16px; }
 .ticks span { position: absolute; transform: translateX(-50%); }
-.trow { padding: 3px 0; cursor: pointer; transition: opacity .3s; }
-.trow.dim { opacity: .12; }
+.trow { padding: 3px 0; cursor: pointer; }
 .trow .lbl { font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .trow .lbl em { font-style: normal; color: var(--muted); display: inline-block; width: 28px; }
-.track { position: relative; height: 20px; background: repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px calc(100% / 26.5)); background-size: 100% 100%; }
-.span {
-  position: absolute; top: 3px; height: 14px; border-radius: 3px; background: var(--c); min-width: 6px;
-  transition: transform .2s; transform-origin: left center;
-}
+.trow.seen .lbl::after { content: " ✓"; color: var(--seen); font-weight: 700; }
+.trow.watch .lbl::after { content: " ●"; color: var(--want); }
+.trow.skip { opacity: .5; }
+.track { position: relative; height: 20px; background: repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px calc(100% / 26.5)); }
+.span { position: absolute; top: 3px; height: 14px; border-radius: 3px; background: var(--c); min-width: 6px; transition: transform .2s; transform-origin: left center; }
 .span.open { background: linear-gradient(90deg, var(--c) 80%, transparent); }
 .trow:hover .span { transform: scaleY(1.35); }
 .trow:hover .lbl { font-weight: 600; }
 .peek { position: fixed; width: 120px; aspect-ratio: 2/3; pointer-events: none; z-index: 40; border-radius: 4px; box-shadow: var(--shadow); opacity: 0; transition: opacity .15s; background-size: cover; background-position: center; }
-@media (max-width: 719px) {
-  .bar { position: static; }
-  .axis { top: 0; }
-  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 10px; }
-  .meta b { font-size: 12px; }
-  .search { max-width: none; }
-}
-@media (max-width: 600px) { .axis, .trow { grid-template-columns: 110px 1fr; } }
 
 /* ---------- detail dialog ---------- */
-dialog {
-  border: 0; padding: 0; width: min(880px, calc(100vw - 32px)); max-height: calc(100dvh - 32px);
-  background: var(--panel); color: var(--ink); border-radius: 10px; box-shadow: 0 30px 80px rgb(0 0 0 / .45); overflow: auto;
-}
-dialog::backdrop { background: rgb(10 10 10 / .6); backdrop-filter: blur(4px); }
+dialog { border: 0; padding: 0; width: min(880px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: var(--panel); color: var(--ink); border-radius: 10px; box-shadow: 0 30px 80px rgb(30 26 22 / .45); overflow: auto; }
+dialog::backdrop { background: rgb(30 26 22 / .6); backdrop-filter: blur(4px); }
 dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 @keyframes rise { from { transform: translateY(20px) scale(.97); opacity: 0; } }
 .dlg { display: grid; grid-template-columns: 1fr; }
 @media (min-width: 680px) { .dlg { grid-template-columns: 340px 1fr; } }
-.dlg .art { background: var(--c); position: relative; }
+.dlg .art { background: var(--c); }
 .dlg .art img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 2/3; }
 .dlg .body { padding: 26px 28px 24px; display: flex; flex-direction: column; }
-.dlg .num { font-family: "Instrument Serif", serif; font-size: 72px; line-height: .8; color: var(--c2, var(--accent)); }
-.dlg h2 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 40px; line-height: 1.02; margin: 8px 0 6px; }
+.dlg .num { font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.dlg h2 { font-size: 42px; line-height: 1.02; margin: 6px 0 6px; }
 .dlg .sub { color: var(--muted); font-size: 14px; }
 .dlg .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
 .dlg .tags span { background: var(--chip); border-radius: 99px; padding: 3px 10px; font-size: 12px; }
 .dlg p.sum { margin: 0 0 18px; font-size: 15px; }
 .dlg .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
-.toggle { border: 1.5px solid var(--rule); background: transparent; border-radius: 99px; padding: 8px 14px; cursor: pointer; font-size: 13px; font-weight: 600; }
-.toggle.s[aria-pressed="true"] { background: var(--seen); border-color: var(--seen); color: #fff; }
-.toggle.w[aria-pressed="true"] { background: var(--want); border-color: var(--want); color: #fff; }
+.toggle { display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid var(--rule); background: transparent; border-radius: 99px; padding: 8px 14px; cursor: pointer; font-size: 13px; font-weight: 600; }
+.toggle[data-st="seen"][aria-pressed="true"] { background: var(--seen); border-color: var(--seen); color: #fff; }
+.toggle[data-st="watch"][aria-pressed="true"] { background: var(--want); border-color: var(--want); color: #fff; }
+.toggle[data-st="skip"][aria-pressed="true"] { background: var(--skip); border-color: var(--skip); color: #fff; }
+.dlg .savednote { margin: 8px 0 0; font-size: 12px; color: var(--muted); }
 .dlg a { color: var(--muted); font-size: 13px; }
-.nav { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 13px; }
-.nav button { border: 0; background: none; cursor: pointer; color: var(--muted); padding: 4px 0; }
+.nav { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 13px; }
+.nav button { border: 0; background: none; cursor: pointer; color: var(--muted); padding: 4px 0; text-align: left; }
+.nav button:last-child { text-align: right; }
 .nav button:hover { color: var(--ink); }
-.x { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: rgb(0 0 0 / .55); color: #fff; font-size: 18px; cursor: pointer; z-index: 3; }
+.x { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: rgb(30 26 22 / .6); color: #fff; font-size: 18px; cursor: pointer; z-index: 3; }
 
 /* ---------- Jev colour view ---------- */
-.jev {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--jev);
-  clip-path: inset(0 0 100% 0); transition: clip-path .7s cubic-bezier(.65,0,.35,1) var(--d, 0s), opacity .3s;
-}
+.jev { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--jev); clip-path: inset(0 0 100% 0); transition: clip-path .7s cubic-bezier(.65,0,.35,1) var(--d, 0s), opacity .3s; }
 .view-colour .jev { clip-path: inset(0 0 0 0); }
 .view-colour .grid { gap: 0; }
-@media (min-width: 1360px) { .view-colour .grid { gap: 0; } }
 .view-colour .meta { display: none; }
 .view-colour .poster { border-radius: 0; box-shadow: none; }
 .view-colour .card:hover .poster { box-shadow: none; }
 .view-colour .card:hover .jev { opacity: .08; }
 .view-colour .card:hover { z-index: 3; }
 .view-colour .rank { background: rgb(0 0 0 / .35); color: #fff; font-weight: 600; }
-.view-colour .card.dim { opacity: .08; }
+.view-colour .flag, .view-colour .fy { display: none !important; }
 .jevhead { display: none; margin-bottom: 18px; }
 .view-colour .jevhead { display: block; }
-.jevhead p { margin: 0 0 12px; color: var(--muted); max-width: 760px; font-size: 14px; }
-.jevhead p b { color: var(--ink); font-weight: 600; }
+.jevhead p, .constelhead p { margin: 0 0 12px; color: var(--muted); max-width: 780px; font-size: 14px; }
+.jevhead p b, .constelhead p b { color: var(--ink); font-weight: 600; }
 .swatches { display: flex; flex-wrap: wrap; gap: 6px; }
-@media (max-width: 719px) { .swatches { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; } .swatches::-webkit-scrollbar { display: none; } .sw { flex: none; } }
 .sw { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--rule); background: transparent; border-radius: 99px; padding: 4px 11px 4px 5px; font-size: 12.5px; cursor: pointer; }
 .sw i { width: 16px; height: 16px; border-radius: 50%; background: var(--sw); box-shadow: inset 0 0 0 1px rgb(0 0 0 / .15); }
 .sw .c { color: var(--muted); font-size: 11px; }
 .sw[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
 .jevread { margin: 0 0 18px; padding: 14px 16px; background: var(--chip); border-radius: 8px; }
-.jevread .jl { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; }
+.jl { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; }
 .jbar { display: flex; height: 14px; border-radius: 3px; overflow: hidden; margin: 10px 0 8px; }
 .jbar span { height: 100%; }
 .jkeys { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; }
@@ -224,42 +220,32 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 .constel { display: none; }
 .view-constellation .constel { display: block; }
 .view-constellation .grid, .view-constellation .jevhead { display: none; }
-.constelhead p { margin: 0 0 14px; color: var(--muted); max-width: 780px; font-size: 14px; }
-.constelhead p b { color: var(--ink); font-weight: 600; }
-.sky {
-  position: relative; border-radius: 12px; overflow: hidden; height: min(80vh, 920px); min-height: 480px;
-  background: radial-gradient(ellipse at 30% 20%, #1b2233 0%, #0c0e14 55%, #07080b 100%);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .06);
-}
-.sky::before { /* faint stars */
-  content: ""; position: absolute; inset: 0; opacity: .5; pointer-events: none;
-  background-image: radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 72% 34%, #fff, transparent),
-    radial-gradient(1px 1px at 41% 77%, #fff, transparent), radial-gradient(1px 1px at 88% 81%, #fff, transparent),
-    radial-gradient(1px 1px at 23% 58%, #fff, transparent), radial-gradient(1px 1px at 57% 9%, #fff, transparent);
-  background-size: 340px 340px;
-}
+.sky { position: relative; border-radius: 12px; overflow: hidden; height: min(78vh, 900px); min-height: 480px; background: radial-gradient(ellipse at 30% 20%, #2a2219 0%, #15110d 55%, #0d0a07 100%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .06); }
+.sky::before { content: ""; position: absolute; inset: 0; opacity: .45; pointer-events: none; background-image: radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 72% 34%, #fff, transparent), radial-gradient(1px 1px at 41% 77%, #fff, transparent), radial-gradient(1px 1px at 88% 81%, #fff, transparent), radial-gradient(1px 1px at 23% 58%, #fff, transparent), radial-gradient(1px 1px at 57% 9%, #fff, transparent); background-size: 340px 340px; }
 #csvg { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
 #csvg:active { cursor: grabbing; }
-.lk { stroke: #cfd8ff; stroke-linecap: round; transition: stroke-opacity .2s; }
+.lk { stroke: #f3e9d8; stroke-linecap: round; transition: stroke-opacity .2s; }
 .nd { cursor: pointer; transition: opacity .2s; }
 .nd .ring { fill: none; stroke-width: 2.5; }
-.nd text { fill: #eef1f8; font: 600 10px "Inter Tight", system-ui, sans-serif; text-anchor: middle; paint-order: stroke; stroke: #0b0d12; stroke-width: 3px; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.nd text { fill: #f3e9d8; font: 600 10px "Inter Tight", system-ui, sans-serif; text-anchor: middle; paint-order: stroke; stroke: #15110d; stroke-width: 3px; opacity: 0; pointer-events: none; transition: opacity .2s; }
 #csvg.focus .nd:not(.hi) { opacity: .12; }
 #csvg.focus .lk:not(.hi) { stroke-opacity: .02 !important; }
 #csvg.focus .nd.hi text { opacity: 1; }
 #csvg.zoomed .nd text { opacity: .85; }
 .nd.dim { opacity: .1; }
 .lk.dim { stroke-opacity: .025 !important; }
-.ctip { position: absolute; pointer-events: none; z-index: 5; max-width: 260px; background: rgb(12 14 20 / .92); color: #eef1f8; border: 1px solid rgb(255 255 255 / .12); border-radius: 8px; padding: 10px 12px; font-size: 12.5px; opacity: 0; transition: opacity .15s; }
+.nd.pick .ring { stroke: #fff !important; stroke-width: 3.5; }
+.nd.pick { filter: drop-shadow(0 0 8px rgb(224 122 95 / .95)); }
+.nd.seen image, .nd.skip image { opacity: .5; }
+.ctip { position: absolute; pointer-events: none; z-index: 5; max-width: 260px; background: rgb(21 17 13 / .94); color: #f3e9d8; border: 1px solid rgb(255 255 255 / .12); border-radius: 8px; padding: 10px 12px; font-size: 12.5px; opacity: 0; transition: opacity .15s; }
 .ctip b { display: block; font-size: 14px; margin-bottom: 4px; }
-.ctip span { color: #a9b1c6; }
+.ctip span { color: #b3a58f; }
+.skyhint { position: absolute; left: 14px; bottom: 12px; right: 140px; color: #b3a58f; font-size: 12px; pointer-events: none; }
 .skyhint .m { display: none; }
-@media (max-width: 719px) { .sky { height: 64vh; min-height: 420px; } .skyhint .d { display: none; } .skyhint .m { display: inline; } }
-.skyhint { position: absolute; left: 14px; bottom: 12px; right: 140px; color: #8d95aa; font-size: 12px; pointer-events: none; }
 .skybtns { position: absolute; right: 12px; bottom: 12px; display: flex; gap: 6px; }
-.skybtns button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgb(255 255 255 / .18); background: rgb(12 14 20 / .7); color: #eef1f8; cursor: pointer; font-size: 16px; }
+.skybtns button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgb(255 255 255 / .18); background: rgb(21 17 13 / .7); color: #f3e9d8; cursor: pointer; font-size: 16px; }
 .fans { margin: 0 0 18px; }
-.fans .jl { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 8px; }
+.fans .jl { margin-bottom: 8px; }
 .fans ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .fans li button { width: 100%; display: grid; grid-template-columns: 26px 1fr 90px 36px; align-items: center; gap: 8px; border: 0; background: none; padding: 3px 0; cursor: pointer; text-align: left; font-size: 13px; }
 .fans li img { width: 26px; height: 39px; object-fit: cover; border-radius: 2px; }
@@ -268,71 +254,128 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 .fans li em { font-style: normal; color: var(--muted); font-size: 12px; text-align: right; }
 .fans li button:hover span:first-of-type { text-decoration: underline; }
 
-/* ---------- For you (computed in-browser from Jev's fan matrix) ---------- */
-.upnext { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--rule); display: none; }
+/* ---------- For you ---------- */
+.upnext { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--rule); display: none; }
 .upnext.on { display: block; }
-.upnext h3 { margin: 0 0 4px; font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.1; }
+.upnext h3 { margin: 0 0 4px; font-size: 26px; line-height: 1.1; }
 .upnext .sub { margin: 0 0 14px; color: var(--muted); font-size: 13.5px; }
 .upnext .cta { color: var(--muted); font-size: 14px; margin: 0; }
 .upnext .cta b { color: var(--ink); }
 .picks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
-@media (max-width: 719px) { .picks { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 42%; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px 4px; } .picks::-webkit-scrollbar { display: none; } }
-.pk { border: 0; padding: 0; background: none; text-align: left; cursor: pointer; display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: start; }
-@media (max-width: 719px) { .pk { grid-template-columns: 1fr; } }
+.pk { border: 0; padding: 0; background: none; text-align: left; cursor: pointer; display: grid; grid-template-columns: 60px 1fr; gap: 10px; align-items: start; }
 .pk img { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; box-shadow: var(--shadow); transition: transform .2s; }
 .pk:hover img { transform: translateY(-3px); }
-.pk .n { font-family: "Instrument Serif", serif; font-size: 30px; line-height: 1; color: var(--accent); }
+.pk .n { font-size: 26px; line-height: 1; color: var(--accent); }
 .pk b { display: block; font-size: 13.5px; line-height: 1.2; margin: 2px 0 4px; }
 .pk small { display: block; color: var(--muted); font-size: 11.5px; line-height: 1.35; }
-.fy {
-  position: absolute; left: 6px; bottom: 6px; z-index: 2; pointer-events: none; display: none;
-  background: rgb(10 10 12 / .78); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 99px;
-  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-}
+.hero.compact .upnext { margin-top: 12px; padding-top: 12px; }
+.hero.compact .upnext h3 { font-size: 16px; font-family: "Inter Tight", sans-serif; font-weight: 600; margin-bottom: 8px; }
+.hero.compact .upnext .sub { display: none; }
+.hero.compact .pk { grid-template-columns: 34px 1fr; gap: 8px; align-items: center; }
+.hero.compact .pk .n { font-size: 18px; }
+.hero.compact .pk b { font-size: 12.5px; margin: 0; }
+.hero.compact .pk small { display: none; }
+.fy { position: absolute; left: 6px; bottom: 6px; z-index: 2; pointer-events: none; display: none; background: rgb(30 26 22 / .8); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 99px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 .fy.on { display: block; }
 .fy.hot { background: var(--accent); }
-.view-colour .fy { display: none; }
 .why { margin: 0 0 18px; padding: 12px 14px; border-left: 3px solid var(--accent); background: var(--chip); border-radius: 0 8px 8px 0; font-size: 13.5px; }
 .why b { font-size: 15px; }
-.nd.pick .ring { stroke: #fff !important; stroke-width: 3.5; }
-.nd.pick { filter: drop-shadow(0 0 8px rgb(255 90 110 / .9)); }
-.nd.seen image { opacity: .55; }
 
-footer { border-top: 2px solid var(--ink); padding: 18px 0 40px; color: var(--muted); font-size: 12.5px; }
+/* ---------- recap & ending ---------- */
+.recap { border-top: 2px solid var(--ink); padding-top: 34px; padding-bottom: 40px; }
+.recap h2 { font-size: clamp(32px, 4.4vw, 56px); line-height: 1; margin: 0 0 8px; }
+.recap .dek { color: var(--muted); margin: 0 0 26px; max-width: 640px; }
+.recap .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px 40px; }
+.recap h4 { margin: 0 0 10px; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 600; }
+.bars { display: grid; gap: 9px; }
+.bars div { display: grid; grid-template-columns: 110px 1fr 58px; gap: 10px; align-items: center; font-size: 13.5px; }
+.bars .m { height: 8px; border-radius: 99px; background: var(--chip); overflow: hidden; }
+.bars .m b { display: block; height: 100%; background: var(--seen); border-radius: 99px; }
+.bars em { font-style: normal; color: var(--muted); font-size: 12.5px; text-align: right; }
+.tastebar { display: flex; height: 26px; border-radius: 4px; overflow: hidden; margin: 4px 0 8px; }
+.tastebar span { flex: 1; }
+.recap .taste { font-size: 14px; margin: 0; }
+.finale { text-align: center; padding: 30px 0 10px; }
+.finale .over { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 12px; }
+.finale h2 { font-size: clamp(44px, 7vw, 92px); }
+.finale p { color: var(--muted); max-width: 560px; margin: 12px auto 0; }
+.finale .strip { display: flex; height: 10px; max-width: 680px; margin: 26px auto 0; border-radius: 99px; overflow: hidden; }
+.finale .strip span { flex: 1; }
+
+/* ---------- toast (milestones, notices) ---------- */
+.toast { position: fixed; left: 50%; bottom: 24px; z-index: 60; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; width: min(460px, calc(100vw - 32px)); background: var(--ink); color: var(--paper); border-radius: 12px; padding: 16px 44px 16px 18px; box-shadow: 0 20px 50px rgb(30 26 22 / .35); }
+.toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.toast .over { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #E9B8A8; font-weight: 600; margin: 0 0 4px; }
+.toast .t { font-size: 24px; line-height: 1.1; margin: 0; }
+.toast p { margin: 6px 0 0; font-size: 13.5px; color: #D9CDBB; }
+.toast .close { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border: 0; border-radius: 50%; background: transparent; color: var(--paper); font-size: 18px; cursor: pointer; }
+
+footer { border-top: 1px solid var(--rule); padding-top: 18px; padding-bottom: 40px; color: var(--muted); font-size: 12.5px; }
 footer a { color: inherit; }
-.empty { padding: 60px 0; text-align: center; color: var(--muted); display: none; }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
-@media print {
-  .bar, footer, .boxes, dialog { display: none !important; }
-  body { background: #fff; color: #000; }
-  .card.dim { opacity: 1; filter: none; }
+
+@media (max-width: 719px) {
+  .bar { position: static; }
+  .axis { top: 0; }
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 10px; }
+  .meta b { font-size: 12px; }
+  .searchbox { max-width: none; }
+  .mini { display: none; }
+  .picks { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 42%; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px 4px; }
+  .picks::-webkit-scrollbar { display: none; }
+  .pk { grid-template-columns: 1fr; }
+  .hero.compact .picks { grid-auto-columns: 62%; }
+  .hero.compact .pk { grid-template-columns: 34px 1fr; }
+  .progress, .hero.compact .progress { grid-template-columns: 1fr; }
+  .progress .big { font-size: 28px; }
+  .swatches { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
+  .sw { flex: none; }
+  .sky { height: 64vh; min-height: 420px; }
+  .skyhint .d { display: none; } .skyhint .m { display: inline; }
+  .bars div { grid-template-columns: 96px 1fr 52px; }
 }
+@media (max-width: 600px) { .axis, .trow { grid-template-columns: 110px 1fr; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media print { .bar, footer, .st, dialog, .toast, .upnext { display: none !important; } body { background: #fff; } }
 </style>
 </head>
 <body>
-<header class="wrap">
-  <p class="brand"><i>Previously On…</i></p>
-  <p class="kicker">An interactive recap · The New York Times list, 2026</p>
-  <h1>The 100 Best TV Shows<br>of the 21<sup>st</sup> Century</h1>
-  <p class="lede">From <i>Breaking Bad</i> to <i>Scandal</i>. Tick the ones you've seen, flag the ones you want to see, and let the wall of covers tell you what to watch next.</p>
-  <div class="tally">
-    <div><div class="n" id="nSeen">0</div><div class="l">Seen</div></div>
-    <div><div class="n" id="nWant">0</div><div class="l">Want to see</div></div>
-    <div class="meter" aria-hidden="true"><i class="s" id="mSeen"></i><i class="w" id="mWant"></i></div>
+<header class="hero wrap" id="hero">
+  <div class="top">
+    <p class="brand disp soft">Previously On…</p>
+    <p class="kicker">An interactive recap · The New York Times list, 2026</p>
+    <h1 class="disp">The 100 Best TV Shows<br> of the 21<sup>st</sup> Century</h1>
+    <button class="aboutbtn" id="about" aria-expanded="false">About this project</button>
+  </div>
+  <p class="lede">From <i>Breaking Bad</i> to <i>Scandal</i>: work through the century's best television, keep a watchlist, and let Jev, TypeSafe AI's decision model, tell you what to watch next.</p>
+  <div class="intro-actions">
+    <button class="btn start" id="start">Start exploring ↓</button>
+    <p class="local" id="localnote">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span>Mark each show <span class="legend"><span><i style="background:var(--seen)">✓</i>Seen</span><span><i style="background:var(--want)">+</i>Watchlist</span><span><i style="background:var(--skip)">–</i>Won't watch</span></span>.
+      <b>Your marks stay in this browser only.</b> No account, nothing is sent anywhere, and clearing your browser data erases them.</span>
+    </p>
+  </div>
+  <div class="progress">
+    <p class="big disp" id="bigTally">You've seen <b>0</b> of 100</p>
+    <div class="meter" aria-hidden="true"><i class="s" id="mSeen"></i><i class="w" id="mWant"></i><i class="k" id="mSkip"></i></div>
+    <p class="small" id="subTally">0 on your watchlist · 0 won't watch</p>
   </div>
   <section class="upnext" id="upnext" aria-live="polite"></section>
 </header>
 
-<div class="bar">
-  <div class="wrap">
+<div class="bar" id="bar">
+  <div class="wrap row">
     <div class="seg" role="group" aria-label="View">
       <button data-view="grid" aria-pressed="true">Poster</button>
       <button data-view="timeline" aria-pressed="false">Timeline</button>
       <button data-view="colour" aria-pressed="false" hidden>Jev colour</button>
       <button data-view="constellation" aria-pressed="false" hidden>Jev fans</button>
     </div>
-    <input class="search" id="q" type="search" placeholder="Search shows, networks…" aria-label="Search">
-    <select class="sort" id="sort" aria-label="Sort">
+    <div class="searchbox">
+      <input class="search" id="q" type="search" placeholder="Search shows, networks…" aria-label="Search shows" aria-describedby="count" autocomplete="off">
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <select class="sel" id="sort" aria-label="Sort">
       <option value="rank">Sort: NYT rank</option>
       <option value="year">Sort: premiere year</option>
       <option value="hue">Sort: cover colour</option>
@@ -341,17 +384,21 @@ footer a { color: inherit; }
       <option value="jev" hidden>Sort: Jev colour</option>
       <option value="foryou" hidden>Sort: Jev · for you</option>
     </select>
-    <div class="seg" role="group" aria-label="Show">
-      <button data-show="all" aria-pressed="true">All</button>
-      <button data-show="seen" aria-pressed="false">Seen</button>
-      <button data-show="want" aria-pressed="false">Want</button>
-      <button data-show="unseen" aria-pressed="false">Unseen</button>
-    </div>
+    <select class="sel" id="show" aria-label="Filter by your status">
+      <option value="all">Show: all</option>
+      <option value="seen">Seen</option>
+      <option value="watch">Watchlist</option>
+      <option value="unseen">Not seen yet</option>
+      <option value="skip">Won't watch</option>
+    </select>
     <span class="spacer"></span>
+    <div class="mini" aria-hidden="true"><span><b id="miniN">0</b> / 100 seen</span><div class="meter"><i class="s" id="miniS"></i><i class="w" id="miniW"></i></div></div>
     <button class="btn" id="pick">🎲 Pick for me</button>
-    <button class="btn ghost" id="theme" aria-label="Toggle dark mode">◐</button>
   </div>
-  <div class="wrap chips" id="chips" role="group" aria-label="Genre"></div>
+  <div class="wrap row2">
+    <button class="minibrand disp soft" id="minibrand" title="Back to top">Previously On…</button>
+    <div class="chips" id="chips" role="group" aria-label="Genre"></div>
+  </div>
 </div>
 
 <main class="wrap" id="main">
@@ -367,24 +414,27 @@ footer a { color: inherit; }
     </div>
   </section>
   <div class="timeline" id="timeline"></div>
-  <div class="empty" id="empty">Nothing matches. Try another filter.</div>
+  <div class="empty" id="empty"></div>
 </main>
 
+<section class="recap wrap" id="recap" aria-labelledby="recapTitle"></section>
+
 <footer class="wrap">
-  <b><i>Previously On…</i></b> is a fan project. Ranking: <a href="https://www.nytimes.com/interactive/2026/arts/television/best-tv-shows-21st-century.html">The New York Times</a> (500+ voters, 2026). Cover art &amp; summaries via <a href="https://www.tvmaze.com">TVmaze</a>.<span id="jevcredit"></span> Your checkmarks are saved only in this browser. Keys: <kbd>/</kbd> search · <kbd>←</kbd><kbd>→</kbd> browse · <kbd>S</kbd> seen · <kbd>W</kbd> want · <kbd>R</kbd> random.
+  <b><i>Previously On…</i></b> is a fan project. Ranking: <a href="https://www.nytimes.com/interactive/2026/arts/television/best-tv-shows-21st-century.html">The New York Times</a> (500+ voters, 2026). Cover art &amp; summaries via <a href="https://www.tvmaze.com">TVmaze</a>.<span id="jevcredit"></span> Your marks are saved only in this browser. Keys: <kbd>/</kbd> search · <kbd>←</kbd><kbd>→</kbd> browse · <kbd>S</kbd> seen · <kbd>W</kbd> watchlist · <kbd>X</kbd> won't watch · <kbd>R</kbd> random.
 </footer>
 
 <dialog id="dlg" aria-labelledby="dTitle"></dialog>
 <div class="peek" id="peek"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="sr-only" id="sr" aria-live="polite"></div>
 
 <script>
 (async () => {
   const shows = await (await fetch("shows.json")).json();
-  // Jev's answers are precomputed offline (jev_colour.py); the site never calls the API.
+  // Jev's answers are precomputed offline (jev_colour.py, jev_constellation.py); the site never calls the API.
   const jev = await fetch("jev/colour.json").then(r => r.ok ? r.json() : null).catch(() => null);
   const fans = await fetch("jev/fans.json").then(r => r.ok ? r.json() : null).catch(() => null);
-  // fan(a, b) = Jev's % that a devoted fan of a would love b (directed); link(a, b) = symmetric average
-  const fan = (a, b) => fans?.rows[a]?.[b - 1] ?? 0;
+  const fan = (a, b) => fans?.rows[a]?.[b - 1] ?? 0;           // directed: % a fan of a would love b
   const link = (a, b) => (fan(a, b) + fan(b, a)) / 2;
   const alsoLove = (n, k = 5) => fans ? fans.rows[n].map((p, i) => [i + 1, p]).filter(([b]) => b !== n).sort((x, y) => y[1] - x[1]).slice(0, k) : [];
   const $ = s => document.querySelector(s);
@@ -392,10 +442,23 @@ footer a { color: inherit; }
     get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
   };
-  const marks = store.get("nyt100.marks", {});           // { rank: {s:bool, w:bool} }
+
+  /* ---- one status per show: "seen" | "watch" | "skip" ---- */
+  const LABEL = { seen: "Seen", watch: "Watchlist", skip: "Won't watch" };
+  const ICON = {
+    seen: `<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    watch: `<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11l-4-3-4 3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`,
+    skip: `<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4.1 11.9l7.8-7.8" stroke="currentColor" stroke-width="1.7"/></svg>`,
+  };
+  let status = store.get("nyt100.status", null);
+  if (!status) {                                        // migrate the old {s, w} checkboxes; seen wins
+    status = {};
+    Object.entries(store.get("nyt100.marks", {})).forEach(([r, m]) => { if (m?.s) status[r] = "seen"; else if (m?.w) status[r] = "watch"; });
+    store.set("nyt100.status", status);
+  }
+  const st = n => status[n] || null;
   const state = { view: "grid", show: "all", genre: null, colour: null, q: "", sort: "rank" };
 
-  // colour helpers for the hue sort
   const hsl = hex => {
     const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
     const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, d = mx - mn;
@@ -404,17 +467,16 @@ footer a { color: inherit; }
     return { h: (h * 60 + 360) % 360, s, l };
   };
   shows.forEach(s => { s.hsl = hsl(s.color); s.years = s.start + (s.end === s.start ? "" : "–" + (s.end ?? "present")); });
+  const byRank = n => shows[n - 1];
 
   /* ---- Jev colour helpers ---- */
   const P = jev?.palette || {};
   const PORDER = Object.keys(P);
   const jevOf = n => jev?.shows[n];
-  // horizontal bands sized by probability; low confidence = softer, blurrier edges
-  function quilt(n) {
+  function quilt(n) {                                   // bands sized by probability; low confidence = softer edges
     const j = jevOf(n); if (!j) return "transparent";
     const parts = Object.entries(j.probs).filter(([, p]) => p >= 0.02);
-    const tot = parts.reduce((a, [, p]) => a + p, 0);
-    const soft = (1 - j.confidence) * 14;             // % of tile height used for blending
+    const tot = parts.reduce((a, [, p]) => a + p, 0), soft = (1 - j.confidence) * 14;
     let at = 0; const stops = [];
     parts.forEach(([k, p], i) => {
       const a = at, b = at + (p / tot) * 100; at = b;
@@ -425,15 +487,15 @@ footer a { color: inherit; }
   }
   const confWord = c => c >= .85 ? "certain" : c >= .6 ? "fairly sure" : c >= .4 ? "undecided" : "torn";
 
-  /* ---- For you: rank unseen shows from Jev's fan answers (no API calls) ---- */
+  /* ---- For you: rank unwatched shows from Jev's fan answers (no API calls) ---- */
   const MIN_SEEN = 3;
   let fy = null;                                        // Map rank -> { score, because: [[seenRank, pct], ...] }
   function computeForYou() {
-    const seen = shows.filter(s => marks[s.rank]?.s).map(s => s.rank);
+    const seen = shows.filter(s => st(s.rank) === "seen").map(s => s.rank);
     if (!fans || seen.length < MIN_SEEN) return fy = null;
     fy = new Map();
     shows.forEach(b => {
-      if (marks[b.rank]?.s) return;
+      if (st(b.rank) === "seen" || st(b.rank) === "skip") return;
       const from = seen.map(a => [a, fan(a, b.rank)]).sort((x, y) => y[1] - x[1]);
       const mean = from.reduce((t, [, p]) => t + p, 0) / from.length;
       const top = from.slice(0, 3), topMean = top.reduce((t, [, p]) => t + p, 0) / top.length;
@@ -441,7 +503,7 @@ footer a { color: inherit; }
     });
     return fy;
   }
-  const fyTop = (k = 5, filter = () => true) => fy ? [...fy].filter(([n]) => filter(byRank(n))).sort((a, b) => b[1].score - a[1].score).slice(0, k) : [];
+  const fyTop = (k = 5) => fy ? [...fy].sort((a, b) => b[1].score - a[1].score).slice(0, k) : [];
 
   /* ---- genre chips ---- */
   const counts = {};
@@ -457,41 +519,38 @@ footer a { color: inherit; }
       <button class="poster" aria-label="${s.rank}. ${s.title}, ${s.years}">
         <span class="rank">${s.rank}</span>
         <img src="${s.cover}" alt="" loading="${s.rank <= 30 ? "eager" : "lazy"}" onload="this.classList.add('ok')">
-        <span class="flags"><span class="s"></span><span class="w"></span></span>
+        <span class="flag" aria-hidden="true"></span>
         <span class="fy"></span>
         ${jev ? `<span class="jev" style="--jev:${quilt(s.rank)};--d:${((s.rank - 1) % 10) * 0.035 + Math.floor((s.rank - 1) / 10) * 0.05}s"></span>` : ""}
       </button>
       <div class="meta"><b>${s.title}</b><small>${s.years}</small>
-        <div class="boxes">
-          <label class="box"><input type="checkbox" class="s" data-k="s">Seen</label>
-          <label class="box"><input type="checkbox" class="w" data-k="w">Want</label>
+        <div class="st" role="group" aria-label="Your status for ${s.title}">
+          ${["seen", "watch", "skip"].map(k => `<button data-st="${k}" aria-pressed="false" aria-label="${LABEL[k]}" title="${LABEL[k]}">${ICON[k]}</button>`).join("")}
         </div>
       </div>
     </div>`).join("");
   const cards = new Map([...grid.children].map(el => [+el.dataset.rank, el]));
 
-  // tilt + glare
-  grid.addEventListener("pointermove", e => {
+  grid.addEventListener("pointermove", e => {           // tilt + glare
     const p = e.target.closest(".poster"); if (!p || e.pointerType !== "mouse") return;
     const r = p.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
     p.style.transform = `rotateY(${(x - .5) * 16}deg) rotateX(${(.5 - y) * 16}deg) translateZ(10px)`;
     p.style.setProperty("--gx", x * 100 + "%"); p.style.setProperty("--gy", y * 100 + "%");
   });
   grid.addEventListener("pointerout", e => { const p = e.target.closest(".poster"); if (p && !p.contains(e.relatedTarget)) p.style.transform = ""; });
-  grid.addEventListener("click", e => { const p = e.target.closest(".poster"); if (p) open(+p.closest(".card").dataset.rank); });
-  grid.addEventListener("change", e => {
-    const i = e.target; if (!i.dataset.k) return;
-    setMark(+i.closest(".card").dataset.rank, i.dataset.k, i.checked);
+  grid.addEventListener("click", e => {
+    const b = e.target.closest(".st button");
+    if (b) return toggleStatus(+b.closest(".card").dataset.rank, b.dataset.st);
+    const p = e.target.closest(".poster"); if (p) open(+p.closest(".card").dataset.rank);
   });
 
   /* ---- timeline ---- */
   const Y0 = 2000, Y1 = 2026.5, pct = y => ((y - Y0) / (Y1 - Y0)) * 100;
   const tl = $("#timeline");
-  const ticks = [2000, 2005, 2010, 2015, 2020, 2025].map(y => `<span style="left:${pct(y)}%">${y}</span>`).join("");
-  tl.innerHTML = `<div class="axis"><span>Show</span><div class="ticks">${ticks}</div></div>` +
+  tl.innerHTML = `<div class="axis"><span>Show</span><div class="ticks">${[2000, 2005, 2010, 2015, 2020, 2025].map(y => `<span style="left:${pct(y)}%">${y}</span>`).join("")}</div></div>` +
     shows.map(s => {
       const a = pct(s.start), b = pct((s.end ?? 2026.4) + 1);
-      return `<div class="trow" data-rank="${s.rank}" style="--c:${s.color}">
+      return `<div class="trow" data-rank="${s.rank}" style="--c:${s.color}" tabindex="0" role="button" aria-label="${s.rank}. ${s.title}, ${s.years}">
         <div class="lbl"><em>${s.rank}</em>${s.title}</div>
         <div class="track"><span class="span${s.end ? "" : " open"}" style="left:${a}%;width:${Math.min(b, 100) - a}%"></span></div>
       </div>`;
@@ -501,21 +560,20 @@ footer a { color: inherit; }
   tl.addEventListener("pointermove", e => {
     const r = e.target.closest(".trow");
     if (!r || e.pointerType !== "mouse") { peek.style.opacity = 0; return; }
-    const s = byRank(+r.dataset.rank);
-    peek.style.backgroundImage = `url(${s.cover})`; peek.style.opacity = 1;
-    const x = Math.min(e.clientX + 18, innerWidth - 140), y = Math.min(e.clientY - 90, innerHeight - 200);
-    peek.style.transform = `translate(${x}px, ${Math.max(8, y)}px)`;
+    peek.style.backgroundImage = `url(${byRank(+r.dataset.rank).cover})`; peek.style.opacity = 1;
+    peek.style.transform = `translate(${Math.min(e.clientX + 18, innerWidth - 140)}px, ${Math.max(8, Math.min(e.clientY - 90, innerHeight - 200))}px)`;
   });
   tl.addEventListener("pointerleave", () => peek.style.opacity = 0);
   tl.addEventListener("click", e => { const r = e.target.closest(".trow"); if (r) open(+r.dataset.rank); });
+  tl.addEventListener("keydown", e => { const r = e.target.closest(".trow"); if (r && e.key === "Enter") open(+r.dataset.rank); });
 
-  /* ---- filtering & sorting ---- */
-  const byRank = n => shows[n - 1];
+  /* ---- filtering & sorting: one rule for every view ---- */
   const matches = s => {
-    const m = marks[s.rank] || {};
-    if (state.show === "seen" && !m.s) return false;
-    if (state.show === "want" && !m.w) return false;
-    if (state.show === "unseen" && m.s) return false;
+    const k = st(s.rank);
+    if (state.show === "seen" && k !== "seen") return false;
+    if (state.show === "watch" && k !== "watch") return false;
+    if (state.show === "skip" && k !== "skip") return false;
+    if (state.show === "unseen" && (k === "seen" || k === "skip")) return false;
     if (state.genre && !s.genres.includes(state.genre)) return false;
     if (state.view === "colour" && state.colour && jevOf(s.rank)?.choice !== state.colour) return false;
     if (state.q) {
@@ -524,12 +582,12 @@ footer a { color: inherit; }
     }
     return true;
   };
+  const filtering = () => state.q || state.genre || state.show !== "all" || (state.view === "colour" && state.colour);
   const sorters = {
     rank: (a, b) => a.rank - b.rank,
     year: (a, b) => a.start - b.start || a.rank - b.rank,
     alpha: (a, b) => a.title.replace(/^The /, "").localeCompare(b.title.replace(/^The /, "")),
     light: (a, b) => b.hsl.l - a.hsl.l,
-    // greys go last, then by hue
     foryou: (a, b) => (fy?.get(b.rank)?.score ?? -1) - (fy?.get(a.rank)?.score ?? -1) || a.rank - b.rank,
     jev: (a, b) => {
       const A = jevOf(a.rank), B = jevOf(b.rank);
@@ -537,40 +595,78 @@ footer a { color: inherit; }
     },
     hue: (a, b) => ((a.hsl.s < .15) - (b.hsl.s < .15)) || (a.hsl.h - b.hsl.h) || (b.hsl.l - a.hsl.l),
   };
+  const esc = t => t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   function render() {
     const order = [...shows].sort(sorters[state.sort]);
-    const firstRects = new Map([...cards].map(([k, el]) => [k, el.getBoundingClientRect()]));
+    const animate = state.view === "grid" && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const before = animate ? new Map([...cards].map(([k, el]) => [k, el.classList.contains("hide") ? null : el.getBoundingClientRect()])) : null;
     let visible = 0;
     order.forEach(s => {
       const ok = matches(s); visible += ok;
-      const c = cards.get(s.rank); c.classList.toggle("dim", !ok); grid.appendChild(c);
-      const r = rows.get(s.rank); r.classList.toggle("dim", !ok); tl.appendChild(r);
+      const c = cards.get(s.rank); c.classList.toggle("hide", !ok); grid.appendChild(c);
+      const r = rows.get(s.rank); r.classList.toggle("hide", !ok); tl.appendChild(r);
     });
-    // FLIP animation for re-sorting
-    if (state.view === "grid" && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      cards.forEach((el, k) => {
-        const a = firstRects.get(k), b = el.getBoundingClientRect();
-        const dx = a.left - b.left, dy = a.top - b.top;
-        if (dx || dy) el.animate([{ transform: `translate(${dx}px,${dy}px)` }, { transform: "none" }], { duration: 550, easing: "cubic-bezier(.2,.8,.2,1)" });
-      });
-    }
-    $("#empty").style.display = visible ? "none" : "block";
+    if (animate) cards.forEach((el, k) => {             // FLIP for cards that stay visible
+      const a = before.get(k); if (!a || el.classList.contains("hide")) return;
+      const b = el.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
+      if (dx || dy) el.animate([{ transform: `translate(${dx}px,${dy}px)` }, { transform: "none" }], { duration: 500, easing: "cubic-bezier(.2,.8,.2,1)" });
+    });
+    // result count + empty state (the constellation keeps its layout and dims instead)
+    const noun = n => `${n} show${n === 1 ? "" : "s"}`;
+    $("#count").textContent = filtering() ? (state.view === "constellation" ? `${visible} lit` : noun(visible)) : "";
+    const empty = $("#empty");
+    if (!visible && state.view !== "constellation") {
+      empty.style.display = "block";
+      empty.innerHTML = state.q
+        ? `<p class="disp">No shows match “${esc(state.q)}”</p><button class="btn" data-clear="q">Clear search</button>`
+        : `<p class="disp">No shows match these filters</p><button class="btn" data-clear="all">Clear filters</button>`;
+    } else empty.style.display = "none";
     if (cnodes) {
       cnodes.forEach((el, k) => el.classList.toggle("dim", !matches(byRank(k))));
       clinks.forEach(el => el.classList.toggle("dim", !(matches(byRank(+el.dataset.a)) && matches(byRank(+el.dataset.b)))));
     }
   }
-  function paintMarks() {
-    let s = 0, w = 0;
+  $("#empty").addEventListener("click", e => {
+    const b = e.target.closest("[data-clear]"); if (!b) return;
+    $("#q").value = ""; state.q = "";
+    if (b.dataset.clear === "all") {
+      state.genre = null; state.show = "all"; state.colour = null; $("#show").value = "all";
+      $("#chips").querySelectorAll(".chip").forEach((x, i) => x.setAttribute("aria-pressed", i === 0));
+      $("#jevhead").querySelectorAll(".sw").forEach((x, i) => x.setAttribute("aria-pressed", i === 0));
+    }
+    render(); $("#q").focus();
+  });
+
+  /* ---- progress, milestones, recap ---- */
+  const MILESTONES = {
+    10: ["Pilot season", "Ten shows in. You've watched a tenth of the century's best television."],
+    25: ["A quarter of the canon", "Twenty-five down. That's a full season's worth of greatness."],
+    50: ["Midseason finale", "Halfway. Fifty of the hundred shows that defined the century."],
+    75: ["Renewed for another season", "Seventy-five seen. Only the last act remains."],
+    100: ["Series finale", "All 100. You've seen every show on the list."],
+  };
+  const celebrated = new Set(store.get("nyt100.milestones", []));
+  const tally = () => {
+    const c = { seen: 0, watch: 0, skip: 0 };
+    Object.values(status).forEach(k => c[k] !== undefined && c[k]++);
+    return c;
+  };
+  function paintStatus() {
+    const c = tally();
     shows.forEach(x => {
-      const m = marks[x.rank] || {}, c = cards.get(x.rank);
-      c.classList.toggle("seen", !!m.s); c.classList.toggle("want", !!m.w);
-      c.querySelector("input.s").checked = !!m.s; c.querySelector("input.w").checked = !!m.w;
-      s += !!m.s; w += !!m.w;
+      const k = st(x.rank), card = cards.get(x.rank);
+      ["seen", "watch", "skip"].forEach(n => card.classList.toggle(n, k === n));
+      card.querySelector(".flag").innerHTML = k ? ICON[k] : "";
+      card.querySelectorAll(".st button").forEach(b => b.setAttribute("aria-pressed", b.dataset.st === k));
+      const r = rows.get(x.rank); ["seen", "watch", "skip"].forEach(n => r.classList.toggle(n, k === n));
     });
-    $("#nSeen").textContent = s; $("#nWant").textContent = w;
-    $("#mSeen").style.width = s + "%"; $("#mWant").style.width = w + "%";
-    paintForYou(s);
+    $("#bigTally").innerHTML = c.seen === 100 ? `You've seen <b>all 100</b>` : `You've seen <b>${c.seen}</b> of 100`;
+    $("#subTally").textContent = `${c.watch} on your watchlist · ${c.skip} won't watch · ${100 - c.seen - c.watch - c.skip} unmarked`;
+    $("#mSeen").style.width = c.seen + "%"; $("#mWant").style.width = c.watch + "%"; $("#mSkip").style.width = c.skip + "%";
+    $("#miniN").textContent = c.seen; $("#miniS").style.width = c.seen + "%"; $("#miniW").style.width = c.watch + "%";
+    paintForYou(c.seen);
+    paintRecap(c);
+    return c;
   }
   function paintForYou(nSeen) {
     if (!fans) return;
@@ -585,28 +681,87 @@ footer a { color: inherit; }
     up.classList.add("on");
     if (!fy) {
       const need = MIN_SEEN - nSeen;
-      up.innerHTML = `<p class="cta"><b>Up next, according to Jev.</b> Tick ${need} more show${need === 1 ? "" : "s"} you've seen and Jev will line up what to watch next, based on what fans of your shows love.</p>`;
+      up.innerHTML = `<p class="cta"><b>Up next, according to Jev.</b> Mark ${need} more show${need === 1 ? "" : "s"} as seen and Jev will line up what to watch next, based on what fans of your shows love.</p>`;
+    } else if (!fy.size) {
+      up.innerHTML = `<p class="cta"><b>Up next, according to Jev:</b> nothing. There's nothing left on the list that you haven't seen or ruled out.</p>`;
     } else {
-      const top = fyTop(5);
-      up.innerHTML = `<h3>Up next, according to Jev</h3>
-        <p class="sub">Ranked from Jev's answers about what fans of your ${nSeen} seen shows would love. Tick more to sharpen it.</p>
-        <div class="picks">${top.map(([n, f]) => `<button class="pk" data-go="${n}">
+      up.innerHTML = `<h3 class="disp">Up next, according to Jev</h3>
+        <p class="sub">Ranked from Jev's answers about what fans of your ${nSeen} seen shows would love. Mark more to sharpen it.</p>
+        <div class="picks">${fyTop(5).map(([n, f]) => `<button class="pk" data-go="${n}">
           <img src="${byRank(n).cover}" alt="">
-          <span><span class="n">${f.score}%</span><b>${byRank(n).title}</b>
+          <span><span class="n disp">${f.score}%</span><b>${byRank(n).title}</b>
           <small>because you've seen ${f.because.map(([a]) => `<i>${byRank(a).title}</i>`).join(" &amp; ")}</small></span></button>`).join("")}</div>`;
     }
     if (cnodes) {
       const picks = new Set(fyTop(5).map(([n]) => n));
-      cnodes.forEach((el, k) => { el.classList.toggle("pick", picks.has(k)); el.classList.toggle("seen", !!marks[k]?.s); });
+      cnodes.forEach((el, k) => { el.classList.toggle("pick", picks.has(k)); el.classList.toggle("seen", st(k) === "seen"); el.classList.toggle("skip", st(k) === "skip"); });
     }
   }
   $("#upnext").addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (b) open(+b.dataset.go); });
-  function setMark(rank, k, v) {
-    marks[rank] = { ...(marks[rank] || {}), [k]: v };
-    if (k === "s" && v) marks[rank].w = false;           // seen supersedes want
-    store.set("nyt100.marks", marks);
-    paintMarks(); cards.get(rank).querySelector(".poster").classList.remove("pop");
-    void cards.get(rank).offsetWidth; cards.get(rank).querySelector(".poster").classList.add("pop");
+
+  function paintRecap(c) {
+    const el = $("#recap"), seen = shows.filter(s => st(s.rank) === "seen");
+    if (!seen.length) {
+      el.innerHTML = `<h2 class="disp" id="recapTitle">Previously on… you</h2>
+        <p class="dek">Your personal recap appears here as you mark shows: which decades you've covered, the genres and networks you gravitate to, and the colour of your taste according to Jev.</p>`;
+      return;
+    }
+    const all = c.seen + c.watch + c.skip === 100;
+    const finale = c.seen === 100
+      ? `<div class="finale"><p class="over">Series finale</p><h2 class="disp soft" id="recapTitle">That's a wrap.</h2>
+          <p>You've seen all 100 of the century's best shows, from <i>Breaking Bad</i> to <i>Scandal</i>. Previously on… everything.</p>
+          <div class="strip">${shows.map(s => `<span style="background:${jev ? P[jevOf(s.rank).choice].hex : s.color}"></span>`).join("")}</div></div>`
+      : all ? `<div class="finale"><p class="over">Archive complete</p><h2 class="disp soft" id="recapTitle">You've been through all 100.</h2>
+          <p>Every show is marked: ${c.seen} seen, ${c.watch} on your watchlist, ${c.skip} you'll skip. Your watchlist is the next season.</p></div>` : "";
+    const decade = y => y < 2010 ? "2000s" : y < 2020 ? "2010s" : "2020s";
+    const dec = ["2000s", "2010s", "2020s"].map(d => [d, shows.filter(s => decade(s.start) === d).length, seen.filter(s => decade(s.start) === d).length]);
+    const tallyBy = f => { const m = {}; seen.forEach(s => f(s).forEach(k => k && (m[k] = (m[k] || 0) + 1))); return Object.entries(m).sort((a, b) => b[1] - a[1]); };
+    const totalBy = f => { const m = {}; shows.forEach(s => f(s).forEach(k => k && (m[k] = (m[k] || 0) + 1))); return m; };
+    const gAll = totalBy(s => s.genres), nAll = totalBy(s => [s.network]);
+    const bars = (list, totals) => `<div class="bars">${list.slice(0, 5).map(([k, n]) => `<div><span>${k}</span><span class="m"><b style="width:${(n / totals[k]) * 100}%"></b></span><em>${n} of ${totals[k]}</em></div>`).join("")}</div>`;
+    let taste = "";
+    if (jev) {
+      const cc = {}; seen.forEach(s => { const k = jevOf(s.rank).choice; cc[k] = (cc[k] || 0) + 1; });
+      const top = Object.entries(cc).sort((a, b) => b[1] - a[1])[0][0];
+      taste = `<div><h4>The colour of your taste</h4><div class="tastebar">${[...seen].sort((a, b) => PORDER.indexOf(jevOf(a.rank).choice) - PORDER.indexOf(jevOf(b.rank).choice)).map(s => `<span style="background:${P[jevOf(s.rank).choice].hex}" title="${s.title}"></span>`).join("")}</div>
+        <p class="taste">Mostly <b>${P[top].label.toLowerCase()}</b>: ${P[top].desc.split(":")[1]?.trim() || ""}.</p></div>`;
+    }
+    el.innerHTML = `${finale}
+      ${finale ? "" : `<h2 class="disp" id="recapTitle">Previously on… you</h2>`}
+      <p class="dek">${c.seen} of 100 seen${c.watch ? `, ${c.watch} on your watchlist` : ""}. Here's what your century of television looks like so far.</p>
+      <div class="grid3">
+        <div><h4>By decade of premiere</h4><div class="bars">${dec.map(([d, t, n]) => `<div><span>${d}</span><span class="m"><b style="width:${(n / t) * 100}%"></b></span><em>${n} of ${t}</em></div>`).join("")}</div></div>
+        <div><h4>Genres you've covered</h4>${bars(tallyBy(s => s.genres), gAll)}</div>
+        <div><h4>Networks you've watched</h4>${bars(tallyBy(s => [s.network]), nAll)}</div>
+        ${taste}
+      </div>`;
+  }
+
+  const toast = $("#toast");
+  let toastTimer;
+  function showToast(over, title, body, ms = 7000) {
+    toast.innerHTML = `<p class="over">${over}</p><p class="t disp soft">${title}</p>${body ? `<p>${body}</p>` : ""}<button class="close" aria-label="Dismiss">×</button>`;
+    toast.classList.add("on"); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("on"), ms);
+  }
+  toast.addEventListener("click", e => e.target.closest(".close") && toast.classList.remove("on"));
+
+  function toggleStatus(rank, k) {
+    const prev = st(rank), next = prev === k ? null : k;   // clicking the active state clears it
+    if (next) status[rank] = next; else delete status[rank];
+    store.set("nyt100.status", status);
+    const t = byRank(rank).title;
+    $("#sr").textContent = !next ? `${t}: status cleared.` : prev ? `${t} moved from ${LABEL[prev]} to ${LABEL[next]}.` : `${t} marked ${LABEL[next]}.`;
+    const c = paintStatus();
+    const pop = cards.get(rank).querySelector(".poster"); pop.classList.remove("pop"); void pop.offsetWidth; pop.classList.add("pop");
+    if (!store.get("nyt100.savedNotice", false) && next) {
+      store.set("nyt100.savedNotice", true);
+      showToast("Saved on this device", "Only in this browser", "No account and nothing sent anywhere. Clearing your browser data will erase your marks.");
+    }
+    if (next === "seen" && MILESTONES[c.seen] && !celebrated.has(c.seen)) {
+      celebrated.add(c.seen); store.set("nyt100.milestones", [...celebrated]);
+      const [title, body] = MILESTONES[c.seen];
+      showToast(`Milestone · ${c.seen} of 100`, title, body, 9000);
+    }
     if (state.show !== "all" || state.sort === "foryou") render();
     if (dlg.open && +dlg.dataset.rank === rank) open(rank);
   }
@@ -615,18 +770,12 @@ footer a { color: inherit; }
   document.querySelectorAll("[data-view]").forEach(b => b.onclick = () => {
     state.view = b.dataset.view;
     document.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x === b));
-    $("#main").classList.toggle("view-timeline", state.view === "timeline");
-    $("#main").classList.toggle("view-colour", state.view === "colour");
-    $("#main").classList.toggle("view-constellation", state.view === "constellation");
+    ["timeline", "colour", "constellation"].forEach(v => $("#main").classList.toggle(`view-${v}`, state.view === v));
     if (state.view === "constellation") buildConstellation();
     render();
     store.set("nyt100.view", state.view);
   });
-  document.querySelectorAll("[data-show]").forEach(b => b.onclick = () => {
-    state.show = b.dataset.show;
-    document.querySelectorAll("[data-show]").forEach(x => x.setAttribute("aria-pressed", x === b));
-    render();
-  });
+  $("#show").onchange = e => { state.show = e.target.value; render(); };
   $("#chips").onclick = e => {
     const b = e.target.closest(".chip"); if (!b) return;
     state.genre = b.dataset.genre || null;
@@ -635,35 +784,41 @@ footer a { color: inherit; }
   };
   $("#q").oninput = e => { state.q = e.target.value.trim().toLowerCase(); render(); };
   $("#sort").onchange = e => { state.sort = e.target.value; render(); };
-  $("#theme").onclick = () => {
-    const dark = document.documentElement.dataset.theme
-      ? document.documentElement.dataset.theme === "dark"
-      : matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.dataset.theme = dark ? "light" : "dark";
-    store.set("nyt100.theme", document.documentElement.dataset.theme);
+  const toContent = () => scrollTo({ top: $("#bar").getBoundingClientRect().top + scrollY + 1, behavior: "smooth" });
+  $("#start").onclick = toContent;
+  $("#minibrand").onclick = () => scrollTo({ top: 0, behavior: "smooth" });
+  $("#about").onclick = () => {
+    const full = $("#hero").classList.toggle("compact") === false;
+    $("#about").setAttribute("aria-expanded", full); $("#about").textContent = full ? "Show less" : "About this project";
   };
   $("#pick").onclick = pick;
   function pick() {
-    if (fy) {                                           // Jev mode: random among the best-scoring unseen shows (want-list gets a boost)
+    if (fy) {                                           // Jev mode: best-scoring unwatched shows, watchlist boosted
       const ranked = [...fy].filter(([n]) => matches(byRank(n)))
-        .map(([n, f]) => [n, f.score + (marks[n]?.w ? 6 : 0)]).sort((a, b) => b[1] - a[1]).slice(0, 6);
+        .map(([n, f]) => [n, f.score + (st(n) === "watch" ? 6 : 0)]).sort((a, b) => b[1] - a[1]).slice(0, 6);
       if (ranked.length) return spotlight(byRank(ranked[Math.floor(Math.random() * ranked.length)][0]));
     }
-    let pool = shows.filter(s => matches(s) && !(marks[s.rank] || {}).s);
-    const wants = pool.filter(s => (marks[s.rank] || {}).w);
-    if (wants.length) pool = wants;                      // favour the want-list
-    if (!pool.length) pool = shows.filter(matches);
+    let pool = shows.filter(s => matches(s) && !st(s.rank));
+    const wl = shows.filter(s => matches(s) && st(s.rank) === "watch");
+    if (wl.length) pool = wl;
+    if (!pool.length) pool = shows.filter(s => matches(s) && st(s.rank) !== "skip");
     if (!pool.length) return;
     spotlight(pool[Math.floor(Math.random() * pool.length)]);
   }
   function spotlight(s) {
-    if (state.view === "timeline" || state.view === "constellation") return open(s.rank);
+    if (state.view !== "grid" && state.view !== "colour") return open(s.rank);
     const c = cards.get(s.rank);
     c.scrollIntoView({ behavior: "smooth", block: "center" });
     c.classList.remove("spotlight"); void c.offsetWidth; c.classList.add("spotlight");
     setTimeout(() => open(s.rank), 1100);
   }
 
+  /* ---- sticky bar: height var + mini brand once the masthead scrolls away ---- */
+  const bar = $("#bar");
+  new ResizeObserver(() => document.documentElement.style.setProperty("--barh", bar.offsetHeight + "px")).observe(bar);
+  new IntersectionObserver(([e]) => bar.classList.toggle("stuck", !e.isIntersecting), { threshold: 0 }).observe($("#hero"));
+
+  /* ---- dialog panels ---- */
   function jevRead(n) {
     const j = jevOf(n); if (!j) return "";
     const parts = Object.entries(j.probs).filter(([, p]) => p >= 0.02);
@@ -674,7 +829,6 @@ footer a { color: inherit; }
       <div class="jconf">Confidence <span class="m"><b style="width:${j.confidence * 100}%"></b></span> ${j.confidence.toFixed(2)} · ${confWord(j.confidence)}</div>
     </div>`;
   }
-
   function whyRead(n) {
     const f = fy?.get(n); if (!f) return "";
     return `<div class="why"><b>${f.score}% for you</b> · Jev thinks fans of ${f.because.map(([a, p]) => `<i>${byRank(a).title}</i> (${p}%)`).join(" and ")} would love this.</div>`;
@@ -693,16 +847,14 @@ footer a { color: inherit; }
     return cbuilding = (async () => {
       const d3 = await import("https://cdn.jsdelivr.net/npm/d3@7/+esm");
       const nodes = shows.map(s => { const w = 24 + (101 - s.rank) / 100 * 22; return { id: s.rank, s, w, h: w * 1.5 }; });
-      // edges: each show's 3 strongest fan links, plus every link >= 78
       const key = (a, b) => a < b ? `${a}-${b}` : `${b}-${a}`, E = new Map();
-      shows.forEach(a => {
+      shows.forEach(a => {                               // each show's 3 strongest fan links, plus every link >= 78
         shows.filter(b => b.rank !== a.rank).map(b => [b.rank, link(a.rank, b.rank)])
           .sort((x, y) => y[1] - x[1]).forEach(([b, w], i) => { if (i < 3 || w >= 78) E.set(key(a.rank, b), { source: a.rank, target: b, w }); });
       });
       const links = [...E.values()];
       const nbrs = new Map(shows.map(s => [s.rank, new Set([s.rank])]));
       links.forEach(l => { nbrs.get(l.source).add(l.target); nbrs.get(l.target).add(l.source); });
-
       const sim = d3.forceSimulation(nodes)
         .force("link", d3.forceLink(links).id(d => d.id).distance(l => 34 + (100 - l.w) * 2.4).strength(l => 0.08 + ((l.w - 50) / 50) ** 2))
         .force("charge", d3.forceManyBody().strength(-190))
@@ -720,30 +872,24 @@ footer a { color: inherit; }
       nodes.forEach(n => defs.append("clipPath").attr("id", `cp${n.id}`).append("rect")
         .attr("x", -n.w / 2).attr("y", -n.h / 2).attr("width", n.w).attr("height", n.h).attr("rx", 3));
       const nd = g.append("g").selectAll("g").data(nodes).join("g").attr("class", "nd")
-        .attr("transform", d => `translate(${d.x},${d.y})`).attr("tabindex", 0)
-        .attr("aria-label", d => `${d.s.rank}. ${d.s.title}`);
+        .attr("transform", d => `translate(${d.x},${d.y})`).attr("tabindex", 0).attr("aria-label", d => `${d.s.rank}. ${d.s.title}`);
       nd.append("image").attr("href", d => d.s.cover).attr("x", d => -d.w / 2).attr("y", d => -d.h / 2)
         .attr("width", d => d.w).attr("height", d => d.h).attr("clip-path", d => `url(#cp${d.id})`).attr("preserveAspectRatio", "xMidYMid slice");
       nd.append("rect").attr("class", "ring").attr("x", d => -d.w / 2 - 2).attr("y", d => -d.h / 2 - 2)
-        .attr("width", d => d.w + 4).attr("height", d => d.h + 4).attr("rx", 4)
-        .attr("stroke", d => jev ? P[jevOf(d.id).choice].hex : "#fff");
+        .attr("width", d => d.w + 4).attr("height", d => d.h + 4).attr("rx", 4).attr("stroke", d => jev ? P[jevOf(d.id).choice].hex : "#fff");
       nd.append("text").attr("y", d => d.h / 2 + 13).text(d => d.s.title.length > 26 ? d.s.title.slice(0, 24) + "…" : d.s.title);
       cnodes = new Map(nd.nodes().map(el => [d3.select(el).datum().id, el]));
       clinks = g.selectAll(".lk").nodes();
-      paintMarks();
+      paintStatus();
 
-      // fit + zoom
       const xs = nodes.map(n => n.x), ys = nodes.map(n => n.y), pad = 60;
       const bx = [Math.min(...xs) - pad, Math.max(...xs) + pad], by = [Math.min(...ys) - pad, Math.max(...ys) + pad];
-      const zoom = d3.zoom().scaleExtent([0.3, 5]).on("zoom", e => {
-        g.attr("transform", e.transform); svg.classed("zoomed", e.transform.k > 1.9 * fitK);
-      });
       let fitK = 1;
+      const zoom = d3.zoom().scaleExtent([0.3, 5]).on("zoom", e => { g.attr("transform", e.transform); svg.classed("zoomed", e.transform.k > 1.9 * fitK); });
       const fit = (t = 600) => {
         const { width: W, height: H } = svg.node().getBoundingClientRect();
         fitK = Math.min(W / (bx[1] - bx[0]), H / (by[1] - by[0]));
-        const tr = d3.zoomIdentity.translate(W / 2, H / 2).scale(fitK).translate(-(bx[0] + bx[1]) / 2, -(by[0] + by[1]) / 2);
-        svg.transition().duration(t).call(zoom.transform, tr);
+        svg.transition().duration(t).call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(fitK).translate(-(bx[0] + bx[1]) / 2, -(by[0] + by[1]) / 2));
       };
       svg.call(zoom).on("dblclick.zoom", null);
       fit(0);
@@ -752,15 +898,13 @@ footer a { color: inherit; }
       $("#zout").onclick = () => svg.transition().call(zoom.scaleBy, 1 / 1.5);
       $("#zfit").onclick = () => fit();
 
-      // hover focus
       const tip = $("#ctip"), sky = $("#sky");
       const focus = n => {
         const hi = nbrs.get(n);
         svg.classed("focus", true);
         nd.classed("hi", d => hi.has(d.id));
         g.selectAll(".lk").classed("hi", d => d.source.id === n || d.target.id === n);
-        const top = alsoLove(n, 3).map(([b, p]) => `${byRank(b).title} <span>${p}%</span>`).join("<br>");
-        tip.innerHTML = `<b>${n}. ${byRank(n).title}</b><span>Fans also love</span><br>${top}`;
+        tip.innerHTML = `<b>${n}. ${byRank(n).title}</b><span>Fans also love</span><br>${alsoLove(n, 3).map(([b, p]) => `${byRank(b).title} <span>${p}%</span>`).join("<br>")}`;
         tip.style.opacity = 1;
       };
       const blur = () => { svg.classed("focus", false); nd.classed("hi", false); g.selectAll(".lk").classed("hi", false); tip.style.opacity = 0; };
@@ -780,32 +924,33 @@ footer a { color: inherit; }
 
   /* ---- dialog ---- */
   const dlg = $("#dlg");
-  function visibleOrder() { return [...grid.children].map(c => +c.dataset.rank).filter(r => matches(byRank(r))); }
+  const visibleOrder = () => [...grid.children].map(c => +c.dataset.rank).filter(r => matches(byRank(r)));
   function open(rank) {
-    const s = byRank(rank), m = marks[rank] || {};
-    const light = s.hsl.l > .6 ? "#111" : s.color;
+    const s = byRank(rank), k = st(rank);
     dlg.dataset.rank = rank;
     dlg.style.setProperty("--c", s.color);
-    dlg.style.setProperty("--c2", s.hsl.s > .25 && s.hsl.l > .25 && s.hsl.l < .75 ? s.color : "var(--accent)");
     const ord = visibleOrder(), i = ord.indexOf(rank);
-    const prev = byRank(ord[(i - 1 + ord.length) % ord.length] ?? rank), next = byRank(ord[(i + 1) % ord.length] ?? rank);
+    const prev = byRank(i < 0 ? rank : ord[(i - 1 + ord.length) % ord.length]), next = byRank(i < 0 ? rank : ord[(i + 1) % ord.length]);
+    const btn = (key, on, off) => `<button class="toggle" data-st="${key}" aria-pressed="${k === key}">${ICON[key]}${k === key ? on : off}</button>`;
     dlg.innerHTML = `
       <button class="x" aria-label="Close">×</button>
       <div class="dlg">
         <div class="art"><img src="${s.cover}" alt="${s.title} cover art"></div>
         <div class="body">
-          <div class="num">No. ${s.rank}</div>
-          <h2 id="dTitle">${s.title}</h2>
+          <div class="num">No. ${s.rank} of 100</div>
+          <h2 class="disp" id="dTitle">${s.title}</h2>
           <div class="sub">${s.years}${s.network ? " · " + s.network : ""}</div>
           <div class="tags">${s.genres.map(g => `<span>${g}</span>`).join("")}</div>
           <p class="sum">${s.summary}</p>
           ${whyRead(rank)}
           ${jevRead(rank)}
           ${fansRead(rank)}
-          <div class="acts">
-            <button class="toggle s" aria-pressed="${!!m.s}" data-k="s">${m.s ? "✓ Seen it" : "I've seen it"}</button>
-            <button class="toggle w" aria-pressed="${!!m.w}" data-k="w">${m.w ? "★ On my list" : "I want to see it"}</button>
+          <div class="acts" role="group" aria-label="Your status">
+            ${btn("seen", "Seen it", "I've seen it")}
+            ${btn("watch", "On my watchlist", "Add to watchlist")}
+            ${btn("skip", "Won't watch", "Won't watch")}
           </div>
+          <p class="savednote">One status per show · saved in this browser only.</p>
           <div class="nav">
             <button data-go="${prev.rank}">← ${prev.rank}. ${prev.title}</button>
             <a href="https://www.tvmaze.com/shows/${s.tvmaze}" target="_blank" rel="noopener">TVmaze ↗</a>
@@ -818,16 +963,15 @@ footer a { color: inherit; }
   dlg.addEventListener("click", e => {
     if (e.target === dlg || e.target.closest(".x")) return dlg.close();
     if (e.target.closest("[data-go]") && state.view === "constellation") document.activeElement?.blur?.();
-    const t = e.target.closest(".toggle"); if (t) return setMark(+dlg.dataset.rank, t.dataset.k, t.getAttribute("aria-pressed") !== "true");
+    const t = e.target.closest(".toggle"); if (t) return toggleStatus(+dlg.dataset.rank, t.dataset.st);
     const g = e.target.closest("[data-go]"); if (g) open(+g.dataset.go);
   });
-
   dlg.addEventListener("close", () => { if (state.view === "constellation") { document.activeElement?.blur?.(); $("#csvg").classList.remove("focus"); $("#ctip").style.opacity = 0; } });
 
   /* ---- keyboard ---- */
   addEventListener("keydown", e => {
     if (e.target.matches("input[type=search]")) { if (e.key === "Escape") e.target.blur(); return; }
-    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.metaKey || e.ctrlKey || e.altKey || e.target.matches("select")) return;
     if (e.key === "/") { e.preventDefault(); $("#q").focus(); return; }
     if (e.key.toLowerCase() === "r") return pick();
     if (!dlg.open) return;
@@ -836,20 +980,20 @@ footer a { color: inherit; }
       const ord = visibleOrder(), i = ord.indexOf(r), d = e.key === "ArrowRight" ? 1 : -1;
       if (ord.length) open(ord[(i + d + ord.length) % ord.length]);
     }
-    if (e.key.toLowerCase() === "s") setMark(r, "s", !(marks[r] || {}).s);
-    if (e.key.toLowerCase() === "w") setMark(r, "w", !(marks[r] || {}).w);
+    const key = { s: "seen", w: "watch", x: "skip" }[e.key.toLowerCase()];
+    if (key) toggleStatus(r, key);
   });
 
-  /* ---- Jev colour header ---- */
+  /* ---- Jev headers + credits ---- */
   if (jev) {
     document.querySelector('[data-view="colour"]').hidden = false;
     document.querySelector('#sort option[value="jev"]').hidden = false;
-    const counts = {}; Object.values(jev.shows).forEach(j => counts[j.choice] = (counts[j.choice] || 0) + 1);
+    const cc = {}; Object.values(jev.shows).forEach(j => cc[j.choice] = (cc[j.choice] || 0) + 1);
     $("#jevhead").innerHTML = `
       <p>We asked <b>Jev</b>, TypeSafe AI's decision model, to pick the colour that best captures each show's mood from a palette of ${PORDER.length}.
       Each tile shows Jev's full answer: stripes mean it was split between colours, <b>soft edges mean it was unsure</b>. Hover a tile to peek at the cover; open it for Jev's full read.</p>
       <div class="swatches"><button class="sw" data-c="" aria-pressed="true"><i style="--sw:conic-gradient(${PORDER.map(k => P[k].hex).join(",")})"></i>All colours</button>${
-        PORDER.filter(k => counts[k]).map(k => `<button class="sw" data-c="${k}" aria-pressed="false" title="${P[k].desc}" style="--sw:${P[k].hex}"><i></i>${P[k].label}<span class="c">${counts[k]}</span></button>`).join("")}</div>`;
+        PORDER.filter(k => cc[k]).map(k => `<button class="sw" data-c="${k}" aria-pressed="false" title="${P[k].desc}" style="--sw:${P[k].hex}"><i></i>${P[k].label}<span class="c">${cc[k]}</span></button>`).join("")}</div>`;
     $("#jevhead").onclick = e => {
       const b = e.target.closest(".sw"); if (!b) return;
       state.colour = b.dataset.c || null;
@@ -858,25 +1002,27 @@ footer a { color: inherit; }
     };
     $("#jevcredit").innerHTML = ` Colours chosen by <a href="https://typesafe.ai">Jev</a> (TypeSafe AI): ${jev.calls} calls, ${Math.round(jev.input_tokens / 1000)}K tokens, about $${jev.cost_usd.toFixed(3)}.`;
   }
-
   if (fans) {
     document.querySelector('[data-view="constellation"]').hidden = false;
     document.querySelector('#sort option[value="foryou"]').hidden = false;
     const lonely = shows.map(s => [s, Math.max(...shows.filter(b => b.rank !== s.rank).map(b => link(s.rank, b.rank)))])
       .sort((a, b) => a[1] - b[1]).slice(0, 3).map(([s]) => `<i>${s.title}</i>`);
-    const strongest = shows.flatMap(a => shows.filter(b => b.rank > a.rank).map(b => [a, b, link(a.rank, b.rank)]))
-      .sort((x, y) => y[2] - x[2])[0];
+    const strongest = shows.flatMap(a => shows.filter(b => b.rank > a.rank).map(b => [a, b, link(a.rank, b.rank)])).sort((x, y) => y[2] - x[2])[0];
     $("#constelhead").innerHTML = `<p>We asked <b>Jev</b> ${(fans.calls * (fans.calls - 1)).toLocaleString()} yes-or-no questions: <i>would a devoted fan of this show also love that one?</i>
-      Shows pull together when their fans overlap, and brighter lines mean stronger overlap. Each cover's outline is its Jev colour.
+      Shows pull together when their fans overlap, and brighter lines mean stronger overlap. Each cover's outline is its Jev colour. Filters dim the map rather than moving it.
       Tightest pair: <i>${strongest[0].title}</i> &amp; <i>${strongest[1].title}</i> (${Math.round(strongest[2])}%). Loneliest shows: ${lonely.join(", ")}.</p>`;
     $("#jevcredit").innerHTML += ` Fan links: ${fans.calls} calls, ${Math.round(fans.input_tokens / 1000)}K tokens, about $${fans.cost_usd.toFixed(3)}.`;
   }
 
   /* ---- init ---- */
-  const t = store.get("nyt100.theme", null); if (t) document.documentElement.dataset.theme = t;
+  if (store.get("nyt100.visited", false)) $("#hero").classList.add("compact");   // full editorial hero on the first visit only
+  store.set("nyt100.visited", true);
+  const c0 = tally();                                   // don't re-celebrate milestones already passed (e.g. migrated data)
+  Object.keys(MILESTONES).forEach(m => { if (c0.seen >= +m) celebrated.add(+m); });
+  store.set("nyt100.milestones", [...celebrated]);
   const v = store.get("nyt100.view", "grid");
   if (v === "timeline" || (v === "colour" && jev) || (v === "constellation" && fans)) document.querySelector(`[data-view="${v}"]`).click();
-  paintMarks(); render();
+  paintStatus(); render();
 })();
 </script>
 </body>
