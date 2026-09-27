@@ -79,6 +79,16 @@ h1 { font-size: clamp(44px, 7.4vw, 104px); line-height: .94; letter-spacing: -.0
 .hint { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
 .note { max-width: 640px; font-size: 18px; margin: 36px 0 0; }
 .note b { font-weight: 600; }
+/* three findings, each a way into the quilt */
+.findings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 24px; max-width: 900px; }
+.fd { text-align: left; border: 1px solid var(--rule); background: var(--paper); border-radius: 12px; padding: 16px 16px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-height: 150px; transition: border-color .15s, transform .15s, box-shadow .15s; }
+.fd:hover { border-color: var(--cobalt); transform: translateY(-2px); box-shadow: var(--shadow); }
+.fd .lab { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.fd .val { font-size: 22px; line-height: 1.1; }
+.fd .sw { display: flex; height: 8px; border-radius: 99px; overflow: hidden; margin-top: 4px; }
+.fd .sw span { height: 100%; }
+.fd .det { font-size: 13px; color: var(--muted); margin-top: auto; }
+.fd .go { font-size: 12.5px; color: var(--cobalt); font-weight: 600; }
 
 /* ---------- palette ---------- */
 .palette { border-top: 1px solid var(--rule); margin-top: 80px; padding-top: 64px; padding-bottom: 72px; }
@@ -157,6 +167,8 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
   .key { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
   .key::-webkit-scrollbar { display: none; }
   .swb { flex: none; }
+  .findings { grid-template-columns: 1fr; }
+  .fd { min-height: 0; }
   .pick { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
   .result { grid-template-columns: 110px 1fr; gap: 20px; }
   .result h3 { font-size: 24px; }
@@ -189,6 +201,7 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
     <div class="quilt" id="quilt" role="list"></div>
     <p class="hint">Each tile is Jev's full answer: stripes mean it split its choice between colours, and soft edges mean it was unsure. Hover for the cover; click for the details.</p>
     <p class="note" id="note"></p>
+    <div class="findings" id="findings" role="group" aria-label="Three things in Jev's answers"></div>
   </section>
 
   <section class="palette" aria-labelledby="h-palette">
@@ -273,7 +286,24 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
 
   /* ---- the one observation ---- */
   const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
-  $("#note").innerHTML = `${top[1]} of the 100 shows came out <b>${P[top[0]].label.toLowerCase()}</b>. <i>Breaking Bad</i> itself was a split decision: ${pct(bb[0][1])} ${P[bb[0][0]].label.toLowerCase()}, ${pct(bb[1][1])} ${P[bb[1][0]].label.toLowerCase()}.`;
+  $("#note").innerHTML = `<i>Breaking Bad</i> was a split decision: ${pct(bb[0][1])} ${P[bb[0][0]].label.toLowerCase()}, ${pct(bb[1][1])} ${P[bb[1][0]].label.toLowerCase()}.`;
+
+  /* ---- findings: most common colour, most certain, most torn ---- */
+  const byConf = shows.map(s => s.rank).sort((a, b) => J(b).confidence - J(a).confidence);
+  const certain = byConf[0], torn = byConf[byConf.length - 1];
+  const mixBar = n => `<span class="sw">${Object.entries(J(n).probs).filter(([, p]) => p >= .02).map(([k, p]) => `<span style="flex:${p};background:${P[k].hex}"></span>`).join("")}</span>`;
+  const tornTop = Object.entries(J(torn).probs).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k]) => P[k].label.toLowerCase());
+  $("#findings").innerHTML = [
+    `<button class="fd" data-colour="${top[0]}"><span class="lab">Most common colour</span><span class="val disp">${P[top[0]].label}</span><span class="sw"><span style="flex:1;background:${P[top[0]].hex}"></span></span><span class="det">${top[1]} of 100 shows. Prestige TV loves a grey institution.</span><span class="go">See them in the quilt →</span></button>`,
+    `<button class="fd" data-open="${certain}"><span class="lab">Most certain</span><span class="val disp">${byRank(certain).title}</span>${mixBar(certain)}<span class="det">${pct(J(certain).probs[J(certain).choice])} ${P[J(certain).choice].label.toLowerCase()}, confidence ${J(certain).confidence.toFixed(2)}.</span><span class="go">Jev's answer →</span></button>`,
+    `<button class="fd" data-open="${torn}"><span class="lab">Most torn</span><span class="val disp">${byRank(torn).title}</span>${mixBar(torn)}<span class="det">Split between ${tornTop.slice(0, -1).join(", ")} and ${tornTop.at(-1)}. Confidence ${J(torn).confidence.toFixed(2)}.</span><span class="go">Jev's answer →</span></button>`,
+  ].join("");
+  $("#findings").onclick = e => {
+    const b = e.target.closest(".fd"); if (!b) return;
+    if (b.dataset.open) return open(+b.dataset.open);
+    $(`#key [data-c="${b.dataset.colour}"]`).click();
+    quilt.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+  };
 
   /* ---- your TV palette: combines Jev's existing answers, no new AI calls ---- */
   let watched = new Set(store.get("nyt100.watched", null) ??      // first visit: carry over "seen" marks from the earlier version
