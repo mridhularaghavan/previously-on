@@ -1,0 +1,101 @@
+rank,title,years,network,jev_colour,jev_colour_hex,top_probability,confidence,confidence_label,second_colour,second_probability,third_colour,third_probability,p_desert_gold,p_blood_red,p_neon_pink,p_sunny_orange,p_leafy_green,p_sickly_green,p_sky_blue,p_midnight_blue,p_royal_purple,p_beige,p_steel_grey,p_black,p_pastel
+1,Breaking Bad,2008-2013,AMC,desert_gold,#d9a441,0.55,0.5,undecided,sickly_green,0.41,black,0.03,0.55,0.0,0.0,0.0,0.0,0.41,0.0,0.01,0.0,0.0,0.0,0.03,0.0
+2,The Wire,2002-2008,HBO,steel_grey,#77797c,0.98,0.98,certain,midnight_blue,0.02,pastel,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.02,0.0,0.0,0.98,0.0,0.0
+3,Mad Men,2007-2015,AMC,beige,#cbb89d,0.63,0.59,undecided,midnight_blue,0.31,steel_grey,0.04,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.31,0.0,0.63,0.04,0.0,0.01
+4,Succession,2018-2023,HBO,steel_grey,#77797c,0.54,0.51,undecided,midnight_blue,0.23,blood_red,0.09,0.01,0.09,0.0,0.0,0.0,0.01,0.0,0.23,0.08,0.02,0.54,0.02,0.0
+5,Fleabag,2016-2019,BBC Three,midnight_blue,#1d2e4f,0.4,0.34,torn,beige,0.19,neon_pink,0.17,0.02,0.01,0.17,0.01,0.0,0.0,0.0,0.4,0.0,0.19,0.06,0.11,0.03
+6,Game of Thrones,2011-2019,HBO,midnight_blue,#1d2e4f,0.37,0.31,torn,steel_grey,0.21,blood_red,0.2,0.0,0.2,0.0,0.0,0.0,0.0,0.0,0.37,0.05,0.0,0.21,0.17,0.0
+7,Veep,2012-2019,HBO,steel_grey,#77797c,0.9,0.88,certain,beige,0.09,sickly_green,0.01,0.0,0.0,0.0,0.0,0.0,0.01,0.0,0.0,0.0,0.09,0.9,0.0,0.0
+8,30 Rock,2006-2013,NBC,neon_pink,#e0457b,0.41,0.35,torn,beige,0.26,sunny_orange,0.15,0.0,0.0,0.41,0.15,0.0,0.0,0.04,0.0,0.0,0.26,0.14,0.0,0.0
+9,Curb Your Enthusiasm,2000-2024,HBO,desert_gold,#d9a441,0.47,0.41,undecided,beige,0.42,sunny_orange,0.08,0.47,0.0,0.0,0.08,0.0,0.01,0.01,0.0,0.0,0.42,0.01,0.0,0.0
+10,Atlanta,2016-2022,FX,midnight_blue,#1d2e4f,0.39,0.33,torn,neon_pink,0.32,sickly_green,0.08,0.02,0.0,0.32,0.01,0.0,0.08,0.0,0.39,0.07,0.01,0.01,0.03,0.06
+11,The Office (U.S.),2005-2013,NBC,beige,#cbb89d,0.97,0.97,certain,sunny_orange,0.02,steel_grey,0.01,0.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,0.0,0.97,0.01,0.0,0.0
+12,Arrested Development,2003-2019,Netflix,sunny_orange,#f08a3c,0.41,0.35,torn,beige,0.23,desert_gold,0.15,0.15,0.0,0.01,0.41,0.0,0.05,0.0,0.0,0.0,0.23,0.01,0.0,0.14
+13,Girls,2012-2017,HBO,pastel,#e8c9d6,0.85,0.83,fairly sure,beige,0.08,neon_pink,0.03,0.0,0.0,0.03,0.0,0.0,0.0,0.0,0.02,0.0,0.08,0.02,0.0,0.85
+14,Friday Night Lights,2006-2011,NBC,desert_gold,#d9a441,0.65,0.61,fairly sure,leafy_green,0.22,blood_red,0.07,0.65,0.07,0.0,0.03,0.22,0.0,0.0,0.02,0.0,0.0,0.01,0.0,0.0
+15,Six Feet Under,2001-2005,HBO,black,#141414,0.54,0.49,undecided,midnight_blue,0.26,steel_grey,0.15,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.26,0.0,0.02,0.15,0.54,0.02
+16,The Office (U.K.),2001-2003,BBC Two,steel_grey,#77797c,0.77,0.74,fairly sure,beige,0.23,neon_pink,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.23,0.77,0.0,0.0
+17,The Americans,2013-2018,FX,midnight_blue,#1d2e4f,0.37,0.31,torn,beige,0.27,steel_grey,0.23,0.0,0.0,0.0,0.0,0.0,0.12,0.0,0.37,0.0,0.27,0.23,0.01,0.0
+18,I May Destroy You,2020,BBC iPlayer,neon_pink,#e0457b,0.64,0.61,fairly sure,midnight_blue,0.24,sickly_green,0.04,0.0,0.0,0.64,0.0,0.0,0.04,0.0,0.24,0.01,0.01,0.01,0.01,0.04
+19,Chernobyl,2019,HBO,sickly_green,#7f8f3a,0.54,0.5,undecided,steel_grey,0.44,black,0.01,0.0,0.0,0.0,0.0,0.0,0.54,0.0,0.01,0.0,0.0,0.44,0.01,0.0
+20,The Crown,2016-2023,Netflix,royal_purple,#5d3a78,0.85,0.84,fairly sure,midnight_blue,0.08,steel_grey,0.07,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.08,0.85,0.0,0.07,0.0,0.0
+21,The White Lotus,2021-present,HBO,sky_blue,#7fb2d9,0.3,0.23,torn,sickly_green,0.25,neon_pink,0.21,0.05,0.0,0.21,0.04,0.0,0.25,0.3,0.01,0.01,0.01,0.0,0.01,0.11
+22,Lost,2004-2010,ABC,sickly_green,#7f8f3a,0.44,0.39,torn,leafy_green,0.27,midnight_blue,0.16,0.04,0.0,0.0,0.0,0.27,0.44,0.0,0.16,0.04,0.0,0.0,0.05,0.0
+23,The Comeback,2005-2026,HBO,neon_pink,#e0457b,0.85,0.83,fairly sure,beige,0.06,pastel,0.05,0.01,0.0,0.85,0.01,0.0,0.0,0.0,0.02,0.0,0.06,0.0,0.0,0.05
+24,Deadwood,2004-2006,HBO,desert_gold,#d9a441,0.75,0.73,fairly sure,black,0.08,blood_red,0.06,0.75,0.06,0.0,0.0,0.0,0.01,0.0,0.04,0.0,0.0,0.06,0.08,0.0
+25,The Leftovers,2014-2017,HBO,midnight_blue,#1d2e4f,0.46,0.42,undecided,steel_grey,0.31,sickly_green,0.18,0.0,0.0,0.0,0.0,0.0,0.18,0.0,0.46,0.0,0.01,0.31,0.04,0.0
+26,Black Mirror,2011-present,Netflix,black,#141414,0.73,0.7,fairly sure,midnight_blue,0.18,sickly_green,0.05,0.0,0.0,0.0,0.0,0.0,0.05,0.0,0.18,0.0,0.0,0.04,0.73,0.0
+27,Better Call Saul,2015-2022,AMC,desert_gold,#d9a441,0.41,0.36,torn,steel_grey,0.31,beige,0.12,0.41,0.0,0.0,0.0,0.0,0.02,0.01,0.1,0.0,0.12,0.31,0.02,0.01
+28,Band of Brothers,2001,HBO,steel_grey,#77797c,0.79,0.79,fairly sure,black,0.05,leafy_green,0.04,0.02,0.03,0.0,0.0,0.04,0.04,0.0,0.03,0.0,0.0,0.79,0.05,0.0
+29,Key & Peele,2012-2015,Comedy Central,neon_pink,#e0457b,0.37,0.32,torn,sunny_orange,0.33,black,0.1,0.01,0.07,0.37,0.33,0.0,0.01,0.0,0.01,0.03,0.06,0.01,0.1,0.0
+30,Severance,2022-present,Apple TV,sickly_green,#7f8f3a,0.47,0.42,undecided,steel_grey,0.43,beige,0.08,0.0,0.0,0.0,0.0,0.0,0.47,0.0,0.01,0.0,0.08,0.43,0.0,0.01
+31,Survivor,2000-present,CBS,desert_gold,#d9a441,0.56,0.52,undecided,leafy_green,0.37,sunny_orange,0.05,0.56,0.01,0.0,0.05,0.37,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+32,Andor,2022-2025,Disney+,steel_grey,#77797c,0.93,0.92,certain,midnight_blue,0.06,black,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.06,0.0,0.0,0.93,0.01,0.0
+33,Enlightened,2011-2013,HBO,desert_gold,#d9a441,0.45,0.41,undecided,beige,0.23,pastel,0.08,0.45,0.0,0.01,0.07,0.01,0.01,0.07,0.03,0.01,0.23,0.03,0.0,0.08
+34,Schitt's Creek,2015-2020,CBC,pastel,#e8c9d6,0.63,0.59,undecided,sunny_orange,0.29,leafy_green,0.03,0.0,0.0,0.02,0.29,0.03,0.0,0.03,0.0,0.0,0.0,0.0,0.0,0.63
+35,True Detective (Season 1),2014,HBO,midnight_blue,#1d2e4f,0.35,0.29,torn,black,0.29,sickly_green,0.21,0.14,0.0,0.0,0.0,0.0,0.21,0.0,0.35,0.0,0.0,0.01,0.29,0.0
+36,The Pitt,2025-present,HBO Max,steel_grey,#77797c,0.71,0.69,fairly sure,blood_red,0.27,midnight_blue,0.01,0.0,0.27,0.0,0.0,0.0,0.01,0.0,0.01,0.0,0.0,0.71,0.0,0.0
+37,Battlestar Galactica,2005-2009,Syfy,steel_grey,#77797c,0.51,0.46,undecided,midnight_blue,0.44,black,0.04,0.0,0.0,0.0,0.0,0.0,0.01,0.0,0.44,0.0,0.0,0.51,0.04,0.0
+38,Homeland,2011-2020,Paramount+ with Showtime,steel_grey,#77797c,0.58,0.55,undecided,midnight_blue,0.24,sickly_green,0.08,0.07,0.01,0.0,0.0,0.0,0.08,0.0,0.24,0.0,0.0,0.58,0.02,0.0
+39,Watchmen,2019,HBO,midnight_blue,#1d2e4f,0.46,0.4,undecided,sickly_green,0.21,black,0.2,0.02,0.01,0.0,0.0,0.0,0.21,0.0,0.46,0.0,0.0,0.1,0.2,0.0
+40,Adolescence,2025,Netflix,black,#141414,0.43,0.38,torn,steel_grey,0.38,midnight_blue,0.19,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.19,0.0,0.0,0.38,0.43,0.0
+41,Louie,2010-2015,FX,beige,#cbb89d,0.59,0.54,undecided,midnight_blue,0.26,steel_grey,0.11,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.26,0.0,0.59,0.11,0.01,0.01
+42,Hacks,2021-2026,HBO Max,neon_pink,#e0457b,0.91,0.89,certain,desert_gold,0.05,midnight_blue,0.04,0.05,0.0,0.91,0.0,0.0,0.0,0.0,0.04,0.0,0.0,0.0,0.0,0.0
+43,Peaky Blinders,2013-2022,BBC One,steel_grey,#77797c,0.49,0.44,undecided,black,0.46,midnight_blue,0.03,0.0,0.01,0.0,0.0,0.0,0.01,0.0,0.03,0.0,0.0,0.49,0.46,0.0
+44,BoJack Horseman,2014-2020,Netflix,midnight_blue,#1d2e4f,0.64,0.61,fairly sure,desert_gold,0.14,pastel,0.13,0.14,0.0,0.01,0.01,0.0,0.01,0.0,0.64,0.0,0.03,0.03,0.0,0.13
+45,Happy Valley,2014-2023,BBC One,steel_grey,#77797c,0.68,0.66,fairly sure,midnight_blue,0.16,black,0.13,0.0,0.0,0.0,0.0,0.01,0.01,0.0,0.16,0.0,0.0,0.68,0.13,0.0
+46,Broad City,2014-2019,Comedy Central,neon_pink,#e0457b,0.32,0.26,torn,sunny_orange,0.26,pastel,0.26,0.0,0.0,0.32,0.26,0.0,0.02,0.01,0.01,0.0,0.01,0.11,0.0,0.26
+47,Twin Peaks: The Return,2017,Paramount+ with Showtime,midnight_blue,#1d2e4f,0.39,0.33,torn,sickly_green,0.22,black,0.2,0.0,0.0,0.0,0.0,0.0,0.22,0.0,0.39,0.19,0.0,0.0,0.2,0.0
+48,House of Cards,2013-2018,Netflix,steel_grey,#77797c,0.64,0.6,fairly sure,midnight_blue,0.17,black,0.15,0.0,0.03,0.0,0.0,0.0,0.01,0.0,0.17,0.0,0.0,0.64,0.15,0.0
+49,Normal People,2020,BBC Three,pastel,#e8c9d6,0.58,0.54,undecided,midnight_blue,0.25,leafy_green,0.12,0.0,0.0,0.0,0.0,0.12,0.0,0.0,0.25,0.0,0.02,0.03,0.0,0.58
+50,Parks and Recreation,2009-2015,NBC,sunny_orange,#f08a3c,0.81,0.79,fairly sure,leafy_green,0.1,sky_blue,0.05,0.0,0.0,0.0,0.81,0.1,0.0,0.05,0.0,0.0,0.03,0.0,0.0,0.01
+51,The Good Place,2016-2020,NBC,pastel,#e8c9d6,0.74,0.71,fairly sure,sky_blue,0.18,royal_purple,0.04,0.0,0.0,0.01,0.03,0.0,0.0,0.18,0.0,0.04,0.0,0.0,0.0,0.74
+52,Downton Abbey,2010-2015,ITV1,royal_purple,#5d3a78,0.45,0.41,undecided,beige,0.16,pastel,0.15,0.02,0.01,0.0,0.0,0.14,0.0,0.0,0.06,0.45,0.16,0.01,0.0,0.15
+53,Stranger Things,2016-2025,Netflix,midnight_blue,#1d2e4f,0.45,0.39,torn,sickly_green,0.38,black,0.13,0.0,0.0,0.03,0.0,0.0,0.38,0.0,0.45,0.0,0.0,0.0,0.13,0.01
+54,The Bureau,2015-2020,Canal+,steel_grey,#77797c,0.76,0.74,fairly sure,midnight_blue,0.18,black,0.05,0.0,0.0,0.0,0.0,0.0,0.01,0.0,0.18,0.0,0.0,0.76,0.05,0.0
+55,Insecure,2016-2021,HBO,pastel,#e8c9d6,0.45,0.4,undecided,beige,0.27,midnight_blue,0.09,0.05,0.0,0.09,0.03,0.0,0.0,0.0,0.09,0.01,0.27,0.01,0.0,0.45
+56,Nathan for You,2013-2017,Comedy Central,beige,#cbb89d,0.37,0.31,torn,pastel,0.27,sickly_green,0.19,0.02,0.0,0.03,0.03,0.0,0.19,0.0,0.0,0.05,0.37,0.04,0.0,0.27
+57,I Think You Should Leave,2019-present,Netflix,sickly_green,#7f8f3a,0.42,0.36,torn,neon_pink,0.27,beige,0.14,0.01,0.0,0.27,0.06,0.0,0.42,0.0,0.0,0.06,0.14,0.0,0.0,0.04
+58,Chappelle's Show,2003-2006,Comedy Central,neon_pink,#e0457b,0.47,0.42,undecided,sunny_orange,0.23,black,0.21,0.02,0.01,0.47,0.23,0.0,0.0,0.0,0.04,0.02,0.0,0.0,0.21,0.0
+59,PEN15,2019-2021,Hulu,pastel,#e8c9d6,0.99,0.99,certain,neon_pink,0.01,blood_red,0.0,0.0,0.0,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.99
+60,Peep Show,2003-2015,Channel 4,beige,#cbb89d,0.74,0.72,fairly sure,midnight_blue,0.08,sickly_green,0.08,0.0,0.0,0.0,0.0,0.0,0.08,0.0,0.08,0.0,0.74,0.07,0.0,0.03
+61,RuPaul's Drag Race,2009-present,MTV,neon_pink,#e0457b,1.0,1.0,certain,beige,0.0,royal_purple,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+62,Slow Horses,2022-present,Apple TV,steel_grey,#77797c,0.98,0.98,certain,midnight_blue,0.01,sickly_green,0.01,0.0,0.0,0.0,0.0,0.0,0.01,0.0,0.01,0.0,0.0,0.98,0.0,0.0
+63,The Thick of It,2005-2012,BBC Four,steel_grey,#77797c,0.98,0.97,certain,beige,0.01,sickly_green,0.01,0.0,0.0,0.0,0.0,0.0,0.01,0.0,0.0,0.0,0.01,0.98,0.0,0.0
+64,Anthony Bourdain: Parts Unknown,2013-2018,CNN,desert_gold,#d9a441,0.63,0.59,undecided,sunny_orange,0.24,midnight_blue,0.09,0.63,0.0,0.0,0.24,0.0,0.0,0.0,0.09,0.0,0.0,0.03,0.01,0.0
+65,Mare of Easttown,2021,HBO,steel_grey,#77797c,0.49,0.45,undecided,midnight_blue,0.45,beige,0.02,0.0,0.0,0.0,0.0,0.02,0.0,0.0,0.45,0.0,0.02,0.49,0.02,0.0
+66,The Rehearsal,2022-present,HBO,beige,#cbb89d,0.42,0.38,torn,sickly_green,0.34,steel_grey,0.07,0.05,0.0,0.01,0.01,0.0,0.34,0.0,0.01,0.03,0.42,0.07,0.0,0.06
+67,The Handmaid's Tale,2017-2025,Hulu,blood_red,#9e1b24,1.0,0.99,certain,beige,0.0,sickly_green,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+68,Ozark,2017-2022,Netflix,midnight_blue,#1d2e4f,0.53,0.47,undecided,black,0.33,sickly_green,0.11,0.0,0.0,0.0,0.0,0.0,0.11,0.0,0.53,0.0,0.0,0.03,0.33,0.0
+69,Anthony Bourdain: No Reservations,2005-2012,Travel Channel,sunny_orange,#f08a3c,0.45,0.4,undecided,desert_gold,0.38,midnight_blue,0.1,0.38,0.0,0.01,0.45,0.0,0.0,0.01,0.1,0.0,0.0,0.02,0.03,0.0
+70,The Shield,2002-2008,FX,steel_grey,#77797c,0.7,0.67,fairly sure,black,0.2,midnight_blue,0.06,0.01,0.02,0.0,0.0,0.0,0.01,0.0,0.06,0.0,0.0,0.7,0.2,0.0
+71,Beef (Season 1),2023,Netflix,blood_red,#9e1b24,0.54,0.49,undecided,midnight_blue,0.22,steel_grey,0.1,0.08,0.54,0.0,0.0,0.0,0.01,0.0,0.22,0.0,0.02,0.1,0.03,0.0
+72,Squid Game,2021-2025,Netflix,sickly_green,#7f8f3a,0.75,0.72,fairly sure,blood_red,0.14,black,0.05,0.0,0.14,0.02,0.0,0.03,0.75,0.0,0.0,0.0,0.0,0.0,0.05,0.01
+73,Barry,2018-2023,HBO,midnight_blue,#1d2e4f,0.51,0.46,undecided,black,0.22,sickly_green,0.11,0.02,0.02,0.1,0.01,0.0,0.11,0.0,0.51,0.0,0.0,0.0,0.22,0.01
+74,The Bear,2022-2026,Hulu,steel_grey,#77797c,0.53,0.48,undecided,blood_red,0.15,midnight_blue,0.14,0.03,0.15,0.0,0.06,0.0,0.01,0.0,0.14,0.0,0.01,0.53,0.07,0.0
+75,Ted Lasso,2020-present,Apple TV,sunny_orange,#f08a3c,0.54,0.49,undecided,sky_blue,0.24,leafy_green,0.22,0.0,0.0,0.0,0.54,0.22,0.0,0.24,0.0,0.0,0.0,0.0,0.0,0.0
+76,Somebody Somewhere,2022-2024,HBO,pastel,#e8c9d6,0.31,0.25,torn,leafy_green,0.23,sky_blue,0.2,0.05,0.0,0.01,0.13,0.23,0.0,0.2,0.02,0.0,0.05,0.0,0.0,0.31
+77,Modern Family,2009-2020,ABC,sunny_orange,#f08a3c,0.97,0.96,certain,sky_blue,0.02,beige,0.01,0.0,0.0,0.0,0.97,0.0,0.0,0.02,0.0,0.0,0.01,0.0,0.0,0.0
+78,It's Always Sunny in Philadelphia,2005-present,FXX,sickly_green,#7f8f3a,0.7,0.68,fairly sure,sunny_orange,0.15,neon_pink,0.05,0.02,0.01,0.05,0.15,0.0,0.7,0.0,0.01,0.0,0.0,0.03,0.03,0.0
+79,The Good Wife,2009-2016,CBS,steel_grey,#77797c,0.88,0.86,certain,beige,0.09,midnight_blue,0.03,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.03,0.0,0.09,0.88,0.0,0.0
+80,How To With John Wilson,2020-2023,HBO,steel_grey,#77797c,0.36,0.3,torn,pastel,0.31,beige,0.17,0.0,0.0,0.0,0.02,0.0,0.03,0.0,0.11,0.0,0.17,0.36,0.0,0.31
+81,The Queen's Gambit,2020,Netflix,midnight_blue,#1d2e4f,0.44,0.39,torn,pastel,0.29,steel_grey,0.14,0.0,0.0,0.06,0.0,0.0,0.0,0.0,0.44,0.03,0.03,0.14,0.01,0.29
+82,Better Things,2016-2022,FX,pastel,#e8c9d6,0.55,0.51,undecided,beige,0.23,desert_gold,0.1,0.1,0.0,0.01,0.05,0.0,0.0,0.01,0.03,0.0,0.23,0.01,0.0,0.55
+83,Justified,2010-2015,FX,desert_gold,#d9a441,0.34,0.28,torn,steel_grey,0.27,black,0.16,0.34,0.05,0.0,0.0,0.03,0.02,0.0,0.13,0.0,0.0,0.27,0.16,0.0
+84,Planet Earth,2006,BBC One,leafy_green,#5b8c4a,1.0,0.99,certain,beige,0.0,sunny_orange,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+85,The Great British Baking Show,2010-present,Channel 4,pastel,#e8c9d6,0.75,0.72,fairly sure,sunny_orange,0.21,sky_blue,0.03,0.0,0.0,0.0,0.21,0.01,0.0,0.03,0.0,0.0,0.0,0.0,0.0,0.75
+86,Shogun,2024-present,Hulu,blood_red,#9e1b24,0.79,0.76,fairly sure,black,0.07,desert_gold,0.07,0.07,0.79,0.0,0.0,0.0,0.0,0.0,0.04,0.01,0.0,0.02,0.07,0.0
+87,Reservation Dogs,2021-2023,Hulu,desert_gold,#d9a441,0.57,0.53,undecided,pastel,0.2,leafy_green,0.11,0.57,0.0,0.0,0.06,0.11,0.0,0.02,0.03,0.0,0.0,0.0,0.0,0.2
+88,Dexter,2006-2013,Paramount+ with Showtime,black,#141414,0.43,0.37,torn,blood_red,0.3,midnight_blue,0.27,0.0,0.3,0.0,0.0,0.0,0.0,0.0,0.27,0.0,0.0,0.0,0.43,0.0
+89,Baby Reindeer,2024,Netflix,sickly_green,#7f8f3a,0.61,0.57,undecided,midnight_blue,0.28,black,0.07,0.0,0.0,0.0,0.0,0.0,0.61,0.0,0.28,0.0,0.01,0.03,0.07,0.0
+90,Eastbound & Down,2009-2013,HBO,leafy_green,#5b8c4a,0.65,0.61,fairly sure,sunny_orange,0.12,beige,0.08,0.03,0.0,0.03,0.12,0.65,0.01,0.0,0.02,0.0,0.08,0.02,0.0,0.04
+91,Catastrophe,2015-2019,Channel 4,blood_red,#9e1b24,0.34,0.28,torn,sunny_orange,0.19,pastel,0.17,0.0,0.34,0.03,0.19,0.0,0.0,0.02,0.02,0.0,0.1,0.13,0.0,0.17
+92,The Night Of,2016,HBO,steel_grey,#77797c,0.78,0.77,fairly sure,midnight_blue,0.2,black,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.0,0.0,0.78,0.02,0.0
+93,Station Eleven,2021-2022,HBO Max,midnight_blue,#1d2e4f,0.45,0.4,undecided,steel_grey,0.13,sickly_green,0.12,0.05,0.0,0.01,0.0,0.04,0.12,0.08,0.45,0.01,0.0,0.13,0.0,0.11
+94,The Diplomat,2023-present,Netflix,steel_grey,#77797c,0.84,0.82,fairly sure,midnight_blue,0.14,desert_gold,0.01,0.01,0.01,0.0,0.0,0.0,0.0,0.0,0.14,0.0,0.0,0.84,0.0,0.0
+95,House,2004-2012,FOX,steel_grey,#77797c,0.71,0.68,fairly sure,midnight_blue,0.15,sickly_green,0.11,0.01,0.01,0.0,0.0,0.0,0.11,0.0,0.15,0.0,0.0,0.71,0.01,0.0
+96,Halt and Catch Fire,2014-2017,AMC,steel_grey,#77797c,0.6,0.56,undecided,beige,0.23,midnight_blue,0.1,0.05,0.0,0.0,0.01,0.0,0.0,0.0,0.1,0.0,0.23,0.6,0.0,0.01
+97,Community,2009-2015,Yahoo! View,sunny_orange,#f08a3c,0.61,0.58,undecided,pastel,0.28,sky_blue,0.04,0.0,0.0,0.01,0.61,0.01,0.0,0.04,0.0,0.01,0.02,0.02,0.0,0.28
+98,The OA,2016-2019,Netflix,royal_purple,#5d3a78,0.63,0.59,undecided,midnight_blue,0.31,sickly_green,0.05,0.0,0.0,0.0,0.0,0.0,0.05,0.0,0.31,0.63,0.0,0.0,0.01,0.0
+99,Gilmore Girls,2000-2007,The CW,pastel,#e8c9d6,0.76,0.74,fairly sure,leafy_green,0.21,sunny_orange,0.02,0.0,0.0,0.0,0.02,0.21,0.0,0.01,0.0,0.0,0.0,0.0,0.0,0.76
+100,Scandal,2012-2018,ABC,blood_red,#9e1b24,0.35,0.28,torn,black,0.28,steel_grey,0.19,0.0,0.35,0.0,0.0,0.0,0.0,0.0,0.13,0.04,0.0,0.19,0.28,0.0
