@@ -1,0 +1,16 @@
+# How *Previously On…* came together
+
+A weekend project, built with Claude Code, from September 26 to 27, 2026.
+
+- **The spark.** Two things came together: The New York Times' list of the 100 best TV shows of the century, and $5 of credit for Jev, TypeSafe's AI decision model. I first thought the list was sitcoms, but it turned out to be all TV. The NYT page couldn't be scraped, so its printable checklist became the source of truth.
+- **First artifact: a poster.** I pulled cover art for all 100 shows from TVmaze and set them into a 10×10 printable poster. Along the way I fixed a few mismatches (the wrong *Battlestar Galactica*, and *True Detective*'s season 1 art).
+- **Shipped as a site.** It became *Previously On…*, an interactive wall of covers, pushed to GitHub and deployed on Vercel. The first deploy was a 404 until I fixed the build settings.
+- **Jev, run one: the colour quilt.** I asked Jev which of 13 mood colours best fits each show. That was 100 calls for about a third of a cent. Jev returns probabilities, not prose, so each tile shows its full answer: stripes where it was split, soft edges where it was unsure.
+- **Jev, run two: the fan map.** I asked 9,900 "would a fan of A love B?" questions, batched 99 to a call for about five cents. That became a constellation with comedy and drama continents, plus in-browser recommendations built from the same answers.
+- **Rounds of UX feedback.** Search that actually filters, one status per show (Seen, Watchlist or Won't watch), progress milestones and a personal recap. The look went through three versions: a cream "Television Archive" with Fraunces, then Cobalt + Clay with Bricolage Grotesque, then the same palette on a plain white base.
+- **An audit.** It caught real problems: the fan map was invisible to screen readers, most controls were too small to tap, and the copy stated Jev's predictions as if they were facts about real audiences.
+- **Pivot: Jev was buried.** The page read like an NYT checklist with some AI features. I rebuilt it as a scroll story that opens with "What colour is *Breaking Bad*?" and puts Jev's findings first. I also added proper link previews, with an image generated from the real quilt.
+- **The big pivot: focus.** The project had quietly grown into a four-chapter product. AI tends to keep expanding an idea, and I'd let it. So I cut back to one sentence: *I asked Jev to associate one of 13 colours with each of 100 TV shows. These are the results.* The fan map, tracking, recap, archive and navigation all went.
+- **Rules to keep it small.** The project's CLAUDE.md now carries a scope test ("Does this help someone understand or explore Jev's 100 colour choices?") and tone rules: first person, "a confident designer showing an experiment, not a startup explaining a feature set", and no claims about real audiences.
+- **One extension that passes the test.** "What colour is your television taste?" lets you mark the shows you've watched and blends Jev's existing colours into your own palette. It makes no new AI calls and no personality claims.
+- **Nothing lost.** The full four-chapter version lives on the `full-story` branch, and the fan map could become its own weekend project. Total spent on Jev: about $0.05 of the $5 credit.
