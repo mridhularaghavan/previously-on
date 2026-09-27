@@ -5,10 +5,44 @@
 **The whole project in one sentence:** *I asked Jev to associate one of 13 colours with each of 100 TV shows. These are the results.* Everything should serve that sentence.
 
 - **Owner:** Mridhula, a design-strong PM. This is one of three or four small weekend projects she's building for a portfolio by the end of 2026. It is deliberately **one idea, executed well**, not a product.
-- **Resist expansion.** AI assistants tend to keep growing an idea; don't. Don't propose new features, chapters, modes or extra Jev runs unless asked. When asked for improvements, prefer cutting and clarifying over adding. If something seems worth adding, ask first and say why it serves the one sentence.
-- **Narration is short and plain:** what I did, what came out of it, and perhaps one small observation. No stacked explanations, extra layers or marketing tone.
-- **Voice is first person singular.** Mridhula made this, so write "I", never "we"/"our". (The model is **Jev**, from TypeSafe AI, not "Jeff".)
-- **Known tension (as of 2026-09-27):** the site has grown well beyond the one sentence: the fan map (a second Jev experiment), For you recommendations, status tracking, recap, milestones, an archive with timeline and search. The owner is deciding what to cut. Until she decides, don't extend any of those, and treat the details below as a description of what exists, not a plan to build on.
+
+### Scope guardrail
+
+Before adding anything, test it against one question: **Does this help someone understand or explore Jev's 100 colour choices?** If the answer is no, it doesn't belong on this page.
+
+AI assistants tend to keep growing an idea; don't. Don't propose new features, chapters, modes or extra Jev runs unless asked. When asked for improvements, prefer cutting and clarifying over adding.
+
+### Tone
+
+The tone should feel like **a confident designer showing an experiment, not a startup explaining a feature set.** Narration is short: what I did, what came out of it, and perhaps one small observation.
+
+Write in the first person singular, because Mridhula made this:
+- "I asked Jev…"
+- "I gave it…"
+- "I wanted to see…"
+- "I made this over a weekend…"
+
+Avoid:
+- "We asked…" (or any "we"/"our")
+- "What Jev found" or anything that frames this as research
+- "Fans overlap" or any other claim about real audience behaviour (Jev's outputs are its judgments, not data about people)
+- "Your turn" and other product-onboarding language
+- "More to come"
+- "The owner of this page"
+
+The model is **Jev**, from TypeSafe AI (not "Jeff").
+
+### Known violations (as of 2026-09-27)
+
+- **Scope:** the site has grown well beyond the one sentence: the fan map (a second Jev experiment), For you recommendations, status tracking, recap, milestones, an archive with timeline and search. The owner is deciding what to cut. Until she decides, don't extend any of those, and treat the details below as a description of what exists, not a plan to build on.
+- **Tone:** these break the rules above:
+  - the "Your turn" chapter title and its onboarding copy
+  - the "What Jev predicted" findings strip
+  - fan-map copy about fans and overlap (even hedged as predictions, it fails the scope test)
+  - "More to come!" and "the owner of this page" in the hero story
+  - milestone toasts and other product-style microcopy
+
+  Fix these when the owner decides on the cut.
 
 ## Current state
 
