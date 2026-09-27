@@ -77,10 +77,9 @@ h1 { font-size: clamp(44px, 7.4vw, 104px); line-height: .94; letter-spacing: -.0
 .qt .r { position: absolute; top: 0; left: 0; z-index: 1; font-size: 11px; font-weight: 600; color: #fff; background: rgb(0 0 0 / .32); padding: 1px 5px; border-bottom-right-radius: 4px; }
 .qt.dim { opacity: .1; filter: grayscale(1); }
 .hint { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
-.note { max-width: 640px; font-size: 18px; margin: 36px 0 0; }
-.note b { font-weight: 600; }
-/* three findings, each a way into the quilt */
-.findings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 0 0 36px; max-width: 900px; }
+/* four findings, each a way into the quilt */
+.findings { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 0 0 36px; }
+@media (max-width: 1000px) { .findings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .fd { text-align: left; border: 1px solid var(--rule); background: var(--paper); border-radius: 12px; padding: 16px 16px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-height: 150px; transition: border-color .15s, transform .15s, box-shadow .15s; }
 .fd:hover { border-color: var(--cobalt); transform: translateY(-2px); box-shadow: var(--shadow); }
 .fd .lab { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
@@ -190,7 +189,7 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
 
 <main class="wrap">
   <section aria-label="Jev's colour for each of the 100 shows">
-    <div class="findings" id="findings" role="group" aria-label="Three things in Jev's answers"></div>
+    <div class="findings" id="findings" role="group" aria-label="Four things in Jev's answers"></div>
     <div class="controls">
       <span class="lbl">Order</span>
       <div class="seg" role="group" aria-label="Quilt order"><button data-order="rank" aria-pressed="true">By NYT rank</button><button data-order="colour" aria-pressed="false">By colour</button><button data-order="confidence" aria-pressed="false">By confidence</button></div>
@@ -201,7 +200,6 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
     </div>
     <div class="quilt" id="quilt" role="list"></div>
     <p class="hint">Each tile is Jev's full answer: stripes mean it split its choice between colours, and soft edges mean it was unsure. Hover for the cover; click for the details.</p>
-    <p class="note" id="note"></p>
   </section>
 
   <section class="palette" aria-labelledby="h-palette">
@@ -286,16 +284,15 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
     });
   });
 
-  /* ---- the one observation ---- */
   const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
-  $("#note").innerHTML = `<i>Breaking Bad</i> was a split decision: ${pct(bb[0][1])} ${P[bb[0][0]].label.toLowerCase()}, ${pct(bb[1][1])} ${P[bb[1][0]].label.toLowerCase()}.`;
 
-  /* ---- findings: most common colour, most certain, most torn ---- */
+  /* ---- findings: Breaking Bad, most common colour, most certain, most torn ---- */
   const byConf = shows.map(s => s.rank).sort(byConfidence);
   const certain = byConf[0], torn = byConf[byConf.length - 1];
   const mixBar = n => `<span class="sw">${Object.entries(J(n).probs).filter(([, p]) => p >= .02).map(([k, p]) => `<span style="flex:${p};background:${P[k].hex}"></span>`).join("")}</span>`;
   const tornTop = Object.entries(J(torn).probs).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k]) => P[k].label.toLowerCase());
   $("#findings").innerHTML = [
+    `<button class="fd" data-open="1"><span class="lab">The headline</span><span class="val disp">${byRank(1).title}</span>${mixBar(1)}<span class="det">A split decision: ${pct(bb[0][1])} ${P[bb[0][0]].label.toLowerCase()}, ${pct(bb[1][1])} ${P[bb[1][0]].label.toLowerCase()}.</span><span class="go">Jev's answer →</span></button>`,
     `<button class="fd" data-colour="${top[0]}"><span class="lab">Most common colour</span><span class="val disp">${P[top[0]].label}</span><span class="sw"><span style="flex:1;background:${P[top[0]].hex}"></span></span><span class="det">${top[1]} of 100 shows. Prestige TV loves a grey institution.</span><span class="go">See them in the quilt →</span></button>`,
     `<button class="fd" data-open="${certain}"><span class="lab">Most certain</span><span class="val disp">${byRank(certain).title}</span>${mixBar(certain)}<span class="det">${pct(J(certain).probs[J(certain).choice])} ${P[J(certain).choice].label.toLowerCase()}, confidence ${J(certain).confidence.toFixed(2)}.</span><span class="go">Jev's answer →</span></button>`,
     `<button class="fd" data-open="${torn}"><span class="lab">Most torn</span><span class="val disp">${byRank(torn).title}</span>${mixBar(torn)}<span class="det">Split between ${tornTop.slice(0, -1).join(", ")} and ${tornTop.at(-1)}. Confidence ${J(torn).confidence.toFixed(2)}.</span><span class="go">Jev's answer →</span></button>`,
@@ -342,8 +339,8 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
 
   /* ---- how I did it + credits ---- */
   $("#how").innerHTML = `
-    <p>I made this over a weekend. For each show, I gave Jev its title, years, network, genres and TVmaze summary, and one question: <b>“Which colour best captures this TV show's mood, tone and visual world?”</b></p>
-    <p>Jev doesn't write an answer. It returns a probability for each colour I offered, plus a confidence score. These are the 13 colours, with the descriptions I gave it:</p>
+    <p>For each show, I gave Jev its title, years, network, genres and TVmaze summary, and one question: <b>“Which colour best captures this TV show's mood, tone and visual world?”</b></p>
+    <p>Jev returned a probability for each colour I offered, plus a confidence score. These are the 13 colours, with the descriptions I gave it:</p>
     <div class="pal">${ORDER.map(k => `<div><i style="background:${P[k].hex}"></i><span><b>${P[k].label}</b>: ${P[k].desc.split(":")[1]?.trim() ?? P[k].desc}</span></div>`).join("")}</div>
     <p>The palette and descriptions are mine, so Jev was choosing from my framing. Different words would make a different quilt.</p>
     <p>${jev.calls} calls to Jev, ${Math.round(jev.input_tokens / 1000)}K tokens, $${jev.cost_usd.toFixed(4)} in total.</p>`;
