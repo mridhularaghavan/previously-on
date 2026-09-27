@@ -11,12 +11,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Cobalt + Clay palette (light only).
+/* Cobalt + Clay on a white base (light only).
    cobalt = the one interactive colour (buttons, links, selection, focus);
    clay = editorial markers (large text only); clay-ink = clay for small text and white-on fills */
 :root {
-  --paper: #E8E3DA; --panel: #F4F1EB; --ink: #171A1F; --muted: #5C5852; --rule: #D2CBBF;
-  --chip: #DCD5C9; --cobalt: #2447D8; --clay: #B65E45; --clay-ink: #8F432E;
+  --paper: #FFFFFF; --panel: #FFFFFF; --ink: #171A1F; --muted: #5B5F66; --rule: #E2E4E8;
+  --chip: #F1F2F4; --cobalt: #2447D8; --clay: #B65E45; --clay-ink: #8F432E;
   --seen: #287255; --want: #8A5B13; --skip: #6B6359;
   --shadow: 0 1px 2px rgb(23 26 31 / .08), 0 8px 24px rgb(23 26 31 / .10);
   --barh: 100px;
@@ -25,22 +25,26 @@
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.45 "Inter Tight", system-ui, sans-serif; }
 button, input, select { font: inherit; color: inherit; }
-.wrap { max-width: 1480px; margin: 0 auto; padding: 0 16px; }
-@media (min-width: 720px) { .wrap { padding: 0 40px; } }
+/* .wrap owns side padding only, so sections keep their own vertical spacing */
+.wrap { max-width: 1480px; margin: 0 auto; padding-inline: 16px; }
+@media (min-width: 720px) { .wrap { padding-inline: 40px; } }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 /* Bricolage Grotesque for display moments only; Inter Tight for interface and body */
 .disp { font-family: "Bricolage Grotesque", "Inter Tight", system-ui, sans-serif; font-optical-sizing: auto; font-weight: 700; letter-spacing: -.02em; font-stretch: 100%; }
 .soft { font-weight: 600; font-stretch: 88%; letter-spacing: -.01em; }
 
 /* ---------- masthead ---------- */
-.hero { padding-top: 36px; padding-bottom: 22px; border-bottom: 2px solid var(--ink); }
+.hero { padding-top: 44px; padding-bottom: 32px; border-bottom: 2px solid var(--ink); }
 .brand { font-size: 22px; margin: 0 0 18px; display: inline-flex; align-items: center; gap: 10px; }
 .brand::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--clay); box-shadow: 0 0 0 4px color-mix(in srgb, var(--clay) 25%, transparent); }
 .kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
 h1 { font-size: clamp(40px, 6.6vw, 94px); line-height: .95; letter-spacing: -.035em; margin: 0; }
 h1 sup { font-size: .38em; vertical-align: .95em; }
-.lede { max-width: 640px; color: var(--muted); margin: 16px 0 0; font-size: 16px; }
-.intro-actions { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; margin-top: 22px; }
+.lede { max-width: 660px; color: var(--muted); margin: 18px 0 0; font-size: 16px; line-height: 1.55; }
+.lede p { margin: 0 0 10px; }
+.lede p:last-child { margin: 0; }
+.lede b { color: var(--ink); }
+.intro-actions { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; margin-top: 28px; }
 .start { font-size: 14px; padding: 10px 18px; }
 .local { display: flex; gap: 10px; align-items: flex-start; max-width: 560px; margin: 0; font-size: 13px; color: var(--muted); }
 .local svg { flex: none; margin-top: 2px; }
@@ -48,7 +52,7 @@ h1 sup { font-size: .38em; vertical-align: .95em; }
 .legend { display: inline-flex; gap: 12px; flex-wrap: wrap; }
 .legend span { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
 .legend i { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 4px; color: #fff; }
-.progress { margin-top: 26px; display: grid; grid-template-columns: auto 1fr; gap: 6px 22px; align-items: center; }
+.progress { margin-top: 32px; display: grid; grid-template-columns: auto 1fr; gap: 6px 22px; align-items: center; }
 .progress .big { font-size: 34px; line-height: 1.05; margin: 0; }
 .progress .big b { font-weight: 600; color: var(--seen); }
 .progress .small { grid-column: 1 / -1; margin: 0; font-size: 13px; color: var(--muted); }
@@ -57,7 +61,7 @@ h1 sup { font-size: .38em; vertical-align: .95em; }
 .meter .s { background: var(--seen); } .meter .w { background: var(--want); } .meter .k { background: color-mix(in srgb, var(--skip) 45%, transparent); }
 .aboutbtn { display: none; border: 0; background: none; padding: 0; color: var(--cobalt); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 /* compact masthead for return visits */
-.hero.compact { padding-top: 18px; padding-bottom: 16px; }
+.hero.compact { padding-top: 22px; padding-bottom: 20px; }
 .hero.compact .top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
 .hero.compact .brand { margin: 0; font-size: 20px; }
 .hero.compact h1 { font-size: 22px; letter-spacing: 0; line-height: 1.2; }
@@ -98,32 +102,26 @@ select.sel { border: 1px solid var(--rule); background: var(--panel); border-rad
 .chip[aria-pressed="true"] .c { color: inherit; opacity: .7; }
 
 /* ---------- grid ---------- */
-main { padding: 26px 0 50px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 22px 14px; }
-@media (min-width: 1360px) { .grid { grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 26px 16px; } }
-.card { min-width: 0; position: relative; perspective: 800px; }
+main { padding: 28px 0 80px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 30px 16px; }
+@media (min-width: 1360px) { .grid { grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 32px 18px; } }
+.card { min-width: 0; position: relative; }
 .card.hide, .trow.hide { display: none; }
 .poster {
   display: block; width: 100%; aspect-ratio: 2 / 3; border: 0; padding: 0; cursor: pointer; border-radius: 4px;
-  position: relative; overflow: hidden; background: var(--c, #333); transform-style: preserve-3d;
+  position: relative; overflow: hidden; background: var(--c, #333);
   transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s; box-shadow: var(--shadow);
 }
 .poster img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .5s, filter .3s; }
 .poster img.ok { opacity: 1; }
 .card.skip .poster img.ok { filter: grayscale(.85); opacity: .55; }
-.poster::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .25s; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / .35), transparent 55%); }
-.card:hover .poster { box-shadow: 0 18px 40px -8px var(--c), var(--shadow); }
-.card:hover .poster::after { opacity: 1; }
+.card:hover .poster { transform: translateY(-3px); box-shadow: 0 12px 28px -10px rgb(23 26 31 / .35), var(--shadow); }
 .poster:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
 .rank { position: absolute; top: 0; left: 0; background: var(--ink); color: var(--paper); z-index: 2; font-weight: 700; font-size: 12px; padding: 3px 7px; border-bottom-right-radius: 4px; pointer-events: none; }
-.flag { position: absolute; right: 6px; top: 6px; z-index: 2; pointer-events: none; display: none; width: 20px; height: 20px; border-radius: 50%; color: #fff; place-items: center; box-shadow: 0 0 0 2px rgb(255 255 255 / .9); }
-.card.seen .flag { display: grid; background: var(--seen); }
-.card.watch .flag { display: grid; background: var(--want); }
-.card.skip .flag { display: grid; background: var(--skip); }
-.meta { margin-top: 8px; }
+.meta { margin-top: 10px; }
 .meta b { display: block; font-size: 13px; font-weight: 600; line-height: 1.2; }
 .meta small { color: var(--muted); font-size: 11.5px; }
-.st { display: flex; gap: 4px; margin-top: 6px; }
+.st { display: flex; gap: 6px; margin-top: 10px; }
 .st button { flex: 1; max-width: 34px; height: 26px; border: 1px solid var(--rule); background: var(--panel); border-radius: 6px; display: grid; place-items: center; cursor: pointer; color: var(--muted); padding: 0; transition: background .15s, color .15s, border-color .15s; }
 .st button:hover { border-color: var(--cobalt); color: var(--cobalt); }
 .st button:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 1px; }
@@ -134,7 +132,7 @@ main { padding: 26px 0 50px; }
 @keyframes pop { 50% { transform: scale(1.06); } }
 .spotlight .poster { animation: spot 1.6s ease-in-out 2; }
 @keyframes spot { 50% { transform: scale(1.1) translateY(-6px); box-shadow: 0 0 0 4px var(--cobalt), 0 24px 50px -10px var(--c); } }
-.empty { padding: 70px 16px; text-align: center; display: none; }
+.empty { padding: 80px 16px; text-align: center; display: none; }
 .empty p { margin: 0 0 14px; font-size: 22px; }
 .empty .btn { font-size: 14px; }
 
@@ -160,7 +158,7 @@ main { padding: 26px 0 50px; }
 .peek { position: fixed; width: 120px; aspect-ratio: 2/3; pointer-events: none; z-index: 40; border-radius: 4px; box-shadow: var(--shadow); opacity: 0; transition: opacity .15s; background-size: cover; background-position: center; }
 
 /* ---------- detail dialog ---------- */
-dialog { border: 0; padding: 0; width: min(880px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: var(--panel); color: var(--ink); border-radius: 10px; box-shadow: 0 30px 80px rgb(23 26 31 / .45); overflow: auto; }
+dialog { border: 1px solid var(--rule); padding: 0; width: min(880px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: var(--panel); color: var(--ink); border-radius: 10px; box-shadow: 0 30px 80px rgb(23 26 31 / .45); overflow: auto; }
 dialog::backdrop { background: rgb(23 26 31 / .6); backdrop-filter: blur(4px); }
 dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 @keyframes rise { from { transform: translateY(20px) scale(.97); opacity: 0; } }
@@ -168,7 +166,7 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 @media (min-width: 680px) { .dlg { grid-template-columns: 340px 1fr; } }
 .dlg .art { background: var(--c); }
 .dlg .art img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 2/3; }
-.dlg .body { padding: 26px 28px 24px; display: flex; flex-direction: column; }
+.dlg .body { padding: 30px 32px 28px; display: flex; flex-direction: column; }
 .dlg .num { font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--clay-ink); font-weight: 600; }
 .dlg h2 { font-size: 42px; line-height: 1.02; margin: 6px 0 6px; }
 .dlg .sub { color: var(--muted); font-size: 14px; }
@@ -180,8 +178,6 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 .toggle[data-st="seen"][aria-pressed="true"] { background: var(--seen); border-color: var(--seen); color: #fff; }
 .toggle[data-st="watch"][aria-pressed="true"] { background: var(--want); border-color: var(--want); color: #fff; }
 .toggle[data-st="skip"][aria-pressed="true"] { background: var(--skip); border-color: var(--skip); color: #fff; }
-.dlg .savednote { margin: 8px 0 0; font-size: 12px; color: var(--muted); }
-.dlg a { color: var(--cobalt); font-size: 13px; }
 .nav { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 13px; }
 .nav button { border: 0; background: none; cursor: pointer; color: var(--muted); padding: 4px 0; text-align: left; }
 .nav button:last-child { text-align: right; }
@@ -198,8 +194,8 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 .view-colour .card:hover .jev { opacity: .08; }
 .view-colour .card:hover { z-index: 3; }
 .view-colour .rank { background: rgb(0 0 0 / .35); color: #fff; font-weight: 600; }
-.view-colour .flag, .view-colour .fy { display: none !important; }
-.jevhead { display: none; margin-bottom: 18px; }
+.view-colour .fy { display: none !important; }
+.jevhead { display: none; margin-bottom: 24px; }
 .view-colour .jevhead { display: block; }
 .jevhead p, .constelhead p { margin: 0 0 12px; color: var(--muted); max-width: 780px; font-size: 14px; }
 .jevhead p b, .constelhead p b { color: var(--ink); font-weight: 600; }
@@ -258,7 +254,7 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 .fans li button:hover span:first-of-type { text-decoration: underline; color: var(--cobalt); }
 
 /* ---------- For you ---------- */
-.upnext { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--rule); display: none; }
+.upnext { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--rule); display: none; }
 .upnext.on { display: block; }
 .upnext h3 { margin: 0 0 4px; font-size: 26px; line-height: 1.1; }
 .upnext .sub { margin: 0 0 14px; color: var(--muted); font-size: 13.5px; }
@@ -278,14 +274,13 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 .hero.compact .pk .n { font-size: 18px; }
 .hero.compact .pk b { font-size: 12.5px; margin: 0; }
 .hero.compact .pk small { display: none; }
-.fy { position: absolute; left: 6px; bottom: 6px; z-index: 2; pointer-events: none; display: none; background: rgb(23 26 31 / .8); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 99px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.fy { position: absolute; left: 6px; bottom: 6px; z-index: 2; pointer-events: none; display: none; background: var(--clay-ink); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 99px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 .fy.on { display: block; }
-.fy.hot { background: var(--clay-ink); }
 .why { margin: 0 0 18px; padding: 12px 14px; border-left: 3px solid var(--clay); background: var(--chip); border-radius: 0 8px 8px 0; font-size: 13.5px; }
 .why b { font-size: 15px; }
 
 /* ---------- recap & ending ---------- */
-.recap { border-top: 2px solid var(--ink); padding-top: 34px; padding-bottom: 40px; }
+.recap { border-top: 1px solid var(--rule); padding-top: 56px; padding-bottom: 64px; }
 .recap h2 { font-size: clamp(32px, 4.4vw, 56px); line-height: 1; margin: 0 0 8px; }
 .recap .dek { color: var(--muted); margin: 0 0 26px; max-width: 640px; }
 .recap .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px 40px; }
@@ -313,7 +308,7 @@ dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
 .toast p { margin: 6px 0 0; font-size: 13.5px; color: #C9CCD4; }
 .toast .close { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border: 0; border-radius: 50%; background: transparent; color: var(--paper); font-size: 18px; cursor: pointer; }
 
-footer { border-top: 1px solid var(--rule); padding-top: 18px; padding-bottom: 40px; color: var(--muted); font-size: 12.5px; }
+footer { border-top: 1px solid var(--rule); padding-top: 28px; padding-bottom: 56px; color: var(--muted); font-size: 13px; line-height: 1.65; }
 footer a { color: var(--cobalt); }
 
 @media (max-width: 719px) {
@@ -345,11 +340,15 @@ footer a { color: var(--cobalt); }
 <header class="hero wrap" id="hero">
   <div class="top">
     <p class="brand disp soft">Previously On…</p>
-    <p class="kicker">An interactive recap · The New York Times list, 2026</p>
+    <p class="kicker">A five-cent experiment · The New York Times list, 2026</p>
     <h1 class="disp">The 100 Best TV Shows<br> of the 21<sup>st</sup> Century</h1>
-    <button class="aboutbtn" id="about" aria-expanded="false">About this project</button>
+    <button class="aboutbtn" id="about" aria-expanded="false">Why this exists</button>
   </div>
-  <p class="lede">From <i>Breaking Bad</i> to <i>Scandal</i>: work through the century's best television, keep a watchlist, and let Jev, TypeSafe AI's decision model, tell you what to watch next.</p>
+  <div class="lede" id="story">
+    <p><b>How far can five cents take you?</b> That's what Mridula, the owner of this page, wanted to find out.</p>
+    <p>The idea came from combining two things she stumbled across over a weekend (a predictable side effect of spending too much time on Twitter): a colour-palette quiz by the Verity Cast, and The New York Times' list of the 100 best TV shows of the century. She mashed the two together, added a little AI, and spent about five cents finding out what would happen.</p>
+    <p>What you see here is the result: a colour quilt of the shows, plus a map of which shows share the same fans. More to come!</p>
+  </div>
   <div class="intro-actions">
     <button class="btn start" id="start">Start exploring ↓</button>
     <p class="local" id="localnote">
@@ -381,8 +380,6 @@ footer a { color: var(--cobalt); }
     <select class="sel" id="sort" aria-label="Sort">
       <option value="rank">Sort: NYT rank</option>
       <option value="year">Sort: premiere year</option>
-      <option value="hue">Sort: cover colour</option>
-      <option value="light">Sort: light → dark</option>
       <option value="alpha">Sort: A–Z</option>
       <option value="jev" hidden>Sort: Jev colour</option>
       <option value="foryou" hidden>Sort: Jev · for you</option>
@@ -423,7 +420,7 @@ footer a { color: var(--cobalt); }
 <section class="recap wrap" id="recap" aria-labelledby="recapTitle"></section>
 
 <footer class="wrap">
-  <b><i>Previously On…</i></b> is a fan project. Ranking: <a href="https://www.nytimes.com/interactive/2026/arts/television/best-tv-shows-21st-century.html">The New York Times</a> (500+ voters, 2026). Cover art &amp; summaries via <a href="https://www.tvmaze.com">TVmaze</a>.<span id="jevcredit"></span> Your marks are saved only in this browser. Keys: <kbd>/</kbd> search · <kbd>←</kbd><kbd>→</kbd> browse · <kbd>S</kbd> seen · <kbd>W</kbd> watchlist · <kbd>X</kbd> won't watch · <kbd>R</kbd> random.
+  <b><i>Previously On…</i></b> is a fan project. Ranking: <a href="https://www.nytimes.com/interactive/2026/arts/television/best-tv-shows-21st-century.html">The New York Times</a> (500+ voters, 2026). Cover art &amp; summaries via <a href="https://www.tvmaze.com">TVmaze</a>.<span id="jevcredit"></span> Keys: <kbd>/</kbd> search · <kbd>←</kbd><kbd>→</kbd> browse · <kbd>S</kbd> seen · <kbd>W</kbd> watchlist · <kbd>X</kbd> won't watch · <kbd>R</kbd> random.
 </footer>
 
 <dialog id="dlg" aria-labelledby="dTitle"></dialog>
@@ -511,7 +508,7 @@ footer a { color: var(--cobalt); }
   /* ---- genre chips ---- */
   const counts = {};
   shows.forEach(s => s.genres.forEach(g => counts[g] = (counts[g] || 0) + 1));
-  const genres = Object.entries(counts).filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]);
+  const genres = Object.entries(counts).filter(([, n]) => n >= 5).sort((a, b) => b[1] - a[1]);
   $("#chips").innerHTML = `<button class="chip" data-genre="" aria-pressed="true">All genres</button>` +
     genres.map(([g, n]) => `<button class="chip" data-genre="${g}" aria-pressed="false">${g}<span class="c">${n}</span></button>`).join("");
 
@@ -522,7 +519,6 @@ footer a { color: var(--cobalt); }
       <button class="poster" aria-label="${s.rank}. ${s.title}, ${s.years}">
         <span class="rank">${s.rank}</span>
         <img src="${s.cover}" alt="" loading="${s.rank <= 30 ? "eager" : "lazy"}" onload="this.classList.add('ok')">
-        <span class="flag" aria-hidden="true"></span>
         <span class="fy"></span>
         ${jev ? `<span class="jev" style="--jev:${quilt(s.rank)};--d:${((s.rank - 1) % 10) * 0.035 + Math.floor((s.rank - 1) / 10) * 0.05}s"></span>` : ""}
       </button>
@@ -534,13 +530,6 @@ footer a { color: var(--cobalt); }
     </div>`).join("");
   const cards = new Map([...grid.children].map(el => [+el.dataset.rank, el]));
 
-  grid.addEventListener("pointermove", e => {           // tilt + glare
-    const p = e.target.closest(".poster"); if (!p || e.pointerType !== "mouse") return;
-    const r = p.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-    p.style.transform = `rotateY(${(x - .5) * 16}deg) rotateX(${(.5 - y) * 16}deg) translateZ(10px)`;
-    p.style.setProperty("--gx", x * 100 + "%"); p.style.setProperty("--gy", y * 100 + "%");
-  });
-  grid.addEventListener("pointerout", e => { const p = e.target.closest(".poster"); if (p && !p.contains(e.relatedTarget)) p.style.transform = ""; });
   grid.addEventListener("click", e => {
     const b = e.target.closest(".st button");
     if (b) return toggleStatus(+b.closest(".card").dataset.rank, b.dataset.st);
@@ -590,13 +579,11 @@ footer a { color: var(--cobalt); }
     rank: (a, b) => a.rank - b.rank,
     year: (a, b) => a.start - b.start || a.rank - b.rank,
     alpha: (a, b) => a.title.replace(/^The /, "").localeCompare(b.title.replace(/^The /, "")),
-    light: (a, b) => b.hsl.l - a.hsl.l,
     foryou: (a, b) => (fy?.get(b.rank)?.score ?? -1) - (fy?.get(a.rank)?.score ?? -1) || a.rank - b.rank,
     jev: (a, b) => {
       const A = jevOf(a.rank), B = jevOf(b.rank);
       return PORDER.indexOf(A.choice) - PORDER.indexOf(B.choice) || B.probs[B.choice] - A.probs[A.choice];
     },
-    hue: (a, b) => ((a.hsl.s < .15) - (b.hsl.s < .15)) || (a.hsl.h - b.hsl.h) || (b.hsl.l - a.hsl.l),
   };
   const esc = t => t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   function render() {
@@ -659,7 +646,6 @@ footer a { color: var(--cobalt); }
     shows.forEach(x => {
       const k = st(x.rank), card = cards.get(x.rank);
       ["seen", "watch", "skip"].forEach(n => card.classList.toggle(n, k === n));
-      card.querySelector(".flag").innerHTML = k ? ICON[k] : "";
       card.querySelectorAll(".st button").forEach(b => b.setAttribute("aria-pressed", b.dataset.st === k));
       const r = rows.get(x.rank); ["seen", "watch", "skip"].forEach(n => r.classList.toggle(n, k === n));
     });
@@ -677,7 +663,7 @@ footer a { color: var(--cobalt); }
     const hot = new Set(fyTop(10).map(([n]) => n));
     shows.forEach(x => {
       const b = cards.get(x.rank).querySelector(".fy"), f = fy?.get(x.rank);
-      b.classList.toggle("on", !!f); b.classList.toggle("hot", hot.has(x.rank));
+      b.classList.toggle("on", hot.has(x.rank));
       b.textContent = f ? `${f.score}% for you` : "";
     });
     const up = $("#upnext");
@@ -792,7 +778,7 @@ footer a { color: var(--cobalt); }
   $("#minibrand").onclick = () => scrollTo({ top: 0, behavior: "smooth" });
   $("#about").onclick = () => {
     const full = $("#hero").classList.toggle("compact") === false;
-    $("#about").setAttribute("aria-expanded", full); $("#about").textContent = full ? "Show less" : "About this project";
+    $("#about").setAttribute("aria-expanded", full); $("#about").textContent = full ? "Show less" : "Why this exists";
   };
   $("#pick").onclick = pick;
   function pick() {
@@ -953,10 +939,8 @@ footer a { color: var(--cobalt); }
             ${btn("watch", "On my watchlist", "Add to watchlist")}
             ${btn("skip", "Won't watch", "Won't watch")}
           </div>
-          <p class="savednote">One status per show · saved in this browser only.</p>
           <div class="nav">
             <button data-go="${prev.rank}">← ${prev.rank}. ${prev.title}</button>
-            <a href="https://www.tvmaze.com/shows/${s.tvmaze}" target="_blank" rel="noopener">TVmaze ↗</a>
             <button data-go="${next.rank}">${next.rank}. ${next.title} →</button>
           </div>
         </div>
@@ -1014,7 +998,8 @@ footer a { color: var(--cobalt); }
     $("#constelhead").innerHTML = `<p>We asked <b>Jev</b> ${(fans.calls * (fans.calls - 1)).toLocaleString()} yes-or-no questions: <i>would a devoted fan of this show also love that one?</i>
       Shows pull together when their fans overlap, and brighter lines mean stronger overlap. Each cover's outline is its Jev colour. Filters dim the map rather than moving it.
       Tightest pair: <i>${strongest[0].title}</i> &amp; <i>${strongest[1].title}</i> (${Math.round(strongest[2])}%). Loneliest shows: ${lonely.join(", ")}.</p>`;
-    $("#jevcredit").innerHTML += ` Fan links: ${fans.calls} calls, ${Math.round(fans.input_tokens / 1000)}K tokens, about $${fans.cost_usd.toFixed(3)}.`;
+    $("#jevcredit").innerHTML += ` Fan links: ${fans.calls} calls, ${Math.round(fans.input_tokens / 1000)}K tokens, about $${fans.cost_usd.toFixed(3)}.`
+      + (jev ? ` <b>Total spent on Jev: $${(jev.cost_usd + fans.cost_usd).toFixed(3)}, about ${Math.round((jev.cost_usd + fans.cost_usd) * 100)} cents.</b>` : "");
   }
 
   /* ---- init ---- */
