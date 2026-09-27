@@ -83,17 +83,18 @@ Static, no build step: `index.html` (inline CSS/JS) + `shows.json` + `jev/colour
 **Page, top to bottom:**
 1. **Brand line** ("Previously On…") and **headline**: "What colour is Breaking Bad?", with "Breaking Bad" underlined in its own Jev colour split.
 2. **Dek, one sentence:** "I asked Jev, an AI model from TypeSafe, to pick one of 13 colours for each of The New York Times' 100 best TV shows of the century. Here are the results."
-3. **The quilt:** 20x5 tiles on desktop, 10x10 at ≤1000px. Each tile is Jev's probabilities as horizontal bands, with edges that soften as confidence drops. Hover shows the cover; click opens the show panel. Controls: order (NYT rank / by colour) and a colour key that **highlights** (dims the other tiles) rather than filtering, because the quilt is artwork.
-4. **One observation** (computed): "24 of the 100 shows came out steel grey. Breaking Bad itself was a split decision: 55% desert gold, 41% sickly green."
-5. **"What colour is your television taste?"** The palette builder: 100 small covers to tap. The state copy (the owner's, keep it verbatim):
+3. **Three finding cards** (computed), above the quilt: most common colour (highlights it in the quilt), most certain and most torn (open the show panel).
+4. **The quilt:** 20x5 tiles on desktop, 10x10 at ≤1000px. Each tile is Jev's probabilities as horizontal bands, with edges that soften as confidence drops. Hover shows the cover; click opens the show panel. Controls: order (NYT rank / by colour / by confidence, most certain first) and a colour key that **highlights** (dims the other tiles) rather than filtering, because the quilt is artwork.
+5. **One observation** below the quilt (computed): "Breaking Bad was a split decision: 55% desert gold, 41% sickly green."
+6. **"What colour is your television taste?"** The palette builder: 100 small covers to tap. The state copy (the owner's, keep it verbatim):
    - 0 selected: "Mark at least three shows to reveal your palette."
    - 1 selected: "One selected. Choose two more…"
    - 2 selected: "Two selected. Choose one more to reveal your palette."
    - 3 or more: "Your palette is ready."
 
    The result is the average of Jev's probabilities across the selected shows, drawn as a big banded tile, a colour list with percentages, and the selected shows' own tiles. No new AI calls and no personality claims. There's a "Clear selection" button, and the selection is stored in `localStorage` `nyt100.watched`, seeded once from the old `nyt100.status` "seen" marks.
-6. **"How I did it"** (`<details>`): the question, the 13 colours with the descriptions Jev saw, "the palette and descriptions are mine", and the cost (100 calls, ~78K tokens, ~$0.0033, i.e. about a third of a cent).
-7. **Footer credits:** by Mridhula; ranking by the NYT; covers and summaries from TVmaze; colours by Jev (TypeSafe AI).
+7. **"How I did it"** (`<details>`): the question, the 13 colours with the descriptions Jev saw, "the palette and descriptions are mine", and the cost (100 calls, ~78K tokens, ~$0.0033, i.e. about a third of a cent).
+8. **Footer credits:** by Mridhula; ranking by the NYT; covers and summaries from TVmaze; colours by Jev (TypeSafe AI).
 
 **Show panel** (dialog): the cover, "No. N of 100", title, years and network, Jev's colour bar with the top 3 colours, "Jev was {certain/fairly sure/undecided/torn} (confidence x.xx)", "What Jev read" (the TVmaze summary it was given), an "I've watched this" toggle (feeds the palette), and prev/next in the current quilt order (←/→ keys).
 

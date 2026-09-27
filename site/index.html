@@ -80,7 +80,7 @@ h1 { font-size: clamp(44px, 7.4vw, 104px); line-height: .94; letter-spacing: -.0
 .note { max-width: 640px; font-size: 18px; margin: 36px 0 0; }
 .note b { font-weight: 600; }
 /* three findings, each a way into the quilt */
-.findings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 24px; max-width: 900px; }
+.findings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 0 0 36px; max-width: 900px; }
 .fd { text-align: left; border: 1px solid var(--rule); background: var(--paper); border-radius: 12px; padding: 16px 16px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-height: 150px; transition: border-color .15s, transform .15s, box-shadow .15s; }
 .fd:hover { border-color: var(--cobalt); transform: translateY(-2px); box-shadow: var(--shadow); }
 .fd .lab { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
@@ -190,9 +190,10 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
 
 <main class="wrap">
   <section aria-label="Jev's colour for each of the 100 shows">
+    <div class="findings" id="findings" role="group" aria-label="Three things in Jev's answers"></div>
     <div class="controls">
       <span class="lbl">Order</span>
-      <div class="seg" role="group" aria-label="Quilt order"><button data-order="rank" aria-pressed="true">By NYT rank</button><button data-order="colour" aria-pressed="false">By colour</button></div>
+      <div class="seg" role="group" aria-label="Quilt order"><button data-order="rank" aria-pressed="true">By NYT rank</button><button data-order="colour" aria-pressed="false">By colour</button><button data-order="confidence" aria-pressed="false">By confidence</button></div>
     </div>
     <div class="controls">
       <span class="lbl">Highlight</span>
@@ -201,7 +202,6 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
     <div class="quilt" id="quilt" role="list"></div>
     <p class="hint">Each tile is Jev's full answer: stripes mean it split its choice between colours, and soft edges mean it was unsure. Hover for the cover; click for the details.</p>
     <p class="note" id="note"></p>
-    <div class="findings" id="findings" role="group" aria-label="Three things in Jev's answers"></div>
   </section>
 
   <section class="palette" aria-labelledby="h-palette">
@@ -253,6 +253,7 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
     return stops.length > 1 ? `linear-gradient(to bottom, ${stops.join(", ")})` : P[parts[0][0]].hex;
   }
   const tile = n => bands(J(n).probs, J(n).confidence);
+  const byConfidence = (a, b) => J(b).confidence - J(a).confidence;
   const byColour = (a, b) => ORDER.indexOf(J(a).choice) - ORDER.indexOf(J(b).choice) || J(b).probs[J(b).choice] - J(a).probs[J(a).choice];
 
   /* ---- hero underline: Breaking Bad in its own Jev colours ---- */
@@ -276,6 +277,7 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
   document.querySelectorAll("[data-order]").forEach(b => b.onclick = () => {
     document.querySelectorAll("[data-order]").forEach(x => x.setAttribute("aria-pressed", x === b));
     const ranks = shows.map(s => s.rank); if (b.dataset.order === "colour") ranks.sort(byColour);
+    if (b.dataset.order === "confidence") ranks.sort(byConfidence);
     const before = new Map([...tiles].map(([k, el]) => [k, el.getBoundingClientRect()]));
     ranks.forEach(r => quilt.appendChild(tiles.get(r)));
     if (!matchMedia("(prefers-reduced-motion: reduce)").matches) tiles.forEach((el, k) => {
@@ -289,7 +291,7 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
   $("#note").innerHTML = `<i>Breaking Bad</i> was a split decision: ${pct(bb[0][1])} ${P[bb[0][0]].label.toLowerCase()}, ${pct(bb[1][1])} ${P[bb[1][0]].label.toLowerCase()}.`;
 
   /* ---- findings: most common colour, most certain, most torn ---- */
-  const byConf = shows.map(s => s.rank).sort((a, b) => J(b).confidence - J(a).confidence);
+  const byConf = shows.map(s => s.rank).sort(byConfidence);
   const certain = byConf[0], torn = byConf[byConf.length - 1];
   const mixBar = n => `<span class="sw">${Object.entries(J(n).probs).filter(([, p]) => p >= .02).map(([k, p]) => `<span style="flex:${p};background:${P[k].hex}"></span>`).join("")}</span>`;
   const tornTop = Object.entries(J(torn).probs).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k]) => P[k].label.toLowerCase());
