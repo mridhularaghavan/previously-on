@@ -10,8 +10,6 @@ import json, pathlib, subprocess, tempfile
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 jev = json.load(open("site/jev/colour.json"))
 P, S = jev["palette"], jev["shows"]
-WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}
-cost_cents = round((jev["cost_usd"] + json.load(open("site/jev/fans.json"))["cost_usd"]) * 100)
 
 
 def quilt(n):
@@ -48,9 +46,9 @@ h1 {{ font: 700 92px/0.95 "Bricolage Grotesque"; letter-spacing: -.045em; margin
 .quilt i {{ display: block; }}
 </style></head><body>
 <div class="top">
-  <div class="row"><span class="kicker">A {WORDS.get(cost_cents, cost_cents)}-cent experiment</span><span class="brand">Previously On…</span></div>
+  <div class="row"><span class="kicker">A weekend experiment with Jev</span><span class="brand">Previously On…</span></div>
   <h1>What colour is<br><span class="bb">Breaking Bad</span>?</h1>
-  <p class="dek">An AI colour-coded <b>the 100 best TV shows of the century</b>.</p>
+  <p class="dek">An AI picked a colour for each of <b>the 100 best TV shows of the century</b>.</p>
 </div>
 <div class="quilt">{tiles}</div>
 </body></html>"""

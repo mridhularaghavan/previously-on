@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Previously On…</title>
-<meta name="description" content="What colour is Breaking Bad? A five-cent experiment: an AI colour-codes the 100 best TV shows of the century and predicts which ones share fans.">
+<meta name="description" content="What colour is Breaking Bad? I asked an AI to pick one of 13 colours for each of the 100 best TV shows of the century. Here are the results.">
 <meta name="color-scheme" content="light">
 <link rel="canonical" href="https://previously-on-tv.vercel.app/">
 <!-- link previews (Open Graph + X/Twitter); image rendered by make_og.py -->
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Previously On…">
 <meta property="og:url" content="https://previously-on-tv.vercel.app/">
 <meta property="og:title" content="What colour is Breaking Bad?">
-<meta property="og:description" content="A five-cent experiment: an AI colour-codes the 100 best TV shows of the century and predicts which ones share fans.">
+<meta property="og:description" content="I asked an AI to pick one of 13 colours for each of the 100 best TV shows of the century. Here are the results.">
 <meta property="og:image" content="https://previously-on-tv.vercel.app/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -20,7 +20,7 @@
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What colour is Breaking Bad?">
-<meta name="twitter:description" content="A five-cent experiment: an AI colour-codes the 100 best TV shows of the century and predicts which ones share fans.">
+<meta name="twitter:description" content="I asked an AI to pick one of 13 colours for each of the 100 best TV shows of the century. Here are the results.">
 <meta name="twitter:image" content="https://previously-on-tv.vercel.app/og.png">
 <meta name="twitter:image:alt" content="The headline 'What colour is Breaking Bad?' above a quilt of 100 coloured tiles, one per TV show.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='7' width='26' height='18' rx='3' fill='%23171A1F'/><rect x='6' y='10' width='20' height='12' rx='1' fill='%232447D8'/></svg>">
@@ -29,104 +29,43 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Cobalt + Clay on a white base (light only).
-   cobalt = the one interactive colour (buttons, links, selection, focus);
-   clay = editorial markers (>=24px only); clay-ink = clay for small text and white-on fills */
+   cobalt = the one interactive colour; clay = editorial markers (>=24px only); clay-ink = clay for small text */
 :root {
-  --paper: #FFFFFF; --panel: #FFFFFF; --ink: #171A1F; --muted: #5B5F66; --rule: #E2E4E8;
-  --chip: #F1F2F4; --cobalt: #2447D8; --clay: #B65E45; --clay-ink: #8F432E;
-  --seen: #287255; --want: #8A5B13; --skip: #6B6359;
+  --paper: #FFFFFF; --ink: #171A1F; --muted: #5B5F66; --rule: #E2E4E8; --chip: #F1F2F4;
+  --cobalt: #2447D8; --clay: #B65E45; --clay-ink: #8F432E; --seen: #287255;
   --shadow: 0 1px 2px rgb(23 26 31 / .08), 0 8px 24px rgb(23 26 31 / .10);
-  --navh: 52px; --barh: 100px;
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--navh) + 12px); }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 "Inter Tight", system-ui, sans-serif; }
-button, input, select { font: inherit; color: inherit; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 "Inter Tight", system-ui, sans-serif; }
+button { font: inherit; color: inherit; }
 a { color: var(--cobalt); }
+:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
 /* .wrap owns side padding only, so sections keep their own vertical spacing */
-.wrap { max-width: 1480px; margin: 0 auto; padding-inline: 16px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 20px; }
 @media (min-width: 720px) { .wrap { padding-inline: 40px; } }
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-/* Bricolage Grotesque for display moments only; Inter Tight for interface and body */
-.disp { font-family: "Bricolage Grotesque", "Inter Tight", system-ui, sans-serif; font-optical-sizing: auto; font-weight: 700; letter-spacing: -.02em; }
-.soft { font-weight: 600; font-stretch: 88%; letter-spacing: -.01em; }
-.btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--cobalt); background: var(--cobalt); color: #fff; border-radius: 99px; padding: 8px 16px; cursor: pointer; font-size: 13.5px; font-weight: 600; text-decoration: none; }
-.btn.ghost { background: transparent; color: var(--cobalt); border-color: var(--rule); }
-.btn:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+.disp { font-family: "Bricolage Grotesque", "Inter Tight", system-ui, sans-serif; font-optical-sizing: auto; font-weight: 700; letter-spacing: -.03em; }
 
-/* ---------- top nav (sticky) ---------- */
-.topnav { position: sticky; top: 0; z-index: 30; background: rgb(255 255 255 / .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
-.topnav .wrap { display: flex; align-items: center; gap: 18px; height: var(--navh); }
-.brand { flex: none; display: inline-flex; align-items: center; gap: 9px; font-size: 17px; border: 0; background: none; padding: 0; cursor: pointer; color: var(--ink); }
+/* ---------- header ---------- */
+.brand { display: inline-flex; align-items: center; gap: 9px; margin: 0; padding-top: 28px; font-size: 17px; font-weight: 600; font-stretch: 88%; }
 .brand::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--clay); box-shadow: 0 0 0 3px color-mix(in srgb, var(--clay) 25%, transparent); }
-.chapters { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
-.chapters::-webkit-scrollbar { display: none; }
-.chapters a { flex: none; text-decoration: none; color: var(--muted); font-size: 13.5px; font-weight: 500; padding: 6px 11px; border-radius: 99px; }
-.chapters a:hover { color: var(--cobalt); }
-.chapters a[aria-current="true"] { color: var(--cobalt); background: color-mix(in srgb, var(--cobalt) 9%, transparent); }
-.chapters a em { font-style: normal; color: var(--clay-ink); font-weight: 600; margin-right: 5px; font-size: 12px; }
-.navstat { margin-left: auto; flex: none; display: flex; gap: 14px; align-items: center; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
-.navstat b { color: var(--ink); }
-.navstat .cost { color: var(--clay-ink); font-weight: 600; }
-
-/* ---------- hero ---------- */
-.hero { padding-top: 64px; padding-bottom: 56px; }
-.kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; font-weight: 500; }
-h1 { font-size: clamp(44px, 7.4vw, 108px); line-height: .94; letter-spacing: -.04em; margin: 0; max-width: 13ch; }
-.bb { background-image: linear-gradient(90deg, #d9a441 0 55%, #7f8f3a 55% 100%); background-size: 100% .12em; background-repeat: no-repeat; background-position: 0 92%; }
-.dek { max-width: 680px; font-size: 19px; line-height: 1.5; color: var(--muted); margin: 24px 0 0; }
+.hero { padding-top: 56px; padding-bottom: 40px; }
+h1 { font-size: clamp(44px, 7.4vw, 104px); line-height: .94; letter-spacing: -.045em; margin: 0; max-width: 12ch; }
+.bb { background-repeat: no-repeat; background-size: 100% .12em; background-position: 0 92%; }
+.dek { max-width: 640px; font-size: 20px; line-height: 1.5; color: var(--muted); margin: 24px 0 0; }
 .dek b { color: var(--ink); font-weight: 600; }
-.evidence { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 26px 0 0; padding: 14px 0; border-block: 1px solid var(--rule); max-width: 820px; }
-.evidence div { display: flex; flex-direction: column; }
-.evidence dt { order: 2; font-size: 12.5px; color: var(--muted); }
-.evidence dd { order: 1; margin: 0; font-size: 22px; line-height: 1.1; }
-.evidence dd.cost { color: var(--clay-ink); }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 30px; }
-.hero-actions .btn { font-size: 14px; padding: 10px 18px; }
-details.story { margin-top: 18px; max-width: 680px; }
-details.story summary { cursor: pointer; color: var(--cobalt); font-size: 14px; font-weight: 500; list-style: none; display: inline-flex; gap: 6px; align-items: center; }
-details.story summary::-webkit-details-marker { display: none; }
-details.story summary::after { content: "▾"; font-size: 11px; transition: transform .2s; }
-details.story[open] summary::after { transform: rotate(180deg); }
-details.story .body { margin-top: 14px; padding: 18px 20px; background: var(--chip); border-radius: 10px; color: var(--muted); font-size: 15px; line-height: 1.6; }
-details.story .body p { margin: 0 0 10px; } details.story .body p:last-child { margin: 0; }
-details.story .body b { color: var(--ink); }
 
-/* findings strip */
-.findings { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 48px; }
-.fd { text-align: left; border: 1px solid var(--rule); background: var(--panel); border-radius: 12px; padding: 16px 16px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; transition: border-color .15s, transform .15s, box-shadow .15s; min-height: 150px; }
-.fd:hover { border-color: var(--cobalt); transform: translateY(-2px); box-shadow: var(--shadow); }
-.fd .lab { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-.fd .val { font-size: 22px; line-height: 1.1; }
-.fd .det { font-size: 13px; color: var(--muted); margin-top: auto; }
-.fd .sw { display: flex; height: 8px; border-radius: 99px; overflow: hidden; margin-top: 4px; }
-.fd .sw span { height: 100%; }
-.fd .go { font-size: 12.5px; color: var(--cobalt); font-weight: 600; }
-
-/* ---------- chapters ---------- */
-.chapter { padding-top: 72px; padding-bottom: 72px; border-top: 1px solid var(--rule); }
-.chap { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--clay-ink); font-weight: 700; margin: 0 0 10px; }
-.chapter h2 { font-size: clamp(34px, 4.6vw, 60px); line-height: 1; letter-spacing: -.035em; margin: 0 0 16px; }
-.intro { max-width: 720px; font-size: 17px; color: var(--muted); margin: 0 0 28px; line-height: 1.55; }
-.intro b { color: var(--ink); font-weight: 600; }
-.controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-bottom: 18px; }
-.controls .lbl { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+/* ---------- quilt ---------- */
+.controls { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; margin-bottom: 16px; }
+.lbl { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
 .seg { display: inline-flex; background: var(--chip); border-radius: 99px; padding: 3px; }
-.seg button { border: 0; background: none; padding: 6px 13px; border-radius: 99px; cursor: pointer; font-size: 13px; font-weight: 500; white-space: nowrap; }
+.seg button { border: 0; background: none; padding: 6px 13px; border-radius: 99px; cursor: pointer; font-size: 13.5px; font-weight: 500; }
 .seg button[aria-pressed="true"] { background: var(--cobalt); color: #fff; }
-
-/* ---------- chapter 1: quilt ---------- */
-.callout { display: grid; grid-template-columns: 76px 1fr; gap: 18px; align-items: center; max-width: 720px; padding: 16px 18px; border: 1px solid var(--rule); border-left: 4px solid var(--clay); border-radius: 0 12px 12px 0; margin: 0 0 28px; cursor: pointer; background: var(--panel); text-align: left; width: 100%; }
-.callout:hover { border-color: var(--cobalt); border-left-color: var(--clay); }
-.callout .tile { aspect-ratio: 2/3; border-radius: 4px; }
-.callout p { margin: 0; font-size: 15px; color: var(--muted); }
-.callout p b { color: var(--ink); }
-.callout .q { font-size: 20px; color: var(--ink); margin-bottom: 4px; }
-.swatches { display: flex; flex-wrap: wrap; gap: 6px; }
-.swb { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--rule); background: transparent; border-radius: 99px; padding: 4px 11px 4px 5px; font-size: 12.5px; cursor: pointer; }
+.key { display: flex; flex-wrap: wrap; gap: 6px; }
+.swb { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--rule); background: transparent; border-radius: 99px; padding: 4px 11px 4px 5px; font-size: 13px; cursor: pointer; }
 .swb i { width: 16px; height: 16px; border-radius: 50%; background: var(--sw); box-shadow: inset 0 0 0 1px rgb(0 0 0 / .15); }
-.swb .c { color: var(--muted); font-size: 11px; }
+.swb .c { color: var(--muted); font-size: 12px; }
 .swb[aria-pressed="true"] { border-color: var(--cobalt); box-shadow: inset 0 0 0 1px var(--cobalt); }
 /* 20 x 5 on desktop so the whole artwork fits on one screen; 10 x 10 on smaller screens */
 .quilt { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); border-radius: 8px; overflow: hidden; }
@@ -135,449 +74,163 @@ details.story .body b { color: var(--ink); }
 .qt img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .25s; }
 .qt:hover img, .qt:focus-visible img { opacity: 1; }
 .qt:focus-visible { outline: 3px solid var(--cobalt); outline-offset: -3px; z-index: 2; }
-.qt .r { position: absolute; top: 0; left: 0; z-index: 1; font-size: 10px; font-weight: 600; color: #fff; background: rgb(0 0 0 / .32); padding: 2px 6px; border-bottom-right-radius: 4px; }
+.qt .r { position: absolute; top: 0; left: 0; z-index: 1; font-size: 11px; font-weight: 600; color: #fff; background: rgb(0 0 0 / .32); padding: 1px 5px; border-bottom-right-radius: 4px; }
 .qt.dim { opacity: .1; filter: grayscale(1); }
-.qt.mark::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 5px var(--ink); pointer-events: none; }
-.quilt-foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+.hint { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+.note { max-width: 640px; font-size: 18px; margin: 36px 0 0; }
+.note b { font-weight: 600; }
 
-details.how { margin-top: 28px; border: 1px solid var(--rule); border-radius: 12px; max-width: 900px; }
-details.how summary { cursor: pointer; padding: 14px 18px; font-weight: 600; font-size: 14.5px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+/* ---------- palette ---------- */
+.palette { border-top: 1px solid var(--rule); margin-top: 80px; padding-top: 64px; padding-bottom: 72px; }
+.palette h2 { font-size: clamp(32px, 4.4vw, 56px); line-height: 1; margin: 0 0 14px; }
+.palette .sub { max-width: 620px; color: var(--muted); font-size: 18px; margin: 0 0 24px; }
+.state { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-weight: 600; margin: 0 0 16px; min-height: 44px; }
+.state .clear { border: 1px solid var(--rule); background: none; border-radius: 99px; padding: 6px 14px; font-size: 13px; font-weight: 500; color: var(--cobalt); cursor: pointer; }
+.pick { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: 6px; }
+.pb { position: relative; aspect-ratio: 2/3; border: 0; padding: 0; border-radius: 4px; overflow: hidden; cursor: pointer; background: var(--c); }
+.pb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pb::after { content: ""; position: absolute; inset: 0; border-radius: 4px; box-shadow: inset 0 0 0 0 var(--seen); transition: box-shadow .15s; }
+.pb[aria-pressed="true"]::after { box-shadow: inset 0 0 0 3px var(--seen); }
+.pb .ok { position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--seen); color: #fff; display: none; place-items: center; }
+.pb[aria-pressed="true"] .ok { display: grid; }
+.local { font-size: 13px; color: var(--muted); margin: 12px 0 0; }
+.result { display: grid; grid-template-columns: 220px 1fr; gap: 36px; align-items: start; margin-top: 44px; }
+.result .tile { aspect-ratio: 2/3; border-radius: 10px; box-shadow: var(--shadow); }
+.result h3 { font-size: 30px; line-height: 1.1; margin: 0 0 16px; }
+.mix { display: grid; gap: 8px; max-width: 520px; }
+.mix div { display: grid; grid-template-columns: 16px 130px 1fr 44px; gap: 10px; align-items: center; font-size: 14.5px; }
+.mix i { width: 16px; height: 16px; border-radius: 4px; }
+.mix .m { height: 8px; background: var(--chip); border-radius: 99px; overflow: hidden; }
+.mix .m b { display: block; height: 100%; border-radius: 99px; }
+.mix em { font-style: normal; text-align: right; color: var(--muted); }
+.yours { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 22px; }
+.yours span { width: 22px; aspect-ratio: 2/3; border-radius: 2px; background: var(--q); }
+.yours-cap { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+
+/* ---------- how I did it ---------- */
+details.how { border-top: 1px solid var(--rule); padding: 28px 0 8px; }
+details.how summary { cursor: pointer; list-style: none; font-size: 22px; display: inline-flex; gap: 10px; align-items: center; min-height: 44px; }
 details.how summary::-webkit-details-marker { display: none; }
-details.how summary::after { content: "+"; font-size: 20px; color: var(--cobalt); font-weight: 400; }
+details.how summary::after { content: "+"; color: var(--cobalt); font-weight: 400; }
 details.how[open] summary::after { content: "–"; }
-details.how .body { padding: 0 18px 18px; font-size: 14px; color: var(--muted); }
-details.how .body p { margin: 0 0 12px; }
+details.how .body { max-width: 760px; padding: 12px 0 24px; color: var(--muted); font-size: 15.5px; }
+details.how .body p { margin: 0 0 14px; }
 details.how .body b { color: var(--ink); }
-.qbox { background: var(--chip); border-radius: 8px; padding: 12px 14px; margin: 0 0 14px; font-size: 14px; color: var(--ink); }
-.qbox .k { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 600; display: block; margin-bottom: 4px; }
-.pal { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 6px 18px; margin: 0 0 16px; }
-.pal div { display: grid; grid-template-columns: 14px 1fr; gap: 8px; align-items: start; font-size: 13px; }
-.pal i { width: 14px; height: 14px; border-radius: 3px; margin-top: 3px; }
-.ans { display: grid; gap: 5px; margin: 0 0 12px; }
-.ans div { display: grid; grid-template-columns: 110px 1fr 44px; gap: 10px; align-items: center; font-size: 13px; }
-.ans .m { height: 8px; background: var(--chip); border-radius: 99px; overflow: hidden; }
-.ans .m b { display: block; height: 100%; border-radius: 99px; }
-.ans em { font-style: normal; text-align: right; }
+.pal { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 6px 20px; margin: 0 0 18px; }
+.pal div { display: grid; grid-template-columns: 14px 1fr; gap: 8px; font-size: 14px; }
+.pal i { width: 14px; height: 14px; border-radius: 3px; margin-top: 4px; }
+footer { border-top: 1px solid var(--rule); padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
 
-/* ---------- chapter 2: fan map ---------- */
-.sky { position: relative; border-radius: 14px; overflow: hidden; height: min(78vh, 880px); min-height: 480px; background: radial-gradient(ellipse at 30% 20%, #1f2740 0%, #171A1F 55%, #0e1014 100%); }
-.sky::before { content: ""; position: absolute; inset: 0; opacity: .45; pointer-events: none; background-image: radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 72% 34%, #fff, transparent), radial-gradient(1px 1px at 41% 77%, #fff, transparent), radial-gradient(1px 1px at 88% 81%, #fff, transparent), radial-gradient(1px 1px at 23% 58%, #fff, transparent), radial-gradient(1px 1px at 57% 9%, #fff, transparent); background-size: 340px 340px; }
-.sky .loading { position: absolute; inset: 0; display: grid; place-items: center; color: #9EA6B8; font-size: 14px; }
-#csvg { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; position: relative; }
-#csvg:active { cursor: grabbing; }
-.lk { stroke: #E8ECF6; stroke-linecap: round; transition: stroke-opacity .2s; }
-.nd { cursor: pointer; transition: opacity .2s; }
-.nd .ring { fill: none; stroke-width: 2.5; }
-.nd:focus { outline: none; }
-.nd:focus-visible .ring { stroke: #fff !important; stroke-width: 4; }
-.nd text { fill: #E8ECF6; font: 600 10px "Inter Tight", system-ui, sans-serif; text-anchor: middle; paint-order: stroke; stroke: #171A1F; stroke-width: 3px; opacity: 0; pointer-events: none; transition: opacity .2s; }
-.cont { fill: #9EA6B8; font: 700 13px "Inter Tight", system-ui, sans-serif; letter-spacing: .18em; text-anchor: middle; opacity: .55; pointer-events: none; }
-#csvg.focus .nd:not(.hi) { opacity: .12; }
-#csvg.focus .lk:not(.hi) { stroke-opacity: .02 !important; }
-#csvg.focus .nd.hi text { opacity: 1; }
-#csvg.zoomed .nd text { opacity: .85; }
-.nd.pick .ring { stroke: #fff !important; stroke-width: 3.5; }
-.nd.pick { filter: drop-shadow(0 0 8px rgb(214 128 100 / .95)); }
-.nd.seen image, .nd.skip image { opacity: .5; }
-.ctip { position: absolute; pointer-events: none; z-index: 5; max-width: 260px; background: rgb(23 26 31 / .94); color: #E8ECF6; border: 1px solid rgb(255 255 255 / .12); border-radius: 8px; padding: 10px 12px; font-size: 12.5px; opacity: 0; transition: opacity .15s; }
-.ctip b { display: block; font-size: 14px; margin-bottom: 4px; }
-.ctip span { color: #9EA6B8; }
-.skyhint { position: absolute; left: 14px; bottom: 14px; right: 170px; color: #9EA6B8; font-size: 12px; pointer-events: none; }
-.skyhint .m { display: none; }
-.skybtns { position: absolute; right: 12px; bottom: 12px; display: flex; gap: 6px; }
-.skybtns button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgb(255 255 255 / .18); background: rgb(23 26 31 / .7); color: #E8ECF6; cursor: pointer; font-size: 16px; }
-
-.skip { position: absolute; left: 12px; top: 12px; z-index: 6; background: #fff; color: var(--cobalt); padding: 10px 14px; border-radius: 8px; font-weight: 600; transform: translateY(-200%); }
-.skip:focus { transform: none; }
-table.links { width: 100%; border-collapse: collapse; font-size: 13.5px; color: var(--ink); }
-table.links th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--rule); }
-table.links td { padding: 7px 8px; border-bottom: 1px solid var(--chip); vertical-align: top; }
-table.links button { border: 0; background: none; padding: 0; color: var(--cobalt); cursor: pointer; font-weight: 600; text-align: left; }
-
-/* ---------- chapter 3: your turn ---------- */
-.local { display: flex; gap: 10px; align-items: flex-start; max-width: 640px; margin: 0 0 24px; font-size: 13.5px; color: var(--muted); }
-.local svg { flex: none; margin-top: 2px; }
-.local b { color: var(--ink); font-weight: 600; }
-.progress { display: grid; grid-template-columns: auto minmax(160px, 1fr); gap: 6px 22px; align-items: center; margin: 0 0 20px; }
-.progress .big { font-size: 30px; line-height: 1.05; margin: 0; }
-.progress .big b { color: var(--seen); }
-.progress .small { grid-column: 1 / -1; margin: 0; font-size: 13px; color: var(--muted); }
-.meter { height: 8px; border-radius: 99px; background: var(--chip); overflow: hidden; display: flex; }
-.meter i { display: block; height: 100%; transition: width .5s cubic-bezier(.2,.8,.2,1); }
-.meter .s { background: var(--seen); } .meter .w { background: var(--want); } .meter .k { background: color-mix(in srgb, var(--skip) 45%, transparent); }
-.resetrow { margin: -6px 0 18px; }
-.resetrow .btn { font-size: 13px; padding: 6px 14px; }
-.quick { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: 6px; }
-.qs { position: relative; aspect-ratio: 2/3; border: 0; padding: 0; border-radius: 4px; overflow: hidden; cursor: pointer; background: var(--c); }
-.qs img { width: 100%; height: 100%; object-fit: cover; display: block; transition: filter .2s, opacity .2s; }
-.qs::after { content: ""; position: absolute; inset: 0; border-radius: 4px; box-shadow: inset 0 0 0 0 var(--seen); transition: box-shadow .15s; }
-.qs[aria-pressed="true"]::after { box-shadow: inset 0 0 0 3px var(--seen); }
-.qs .ok { position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--seen); color: #fff; display: none; place-items: center; }
-.qs[aria-pressed="true"] .ok { display: grid; }
-.qs.skip img { filter: grayscale(1); opacity: .4; }
-.qs.watch::before { content: ""; position: absolute; left: 3px; top: 3px; width: 9px; height: 9px; border-radius: 50%; background: var(--want); box-shadow: 0 0 0 2px #fff; z-index: 1; }
-.qs:hover img { filter: brightness(1.08); }
-.quick-foot { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
-.upnext { margin-top: 44px; }
-.upnext h3 { margin: 0 0 4px; font-size: 28px; line-height: 1.1; letter-spacing: -.03em; }
-.upnext .sub { margin: 0 0 16px; color: var(--muted); font-size: 14px; }
-.upnext .cta { color: var(--muted); font-size: 15px; margin: 0; padding: 18px 20px; background: var(--chip); border-radius: 12px; }
-.upnext .cta b { color: var(--ink); }
-.picks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
-.pk { border: 0; padding: 0; background: none; text-align: left; cursor: pointer; display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; }
-.pk img { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; box-shadow: var(--shadow); transition: transform .2s; }
-.pk:hover img { transform: translateY(-3px); }
-.pk .n { font-size: 26px; line-height: 1; color: var(--clay); }
-.pk b { display: block; font-size: 14px; line-height: 1.2; margin: 3px 0 4px; }
-.pk small { display: block; color: var(--muted); font-size: 12px; line-height: 1.35; }
-.recap { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--rule); }
-.recap h3 { font-size: clamp(28px, 3.4vw, 42px); line-height: 1; letter-spacing: -.03em; margin: 0 0 8px; }
-.recap .dek2 { color: var(--muted); margin: 0 0 26px; max-width: 640px; }
-.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 44px; }
-.recap h4 { margin: 0 0 10px; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 600; }
-.bars { display: grid; gap: 9px; }
-.bars div { display: grid; grid-template-columns: 110px 1fr 58px; gap: 10px; align-items: center; font-size: 13.5px; }
-.bars .m { height: 8px; border-radius: 99px; background: var(--chip); overflow: hidden; }
-.bars .m b { display: block; height: 100%; background: var(--seen); border-radius: 99px; }
-.bars em { font-style: normal; color: var(--muted); font-size: 12.5px; text-align: right; }
-.tastebar { display: flex; height: 26px; border-radius: 4px; overflow: hidden; margin: 4px 0 8px; }
-.tastebar span { flex: 1; }
-.taste { font-size: 14px; margin: 0; }
-.finale { text-align: center; padding: 10px 0 30px; }
-.finale .over { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--clay-ink); font-weight: 700; margin: 0 0 12px; }
-.finale h3 { font-size: clamp(40px, 6vw, 80px); }
-.finale p { color: var(--muted); max-width: 560px; margin: 12px auto 0; }
-.finale .strip { display: flex; height: 10px; max-width: 680px; margin: 26px auto 0; border-radius: 99px; overflow: hidden; }
-.finale .strip span { flex: 1; }
-
-/* ---------- chapter 4: archive ---------- */
-.bar { position: sticky; top: var(--navh); z-index: 20; background: rgb(255 255 255 / .94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); margin: 0 -40px; padding: 0 40px; }
-.bar .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 12px 0 10px; }
-.searchbox { position: relative; flex: 1 1 200px; min-width: 170px; max-width: 300px; }
-.search { width: 100%; border: 1px solid var(--rule); background: var(--panel); border-radius: 99px; padding: 7px 70px 7px 14px; font-size: 14px; }
-.search:focus { outline: 2px solid var(--cobalt); outline-offset: 1px; }
-.count { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--muted); pointer-events: none; white-space: nowrap; }
-select.sel { border: 1px solid var(--rule); background: var(--panel); border-radius: 99px; padding: 7px 12px; font-size: 13px; cursor: pointer; }
-.spacer { flex: 1; }
-.chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 12px; }
-.chips::-webkit-scrollbar { display: none; }
-.chip { flex: none; border: 1px solid var(--rule); background: transparent; border-radius: 99px; padding: 4px 11px; font-size: 12.5px; cursor: pointer; white-space: nowrap; }
-.chip[aria-pressed="true"] { background: var(--cobalt); color: #fff; border-color: var(--cobalt); }
-.chip .c { color: var(--muted); margin-left: 4px; font-size: 11px; }
-.chip[aria-pressed="true"] .c { color: inherit; opacity: .75; }
-.archive-body { padding-top: 28px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 30px 16px; }
-@media (min-width: 1360px) { .grid { grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 32px 18px; } }
-.card { min-width: 0; position: relative; }
-.card.hide, .trow.hide { display: none; }
-.poster { display: block; width: 100%; aspect-ratio: 2 / 3; border: 0; padding: 0; cursor: pointer; border-radius: 4px; position: relative; overflow: hidden; background: var(--c, #333); transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s; box-shadow: var(--shadow); }
-.poster img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .5s, filter .3s; }
-.poster img.ok { opacity: 1; }
-.card.skip .poster img.ok { filter: grayscale(.85); opacity: .55; }
-.card:hover .poster { transform: translateY(-3px); box-shadow: 0 12px 28px -10px rgb(23 26 31 / .35), var(--shadow); }
-.poster:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
-.rank { position: absolute; top: 0; left: 0; background: var(--ink); color: #fff; z-index: 2; font-weight: 700; font-size: 12px; padding: 3px 7px; border-bottom-right-radius: 4px; pointer-events: none; }
-.jevbar { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; z-index: 2; background: var(--jb); }
-.meta { margin-top: 10px; }
-.meta b { display: block; font-size: 13px; font-weight: 600; line-height: 1.2; }
-.meta small { color: var(--muted); font-size: 11.5px; }
-.st { display: flex; gap: 6px; margin-top: 10px; }
-.st button { flex: 1; max-width: 34px; height: 26px; border: 1px solid var(--rule); background: var(--panel); border-radius: 6px; display: grid; place-items: center; cursor: pointer; color: var(--muted); padding: 0; transition: background .15s, color .15s, border-color .15s; }
-.st button:hover { border-color: var(--cobalt); color: var(--cobalt); }
-.st button[data-st="seen"][aria-pressed="true"] { background: var(--seen); border-color: var(--seen); color: #fff; }
-.st button[data-st="watch"][aria-pressed="true"] { background: var(--want); border-color: var(--want); color: #fff; }
-.st button[data-st="skip"][aria-pressed="true"] { background: var(--skip); border-color: var(--skip); color: #fff; }
-.fy { position: absolute; left: 6px; bottom: 12px; z-index: 3; pointer-events: none; display: none; background: var(--clay-ink); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 99px; }
-.fy.on { display: block; }
-.pop { animation: pop .35s cubic-bezier(.2,1.6,.4,1); }
-@keyframes pop { 50% { transform: scale(1.06); } }
-.spotlight .poster { animation: spot 1.6s ease-in-out 2; }
-@keyframes spot { 50% { transform: scale(1.1) translateY(-6px); box-shadow: 0 0 0 4px var(--cobalt), 0 24px 50px -10px var(--c); } }
-.empty { padding: 80px 16px; text-align: center; display: none; }
-.empty p { margin: 0 0 14px; font-size: 22px; }
-.timeline { display: none; }
-.view-timeline .grid { display: none; }
-.view-timeline .timeline { display: block; }
-.axis, .trow { display: grid; grid-template-columns: minmax(120px, 230px) 1fr; gap: 12px; align-items: center; }
-.axis { position: sticky; top: calc(var(--navh) + var(--barh)); z-index: 5; background: var(--paper); padding: 6px 0; border-bottom: 1px solid var(--rule); font-size: 11px; color: var(--muted); }
-.ticks { position: relative; height: 16px; }
-.ticks span { position: absolute; transform: translateX(-50%); }
-.trow { padding: 3px 0; cursor: pointer; }
-.trow .lbl { font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.trow .lbl em { font-style: normal; color: var(--muted); display: inline-block; width: 28px; }
-.trow.seen .lbl::after { content: " ✓"; color: var(--seen); font-weight: 700; }
-.trow.watch .lbl::after { content: " ●"; color: var(--want); }
-.trow.skip { opacity: .5; }
-.track { position: relative; height: 20px; background: repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px calc(100% / 26.5)); }
-.span { position: absolute; top: 3px; height: 14px; border-radius: 3px; background: var(--jc); min-width: 6px; transition: transform .2s; transform-origin: left center; }
-.span.open { background: linear-gradient(90deg, var(--jc) 80%, transparent); }
-.trow:hover .span { transform: scaleY(1.35); }
-.trow:hover .lbl { font-weight: 600; }
-.peek { position: fixed; width: 120px; aspect-ratio: 2/3; pointer-events: none; z-index: 40; border-radius: 4px; box-shadow: var(--shadow); opacity: 0; transition: opacity .15s; background-size: cover; background-position: center; }
-
-/* ---------- detail dialog ---------- */
-dialog { border: 1px solid var(--rule); padding: 0; width: min(880px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: var(--panel); color: var(--ink); border-radius: 12px; box-shadow: 0 30px 80px rgb(23 26 31 / .45); overflow: auto; }
+/* ---------- show panel ---------- */
+dialog { border: 1px solid var(--rule); padding: 0; width: min(760px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: #fff; color: var(--ink); border-radius: 12px; box-shadow: 0 30px 80px rgb(23 26 31 / .45); overflow: auto; }
 dialog::backdrop { background: rgb(23 26 31 / .6); backdrop-filter: blur(4px); }
-dialog[open] { animation: rise .35s cubic-bezier(.2,.8,.2,1); }
-@keyframes rise { from { transform: translateY(20px) scale(.97); opacity: 0; } }
+dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
+@keyframes rise { from { transform: translateY(16px); opacity: 0; } }
 .dlg { display: grid; grid-template-columns: 1fr; }
-@media (min-width: 680px) { .dlg { grid-template-columns: 340px 1fr; } }
+@media (min-width: 640px) { .dlg { grid-template-columns: 280px 1fr; } }
 .dlg .art { background: var(--c); }
 .dlg .art img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 2/3; }
-.dlg .body { padding: 30px 32px 28px; display: flex; flex-direction: column; }
+.dlg .body { padding: 28px 30px 24px; display: flex; flex-direction: column; }
 .dlg .num { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--clay-ink); font-weight: 700; }
-.dlg h2 { font-size: 42px; line-height: 1.02; letter-spacing: -.03em; margin: 6px 0 6px; }
-.dlg .sub { color: var(--muted); font-size: 14px; }
-.dlg .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
-.dlg .tags span { background: var(--chip); border-radius: 99px; padding: 3px 10px; font-size: 12px; }
-.dlg p.sum { margin: 0 0 18px; font-size: 15px; }
-.dlg .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
-.toggle { display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid var(--rule); background: transparent; border-radius: 99px; padding: 8px 14px; cursor: pointer; font-size: 13px; font-weight: 600; }
-.toggle[data-st="seen"][aria-pressed="true"] { background: var(--seen); border-color: var(--seen); color: #fff; }
-.toggle[data-st="watch"][aria-pressed="true"] { background: var(--want); border-color: var(--want); color: #fff; }
-.toggle[data-st="skip"][aria-pressed="true"] { background: var(--skip); border-color: var(--skip); color: #fff; }
-.nav { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 13px; }
-.nav button { border: 0; background: none; cursor: pointer; color: var(--muted); padding: 4px 0; text-align: left; }
-.nav button:last-child { text-align: right; }
-.nav button:hover { color: var(--cobalt); }
-.x { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: rgb(23 26 31 / .6); color: #fff; font-size: 18px; cursor: pointer; z-index: 3; }
-.jevread { margin: 0 0 18px; padding: 14px 16px; background: var(--chip); border-radius: 8px; }
-.jl { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; font-weight: 600; }
-.jbar { display: flex; height: 14px; border-radius: 3px; overflow: hidden; margin: 10px 0 8px; }
+.dlg h2 { font-size: 38px; line-height: 1.02; margin: 6px 0 4px; }
+.dlg .meta { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+.jbar { display: flex; height: 16px; border-radius: 4px; overflow: hidden; margin: 0 0 10px; }
 .jbar span { height: 100%; }
-.jkeys { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; }
+.jkeys { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 14px; }
 .jkeys span { display: inline-flex; align-items: center; gap: 6px; }
 .jkeys i { width: 10px; height: 10px; border-radius: 2px; background: var(--sw); }
-.jconf { margin-top: 10px; font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
-.jconf .m { width: 90px; height: 5px; border-radius: 99px; background: var(--rule); overflow: hidden; }
-.jconf .m b { display: block; height: 100%; background: var(--ink); }
-.fans { margin: 0 0 18px; }
-.fans .jl { margin-bottom: 8px; }
-.fans ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.fans li button { width: 100%; display: grid; grid-template-columns: 26px 1fr 90px 36px; align-items: center; gap: 8px; border: 0; background: none; padding: 3px 0; cursor: pointer; text-align: left; font-size: 13px; }
-.fans li img { width: 26px; height: 39px; object-fit: cover; border-radius: 2px; }
-.fans li .m { height: 5px; border-radius: 99px; background: var(--rule); overflow: hidden; }
-.fans li .m b { display: block; height: 100%; background: var(--ink); }
-.fans li em { font-style: normal; color: var(--muted); font-size: 12px; text-align: right; }
-.fans li button:hover span:first-of-type { text-decoration: underline; color: var(--cobalt); }
-.why { margin: 0 0 18px; padding: 12px 14px; border-left: 3px solid var(--clay); background: var(--chip); border-radius: 0 8px 8px 0; font-size: 13.5px; }
-.why b { font-size: 15px; }
+.conf { font-size: 13.5px; color: var(--muted); margin: 10px 0 18px; }
+.read { font-size: 13.5px; color: var(--muted); margin: 0 0 18px; }
+.read b { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+.watched { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--rule); background: none; border-radius: 99px; padding: 8px 16px; font-size: 14px; font-weight: 600; cursor: pointer; min-height: 44px; }
+.watched[aria-pressed="true"] { background: var(--seen); border-color: var(--seen); color: #fff; }
+.nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.nav button { border: 0; background: none; cursor: pointer; color: var(--muted); font-size: 13.5px; min-height: 44px; text-align: left; }
+.nav button:last-child { text-align: right; }
+.nav button:hover { color: var(--cobalt); }
+.x { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgb(23 26 31 / .6); color: #fff; font-size: 20px; cursor: pointer; z-index: 3; }
 
-/* ---------- toast ---------- */
-.toast { position: fixed; left: 50%; bottom: 24px; z-index: 60; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; width: min(460px, calc(100vw - 32px)); background: var(--ink); color: #fff; border-radius: 12px; padding: 16px 44px 16px 18px; box-shadow: 0 20px 50px rgb(23 26 31 / .35); }
-.toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
-.toast .over { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #E8A48E; font-weight: 600; margin: 0 0 4px; }
-.toast .t { font-size: 24px; line-height: 1.1; margin: 0; }
-.toast p { margin: 6px 0 0; font-size: 13.5px; color: #C9CCD4; }
-.toast .close { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border: 0; border-radius: 50%; background: transparent; color: #fff; font-size: 18px; cursor: pointer; }
-
-footer { border-top: 1px solid var(--rule); padding-top: 28px; padding-bottom: 56px; color: var(--muted); font-size: 13px; line-height: 1.65; }
-
-@media (max-width: 1100px) { .findings { grid-template-columns: repeat(3, minmax(0, 1fr)); } .quick { grid-template-columns: repeat(12, minmax(0, 1fr)); } }
+@media (max-width: 1000px) { .pick { grid-template-columns: repeat(10, minmax(0, 1fr)); } }
 @media (max-width: 719px) {
-  .navstat { display: none; }
-  .hero { padding-top: 40px; padding-bottom: 40px; }
-  .dek { font-size: 17px; }
-  .findings { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 72%; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
-  .findings::-webkit-scrollbar { display: none; }
-  .chapter { padding-top: 52px; padding-bottom: 52px; }
-  .quick { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .swatches { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
+  .hero { padding-top: 40px; }
+  .dek { font-size: 18px; }
+  .key { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
+  .key::-webkit-scrollbar { display: none; }
   .swb { flex: none; }
-  .callout { grid-template-columns: 56px 1fr; }
-  .sky { height: 64vh; min-height: 420px; }
-  .skyhint .d { display: none; } .skyhint .m { display: inline; }
-  .progress { grid-template-columns: 1fr; }
-  .progress .big { font-size: 26px; }
-  .picks { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 42%; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
-  .picks::-webkit-scrollbar { display: none; }
-  .pk { grid-template-columns: 1fr; }
-  .bar { position: static; margin: 0 -16px; padding: 0 16px; }
-  .axis { top: var(--navh); }
-  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 10px; }
-  .meta b { font-size: 12px; }
-  .searchbox { max-width: none; }
-  .bars div { grid-template-columns: 96px 1fr 52px; }
-  .ans div { grid-template-columns: 90px 1fr 40px; }
+  .pick { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .result { grid-template-columns: 110px 1fr; gap: 20px; }
+  .result h3 { font-size: 24px; }
+  .mix div { grid-template-columns: 14px 1fr 70px 40px; }
 }
-@media (max-width: 600px) { .axis, .trow { grid-template-columns: 110px 1fr; } }
 @media (max-width: 719px), (pointer: coarse) {
-  .seg button, .chip, .swb, select.sel, .search, .btn, .toggle, .brand, .chapters a, details.story summary, .nav button, .fans li button, table.links button { min-height: 44px; }
-  .seg button, .chip, .swb { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; }
-  .skip { min-height: 44px; display: inline-flex; align-items: center; }
-  table.links button, .nav button { min-width: 44px; }
-  .chapters a { display: inline-flex; align-items: center; }
-  .skybtns button, .x, .toast .close { width: 44px; height: 44px; }
-  .st { gap: 8px; } .st button { height: 44px; max-width: none; }
-  .fd .go { min-height: 24px; }
+  .seg button, .swb, .state .clear { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
 }
-@media (max-width: 719px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 14px; } }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
-<nav class="topnav" aria-label="Chapters">
-  <div class="wrap">
-    <button class="brand disp soft" id="toTop" title="Back to top">Previously On…</button>
-    <div class="chapters">
-      <a href="#quilt" data-ch="quilt"><em>1</em>Colour quilt</a>
-      <a href="#fans" data-ch="fans"><em>2</em>Fan map</a>
-      <a href="#you" data-ch="you"><em>3</em>Your turn</a>
-      <a href="#archive" data-ch="archive"><em>4</em>Archive</a>
-    </div>
-    <div class="navstat"><span><b id="navSeen">0</b> / 100 seen</span><span class="cost" id="navCost"></span></div>
-  </div>
-</nav>
+<div class="wrap"><p class="brand">Previously On…</p></div>
 
-<header class="hero wrap" id="top">
-  <p class="kicker">A five-cent experiment with Jev, an AI decision model</p>
-  <h1 class="disp">What colour is <span class="bb">Breaking&nbsp;Bad</span>?</h1>
-  <p class="dek">I asked an AI to colour-code <b>the 100 best TV shows of the century</b>, as ranked by The New York Times, then predict which of them share fans. <b>The whole experiment cost about five cents.</b></p>
-  <dl class="evidence" id="evidence" aria-label="The experiment in numbers"></dl>
-  <div class="hero-actions">
-    <a class="btn" href="#quilt">Start the story ↓</a>
-    <a class="btn ghost" href="#archive" id="continue" hidden>Continue your list →</a>
-  </div>
-  <details class="story">
-    <summary>Why this exists</summary>
-    <div class="body">
-      <p><b>How far can five cents take you?</b> That's what Mridhula, the owner of this page, wanted to find out.</p>
-      <p>The idea came from combining two things she stumbled across over a weekend (a predictable side effect of spending too much time on Twitter): a colour-palette quiz by the Verity Cast, and The New York Times' list of the 100 best TV shows of the century. She mashed the two together, added a little AI, and spent about five cents finding out what would happen.</p>
-      <p>What you see here is the result: a colour quilt of the shows, plus a map of which shows Jev thinks share the same fans. More to come!</p>
-    </div>
-  </details>
-  <div class="findings" id="findings" aria-label="What Jev predicted"></div>
+<header class="hero wrap">
+  <h1 class="disp">What colour is <span class="bb" id="bb">Breaking&nbsp;Bad</span>?</h1>
+  <p class="dek">I asked Jev, an AI model from TypeSafe, to pick one of 13 colours for each of <b>The New York Times' 100 best TV shows of the century</b>. Here are the results.</p>
 </header>
 
-<section class="chapter wrap" id="quilt" aria-labelledby="h-quilt">
-  <p class="chap">Chapter 1</p>
-  <h2 class="disp" id="h-quilt">The colour quilt</h2>
-  <p class="intro" id="quiltIntro"></p>
-  <button class="callout" id="callout"></button>
-  <div class="controls">
-    <span class="lbl">Order</span>
-    <div class="seg" role="group" aria-label="Quilt order"><button data-qorder="rank" aria-pressed="true">By NYT rank</button><button data-qorder="colour" aria-pressed="false">By colour</button></div>
-  </div>
-  <div class="controls">
-    <span class="lbl">Highlight a colour</span>
-    <div class="swatches" id="swatches"></div>
-  </div>
-  <div class="quilt" id="quiltGrid" role="list"></div>
-  <div class="quilt-foot"><span>Hover a tile to see the cover. Click it for Jev's full answer.</span><span id="quiltCost"></span></div>
-  <details class="how" id="howColour"><summary>How Jev answered</summary><div class="body"></div></details>
-</section>
-
-<section class="chapter wrap" id="fans" aria-labelledby="h-fans">
-  <p class="chap">Chapter 2</p>
-  <h2 class="disp" id="h-fans">The fan map</h2>
-  <p class="intro" id="fansIntro"></p>
-  <div class="sky" id="sky">
-    <div class="loading" id="skyLoading">Drawing the map…</div>
-    <a class="skip" href="#fanList" id="skipMap">Skip the map: read the predicted links as a list</a>
-    <svg id="csvg" role="group" aria-label="Fan map: 100 shows. Tab through the shows; each one reads its strongest predicted matches. Press Enter or Space for details."></svg>
-    <div class="ctip" id="ctip"></div>
-    <div class="skyhint"><span class="d">Drag to pan · scroll to zoom · hover a show to see its circle</span><span class="m">Pinch to zoom · tap a show</span></div>
-    <div class="skybtns"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="zfit" aria-label="Fit">⤢</button></div>
-  </div>
-  <details class="how" id="fanList"><summary>Jev's strongest predicted links, as a list</summary><div class="body"><table class="links"><caption class="sr-only">For each show, the three shows Jev predicts its fans would most love</caption><thead><tr><th scope="col">Show</th><th scope="col">Jev predicts fans would also love</th></tr></thead><tbody></tbody></table></div></details>
-  <details class="how" id="howFans"><summary>How Jev answered</summary><div class="body"></div></details>
-</section>
-
-<section class="chapter wrap" id="you" aria-labelledby="h-you">
-  <p class="chap">Chapter 3</p>
-  <h2 class="disp" id="h-you">Your turn</h2>
-  <p class="intro">Tap the shows you've seen. Once you've picked three, Jev's fan predictions line up what you should watch next, and a recap of your viewing builds below.</p>
-  <p class="local">
-    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-    <span><b>Your marks stay in this browser only.</b> No account, nothing is sent anywhere, and clearing your browser data erases them. For a watchlist or shows you'll skip, use the archive below.</span>
-  </p>
-  <div class="progress">
-    <p class="big disp" id="bigTally">You've seen <b>0</b> of 100</p>
-    <div class="meter" aria-hidden="true"><i class="s" id="mSeen"></i><i class="w" id="mWant"></i><i class="k" id="mSkip"></i></div>
-    <p class="small" id="subTally"></p>
-  </div>
-  <p class="resetrow"><button class="btn ghost" id="reset" hidden>Reset my marks</button></p>
-  <div class="quick" id="quick" role="group" aria-label="Shows you've seen"></div>
-  <p class="quick-foot">In NYT rank order, from <i>Breaking Bad</i> (1) to <i>Scandal</i> (100).</p>
-  <section class="upnext" id="upnext" aria-live="polite"></section>
-  <section class="recap" id="recap" aria-labelledby="recapTitle"></section>
-</section>
-
-<section class="chapter wrap" id="archive" aria-labelledby="h-archive">
-  <p class="chap">Chapter 4</p>
-  <h2 class="disp" id="h-archive">The archive</h2>
-  <p class="intro">The full list: covers, a timeline, search, and your watchlist. The thin stripe under each cover is Jev's colour for that show.</p>
-  <div class="bar" id="bar">
-    <div class="row">
-      <div class="seg" role="group" aria-label="View">
-        <button data-view="grid" aria-pressed="true">Covers</button>
-        <button data-view="timeline" aria-pressed="false">Timeline</button>
-      </div>
-      <div class="searchbox">
-        <input class="search" id="q" type="search" placeholder="Search shows, networks…" aria-label="Search shows" aria-describedby="count" autocomplete="off">
-        <span class="count" id="count" aria-live="polite"></span>
-      </div>
-      <select class="sel" id="sort" aria-label="Sort">
-        <option value="rank">Sort: NYT rank</option>
-        <option value="year">Sort: premiere year</option>
-        <option value="alpha">Sort: A–Z</option>
-        <option value="jev">Sort: Jev colour</option>
-        <option value="foryou">Sort: Jev · for you</option>
-      </select>
-      <select class="sel" id="show" aria-label="Filter by your status">
-        <option value="all">Show: all</option>
-        <option value="seen">Seen</option>
-        <option value="watch">Watchlist</option>
-        <option value="unseen">Not seen yet</option>
-        <option value="skip">Won't watch</option>
-      </select>
-      <span class="spacer"></span>
-      <button class="btn" id="pick">🎲 Pick for me</button>
+<main class="wrap">
+  <section aria-label="Jev's colour for each of the 100 shows">
+    <div class="controls">
+      <span class="lbl">Order</span>
+      <div class="seg" role="group" aria-label="Quilt order"><button data-order="rank" aria-pressed="true">By NYT rank</button><button data-order="colour" aria-pressed="false">By colour</button></div>
     </div>
-    <div class="chips" id="chips" role="group" aria-label="Genre"></div>
-  </div>
-  <div class="archive-body" id="main">
-    <div class="grid" id="grid"></div>
-    <div class="timeline" id="timeline"></div>
-    <div class="empty" id="empty"></div>
-  </div>
-</section>
+    <div class="controls">
+      <span class="lbl">Highlight</span>
+      <div class="key" id="key" role="group" aria-label="Highlight a colour"></div>
+    </div>
+    <div class="quilt" id="quilt" role="list"></div>
+    <p class="hint">Each tile is Jev's full answer: stripes mean it split its choice between colours, and soft edges mean it was unsure. Hover for the cover; click for the details.</p>
+    <p class="note" id="note"></p>
+  </section>
 
-<footer class="wrap">
-  <b>Previously On…</b> is a fan project. Ranking: <a href="https://www.nytimes.com/interactive/2026/arts/television/best-tv-shows-21st-century.html">The New York Times</a> (500+ voters, 2026). Cover art &amp; summaries via <a href="https://www.tvmaze.com">TVmaze</a>.<span id="jevcredit"></span> Keys: <kbd>/</kbd> search · <kbd>←</kbd><kbd>→</kbd> browse · <kbd>S</kbd> seen · <kbd>W</kbd> watchlist · <kbd>X</kbd> won't watch · <kbd>R</kbd> random.
-</footer>
+  <section class="palette" aria-labelledby="h-palette">
+    <h2 class="disp" id="h-palette">What colour is your television taste?</h2>
+    <p class="sub">Mark the shows you've watched to combine Jev's colour choices into your personal TV palette.</p>
+    <p class="state" aria-live="polite"><span id="stateText"></span><button class="clear" id="clear" hidden>Clear selection</button></p>
+    <div class="pick" id="pick" role="group" aria-label="Shows you've watched"></div>
+    <p class="local">Your selection is saved only in this browser.</p>
+    <div class="result" id="result" hidden></div>
+  </section>
+
+  <details class="how">
+    <summary class="disp">How I did it</summary>
+    <div class="body" id="how"></div>
+  </details>
+</main>
+
+<footer class="wrap" id="credits"></footer>
 
 <dialog id="dlg" aria-labelledby="dTitle"></dialog>
-<div class="peek" id="peek"></div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<div class="sr-only" id="sr" aria-live="polite"></div>
 
 <script>
 (async () => {
   const shows = await (await fetch("shows.json")).json();
-  // Jev's answers are precomputed offline (jev_colour.py, jev_constellation.py); the site never calls the API.
+  // Jev's answers are precomputed offline by jev_colour.py; the site never calls the API.
   const jev = await (await fetch("jev/colour.json")).json();
-  const fans = await (await fetch("jev/fans.json")).json();
-  const fan = (a, b) => fans.rows[a]?.[b - 1] ?? 0;          // directed: % a fan of a would love b
-  const link = (a, b) => (fan(a, b) + fan(b, a)) / 2;
-  const alsoLove = (n, k = 5) => fans.rows[n].map((p, i) => [i + 1, p]).filter(([b]) => b !== n).sort((x, y) => y[1] - x[1]).slice(0, k);
   const $ = s => document.querySelector(s);
+  const byRank = n => shows[n - 1];
+  const P = jev.palette, ORDER = Object.keys(P);
+  const J = n => jev.shows[n];
+  const pct = p => Math.round(p * 100) + "%";
+  const confWord = c => c >= .85 ? "certain" : c >= .6 ? "fairly sure" : c >= .4 ? "undecided" : "torn";
   const store = {
     get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
   };
-  const byRank = n => shows[n - 1];
   shows.forEach(s => { s.years = s.start + (s.end === s.start ? "" : "–" + (s.end ?? "present")); });
-  const totalCost = jev.cost_usd + fans.cost_usd;
 
-  /* ---- Jev colour helpers ---- */
-  const P = jev.palette, PORDER = Object.keys(P);
-  const jevOf = n => jev.shows[n];
-  const hexOf = n => P[jevOf(n).choice].hex;
-  function quilt(n) {                                   // bands sized by probability; low confidence = softer edges
-    const j = jevOf(n);
-    const parts = Object.entries(j.probs).filter(([, p]) => p >= 0.02);
-    const tot = parts.reduce((a, [, p]) => a + p, 0), soft = (1 - j.confidence) * 14;
+  // bands sized by probability; the less confident Jev was, the softer the edges between them
+  function bands(probs, confidence) {
+    const parts = Object.entries(probs).filter(([, p]) => p >= 0.02).sort((a, b) => b[1] - a[1]);
+    const tot = parts.reduce((a, [, p]) => a + p, 0), soft = (1 - confidence) * 14;
     let at = 0; const stops = [];
     parts.forEach(([k, p], i) => {
       const a = at, b = at + (p / tot) * 100; at = b;
@@ -586,553 +239,93 @@ footer { border-top: 1px solid var(--rule); padding-top: 28px; padding-bottom: 5
     });
     return stops.length > 1 ? `linear-gradient(to bottom, ${stops.join(", ")})` : P[parts[0][0]].hex;
   }
-  const confWord = c => c >= .85 ? "certain" : c >= .6 ? "fairly sure" : c >= .4 ? "undecided" : "torn";
-  const pct = p => Math.round(p * 100) + "%";
-  const colourCounts = {}; Object.values(jev.shows).forEach(j => colourCounts[j.choice] = (colourCounts[j.choice] || 0) + 1);
+  const tile = n => bands(J(n).probs, J(n).confidence);
+  const byColour = (a, b) => ORDER.indexOf(J(a).choice) - ORDER.indexOf(J(b).choice) || J(b).probs[J(b).choice] - J(a).probs[J(a).choice];
 
-  /* ---- one status per show: "seen" | "watch" | "skip" ---- */
-  const LABEL = { seen: "Seen", watch: "Watchlist", skip: "Won't watch" };
-  const ICON = {
-    seen: `<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    watch: `<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11l-4-3-4 3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`,
-    skip: `<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4.1 11.9l7.8-7.8" stroke="currentColor" stroke-width="1.7"/></svg>`,
-  };
-  let status = store.get("nyt100.status", null);
-  if (!status) {                                        // migrate the old {s, w} checkboxes; seen wins
-    status = {};
-    Object.entries(store.get("nyt100.marks", {})).forEach(([r, m]) => { if (m?.s) status[r] = "seen"; else if (m?.w) status[r] = "watch"; });
-    store.set("nyt100.status", status);
-  }
-  const st = n => status[n] || null;
-  const state = { view: "grid", show: "all", genre: null, q: "", sort: "rank", qorder: "rank", colour: null };
+  /* ---- hero underline: Breaking Bad in its own Jev colours ---- */
+  const bb = Object.entries(J(1).probs).sort((a, b) => b[1] - a[1]);
+  $("#bb").style.backgroundImage = `linear-gradient(90deg, ${P[bb[0][0]].hex} 0 ${pct(bb[0][1])}, ${P[bb[1][0]].hex} ${pct(bb[0][1])} 100%)`;
 
-  /* ---- For you: rank unwatched shows from Jev's fan answers (no API calls) ---- */
-  const MIN_SEEN = 3;
-  let fy = null;
-  function computeForYou() {
-    const seen = shows.filter(s => st(s.rank) === "seen").map(s => s.rank);
-    if (seen.length < MIN_SEEN) return fy = null;
-    fy = new Map();
-    shows.forEach(b => {
-      if (st(b.rank) === "seen" || st(b.rank) === "skip") return;
-      const from = seen.map(a => [a, fan(a, b.rank)]).sort((x, y) => y[1] - x[1]);
-      const mean = from.reduce((t, [, p]) => t + p, 0) / from.length;
-      const top = from.slice(0, 3), topMean = top.reduce((t, [, p]) => t + p, 0) / top.length;
-      fy.set(b.rank, { score: Math.round(0.6 * topMean + 0.4 * mean), because: top.slice(0, 2) });
-    });
-    return fy;
-  }
-  const fyTop = (k = 5) => fy ? [...fy].sort((a, b) => b[1].score - a[1].score).slice(0, k) : [];
-
-  /* =========================== HERO: findings =========================== */
-  const commonColour = Object.entries(colourCounts).sort((a, b) => b[1] - a[1])[0];
-  const byConf = shows.map(s => [s.rank, jevOf(s.rank).confidence]).sort((a, b) => b[1] - a[1]);
-  const certain = byConf[0][0], torn = byConf[byConf.length - 1][0];
-  const pairs = shows.flatMap(a => shows.filter(b => b.rank > a.rank).map(b => [a.rank, b.rank, link(a.rank, b.rank)])).sort((x, y) => y[2] - x[2]);
-  const tight = pairs[0];
-  const loneliness = shows.map(s => [s.rank, Math.max(...shows.filter(b => b.rank !== s.rank).map(b => link(s.rank, b.rank)))]).sort((a, b) => a[1] - b[1]);
-  const lonely = loneliness[0];
-  const mixBar = n => `<span class="sw">${Object.entries(jevOf(n).probs).filter(([, p]) => p >= .02).map(([k, p]) => `<span style="flex:${p};background:${P[k].hex}"></span>`).join("")}</span>`;
-  const tornTop = Object.entries(jevOf(torn).probs).slice(0, 3).map(([k]) => P[k].label.toLowerCase());
-  $("#findings").innerHTML = [
-    `<button class="fd" data-act="colour:${commonColour[0]}"><span class="lab">Most common colour</span><span class="val disp">${P[commonColour[0]].label}</span><span class="sw"><span style="flex:1;background:${P[commonColour[0]].hex}"></span></span><span class="det">${commonColour[1]} of 100 shows. Prestige TV loves a grey institution.</span><span class="go">See them in the quilt →</span></button>`,
-    `<button class="fd" data-act="open:${certain}"><span class="lab">Most certain</span><span class="val disp">${byRank(certain).title}</span>${mixBar(certain)}<span class="det">${pct(jevOf(certain).probs[jevOf(certain).choice])} ${P[jevOf(certain).choice].label.toLowerCase()}, confidence ${jevOf(certain).confidence.toFixed(2)}.</span><span class="go">Jev's answer →</span></button>`,
-    `<button class="fd" data-act="open:${torn}"><span class="lab">Most torn</span><span class="val disp">${byRank(torn).title}</span>${mixBar(torn)}<span class="det">Split between ${tornTop.join(", ")}. Confidence ${jevOf(torn).confidence.toFixed(2)}.</span><span class="go">Jev's answer →</span></button>`,
-    `<button class="fd" data-act="fan:${tight[0]}"><span class="lab">Tightest predicted pair</span><span class="val disp">${byRank(tight[0]).title} &amp; ${byRank(tight[1]).title}</span><span class="det">Jev predicts a ${Math.round(tight[2])}% fan overlap, the highest on the list.</span><span class="go">On the fan map →</span></button>`,
-    `<button class="fd" data-act="fan:${lonely[0]}"><span class="lab">Loneliest show</span><span class="val disp">${byRank(lonely[0]).title}</span><span class="det">Its strongest predicted match is only ${Math.round(lonely[1])}%. Jev doesn't see its fans elsewhere on the list.</span><span class="go">On the fan map →</span></button>`,
-  ].join("");
-  $("#findings").addEventListener("click", e => {
-    const b = e.target.closest("[data-act]"); if (!b) return;
-    const [act, v] = b.dataset.act.split(":");
-    if (act === "colour") { setHighlight(v); $("#quilt").scrollIntoView({ behavior: "smooth" }); }
-    if (act === "open") open(+v);
-    if (act === "fan") { $("#fans").scrollIntoView({ behavior: "smooth" }); buildConstellation().then(() => setTimeout(() => pinFan(+v), 500)); }
-  });
-  $("#evidence").innerHTML = [
-    ["100", "shows from the NYT list"], [PORDER.length, "colours to choose from"],
-    [(fans.calls * (fans.calls - 1)).toLocaleString(), "fan predictions"], [jev.calls + fans.calls, "calls to Jev"],
-    [`$${totalCost.toFixed(3)}`, "total cost", "cost"],
-  ].map(([v, l, c]) => `<div><dt>${l}</dt><dd class="disp${c ? " " + c : ""}">${v}</dd></div>`).join("");
-  $("#navCost").textContent = `${Math.round(totalCost * 100)}¢ spent on Jev`;
-
-  /* =========================== CHAPTER 1: quilt =========================== */
-  const bb = jevOf(1), bbParts = Object.entries(bb.probs).filter(([, p]) => p >= .02);
-  $("#quiltIntro").innerHTML = `For each show, I gave Jev its description and one question: <b>which of ${PORDER.length} colours best captures this show's mood?</b> Jev doesn't write an answer. It returns a probability for every colour, plus how confident it is. Each tile below is that full answer: <b>stripes mean Jev was split between colours, and soft, blurry edges mean it was unsure.</b>`;
-  $("#callout").innerHTML = `<span class="tile" style="background:${quilt(1)}"></span>
-    <span><p class="q disp">So, what colour is <i>Breaking Bad</i>?</p>
-    <p>Jev couldn't decide: <b>${pct(bbParts[0][1])} ${P[bbParts[0][0]].label.toLowerCase()}</b> and <b>${pct(bbParts[1][1])} ${P[bbParts[1][0]].label.toLowerCase()}</b>, with ${confWord(bb.confidence)} confidence (${bb.confidence.toFixed(2)}). The desert heat versus the sickly menace. It's tile No. 1, top left.</p></span>`;
-  $("#callout").onclick = () => open(1);
-  $("#swatches").innerHTML = `<button class="swb" data-c="" aria-pressed="true"><i style="--sw:conic-gradient(${PORDER.map(k => P[k].hex).join(",")})"></i>All</button>` +
-    PORDER.filter(k => colourCounts[k]).map(k => `<button class="swb" data-c="${k}" aria-pressed="false" title="${P[k].desc}" style="--sw:${P[k].hex}"><i></i>${P[k].label}<span class="c">${colourCounts[k]}</span></button>`).join("");
-  const qgrid = $("#quiltGrid");
-  qgrid.innerHTML = shows.map(s => `<button class="qt${s.rank === 1 ? " mark" : ""}" role="listitem" data-rank="${s.rank}" style="--q:${quilt(s.rank)}" aria-label="${s.rank}. ${s.title}: Jev says ${P[jevOf(s.rank).choice].label}, ${confWord(jevOf(s.rank).confidence)}">
+  /* ---- quilt ---- */
+  const counts = {}; shows.forEach(s => counts[J(s.rank).choice] = (counts[J(s.rank).choice] || 0) + 1);
+  $("#key").innerHTML = `<button class="swb" data-c="" aria-pressed="true"><i style="--sw:conic-gradient(${ORDER.map(k => P[k].hex).join(",")})"></i>All</button>` +
+    ORDER.filter(k => counts[k]).map(k => `<button class="swb" data-c="${k}" aria-pressed="false" title="${P[k].desc}" style="--sw:${P[k].hex}"><i></i>${P[k].label}<span class="c">${counts[k]}</span></button>`).join("");
+  const quilt = $("#quilt");
+  quilt.innerHTML = shows.map(s => `<button class="qt" role="listitem" data-rank="${s.rank}" style="--q:${tile(s.rank)}" aria-label="${s.rank}. ${s.title}: ${P[J(s.rank).choice].label}, Jev was ${confWord(J(s.rank).confidence)}">
       <span class="r">${s.rank}</span><img src="${s.cover}" alt="" loading="lazy"></button>`).join("");
-  const qtiles = new Map([...qgrid.children].map(el => [+el.dataset.rank, el]));
-  qgrid.addEventListener("click", e => { const t = e.target.closest(".qt"); if (t) open(+t.dataset.rank); });
-  function setHighlight(c) {
-    state.colour = c || null;
-    $("#swatches").querySelectorAll(".swb").forEach(x => x.setAttribute("aria-pressed", x.dataset.c === (c || "")));
-    qtiles.forEach((el, n) => el.classList.toggle("dim", !!c && jevOf(n).choice !== c));
-  }
-  $("#swatches").onclick = e => { const b = e.target.closest(".swb"); if (b) setHighlight(b.dataset.c); };
-  const jevSort = (a, b) => PORDER.indexOf(jevOf(a).choice) - PORDER.indexOf(jevOf(b).choice) || jevOf(b).probs[jevOf(b).choice] - jevOf(a).probs[jevOf(a).choice];
-  function orderQuilt() {
-    const ranks = shows.map(s => s.rank);
-    if (state.qorder === "colour") ranks.sort(jevSort);
-    const before = new Map([...qtiles].map(([k, el]) => [k, el.getBoundingClientRect()]));
-    ranks.forEach(r => qgrid.appendChild(qtiles.get(r)));
-    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) qtiles.forEach((el, k) => {
-      const a = before.get(k), b = el.getBoundingClientRect();
-      if (a.left !== b.left || a.top !== b.top) el.animate([{ transform: `translate(${a.left - b.left}px,${a.top - b.top}px)` }, { transform: "none" }], { duration: 700, easing: "cubic-bezier(.2,.8,.2,1)" });
-    });
-  }
-  document.querySelectorAll("[data-qorder]").forEach(b => b.onclick = () => {
-    state.qorder = b.dataset.qorder;
-    document.querySelectorAll("[data-qorder]").forEach(x => x.setAttribute("aria-pressed", x === b));
-    orderQuilt();
-  });
-  $("#quiltCost").textContent = `${jev.calls} questions · ${Math.round(jev.input_tokens / 1000)}K tokens · $${jev.cost_usd.toFixed(3)}`;
-  const ansBars = probs => `<div class="ans">${Object.entries(probs).filter(([, p]) => p >= .01).map(([k, p]) => `<div><span>${P[k]?.label ?? k}</span><span class="m"><b style="width:${p * 100}%;background:${P[k]?.hex ?? "var(--ink)"}"></b></span><em>${pct(p)}</em></div>`).join("")}</div>`;
-  $("#howColour .body").innerHTML = `
-    <p>Jev is <a href="https://typesafe.ai">TypeSafe AI</a>'s decision model. It doesn't chat or write. You give it some text and a question with a fixed set of answers, and it returns a probability for each answer and a confidence score. I made one call per show.</p>
-    <div class="qbox"><span class="k">What Jev read</span>The show's title, years, network, genres and its TVmaze summary.</div>
-    <div class="qbox"><span class="k">The question</span>“Which colour best captures this TV show's mood, tone and visual world?”</div>
-    <p><b>The ${PORDER.length} answers it could choose from</b>, each with a description, so Jev chooses a mood rather than a colour name:</p>
-    <div class="pal">${PORDER.map(k => `<div><i style="background:${P[k].hex}"></i><span><b>${P[k].label}</b>: ${P[k].desc.split(":")[1]?.trim() ?? P[k].desc}</span></div>`).join("")}</div>
-    <p><b>Jev's actual answer for Breaking Bad</b> (confidence ${bb.confidence.toFixed(2)}):</p>
-    ${ansBars(bb.probs)}
-    <p>The palette and descriptions are mine, so Jev is choosing from my framing: different descriptions would make a different quilt. Total: ${jev.calls} calls, ${Math.round(jev.input_tokens / 1000)}K tokens, $${jev.cost_usd.toFixed(3)}.</p>`;
-
-  /* =========================== CHAPTER 2: fan map =========================== */
-  $("#fansIntro").innerHTML = `Next I asked Jev ${(fans.calls * (fans.calls - 1)).toLocaleString()} yes-or-no questions: <b>would a devoted fan of this show also love that one?</b> Shows pull together when Jev predicts their fans overlap, and brighter lines mean a stronger prediction. Two continents appear on their own: comedy and drama. The outline around each cover is its colour from Chapter 1. <b>These are Jev's judgments, not measured viewing data</b>: treat the map as an experiment in an AI's sense of taste, not proof of how audiences behave.`;
-  const veepAns = alsoLove(7, 3), veepLow = fans.rows[7].map((p, i) => [i + 1, p]).filter(([b]) => b !== 7).sort((x, y) => x[1] - y[1])[0];
-  $("#howFans .body").innerHTML = `
-    <p>One call per show, 100 calls in all. Each call describes one show and asks 99 yes-or-no questions, one for every other show on the list.</p>
-    <div class="qbox"><span class="k">What Jev read</span>The show a fan loves (title, years, network, genres and summary), plus a one-line description of each of the other 99.</div>
-    <div class="qbox"><span class="k">The question, 99 times per call</span>“Would a devoted fan of this show also love <i>[other show]</i>?” Yes means “the same fans would very likely love it too: shared tone, humour, themes or craft”.</div>
-    <p><b>Some of Jev's actual answers for fans of Veep:</b></p>
-    <div class="ans">${veepAns.map(([b, p]) => `<div><span>${byRank(b).title}</span><span class="m"><b style="width:${p}%;background:var(--cobalt)"></b></span><em>${p}%</em></div>`).join("")}
-      <div><span>${byRank(veepLow[0]).title}</span><span class="m"><b style="width:${veepLow[1]}%;background:var(--cobalt)"></b></span><em>${veepLow[1]}%</em></div></div>
-    <p><b>What this is and isn't:</b> no viewing data went in. Every link is Jev's opinion, formed from show descriptions alone. Answers go one way: “fans of A love B” can differ from “fans of B love A”. The map averages both directions, and a show's own panel uses the one-way answers. Total: ${fans.calls} calls, ${Math.round(fans.input_tokens / 1000)}K tokens, $${fans.cost_usd.toFixed(3)}.</p>`;
-
-  $("#fanList tbody").innerHTML = shows.map(s => `<tr><td><button data-go="${s.rank}">${s.rank}. ${s.title}</button></td><td>${alsoLove(s.rank, 3).map(([b, p]) => `${byRank(b).title} (${p}%)`).join(", ")}</td></tr>`).join("");
-  $("#fanList").addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (b) open(+b.dataset.go); });
-  $("#skipMap").onclick = () => { $("#fanList").open = true; };
-  let cnodes = null, cbuilding = null, pinFan = () => {};
-  function buildConstellation() {
-    if (cbuilding) return cbuilding;
-    return cbuilding = (async () => {
-      const d3 = await import("https://cdn.jsdelivr.net/npm/d3@7/+esm");
-      const nodes = shows.map(s => { const w = 24 + (101 - s.rank) / 100 * 22; return { id: s.rank, s, w, h: w * 1.5 }; });
-      const key = (a, b) => a < b ? `${a}-${b}` : `${b}-${a}`, E = new Map();
-      shows.forEach(a => {                               // each show's 3 strongest fan links, plus every link >= 78
-        shows.filter(b => b.rank !== a.rank).map(b => [b.rank, link(a.rank, b.rank)])
-          .sort((x, y) => y[1] - x[1]).forEach(([b, w], i) => { if (i < 3 || w >= 78) E.set(key(a.rank, b), { source: a.rank, target: b, w }); });
-      });
-      const links = [...E.values()];
-      const nbrs = new Map(shows.map(s => [s.rank, new Set([s.rank])]));
-      links.forEach(l => { nbrs.get(l.source).add(l.target); nbrs.get(l.target).add(l.source); });
-      const sim = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(d => d.id).distance(l => 34 + (100 - l.w) * 2.4).strength(l => 0.08 + ((l.w - 50) / 50) ** 2))
-        .force("charge", d3.forceManyBody().strength(-190))
-        .force("collide", d3.forceCollide(d => d.h * 0.62))
-        .force("x", d3.forceX(0).strength(0.045)).force("y", d3.forceY(0).strength(0.07))
-        .stop();
-      for (let i = 0; i < 450; i++) sim.tick();
-
-      const svg = d3.select("#csvg"), g = svg.append("g");
-      // continent labels: centroid of comedies vs everything else, placed above each cluster
-      const isCom = n => n.s.genres.includes("Comedy");
-      [["COMEDY", nodes.filter(isCom)], ["DRAMA", nodes.filter(n => !isCom(n))]].forEach(([t, ns]) => {
-        const cx = ns.reduce((a, n) => a + n.x, 0) / ns.length, top = Math.min(...ns.map(n => n.y)) - 34;
-        g.append("text").attr("class", "cont").attr("aria-hidden", "true").attr("x", cx).attr("y", top).text(t);
-      });
-      g.append("g").selectAll("line").data(links).join("line").attr("class", "lk")
-        .attr("x1", d => d.source.x).attr("y1", d => d.source.y).attr("x2", d => d.target.x).attr("y2", d => d.target.y)
-        .attr("stroke-width", d => 0.4 + ((d.w - 50) / 50) ** 2 * 3.2).attr("stroke-opacity", d => 0.08 + ((d.w - 50) / 50) ** 1.5 * 0.55);
-      const defs = svg.append("defs");
-      nodes.forEach(n => defs.append("clipPath").attr("id", `cp${n.id}`).append("rect")
-        .attr("x", -n.w / 2).attr("y", -n.h / 2).attr("width", n.w).attr("height", n.h).attr("rx", 3));
-      const nd = g.append("g").selectAll("g").data(nodes).join("g").attr("class", "nd")
-        .attr("transform", d => `translate(${d.x},${d.y})`).attr("tabindex", 0).attr("role", "button")
-        .attr("aria-label", d => `${d.s.rank}. ${d.s.title}. Jev predicts fans also love ${alsoLove(d.id, 3).map(([b, p]) => `${byRank(b).title}, ${p}%`).join("; ")}.`);
-      nd.append("image").attr("aria-hidden", "true").attr("href", d => d.s.cover).attr("x", d => -d.w / 2).attr("y", d => -d.h / 2)
-        .attr("width", d => d.w).attr("height", d => d.h).attr("clip-path", d => `url(#cp${d.id})`).attr("preserveAspectRatio", "xMidYMid slice");
-      nd.append("rect").attr("class", "ring").attr("aria-hidden", "true").attr("x", d => -d.w / 2 - 2).attr("y", d => -d.h / 2 - 2)
-        .attr("width", d => d.w + 4).attr("height", d => d.h + 4).attr("rx", 4).attr("stroke", d => hexOf(d.id));
-      nd.append("text").attr("aria-hidden", "true").attr("y", d => d.h / 2 + 13).text(d => d.s.title.length > 26 ? d.s.title.slice(0, 24) + "…" : d.s.title);
-      cnodes = new Map(nd.nodes().map(el => [d3.select(el).datum().id, el]));
-
-      const xs = nodes.map(n => n.x), ys = nodes.map(n => n.y), pad = 70;
-      const bx = [Math.min(...xs) - pad, Math.max(...xs) + pad], by = [Math.min(...ys) - pad, Math.max(...ys) + pad];
-      let fitK = 1;
-      const zoom = d3.zoom().scaleExtent([0.3, 5]).on("zoom", e => { g.attr("transform", e.transform); svg.classed("zoomed", e.transform.k > 1.9 * fitK); });
-      const fit = (t = 600) => {
-        const { width: W, height: H } = svg.node().getBoundingClientRect();
-        fitK = Math.min(W / (bx[1] - bx[0]), H / (by[1] - by[0]));
-        svg.transition().duration(t).call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(fitK).translate(-(bx[0] + bx[1]) / 2, -(by[0] + by[1]) / 2));
-      };
-      svg.call(zoom).on("dblclick.zoom", null);
-      fit(0);
-      $("#skyLoading").remove();
-      addEventListener("resize", () => fit(0));
-      $("#zin").onclick = () => svg.transition().call(zoom.scaleBy, 1.5);
-      $("#zout").onclick = () => svg.transition().call(zoom.scaleBy, 1 / 1.5);
-      $("#zfit").onclick = () => fit();
-
-      const tip = $("#ctip"), sky = $("#sky");
-      let pinned = null;
-      const focus = n => {
-        const hi = nbrs.get(n);
-        svg.classed("focus", true);
-        nd.classed("hi", d => hi.has(d.id));
-        g.selectAll(".lk").classed("hi", d => d.source.id === n || d.target.id === n);
-        tip.innerHTML = `<b>${n}. ${byRank(n).title}</b><span>Jev predicts fans also love</span><br>${alsoLove(n, 3).map(([b, p]) => `${byRank(b).title} <span>${p}%</span>`).join("<br>")}`;
-        tip.style.opacity = 1;
-      };
-      const blur = () => { if (pinned) return focus(pinned); svg.classed("focus", false); nd.classed("hi", false); g.selectAll(".lk").classed("hi", false); tip.style.opacity = 0; };
-      pinFan = n => {                                    // used by the findings cards: highlight a show and zoom to it
-        pinned = n; focus(n);
-        const d = nodes[n - 1], { width: W, height: H } = svg.node().getBoundingClientRect(), k = Math.max(fitK * 1.8, 1);
-        svg.transition().duration(700).call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(k).translate(-d.x, -d.y));
-        tip.style.left = "16px"; tip.style.top = "16px";
-      };
-      svg.on("click", e => { if (e.target === svg.node()) { pinned = null; blur(); } });
-      nd.on("pointerenter", (e, d) => e.pointerType === "mouse" && focus(d.id))
-        .on("pointermove", e => {
-          const r = sky.getBoundingClientRect();
-          tip.style.left = Math.min(e.clientX - r.left + 16, r.width - 270) + "px";
-          tip.style.top = Math.min(e.clientY - r.top + 12, r.height - 120) + "px";
-        })
-        .on("pointerleave", blur)
-        .on("focus", (e, d) => e.target.matches(":focus-visible") && focus(d.id)).on("blur", blur)
-        .on("click", (e, d) => { pinned = null; open(d.id); })
-        .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(d.id); } });
-      paintStatus();
-    })();
-  }
-  new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { buildConstellation(); o.disconnect(); } }, { rootMargin: "600px" }).observe($("#sky"));
-
-  /* =========================== CHAPTER 3: your turn =========================== */
-  const quick = $("#quick");
-  quick.innerHTML = shows.map(s => `<button class="qs" data-rank="${s.rank}" style="--c:${s.color}" aria-pressed="false" aria-label="${s.rank}. ${s.title}" title="${s.rank}. ${s.title}">
-      <img src="${s.cover}" alt="" loading="lazy"><span class="ok">${ICON.seen}</span></button>`).join("");
-  const qbtns = new Map([...quick.children].map(el => [+el.dataset.rank, el]));
-  quick.addEventListener("click", e => { const b = e.target.closest(".qs"); if (b) toggleStatus(+b.dataset.rank, "seen"); });
-  $("#upnext").addEventListener("click", e => {
-    const b = e.target.closest("[data-go]"); if (b) return open(+b.dataset.go);
-    if (e.target.closest("#pick2")) pick();
-  });
-
-  const MILESTONES = {
-    10: ["Pilot season", "Ten shows in. You've watched a tenth of the century's best television."],
-    25: ["A quarter of the canon", "Twenty-five down. That's a full season's worth of greatness."],
-    50: ["Midseason finale", "Halfway. Fifty of the hundred shows that defined the century."],
-    75: ["Renewed for another season", "Seventy-five seen. Only the last act remains."],
-    100: ["Series finale", "All 100. You've seen every show on the list."],
+  const tiles = new Map([...quilt.children].map(el => [+el.dataset.rank, el]));
+  quilt.addEventListener("click", e => { const t = e.target.closest(".qt"); if (t) open(+t.dataset.rank); });
+  $("#key").onclick = e => {
+    const b = e.target.closest(".swb"); if (!b) return;
+    $("#key").querySelectorAll(".swb").forEach(x => x.setAttribute("aria-pressed", x === b));
+    tiles.forEach((el, n) => el.classList.toggle("dim", !!b.dataset.c && J(n).choice !== b.dataset.c));
   };
-  const celebrated = new Set(store.get("nyt100.milestones", []));
-  const tally = () => { const c = { seen: 0, watch: 0, skip: 0 }; Object.values(status).forEach(k => c[k] !== undefined && c[k]++); return c; };
-
-  function paintForYou(nSeen) {
-    computeForYou();
-    const hot = new Set(fyTop(10).map(([n]) => n));
-    shows.forEach(x => {
-      const b = cards.get(x.rank).querySelector(".fy"), f = fy?.get(x.rank);
-      b.classList.toggle("on", hot.has(x.rank)); b.textContent = f ? `${f.score}% for you` : "";
+  document.querySelectorAll("[data-order]").forEach(b => b.onclick = () => {
+    document.querySelectorAll("[data-order]").forEach(x => x.setAttribute("aria-pressed", x === b));
+    const ranks = shows.map(s => s.rank); if (b.dataset.order === "colour") ranks.sort(byColour);
+    const before = new Map([...tiles].map(([k, el]) => [k, el.getBoundingClientRect()]));
+    ranks.forEach(r => quilt.appendChild(tiles.get(r)));
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) tiles.forEach((el, k) => {
+      const a = before.get(k), c = el.getBoundingClientRect();
+      if (a.left !== c.left || a.top !== c.top) el.animate([{ transform: `translate(${a.left - c.left}px,${a.top - c.top}px)` }, { transform: "none" }], { duration: 700, easing: "cubic-bezier(.2,.8,.2,1)" });
     });
-    const up = $("#upnext");
-    if (!fy) {
-      const need = MIN_SEEN - nSeen;
-      up.innerHTML = `<p class="cta"><b>Up next, according to Jev.</b> Tap ${need} more show${need === 1 ? "" : "s"} you've seen and Jev will line up what to watch next, based on what it predicts fans of your shows would love.</p>`;
-    } else if (!fy.size) {
-      up.innerHTML = `<p class="cta"><b>Up next, according to Jev:</b> nothing. There's nothing left on the list that you haven't seen or ruled out.</p>`;
-    } else {
-      up.innerHTML = `<h3 class="disp">Up next, according to Jev</h3>
-        <p class="sub">Ranked by Jev's predictions of what fans of your ${nSeen} seen shows would love. <button class="btn ghost" id="pick2" style="margin-left:6px;padding:4px 12px">🎲 Pick one for me</button></p>
-        <div class="picks">${fyTop(5).map(([n, f]) => `<button class="pk" data-go="${n}">
-          <img src="${byRank(n).cover}" alt="">
-          <span><span class="n disp">${f.score}%</span><b>${byRank(n).title}</b>
-          <small>because you've seen ${f.because.map(([a]) => `<i>${byRank(a).title}</i>`).join(" &amp; ")}</small></span></button>`).join("")}</div>`;
-    }
-    if (cnodes) {
-      const picks = new Set(fyTop(5).map(([n]) => n));
-      cnodes.forEach((el, k) => { el.classList.toggle("pick", picks.has(k)); el.classList.toggle("seen", st(k) === "seen"); el.classList.toggle("skip", st(k) === "skip"); });
-    }
-  }
-
-  function paintRecap(c) {
-    const el = $("#recap"), seen = shows.filter(s => st(s.rank) === "seen");
-    if (!seen.length) {
-      el.innerHTML = `<h3 class="disp" id="recapTitle">Previously on… you</h3>
-        <p class="dek2">Your personal recap appears here as you mark shows: which decades you've covered, the genres and networks you gravitate to, and the colour of your taste according to Jev.</p>`;
-      return;
-    }
-    const all = c.seen + c.watch + c.skip === 100;
-    // show only what the data can support: nothing under 8 seen, early signals at 8-14, the full recap at 15+, an outlier at 25+
-    if (c.seen < 8 && !all) {
-      el.innerHTML = `<h3 class="disp" id="recapTitle">Previously on… you</h3>
-        <p class="dek2">You've seen ${c.seen} so far. Mark <b>${8 - c.seen} more</b> to reveal your first reliable taste pattern: the decades, genres and networks you gravitate to, and the colour of your taste according to Jev.</p>
-        <div class="meter" style="max-width:320px" aria-hidden="true"><i class="s" style="width:${c.seen / 8 * 100}%"></i></div>`;
-      return;
-    }
-    const tier = c.seen >= 15 || all ? "full" : "early";
-    const finale = c.seen === 100
-      ? `<div class="finale"><p class="over">Series finale</p><h3 class="disp soft" id="recapTitle">That's a wrap.</h3>
-          <p>You've seen all 100 of the century's best shows, from <i>Breaking Bad</i> to <i>Scandal</i>. Previously on… everything.</p>
-          <div class="strip">${shows.map(s => `<span style="background:${hexOf(s.rank)}"></span>`).join("")}</div></div>`
-      : all ? `<div class="finale"><p class="over">Archive complete</p><h3 class="disp soft" id="recapTitle">You've been through all 100.</h3>
-          <p>Every show is marked: ${c.seen} seen, ${c.watch} on your watchlist, ${c.skip} you'll skip. Your watchlist is the next season.</p></div>` : "";
-    const decade = y => y < 2010 ? "2000s" : y < 2020 ? "2010s" : "2020s";
-    const dec = ["2000s", "2010s", "2020s"].map(d => [d, shows.filter(s => decade(s.start) === d).length, seen.filter(s => decade(s.start) === d).length]);
-    const tallyBy = f => { const m = {}; seen.forEach(s => f(s).forEach(k => k && (m[k] = (m[k] || 0) + 1))); return Object.entries(m).sort((a, b) => b[1] - a[1]); };
-    const totalBy = f => { const m = {}; shows.forEach(s => f(s).forEach(k => k && (m[k] = (m[k] || 0) + 1))); return m; };
-    const gAll = totalBy(s => s.genres), nAll = totalBy(s => [s.network]);
-    const bars = (list, totals) => `<div class="bars">${list.slice(0, 5).map(([k, n]) => `<div><span>${k}</span><span class="m"><b style="width:${(n / totals[k]) * 100}%"></b></span><em>${n} of ${totals[k]}</em></div>`).join("")}</div>`;
-    const cc = {}; seen.forEach(s => { const k = jevOf(s.rank).choice; cc[k] = (cc[k] || 0) + 1; });
-    const top = Object.entries(cc).sort((a, b) => b[1] - a[1])[0][0];
-    let outlier = "";
-    if (c.seen >= 25) {                                 // the seen show Jev links least to the rest of what you've seen
-      const [o, avg] = seen.map(a => [a.rank, seen.filter(b => b !== a).reduce((t, b) => t + link(a.rank, b.rank), 0) / (seen.length - 1)]).sort((x, y) => x[1] - y[1])[0];
-      outlier = `<div><h4>Your outlier</h4><p class="taste"><b>${byRank(o).title}</b> is the show Jev links least to the rest of your list (average predicted overlap ${Math.round(avg)}%). The odd one out in your viewing.</p></div>`;
-    }
-    el.innerHTML = `${finale}
-      ${finale ? "" : `<h3 class="disp" id="recapTitle">Previously on… you</h3>`}
-      <p class="dek2">${tier === "early" ? `<b>Early signals</b>, based on ${c.seen} shows. Mark ${15 - c.seen} more for your full recap.` : `${c.seen} of 100 seen${c.watch ? `, ${c.watch} on your watchlist` : ""}. Here's what your century of television looks like so far.`}</p>
-      <div class="grid3">
-        <div><h4>By decade of premiere</h4><div class="bars">${dec.map(([d, t, n]) => `<div><span>${d}</span><span class="m"><b style="width:${(n / t) * 100}%"></b></span><em>${n} of ${t}</em></div>`).join("")}</div></div>
-        ${tier === "full" ? `<div><h4>Genres you've covered</h4>${bars(tallyBy(s => s.genres), gAll)}</div>
-        <div><h4>Networks you've watched</h4>${bars(tallyBy(s => [s.network]), nAll)}</div>` : ""}
-        ${outlier}
-        <div><h4>The colour of your taste</h4><div class="tastebar">${[...seen].sort((a, b) => jevSort(a.rank, b.rank)).map(s => `<span style="background:${hexOf(s.rank)}" title="${s.title}"></span>`).join("")}</div>
-          <p class="taste">Mostly <b>${P[top].label.toLowerCase()}</b>: ${P[top].desc.split(":")[1]?.trim() || ""}.</p></div>
-      </div>`;
-  }
-
-  /* =========================== CHAPTER 4: archive =========================== */
-  const counts = {};
-  shows.forEach(s => s.genres.forEach(g => counts[g] = (counts[g] || 0) + 1));
-  $("#chips").innerHTML = `<button class="chip" data-genre="" aria-pressed="true">All genres</button>` +
-    Object.entries(counts).filter(([, n]) => n >= 5).sort((a, b) => b[1] - a[1])
-      .map(([g, n]) => `<button class="chip" data-genre="${g}" aria-pressed="false">${g}<span class="c">${n}</span></button>`).join("");
-
-  const grid = $("#grid");
-  grid.innerHTML = shows.map(s => `
-    <div class="card" data-rank="${s.rank}" style="--c:${s.color}">
-      <button class="poster" aria-label="${s.rank}. ${s.title}, ${s.years}">
-        <span class="rank">${s.rank}</span>
-        <img src="${s.cover}" alt="" loading="lazy" onload="this.classList.add('ok')">
-        <span class="fy"></span>
-        <span class="jevbar" style="--jb:${quilt(s.rank)}" title="Jev: ${P[jevOf(s.rank).choice].label}"></span>
-      </button>
-      <div class="meta"><b>${s.title}</b><small>${s.years}</small>
-        <div class="st" role="group" aria-label="Your status for ${s.title}">
-          ${["seen", "watch", "skip"].map(k => `<button data-st="${k}" aria-pressed="false" aria-label="${LABEL[k]}" title="${LABEL[k]}">${ICON[k]}</button>`).join("")}
-        </div>
-      </div>
-    </div>`).join("");
-  const cards = new Map([...grid.children].map(el => [+el.dataset.rank, el]));
-  grid.addEventListener("click", e => {
-    const b = e.target.closest(".st button");
-    if (b) return toggleStatus(+b.closest(".card").dataset.rank, b.dataset.st);
-    const p = e.target.closest(".poster"); if (p) open(+p.closest(".card").dataset.rank);
   });
 
-  const Y0 = 2000, Y1 = 2026.5, xp = y => ((y - Y0) / (Y1 - Y0)) * 100;
-  const tl = $("#timeline");
-  tl.innerHTML = `<div class="axis"><span>Show</span><div class="ticks">${[2000, 2005, 2010, 2015, 2020, 2025].map(y => `<span style="left:${xp(y)}%">${y}</span>`).join("")}</div></div>` +
-    shows.map(s => {
-      const a = xp(s.start), b = xp((s.end ?? 2026.4) + 1);
-      return `<div class="trow" data-rank="${s.rank}" style="--jc:${hexOf(s.rank)}" tabindex="0" role="button" aria-label="${s.rank}. ${s.title}, ${s.years}">
-        <div class="lbl"><em>${s.rank}</em>${s.title}</div>
-        <div class="track"><span class="span${s.end ? "" : " open"}" style="left:${a}%;width:${Math.min(b, 100) - a}%"></span></div>
-      </div>`;
-    }).join("");
-  const rows = new Map([...tl.querySelectorAll(".trow")].map(el => [+el.dataset.rank, el]));
-  const peek = $("#peek");
-  tl.addEventListener("pointermove", e => {
-    const r = e.target.closest(".trow");
-    if (!r || e.pointerType !== "mouse") { peek.style.opacity = 0; return; }
-    peek.style.backgroundImage = `url(${byRank(+r.dataset.rank).cover})`; peek.style.opacity = 1;
-    peek.style.transform = `translate(${Math.min(e.clientX + 18, innerWidth - 140)}px, ${Math.max(8, Math.min(e.clientY - 90, innerHeight - 200))}px)`;
-  });
-  tl.addEventListener("pointerleave", () => peek.style.opacity = 0);
-  tl.addEventListener("click", e => { const r = e.target.closest(".trow"); if (r) open(+r.dataset.rank); });
-  tl.addEventListener("keydown", e => { const r = e.target.closest(".trow"); if (r && e.key === "Enter") open(+r.dataset.rank); });
+  /* ---- the one observation ---- */
+  const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+  $("#note").innerHTML = `${top[1]} of the 100 shows came out <b>${P[top[0]].label.toLowerCase()}</b>. <i>Breaking Bad</i> itself was a split decision: ${pct(bb[0][1])} ${P[bb[0][0]].label.toLowerCase()}, ${pct(bb[1][1])} ${P[bb[1][0]].label.toLowerCase()}.`;
 
-  const matches = s => {
-    const k = st(s.rank);
-    if (state.show === "seen" && k !== "seen") return false;
-    if (state.show === "watch" && k !== "watch") return false;
-    if (state.show === "skip" && k !== "skip") return false;
-    if (state.show === "unseen" && (k === "seen" || k === "skip")) return false;
-    if (state.genre && !s.genres.includes(state.genre)) return false;
-    if (state.q && !`${s.title} ${s.network} ${s.genres.join(" ")} ${s.start}`.toLowerCase().includes(state.q)) return false;
-    return true;
-  };
-  const filtering = () => state.q || state.genre || state.show !== "all";
-  const sorters = {
-    rank: (a, b) => a.rank - b.rank,
-    year: (a, b) => a.start - b.start || a.rank - b.rank,
-    alpha: (a, b) => a.title.replace(/^The /, "").localeCompare(b.title.replace(/^The /, "")),
-    jev: (a, b) => jevSort(a.rank, b.rank),
-    foryou: (a, b) => (fy?.get(b.rank)?.score ?? -1) - (fy?.get(a.rank)?.score ?? -1) || a.rank - b.rank,
-  };
-  const esc = t => t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  function render() {
-    const order = [...shows].sort(sorters[state.sort]);
-    const animate = state.view === "grid" && !matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const before = animate ? new Map([...cards].map(([k, el]) => [k, el.classList.contains("hide") ? null : el.getBoundingClientRect()])) : null;
-    let visible = 0;
-    order.forEach(s => {
-      const ok = matches(s); visible += ok;
-      const c = cards.get(s.rank); c.classList.toggle("hide", !ok); grid.appendChild(c);
-      const r = rows.get(s.rank); r.classList.toggle("hide", !ok); tl.appendChild(r);
-    });
-    if (animate) cards.forEach((el, k) => {
-      const a = before.get(k); if (!a || el.classList.contains("hide")) return;
-      const b = el.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
-      if (dx || dy) el.animate([{ transform: `translate(${dx}px,${dy}px)` }, { transform: "none" }], { duration: 500, easing: "cubic-bezier(.2,.8,.2,1)" });
-    });
-    $("#count").textContent = filtering() ? `${visible} show${visible === 1 ? "" : "s"}` : "";
-    const empty = $("#empty");
-    if (!visible) {
-      empty.style.display = "block";
-      empty.innerHTML = state.q
-        ? `<p class="disp">No shows match “${esc(state.q)}”</p><button class="btn" data-clear="q">Clear search</button>`
-        : `<p class="disp">No shows match these filters</p><button class="btn" data-clear="all">Clear filters</button>`;
-    } else empty.style.display = "none";
-  }
-  $("#empty").addEventListener("click", e => {
-    const b = e.target.closest("[data-clear]"); if (!b) return;
-    $("#q").value = ""; state.q = "";
-    if (b.dataset.clear === "all") {
-      state.genre = null; state.show = "all"; $("#show").value = "all";
-      $("#chips").querySelectorAll(".chip").forEach((x, i) => x.setAttribute("aria-pressed", i === 0));
-    }
-    render(); $("#q").focus();
-  });
-  document.querySelectorAll("[data-view]").forEach(b => b.onclick = () => {
-    state.view = b.dataset.view;
-    document.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x === b));
-    $("#main").classList.toggle("view-timeline", state.view === "timeline");
-    render(); store.set("nyt100.view", state.view);
-  });
-  $("#show").onchange = e => { state.show = e.target.value; render(); };
-  $("#chips").onclick = e => {
-    const b = e.target.closest(".chip"); if (!b) return;
-    state.genre = b.dataset.genre || null;
-    $("#chips").querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === b));
-    render();
-  };
-  $("#q").oninput = e => { state.q = e.target.value.trim().toLowerCase(); render(); };
-  $("#sort").onchange = e => { state.sort = e.target.value; render(); };
-  $("#pick").onclick = pick;
-  function pick() {
-    if (fy) {                                           // Jev mode: best-scoring unwatched shows, watchlist boosted
-      const ranked = [...fy].filter(([n]) => matches(byRank(n)))
-        .map(([n, f]) => [n, f.score + (st(n) === "watch" ? 6 : 0)]).sort((a, b) => b[1] - a[1]).slice(0, 6);
-      if (ranked.length) return open(ranked[Math.floor(Math.random() * ranked.length)][0]);
-    }
-    let pool = shows.filter(s => matches(s) && !st(s.rank));
-    const wl = shows.filter(s => matches(s) && st(s.rank) === "watch");
-    if (wl.length) pool = wl;
-    if (!pool.length) pool = shows.filter(s => matches(s) && st(s.rank) !== "skip");
-    if (pool.length) open(pool[Math.floor(Math.random() * pool.length)].rank);
+  /* ---- your TV palette: combines Jev's existing answers, no new AI calls ---- */
+  let watched = new Set(store.get("nyt100.watched", null) ??      // first visit: carry over "seen" marks from the earlier version
+    Object.entries(store.get("nyt100.status", {})).filter(([, v]) => v === "seen").map(([r]) => +r));
+  const pick = $("#pick");
+  pick.innerHTML = shows.map(s => `<button class="pb" data-rank="${s.rank}" style="--c:${s.color}" aria-pressed="false" aria-label="${s.rank}. ${s.title}" title="${s.title}">
+      <img src="${s.cover}" alt="" loading="lazy"><span class="ok"><svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>`).join("");
+  const pbs = new Map([...pick.children].map(el => [+el.dataset.rank, el]));
+  pick.addEventListener("click", e => { const b = e.target.closest(".pb"); if (b) toggle(+b.dataset.rank); });
+  $("#clear").onclick = () => { watched = new Set(); save(); paint(); };
+  function toggle(n) { watched.has(n) ? watched.delete(n) : watched.add(n); save(); paint(); if (dlg.open) open(+dlg.dataset.rank); }
+  function save() { store.set("nyt100.watched", [...watched]); }
+  function paint() {
+    pbs.forEach((el, n) => el.setAttribute("aria-pressed", watched.has(n)));
+    const k = watched.size;
+    $("#stateText").textContent = k === 0 ? "Mark at least three shows to reveal your palette."
+      : k === 1 ? "One selected. Choose two more to reveal your palette."
+      : k === 2 ? "Two selected. Choose one more to reveal your palette."
+      : "Your palette is ready.";
+    $("#clear").hidden = !k;
+    const res = $("#result");
+    res.hidden = k < 3;
+    if (k < 3) return;
+    // average Jev's probabilities across the watched shows: a colour composition, not a profile
+    const mix = {};
+    watched.forEach(n => Object.entries(J(n).probs).forEach(([c, p]) => mix[c] = (mix[c] || 0) + p / k));
+    const parts = Object.entries(mix).sort((a, b) => b[1] - a[1]).filter(([, p]) => p >= 0.02);
+    res.innerHTML = `<div class="tile" style="background:${bands(mix, 1)}" role="img" aria-label="Your palette: ${parts.slice(0, 3).map(([c, p]) => `${P[c].label} ${pct(p)}`).join(", ")}"></div>
+      <div><h3 class="disp">Your palette, from ${k} shows</h3>
+        <div class="mix">${parts.map(([c, p]) => `<div><i style="background:${P[c].hex}"></i><span>${P[c].label}</span><span class="m"><b style="width:${p * 100}%;background:${P[c].hex}"></b></span><em>${pct(p)}</em></div>`).join("")}</div>
+        <div class="yours">${[...watched].sort(byColour).map(n => `<span style="--q:${tile(n)}" title="${byRank(n).title}"></span>`).join("")}</div>
+        <p class="yours-cap">Your ${k} shows, as Jev coloured them.</p></div>`;
   }
 
-  /* =========================== shared: status, toasts =========================== */
-  function paintStatus() {
-    const c = tally();
-    shows.forEach(x => {
-      const k = st(x.rank), card = cards.get(x.rank);
-      ["seen", "watch", "skip"].forEach(n => { card.classList.toggle(n, k === n); rows.get(x.rank).classList.toggle(n, k === n); qbtns.get(x.rank).classList.toggle(n, k === n); });
-      card.querySelectorAll(".st button").forEach(b => b.setAttribute("aria-pressed", b.dataset.st === k));
-      qbtns.get(x.rank).setAttribute("aria-pressed", k === "seen");
-    });
-    $("#bigTally").innerHTML = c.seen === 100 ? `You've seen <b>all 100</b>` : `You've seen <b>${c.seen}</b> of 100`;
-    $("#subTally").textContent = `${c.watch} on your watchlist · ${c.skip} won't watch · ${100 - c.seen - c.watch - c.skip} unmarked`;
-    $("#mSeen").style.width = c.seen + "%"; $("#mWant").style.width = c.watch + "%"; $("#mSkip").style.width = c.skip + "%";
-    $("#navSeen").textContent = c.seen;
-    $("#continue").hidden = $("#reset").hidden = !(c.seen + c.watch + c.skip);
-    paintForYou(c.seen);
-    paintRecap(c);
-    return c;
-  }
-  const toast = $("#toast");
-  let toastTimer;
-  function showToast(over, title, body, ms = 7000) {
-    toast.innerHTML = `<p class="over">${over}</p><p class="t disp soft">${title}</p>${body ? `<p>${body}</p>` : ""}<button class="close" aria-label="Dismiss">×</button>`;
-    toast.classList.add("on"); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("on"), ms);
-  }
-  toast.addEventListener("click", e => e.target.closest(".close") && toast.classList.remove("on"));
-  function toggleStatus(rank, k) {
-    const prev = st(rank), next = prev === k ? null : k;   // clicking the active state clears it
-    if (next) status[rank] = next; else delete status[rank];
-    store.set("nyt100.status", status);
-    const t = byRank(rank).title;
-    $("#sr").textContent = !next ? `${t}: status cleared.` : prev ? `${t} moved from ${LABEL[prev]} to ${LABEL[next]}.` : `${t} marked ${LABEL[next]}.`;
-    const c = paintStatus();
-    const pop = cards.get(rank).querySelector(".poster"); pop.classList.remove("pop"); void pop.offsetWidth; pop.classList.add("pop");
-    if (!store.get("nyt100.savedNotice", false) && next) {
-      store.set("nyt100.savedNotice", true);
-      showToast("Saved on this device", "Only in this browser", "No account and nothing sent anywhere. Clearing your browser data will erase your marks.");
-    }
-    if (next === "seen" && MILESTONES[c.seen] && !celebrated.has(c.seen)) {
-      celebrated.add(c.seen); store.set("nyt100.milestones", [...celebrated]);
-      const [title, body] = MILESTONES[c.seen];
-      showToast(`Milestone · ${c.seen} of 100`, title, body, 9000);
-    }
-    if (state.show !== "all" || state.sort === "foryou") render();
-    if (dlg.open && +dlg.dataset.rank === rank) open(rank);
-  }
+  /* ---- how I did it + credits ---- */
+  $("#how").innerHTML = `
+    <p>I made this over a weekend. For each show, I gave Jev its title, years, network, genres and TVmaze summary, and one question: <b>“Which colour best captures this TV show's mood, tone and visual world?”</b></p>
+    <p>Jev doesn't write an answer. It returns a probability for each colour I offered, plus a confidence score. These are the 13 colours, with the descriptions I gave it:</p>
+    <div class="pal">${ORDER.map(k => `<div><i style="background:${P[k].hex}"></i><span><b>${P[k].label}</b>: ${P[k].desc.split(":")[1]?.trim() ?? P[k].desc}</span></div>`).join("")}</div>
+    <p>The palette and descriptions are mine, so Jev was choosing from my framing. Different words would make a different quilt.</p>
+    <p>${jev.calls} calls to Jev, ${Math.round(jev.input_tokens / 1000)}K tokens, $${jev.cost_usd.toFixed(4)} in total.</p>`;
+  $("#credits").innerHTML = `<b>Previously On…</b> by Mridhula. Ranking: <a href="https://www.nytimes.com/interactive/2026/arts/television/best-tv-shows-21st-century.html">The New York Times</a> (2026). Cover art and summaries: <a href="https://www.tvmaze.com">TVmaze</a>. Colours: <a href="https://typesafe.ai">Jev</a> by TypeSafe AI.`;
 
-  $("#reset").onclick = () => {
-    const n = Object.keys(status).length;
-    if (!confirm(`Clear all ${n} of your marks (seen, watchlist and won't watch)? This can't be undone.`)) return;
-    status = {}; store.set("nyt100.status", status);
-    celebrated.clear(); store.set("nyt100.milestones", []);
-    paintStatus(); render();
-    $("#sr").textContent = `All ${n} marks cleared.`;
-    showToast("Fresh start", "Your marks are cleared", "Everything is unmarked again. Tap the shows you've seen to begin.", 5000);
-  };
-
-  /* ---- sticky offsets + active chapter in the nav ---- */
-  const bar = $("#bar"), nav = document.querySelector(".topnav");
-  new ResizeObserver(() => {
-    document.documentElement.style.setProperty("--barh", bar.offsetHeight + "px");
-    document.documentElement.style.setProperty("--navh", nav.offsetHeight + "px");
-  }).observe(bar);
-  const links = [...document.querySelectorAll(".chapters a")];
-  const chObs = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) links.forEach(a => a.setAttribute("aria-current", a.dataset.ch === e.target.id));
-  }), { rootMargin: "-45% 0px -50% 0px" });
-  ["quilt", "fans", "you", "archive"].forEach(id => chObs.observe(document.getElementById(id)));
-  $("#toTop").onclick = () => scrollTo({ top: 0, behavior: "smooth" });
-
-  /* ---- dialog ---- */
+  /* ---- show panel ---- */
   const dlg = $("#dlg");
-  function jevRead(n) {
-    const j = jevOf(n), parts = Object.entries(j.probs).filter(([, p]) => p >= 0.02);
-    return `<div class="jevread">
-      <div class="jl"><span>Jev's colour read</span><span>${P[j.choice].label}</span></div>
-      <div class="jbar">${parts.map(([k, p]) => `<span style="flex:${p};background:${P[k].hex}" title="${P[k].label} ${pct(p)}"></span>`).join("")}</div>
-      <div class="jkeys">${parts.slice(0, 3).map(([k, p]) => `<span style="--sw:${P[k].hex}"><i></i>${P[k].label} ${pct(p)}</span>`).join("")}</div>
-      <div class="jconf">Confidence <span class="m"><b style="width:${j.confidence * 100}%"></b></span> ${j.confidence.toFixed(2)} · ${confWord(j.confidence)}</div>
-    </div>`;
-  }
-  const whyRead = n => { const f = fy?.get(n); return f ? `<div class="why"><b>${f.score}% for you</b> · Jev thinks fans of ${f.because.map(([a, p]) => `<i>${byRank(a).title}</i> (${p}%)`).join(" and ")} would love this.</div>` : ""; };
-  const fansRead = n => `<div class="fans"><div class="jl">Jev predicts fans of this also love</div><ol>${
-    alsoLove(n).map(([b, p]) => `<li><button data-go="${b}"><img src="${byRank(b).cover}" alt=""><span>${b}. ${byRank(b).title}</span><span class="m"><b style="width:${p}%"></b></span><em>${p}%</em></button></li>`).join("")}</ol></div>`;
-  function open(rank) {
-    const s = byRank(rank), k = st(rank);
-    dlg.dataset.rank = rank;
+  function open(n) {
+    const s = byRank(n), j = J(n);
+    const seq = [...quilt.children].map(el => +el.dataset.rank), i = seq.indexOf(n);
+    const prev = byRank(seq[(i - 1 + seq.length) % seq.length]), next = byRank(seq[(i + 1) % seq.length]);
+    const parts = Object.entries(j.probs).filter(([, p]) => p >= 0.02).sort((a, b) => b[1] - a[1]);
+    dlg.dataset.rank = n;
     dlg.style.setProperty("--c", s.color);
-    // browse in archive order when the show is in the filtered archive; otherwise in NYT rank order
-    const archiveOrder = [...grid.children].map(c => +c.dataset.rank).filter(r => matches(byRank(r)));
-    const ord = archiveOrder.includes(rank) ? archiveOrder : shows.map(x => x.rank);
-    const i = ord.indexOf(rank), prev = byRank(ord[(i - 1 + ord.length) % ord.length]), next = byRank(ord[(i + 1) % ord.length]);
-    const btn = (key, on, off) => `<button class="toggle" data-st="${key}" aria-pressed="${k === key}">${ICON[key]}${k === key ? on : off}</button>`;
     dlg.innerHTML = `
       <button class="x" aria-label="Close">×</button>
       <div class="dlg">
@@ -1140,45 +333,29 @@ footer { border-top: 1px solid var(--rule); padding-top: 28px; padding-bottom: 5
         <div class="body">
           <div class="num">No. ${s.rank} of 100</div>
           <h2 class="disp" id="dTitle">${s.title}</h2>
-          <div class="sub">${s.years}${s.network ? " · " + s.network : ""}</div>
-          <div class="tags">${s.genres.map(g => `<span>${g}</span>`).join("")}</div>
-          ${jevRead(rank)}
-          ${fansRead(rank)}
-          ${whyRead(rank)}
-          <p class="sum">${s.summary}</p>
-          <div class="acts" role="group" aria-label="Your status">
-            ${btn("seen", "Seen it", "I've seen it")}${btn("watch", "On my watchlist", "Add to watchlist")}${btn("skip", "Won't watch", "Won't watch")}
-          </div>
-          <div class="nav"><button data-go="${prev.rank}">← ${prev.rank}. ${prev.title}</button><button data-go="${next.rank}">${next.rank}. ${next.title} →</button></div>
+          <p class="meta">${s.years}${s.network ? " · " + s.network : ""}</p>
+          <div class="jbar">${parts.map(([k, p]) => `<span style="flex:${p};background:${P[k].hex}" title="${P[k].label} ${pct(p)}"></span>`).join("")}</div>
+          <div class="jkeys">${parts.slice(0, 3).map(([k, p]) => `<span style="--sw:${P[k].hex}"><i></i>${P[k].label} ${pct(p)}</span>`).join("")}</div>
+          <p class="conf">Jev was ${confWord(j.confidence)} (confidence ${j.confidence.toFixed(2)}).</p>
+          <p class="read"><b>What Jev read</b>${s.summary}</p>
+          <button class="watched" aria-pressed="${watched.has(n)}">${watched.has(n) ? "✓ In your palette" : "I've watched this"}</button>
+          <div class="nav"><button data-go="${prev.rank}">← ${prev.title}</button><button data-go="${next.rank}">${next.title} →</button></div>
         </div>
       </div>`;
     if (!dlg.open) dlg.showModal();
   }
   dlg.addEventListener("click", e => {
     if (e.target === dlg || e.target.closest(".x")) return dlg.close();
-    const t = e.target.closest(".toggle"); if (t) return toggleStatus(+dlg.dataset.rank, t.dataset.st);
+    if (e.target.closest(".watched")) return toggle(+dlg.dataset.rank);
     const g = e.target.closest("[data-go]"); if (g) open(+g.dataset.go);
   });
-
   addEventListener("keydown", e => {
-    if (e.target.matches("input[type=search]")) { if (e.key === "Escape") e.target.blur(); return; }
-    if (e.metaKey || e.ctrlKey || e.altKey || e.target.matches("select")) return;
-    if (e.key === "/") { e.preventDefault(); $("#archive").scrollIntoView(); $("#q").focus({ preventScroll: true }); return; }
-    if (e.key.toLowerCase() === "r") return pick();
-    if (!dlg.open) return;
-    const r = +dlg.dataset.rank;
-    if (e.key === "ArrowRight" || e.key === "ArrowLeft") dlg.querySelector(`.nav button:${e.key === "ArrowRight" ? "last" : "first"}-child`).click();
-    const key = { s: "seen", w: "watch", x: "skip" }[e.key.toLowerCase()];
-    if (key) toggleStatus(r, key);
+    if (!dlg.open || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "ArrowRight") dlg.querySelector(".nav button:last-child").click();
+    if (e.key === "ArrowLeft") dlg.querySelector(".nav button:first-child").click();
   });
 
-  /* ---- init ---- */
-  $("#jevcredit").innerHTML = ` Colours and fan links by <a href="https://typesafe.ai">Jev</a> (TypeSafe AI): ${jev.calls + fans.calls} calls, ${Math.round((jev.input_tokens + fans.input_tokens) / 1000)}K tokens, <b>$${totalCost.toFixed(3)} in total</b>.`;
-  const c0 = tally();                                   // don't re-celebrate milestones already passed
-  Object.keys(MILESTONES).forEach(m => { if (c0.seen >= +m) celebrated.add(+m); });
-  store.set("nyt100.milestones", [...celebrated]);
-  if (store.get("nyt100.view", "grid") === "timeline") document.querySelector('[data-view="timeline"]').click();
-  paintStatus(); render();
+  paint();
 })();
 </script>
 </body>
