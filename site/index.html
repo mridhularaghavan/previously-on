@@ -432,7 +432,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 28px; padding-bottom: 5
 <header class="hero wrap" id="top">
   <p class="kicker">A five-cent experiment with Jev, an AI decision model</p>
   <h1 class="disp">What colour is <span class="bb">Breaking&nbsp;Bad</span>?</h1>
-  <p class="dek">We asked an AI to colour-code <b>the 100 best TV shows of the century</b>, as ranked by The New York Times, then predict which of them share fans. <b>The whole experiment cost about five cents.</b></p>
+  <p class="dek">I asked an AI to colour-code <b>the 100 best TV shows of the century</b>, as ranked by The New York Times, then predict which of them share fans. <b>The whole experiment cost about five cents.</b></p>
   <dl class="evidence" id="evidence" aria-label="The experiment in numbers"></dl>
   <div class="hero-actions">
     <a class="btn" href="#quilt">Start the story ↓</a>
@@ -657,7 +657,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 28px; padding-bottom: 5
 
   /* =========================== CHAPTER 1: quilt =========================== */
   const bb = jevOf(1), bbParts = Object.entries(bb.probs).filter(([, p]) => p >= .02);
-  $("#quiltIntro").innerHTML = `For each show, we gave Jev its description and one question: <b>which of ${PORDER.length} colours best captures this show's mood?</b> Jev doesn't write an answer. It returns a probability for every colour, plus how confident it is. Each tile below is that full answer: <b>stripes mean Jev was split between colours, and soft, blurry edges mean it was unsure.</b>`;
+  $("#quiltIntro").innerHTML = `For each show, I gave Jev its description and one question: <b>which of ${PORDER.length} colours best captures this show's mood?</b> Jev doesn't write an answer. It returns a probability for every colour, plus how confident it is. Each tile below is that full answer: <b>stripes mean Jev was split between colours, and soft, blurry edges mean it was unsure.</b>`;
   $("#callout").innerHTML = `<span class="tile" style="background:${quilt(1)}"></span>
     <span><p class="q disp">So, what colour is <i>Breaking Bad</i>?</p>
     <p>Jev couldn't decide: <b>${pct(bbParts[0][1])} ${P[bbParts[0][0]].label.toLowerCase()}</b> and <b>${pct(bbParts[1][1])} ${P[bbParts[1][0]].label.toLowerCase()}</b>, with ${confWord(bb.confidence)} confidence (${bb.confidence.toFixed(2)}). The desert heat versus the sickly menace. It's tile No. 1, top left.</p></span>`;
@@ -694,17 +694,17 @@ footer { border-top: 1px solid var(--rule); padding-top: 28px; padding-bottom: 5
   $("#quiltCost").textContent = `${jev.calls} questions · ${Math.round(jev.input_tokens / 1000)}K tokens · $${jev.cost_usd.toFixed(3)}`;
   const ansBars = probs => `<div class="ans">${Object.entries(probs).filter(([, p]) => p >= .01).map(([k, p]) => `<div><span>${P[k]?.label ?? k}</span><span class="m"><b style="width:${p * 100}%;background:${P[k]?.hex ?? "var(--ink)"}"></b></span><em>${pct(p)}</em></div>`).join("")}</div>`;
   $("#howColour .body").innerHTML = `
-    <p>Jev is <a href="https://typesafe.ai">TypeSafe AI</a>'s decision model. It doesn't chat or write. You give it some text and a question with a fixed set of answers, and it returns a probability for each answer and a confidence score. We made one call per show.</p>
+    <p>Jev is <a href="https://typesafe.ai">TypeSafe AI</a>'s decision model. It doesn't chat or write. You give it some text and a question with a fixed set of answers, and it returns a probability for each answer and a confidence score. I made one call per show.</p>
     <div class="qbox"><span class="k">What Jev read</span>The show's title, years, network, genres and its TVmaze summary.</div>
     <div class="qbox"><span class="k">The question</span>“Which colour best captures this TV show's mood, tone and visual world?”</div>
     <p><b>The ${PORDER.length} answers it could choose from</b>, each with a description, so Jev chooses a mood rather than a colour name:</p>
     <div class="pal">${PORDER.map(k => `<div><i style="background:${P[k].hex}"></i><span><b>${P[k].label}</b>: ${P[k].desc.split(":")[1]?.trim() ?? P[k].desc}</span></div>`).join("")}</div>
     <p><b>Jev's actual answer for Breaking Bad</b> (confidence ${bb.confidence.toFixed(2)}):</p>
     ${ansBars(bb.probs)}
-    <p>The palette and descriptions are ours, so Jev is choosing from our framing: different descriptions would make a different quilt. Total: ${jev.calls} calls, ${Math.round(jev.input_tokens / 1000)}K tokens, $${jev.cost_usd.toFixed(3)}.</p>`;
+    <p>The palette and descriptions are mine, so Jev is choosing from my framing: different descriptions would make a different quilt. Total: ${jev.calls} calls, ${Math.round(jev.input_tokens / 1000)}K tokens, $${jev.cost_usd.toFixed(3)}.</p>`;
 
   /* =========================== CHAPTER 2: fan map =========================== */
-  $("#fansIntro").innerHTML = `Next we asked Jev ${(fans.calls * (fans.calls - 1)).toLocaleString()} yes-or-no questions: <b>would a devoted fan of this show also love that one?</b> Shows pull together when Jev predicts their fans overlap, and brighter lines mean a stronger prediction. Two continents appear on their own: comedy and drama. The outline around each cover is its colour from Chapter 1. <b>These are Jev's judgments, not measured viewing data</b>: treat the map as an experiment in an AI's sense of taste, not proof of how audiences behave.`;
+  $("#fansIntro").innerHTML = `Next I asked Jev ${(fans.calls * (fans.calls - 1)).toLocaleString()} yes-or-no questions: <b>would a devoted fan of this show also love that one?</b> Shows pull together when Jev predicts their fans overlap, and brighter lines mean a stronger prediction. Two continents appear on their own: comedy and drama. The outline around each cover is its colour from Chapter 1. <b>These are Jev's judgments, not measured viewing data</b>: treat the map as an experiment in an AI's sense of taste, not proof of how audiences behave.`;
   const veepAns = alsoLove(7, 3), veepLow = fans.rows[7].map((p, i) => [i + 1, p]).filter(([b]) => b !== 7).sort((x, y) => x[1] - y[1])[0];
   $("#howFans .body").innerHTML = `
     <p>One call per show, 100 calls in all. Each call describes one show and asks 99 yes-or-no questions, one for every other show on the list.</p>

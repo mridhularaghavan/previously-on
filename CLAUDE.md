@@ -1,5 +1,17 @@
 # nyt-jev: *Previously On…*
 
+## Read this first: intent and scope (from the owner)
+
+**The whole project in one sentence:** *I asked Jev to associate one of 13 colours with each of 100 TV shows. These are the results.* Everything should serve that sentence.
+
+- **Owner:** Mridhula, a design-strong PM. This is one of three or four small weekend projects she's building for a portfolio by the end of 2026. It is deliberately **one idea, executed well**, not a product.
+- **Resist expansion.** AI assistants tend to keep growing an idea; don't. Don't propose new features, chapters, modes or extra Jev runs unless asked. When asked for improvements, prefer cutting and clarifying over adding. If something seems worth adding, ask first and say why it serves the one sentence.
+- **Narration is short and plain:** what I did, what came out of it, and perhaps one small observation. No stacked explanations, extra layers or marketing tone.
+- **Voice is first person singular.** Mridhula made this, so write "I", never "we"/"our". (The model is **Jev**, from TypeSafe AI, not "Jeff".)
+- **Known tension (as of 2026-09-27):** the site has grown well beyond the one sentence: the fan map (a second Jev experiment), For you recommendations, status tracking, recap, milestones, an archive with timeline and search. The owner is deciding what to cut. Until she decides, don't extend any of those, and treat the details below as a description of what exists, not a plan to build on.
+
+## Current state
+
 The site is branded **Previously On…** and deployed at https://previously-on-tv.vercel.app (Vercel project `previously-on-tv`, auto-deploys from GitHub `mridhularaghavan/previously-on` on push to `main`).
 
 Visual artwork built from The New York Times' **100 Best TV Shows of the 21st Century** (Sept 2026), with TypeSafe's **Jev** model supplying data for the next pieces.
