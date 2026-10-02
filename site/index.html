@@ -343,6 +343,7 @@ dialog[open] { animation: rise .3s cubic-bezier(.2,.8,.2,1); }
     <p>Jev returned a probability for each colour I offered, plus a confidence score. These are the 13 colours, with the descriptions I gave it:</p>
     <div class="pal">${ORDER.map(k => `<div><i style="background:${P[k].hex}"></i><span><b>${P[k].label}</b>: ${P[k].desc.split(":")[1]?.trim() ?? P[k].desc}</span></div>`).join("")}</div>
     <p>The palette and descriptions are mine, so Jev was choosing from my framing. Different words would make a different quilt.</p>
+    <p><b>Later, I tested that.</b> I asked Jev four more times, changing one thing each time: nothing, the show descriptions, the order of the colours, and the colour words. 59 shows kept their top colour every time. My colour words moved the answers most: when my purple stopped saying “royalty,” <i>The Crown</i> went from 85% purple to 0%. Jev never sees a colour, only my words for it. <a href="https://github.com/mridhularaghavan/previously-on#what-i-learned-from-four-more-runs">The full write-up is on GitHub.</a></p>
     <p>${jev.calls} calls to Jev, ${Math.round(jev.input_tokens / 1000)}K tokens, $${jev.cost_usd.toFixed(4)} in total.</p>`;
   $("#credits").innerHTML = `<b>Previously On…</b> by Mridhula. Ranking: <a href="https://www.nytimes.com/interactive/2026/arts/television/best-tv-shows-21st-century.html">The New York Times</a> (2026). Cover art and summaries: <a href="https://www.tvmaze.com">TVmaze</a>. Colours: <a href="https://typesafe.ai">Jev</a> by TypeSafe AI.`;
 

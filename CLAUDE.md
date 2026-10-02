@@ -92,7 +92,7 @@ Static, no build step: `index.html` (inline CSS/JS) + `shows.json` + `jev/colour
    - 3 or more: "Your palette is ready."
 
    The result is the average of Jev's probabilities across the selected shows, drawn as a big banded tile, a colour list with percentages, and the selected shows' own tiles. No new AI calls and no personality claims. There's a "Clear selection" button, and the selection is stored in `localStorage` `nyt100.watched`, seeded once from the old `nyt100.status` "seen" marks.
-6. **"How I did it"** (`<details>`): the question, the 13 colours with the descriptions Jev saw, "the palette and descriptions are mine", and the cost (100 calls, ~78K tokens, ~$0.0033, i.e. about a third of a cent).
+6. **"How I did it"** (`<details>`): the question, the 13 colours with the descriptions Jev saw, "the palette and descriptions are mine", a short "Later, I tested that." paragraph on the steadiness experiment (links to the README section "What I learned from four more runs"), and the cost (100 calls, ~78K tokens, ~$0.0033, i.e. about a third of a cent).
 7. **Footer credits:** by Mridhula; ranking by the NYT; covers and summaries from TVmaze; colours by Jev (TypeSafe AI).
 
 **Show panel** (dialog): the cover, "No. N of 100", title, years and network, Jev's colour bar with the top 3 colours, "Jev was {certain/fairly sure/undecided/torn} (confidence x.xx)", "What Jev read" (the TVmaze summary it was given), an "I've watched this" toggle (feeds the palette), and prev/next in the current quilt order (←/→ keys).
