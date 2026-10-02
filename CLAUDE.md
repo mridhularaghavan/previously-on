@@ -121,7 +121,11 @@ Jev data flow: `jev_*.py` scripts call the API and cache each raw response in `j
 
 - `jev_constellation.py`: **archived, not used by the site.** Kept only for a possible separate project. One call per show A, with state = A's description and 99 `noul` questions ("would a devoted fan of this show also love B?"). That's 100 calls instead of 4,950 pairwise calls: ~1.17M input tokens, about $0.049. It has a `MAX_COST_USD` hard stop. `site/jev/fans.json` holds `rows[a]` = 100 ints (percent, self = -1), and it's **directed**: fan(A→B) ≠ fan(B→A). These are Jev's judgments from show descriptions, never audience data.
 
-Total spent on Jev: about $0.052 of the $5 credit (the colours alone: about $0.0033).
+- `jev_steady.py`: **steadiness experiment (2026-10-02), not used by the site.** Re-asks the colour question with one input changed, locked to `jev-1.13.0` (the version behind the original answers; `jev-latest` may move). Caches in `jev_cache/colour_run<N>/`; the originals in `jev_cache/colour/` are never touched. Run 0 = repeat; Run 2 = new show descriptions (`jev_inputs/run2_summaries.json`, cleaned from the owner's `run2_descriptions_source.md`, which ChatGPT drafted); Run 3 = colours ordered darkest to lightest; Run 4 = the owner's rewritten colour descriptions with neutral names `colour_a`…`colour_m` (`RUN4` maps them back). About $0.013 for 400 calls. Results (median share of probability moved vs. the original / top colour changed): repeat 3% / 5, order 9% / 15, show texts 16% / 22, colour words 18% / 18. 59 shows keep the same top colour in all five runs; sure shows stay put and torn shows move; the quilt's overall colour mix shifts by ≤ ~4 points. Jev reads the palette words literally (The Crown: royal purple 85% → 0% once "royalty" left the description) but reads show texts for overall meaning (single matching words don't reliably win, and it handles "not X"). The owner hasn't decided whether any of this goes on the page.
+
+Total spent on Jev: about $0.066 of the $5 credit (the colours alone: about $0.0033; the steadiness experiment: about $0.013).
+
+Before any new Jev call, show the owner every input (texts, colour words, order, model) and wait for approval, dry runs included.
 
 Rules for Jev work:
 - Jev judges only the text it's given. Pass a short description per show (the TVmaze `summary` in `shows.json` is a start) rather than bare titles.

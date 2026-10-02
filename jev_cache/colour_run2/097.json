@@ -1,0 +1,29 @@
+{
+ "model": "jev-1.13.0",
+ "answers": {
+  "colour": {
+   "type": "choice",
+   "choice": "sunny_orange",
+   "confidence": 0.39,
+   "probabilities": {
+    "beige": 0.01,
+    "neon_pink": 0.04,
+    "sunny_orange": 0.45,
+    "royal_purple": 0.04,
+    "desert_gold": 0.0,
+    "steel_grey": 0.0,
+    "leafy_green": 0.0,
+    "midnight_blue": 0.0,
+    "sky_blue": 0.05,
+    "sickly_green": 0.0,
+    "blood_red": 0.0,
+    "black": 0.0,
+    "pastel": 0.41
+   }
+  }
+ },
+ "usage": {
+  "input_tokens": 754,
+  "output_tokens": 137
+ }
+}
